@@ -6,3 +6,20 @@ body {
 a {
   color: #00B7FF;
 }
+
+#contain_main{
+	width: 600px;
+	height: 600px;
+}
+
+#pallete{
+	width: 200px;
+	height: 500px;
+	float: left;
+}
+
+#display_code{
+	width: 400px;
+	height: 500px;
+	float:left;
+}
