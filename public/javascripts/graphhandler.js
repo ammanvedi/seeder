@@ -14,6 +14,26 @@ $(document).ready(function() {
 var sigInst = sigma.init(sigRoot);
 
 
+	var mouseRoot = document.getElementById('sigma_mouse_1');
+
+
+
+function getMousePos(canvas, evt) {
+        var rect = canvas.getBoundingClientRect();
+        return {
+          x: evt.clientX - rect.left,
+          y: evt.clientY - rect.top
+        };
+      };
+
+
+      mouseRoot.addEventListener('mousemove', function(evt) {
+        var mousePos = getMousePos(mouseRoot, evt);
+        //var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
+        //console.log(message);
+      }, false);
+
+
 $( "#tabs" ).tabs();
 $("#display_code").tabs();
 //-----------------------VARIABLES
