@@ -15,7 +15,6 @@ var node = {
 	size: 2,
 	id: 'id',
 	name: '',
-	meta: {},
 }
 
 
@@ -27,11 +26,11 @@ nodes[0] = node;
 //-----------------------FUNCTIONS
 
 function showNode(n){
-	return 'NODE ---->   id: ' + n['id'] + ' x: ' + n['posx'] + ' y: ' + n['posy'];
+	return '-   id: ' + n['id'] + ' name: ' + n['name'] + ' x: ' + n['posx'] + ' y: ' + n['posy'];
 }
 
 
-function listnodes(nodes){
+function listNodes(nodes){
 	var x = nodes.length;
 	
 	var list = '';
@@ -46,12 +45,35 @@ function listnodes(nodes){
 	return list;
 }
 
+function addNode(x, y, s, id, n){
+	var newnode = {
+	posx: x,
+	posy: y,
+	size: s,
+	id: id,
+	name: n,
+	}
+
+	nodes.push(newnode);
+
+
+}
+
 //-----------------------DELEGATES
 
-$('#display_code').html(listnodes(nodes));
+$('#display_code').html(listNodes(nodes));
 
 $('#btn_addnode').click(function() {
-      console.log($('#field_nodename').val());
+
+      var xpos = $('#field_node_xpos').val();
+      var ypos = $('#field_node_ypos').val();
+      var size = $('#field_node_size').val();
+      var node_id = $('#field_node_id').val();
+      var node_name = $('#field_node_name').val();
+
+      addNode(xpos,ypos,size,node_id, node_name);
+      $('#display_code').html(listNodes(nodes));
+
     });
 
 

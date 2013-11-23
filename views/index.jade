@@ -12,21 +12,24 @@ block content
 			#tabs
 				ul
 					li
-						a(href='#tabs-1') tabone
+						a(href='#tabs-1') add an edge
 					li
-						a(href='#tabs-2') tabtwo
+						a(href='#tabs-2') add a node
 					li
-						a(href='#tabs-3') tabthree
+						a(href='#tabs-3') edit a node
 
 				#tabs-1
-					p showing tab1<br/> loloollo
-					include form
+					p add edge
 				#tabs-2
-					p showing tab2
+					add node information
 					form
-						input#field_nodename(type='text' name='nodename')
+						input#field_node_xpos(type='number' name='node_xpos')
+						input#field_node_ypos(type='number' name='node_ypos')
+						input#field_node_size(type='number' name='node_size')
+						input#field_node_id(type='text' name='node_id')
+						input#field_node_name(type='text' name='node_name')
 						input#btn_addnode(type='button')
 				#tabs-3
-					p showing tab3
+					p edit node
 
 		#display_code
