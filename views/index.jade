@@ -2,6 +2,7 @@ extends layout
 
 block content
 
+
 	h1= title
 	p Welcome to #{title}
 
@@ -23,7 +24,7 @@ block content
 				#tabs-2
 					add node information
 					form
-						input#field_node_xpos(type='number' name='node_xpos')
+						input#field_node_xpos(type='number' name='node_xpos' class='input_node_add')
 						input#field_node_ypos(type='number' name='node_ypos')
 						input#field_node_size(type='number' name='node_size')
 						input#field_node_id(type='text' name='node_id')
@@ -33,3 +34,14 @@ block content
 					p edit node
 
 		#display_code
+			ul
+				li
+					a(href='#text_tab') text view
+				li#btn_show_graph
+					a(href='#graph_tab') graph view
+
+			#text_tab
+
+			#graph_tab
+				#graph_canvas
+				
