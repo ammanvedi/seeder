@@ -1,0 +1,26 @@
+extends layout
+
+block content
+
+	h1= title
+	p Welcome to #{title}
+
+	#tabs
+		ul
+			li
+				a(href='#tabs-1') tabone
+			li
+				a(href='#tabs-2') tabtwo
+			li
+				a(href='#tabs-3') tabthree
+
+		#tabs-1
+			p showing tab1<br/> loloollo
+			include form
+		#tabs-2
+			p showing tab2
+			form
+				input#field_nodename(type='text' name='nodename')
+				input#btn_addnode(type='button')
+		#tabs-3
+			p showing tab3
