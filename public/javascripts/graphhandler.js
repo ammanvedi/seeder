@@ -18,20 +18,9 @@ var sigInst = sigma.init(sigRoot);
 
 
 
-function getMousePos(canvas, evt) {
-        var rect = canvas.getBoundingClientRect();
-        return {
-          x: evt.clientX - rect.left,
-          y: evt.clientY - rect.top
-        };
-      };
 
 
-      mouseRoot.addEventListener('mousemove', function(evt) {
-        var mousePos = getMousePos(mouseRoot, evt);
-        //var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
-        //console.log(message);
-      }, false);
+
 
 
 $( "#tabs" ).tabs();
@@ -51,9 +40,18 @@ var node = {
 
 var nodes = new Array();
 
-nodes[0] = node;
 
 //-----------------------FUNCTIONS
+
+
+
+function getMousePos(canvas, evt) {
+        var rect = canvas.getBoundingClientRect();
+        return {
+          x: evt.clientX - rect.left,
+          y: evt.clientY - rect.top
+        };
+      };
 
 
 
@@ -141,6 +139,14 @@ $('#btn_addnode').click(function() {
       drawGraph();
 
     });
+
+//-----------------------PERSISTANT LISTENERS
+
+      mouseRoot.addEventListener('click', function(evt) {
+        var mousePos = getMousePos(mouseRoot, evt);
+        var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
+        console.log(message);
+      }, false);
 
 
 
