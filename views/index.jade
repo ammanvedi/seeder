@@ -21,6 +21,10 @@ block content
 
 				#tabs-1
 					p add edge
+						form
+							input#btn_addedge(type='button')
+						#add_edge_msg
+							p click the button to add an edge
 				#tabs-2
 					add node information
 					form
@@ -29,6 +33,7 @@ block content
 						input#field_node_size(type='number' name='node_size')
 						input#field_node_id(type='text' name='node_id')
 						input#field_node_name(type='text' name='node_name')
+						input#picker_edgecolor(type='color')
 						input#btn_addnode(type='button')
 				#tabs-3
 					p edit node
