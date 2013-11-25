@@ -1,14 +1,19 @@
 extends layout
 
 block content
-
-
 	h1= title
 	p Welcome to #{title}
 
 	#contain_main
 
 		#pallete
+
+			#display_code_pallete
+				ul
+					li#btn_show_text
+						a(href='#text_tab') text view
+					li#btn_show_graph
+						a(href='#graph_tab') graph view
 
 			#tabs
 				ul
@@ -18,32 +23,30 @@ block content
 						a(href='#tabs-2') add a node
 					li
 						a(href='#tabs-3') edit a node
+				br
 
 				#tabs-1
 					p add edge
-						form
-							input#btn_addedge(type='button')
-						#add_edge_msg
-							p click the button to add an edge
+					form
+						input#btn_addedge(type='button' value='add edge')
+					#add_edge_msg
+						p click the button to add an edge
 				#tabs-2
 					add node information
-					form
-						input#field_node_xpos(type='number' name='node_xpos' class='input_node_add')
-						input#field_node_ypos(type='number' name='node_ypos')
-						input#field_node_size(type='number' name='node_size')
-						input#field_node_id(type='text' name='node_id')
-						input#field_node_name(type='text' name='node_name')
-						input#picker_edgecolor(type='color')
-						input#btn_addnode(type='button')
+					form#form_addnode
+						input#field_node_xpos(type='number' name='node_xpos' class='input_node_add' placeholder='node x position')
+						input#field_node_ypos(type='number' name='node_ypos' placeholder='node y position')
+						input#field_node_size(type='number' name='node_size' placeholder='node size')
+						input#field_node_id(type='text' name='node_id' placeholder='node id')
+						input#field_node_name(type='text' name='node_name' placeholder='node name')
+						br
+						input#picker_edgecolor(type='color' placeholder='#ffffff')
+						br
+						input#btn_addnode(type='button' value='add node')
 				#tabs-3
 					p edit node
 
 		#display_code
-			ul
-				li
-					a(href='#text_tab') text view
-				li#btn_show_graph
-					a(href='#graph_tab') graph view
 
 			#text_tab
 

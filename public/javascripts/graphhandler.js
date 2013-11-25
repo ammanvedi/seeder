@@ -29,11 +29,16 @@ var sigInst = sigma.init(sigRoot).drawingProperties({
 
 
 
-
+//initial jQuery UI element states
 
 
 $( "#tabs" ).tabs();
-$("#display_code").tabs();
+$("#display_code_pallete").tabs();
+$("input[type=submit]").button();
+$("#pallete").draggable();
+
+$('#text_tab').height(100);
+$('#graph_tab').height(0);
 //-----------------------VARIABLES
 
 var meta = {};
@@ -155,6 +160,9 @@ function showInfo(event){
 $('#text_tab').html(listNodes(nodes));
 
 $('#btn_show_graph').click(function() {
+
+$('#text_tab').height(0);
+$('#graph_tab').height(500);
 	drawGraph();
 });
 
@@ -178,6 +186,14 @@ if(making_edge){
 }
 
 	});
+
+$('#btn_show_text').click(function() {
+
+$('#text_tab').height(100);
+$('#graph_tab').height(0);
+
+}
+);
 
 $('#btn_addnode').click(function() {
 
