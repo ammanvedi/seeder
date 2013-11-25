@@ -33,12 +33,11 @@ var sigInst = sigma.init(sigRoot).drawingProperties({
 
 
 $( "#tabs" ).tabs();
-$("#display_code_pallete").tabs();
 $("input[type=submit]").button();
 $("#pallete").draggable();
 
-$('#text_tab').height(100);
-$('#graph_tab').height(0);
+$('#text_tab').height(0);
+$('#graph_tab').height(500);
 //-----------------------VARIABLES
 
 var meta = {};
