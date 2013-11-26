@@ -60,9 +60,13 @@ var edge_path = new Array();
 
 //debug node set
 
+for(var l = 0; l<10; l+=0.6){
+  addNode(l, Math.sin(l), 1 ,'node ' + l, "_" + l, '#300000');
+}
+/*
 addNode(0.1,0.1,3,'a','node a', '#300000');
 addNode(0.2,0.2,3,'b','node b', '#300000');
-addNode(0.3,0.3,3,'c','node c', '#300000');
+addNode(0.3,0.3,3,'c','node c', '#300000');*/
 
 
 function getMousePos(canvas, evt) {
