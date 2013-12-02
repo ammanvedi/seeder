@@ -30,7 +30,10 @@ var sigInst = sigma.init(sigRoot).drawingProperties({
 
 
 
-
+var c=document.getElementById("sigma_labels_1");
+var ctx=c.getContext("2d");
+ctx.fillStyle="#FF0000";
+ctx.fillRect(0,0,150,75);
 
 //initial jQuery UI element states
 
@@ -154,8 +157,11 @@ function showInfo(event){
   var node;
       sigInst.iterNodes(function(n){
         node = n;
+
       },[event.content[0]]);
       last_node = node;
+      console.log(sigInst.getMouse()['mouseX'] + ' ' +  sigInst.getMouse().mouseY);
+
 
 }
 
