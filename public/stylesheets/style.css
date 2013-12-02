@@ -1,6 +1,41 @@
 body {
-  padding: 50px;
+ margin:0px;
+ padding:0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.menu-link{
+	width: auto;
+	height: 30px;
+	font-size: 25px;
+	float: left;
+	color: #fff;
+	opacity: 0.5;
+	text-decoration: none;
+	margin-left: 15px;
+	margin-top: 6px;
+	margin-right: 20px; 
+
+}
+
+
+
+#menu{
+z-index: 998;
+
+}
+
+.panel{
+	background-color: #413c4a;
+	color: #fff;
+	width: 200px;
+	position: absolute;
+	z-index: 998;
+
+	-webkit-box-shadow: 0px 0px 9px rgba(50, 50, 50, 0.75);
+-moz-box-shadow:    0px 0px 9px rgba(50, 50, 50, 0.75);
+box-shadow:         0px 0px 9px rgba(50, 50, 50, 0.75);
+
 }
 
 a {
@@ -22,7 +57,7 @@ a {
 	color: #fff;
 	float: left;
 	position: absolute;
-	z-index: 100;
+	z-index: 1;
 -webkit-box-shadow: 7px 7px 5px rgba(50, 50, 50, 0.75);
 -moz-box-shadow:    7px 7px 5px rgba(50, 50, 50, 0.75);
 box-shadow:         7px 7px 5px rgba(50, 50, 50, 0.75);
@@ -43,12 +78,37 @@ ul{
 	margin-left: 3px;
 	margin-right: 3px;
 }
+#navbar{
+	width: 100%;
+	height: 50px;
+	background-color: #413c4a;
+	z-index: 0;
+
+	-webkit-box-shadow: 0px 0px 9px rgba(50, 50, 50, 0.75);
+-moz-box-shadow:    0px 0px 9px rgba(50, 50, 50, 0.75);
+box-shadow:         0px 0px 9px rgba(50, 50, 50, 0.75);
+
+}
+
+.nav_title{
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+   font-weight: 400;
+   color: #fff;
+   font-size: 23px;
+   height: auto;
+   margin-top: 0px;
+   padding-top: 9px;
+   margin-bottom: 0px;
+   margin-left: 0px;
+
+}
 
 #display_code{
 	width: 100%;
 	height: 500px;
 	float:left;
-	z-index: 1000;
+	z-index: 2;
+	overflow: hidden;
 }
 
 #text_tab{
@@ -66,6 +126,6 @@ ul{
 #graph_canvas{
 	height: 500px;
 	width: 100%;
-	background-color: #8baa7a;
+	background-color: #111;
 	position: absolute;
 }

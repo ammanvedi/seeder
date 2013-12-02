@@ -1,3 +1,6 @@
+
+//embedly api key 365526c2e08d4ee5975adbb471147713
+
 console.log("started handler");
 
 $(document).ready(function() {
@@ -8,7 +11,7 @@ var sigInst = sigma.init(sigRoot).drawingProperties({
     defaultLabelSize: 10,
     defaultLabelBGColor: '#fff',
     defaultLabelHoverColor: '#000',
-    labelThreshold: 8,
+    labelThreshold: 20,
     defaultEdgeType: 'curve'
   }).graphProperties({
     minNodeSize: 0.5,
@@ -38,6 +41,7 @@ $("#pallete").draggable();
 
 $('#text_tab').height(0);
 $('#graph_tab').height(500);
+$('.menu-link').bigSlide();
 //-----------------------VARIABLES
 
 var meta = {};
@@ -60,9 +64,10 @@ var edge_path = new Array();
 
 //debug node set
 
-for(var l = 0; l<10; l+=0.6){
-  addNode(l, Math.sin(l), 1 ,'node ' + l, "_" + l, '#300000');
+for(var l = 0; l<50; l++){
+  addNode(2*Math.random(), 2*Math.random(), 10*Math.random() ,'node ' + l, ("this is node " + l).substring(0,17), '#798526');
 }
+
 /*
 addNode(0.1,0.1,3,'a','node a', '#300000');
 addNode(0.2,0.2,3,'b','node b', '#300000');
