@@ -38,9 +38,9 @@ var sigInst = sigma.init(sigRoot).drawingProperties({
 $( "#tabs" ).tabs();
 $("input[type=submit]").button();
 $("#pallete").draggable();
-
-$('#text_tab').height(0);
 $('#graph_tab').height($("body").height());
+$('#text_tab').height(0);
+
 $('.menu-link').bigSlide();
 //-----------------------VARIABLES
 
@@ -170,7 +170,7 @@ $('#text_tab').html(listNodes(nodes));
 $('#btn_show_graph').click(function() {
 
 $('#text_tab').height(0);
-$('#graph_tab').height(500);
+$('#graph_tab').height($("body").height());
 	drawGraph();
 });
 
