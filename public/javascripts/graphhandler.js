@@ -40,7 +40,7 @@ $("input[type=submit]").button();
 $("#pallete").draggable();
 
 $('#text_tab').height(0);
-$('#graph_tab').height(500);
+$('#graph_tab').height($("body").height());
 $('.menu-link').bigSlide();
 //-----------------------VARIABLES
 
