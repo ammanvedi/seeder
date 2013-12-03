@@ -19,7 +19,8 @@ var sigInst = sigma.init(sigRoot).drawingProperties({
     minEdgeSize: 1,
     maxEdgeSize: 3
   }).mouseProperties({
-    maxRatio: 10
+    maxRatio: 10,
+    minRatio: 1
   });
 
   	var making_edge = false;
@@ -76,9 +77,14 @@ function get_random_color() {
 
 //debug node set
 
-for(var l = 0; l<100; l++){
-  addNode(2*Math.random(), 2*Math.random(), 10*Math.random() ,'node ' + l, ("this is node " + l).substring(0,17), get_random_color());
+for(var l = 0; l<50; l++){
+  addNode(Math.floor(Math.random()*20), Math.floor(Math.random()*20), 5,'node ' + l, ("this is node " + l).substring(0,17), get_random_color());
 }
+
+
+
+addNode(20,40,3, 'reference', 'reference', '#ffffff');
+addNode(0,0,3, 'origin', 'origin', '#ffffff');
 
 /*
 addNode(0.1,0.1,3,'a','node a', '#300000');
@@ -166,10 +172,9 @@ function showInfo(event){
   var node;
       sigInst.iterNodes(function(n){
         node = n;
-
       },[event.content[0]]);
       last_node = node;
-      console.log(sigInst.getMouse()['mouseX'] + ' ' +  sigInst.getMouse().mouseY);
+      console.log(node['x'] + ' ' +  node['y']);
 
 
 }
@@ -210,10 +215,37 @@ if(making_edge){
 
 	});
 
+mouseRoot.addEventListener('mousemove', function(evt) {
+
+
+
+  });
+
 $('#btn_show_text').click(function() {
 
 $('#text_tab').height(100);
 $('#graph_tab').height(0);
+
+}
+);
+
+$('#graph_canvas').click(function(evnt) {
+
+//console.log(sigInst.getNodes('origin').displayX);
+//console.log(sigInst.getNodes('reference'));
+
+var ratio_display_x = ((sigInst.getNodes('reference').x - sigInst.getNodes('origin').x) / (sigInst.getNodes('reference').displayX - sigInst.getNodes('origin').displayX));
+var ratio_display_y = ( (sigInst.getNodes('reference').y - sigInst.getNodes('origin').y) / (sigInst.getNodes('reference').displayY - sigInst.getNodes('origin').displayY));
+
+
+var out_x = (evnt.clientX - sigInst.getNodes('origin').displayX) * ratio_display_x;
+var out_y = (evnt.clientY - sigInst.getNodes('origin').displayY) * ratio_display_y;
+
+
+console.log('x: ' + out_x + ' y: ' + out_y);
+
+  $('#field_node_xpos').val(out_x.toString().substring(0,4));
+  $('#field_node_ypos').val(out_y.toString().substring(0,4));
 
 }
 );
@@ -230,6 +262,10 @@ $('#btn_addnode').click(function() {
       addNode(xpos,ypos,size,node_id, node_name, node_color);
       $('#text_tab').html(listNodes(nodes));
       drawGraph();
+
+      var nd = sigInst.getNodes(node_id);
+
+      sigInst.goTo(nd['displayX'],nd['displayY'],10);
 
     });
 
