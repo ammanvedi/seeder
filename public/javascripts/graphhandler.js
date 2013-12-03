@@ -19,7 +19,7 @@ var sigInst = sigma.init(sigRoot).drawingProperties({
     minEdgeSize: 1,
     maxEdgeSize: 3
   }).mouseProperties({
-    maxRatio: 10,
+    maxRatio: 5,
     minRatio: 1
   });
 
@@ -83,7 +83,7 @@ for(var l = 0; l<50; l++){
 
 
 
-addNode(20,40,3, 'reference', 'reference', '#ffffff');
+addNode(5,5,3, 'reference', 'reference', '#ffffff');
 addNode(0,0,3, 'origin', 'origin', '#ffffff');
 
 /*
@@ -142,6 +142,14 @@ function listNodes(nodes){
 
 
 function addNode(x, y, s, id, n, c){
+
+  var attribs = [
+    {name: 'link', val:'http://www.google.com/'},
+    {name: 'description', val:'this is the description of the node'}
+
+]
+
+
 	var newnode = {
 	posx: x,
 	posy: y,
@@ -157,7 +165,8 @@ function addNode(x, y, s, id, n, c){
   color: c,
   size: s,
   x: x,
-  y: y
+  y: y,
+  attr: attribs
 });
 
 	//console.log('nodes');
@@ -174,7 +183,9 @@ function showInfo(event){
         node = n;
       },[event.content[0]]);
       last_node = node;
-      console.log(node['x'] + ' ' +  node['y']);
+      console.log(node['attr']['attr'][0]['name'] + ' : ' + node['attr']['attr'][0]['val']);
+      console.log(node['attr']['attr'][1]['name'] + ' : ' + node['attr']['attr'][1]['val']);
+      console.log('node centre xy ' + node['x'] + ' ' +  node['y']);
 
 
 }
@@ -248,6 +259,8 @@ console.log('x: ' + out_x + ' y: ' + out_y);
   $('#field_node_ypos').val(out_y.toString().substring(0,4));
 
 }
+
+
 );
 
 $('#btn_addnode').click(function() {
@@ -265,7 +278,7 @@ $('#btn_addnode').click(function() {
 
       var nd = sigInst.getNodes(node_id);
 
-      sigInst.goTo(nd['displayX'],nd['displayY'],10);
+      sigInst.goTo(nd['displayX'],nd['displayY'],2);
 
     });
 
