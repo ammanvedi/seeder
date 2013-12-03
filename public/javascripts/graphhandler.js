@@ -64,11 +64,20 @@ var edge_path = new Array();
 
 //-----------------------FUNCTIONS
 
+function get_random_color() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.round(Math.random() * 15)];
+    }
+    return color;
+}
+
 
 //debug node set
 
-for(var l = 0; l<50; l++){
-  addNode(2*Math.random(), 2*Math.random(), 10*Math.random() ,'node ' + l, ("this is node " + l).substring(0,17), '#798526');
+for(var l = 0; l<100; l++){
+  addNode(2*Math.random(), 2*Math.random(), 10*Math.random() ,'node ' + l, ("this is node " + l).substring(0,17), get_random_color());
 }
 
 /*
