@@ -26,6 +26,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 http.listen(3000);
 console.log('listening on port ' + app.get('port'))
 
+MongoClient.connect("mongodb://ammanvedi:poopoo12@ds057528.mongolab.com:57528/seeder-dev", function(err, db) {
+  if(!err) {
+    console.log("database : connected to MongoDB");
+  }
+     });
+
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
@@ -44,7 +50,11 @@ io.sockets.on('connection', function (socket) {
 	socket.emit('hs_id', {data: socket.id});
 
 socket.on('savegraph', function (data) {
-    console.log('server recieved ' + data.data + ' from ' + socket.id);
+    console.log('server : recieved ' + data.data + ' from ' + socket.id);
+
+    //do database connection and saving here
+
+
 
   });
 
