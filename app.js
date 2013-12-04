@@ -29,6 +29,7 @@ console.log('listening on port ' + app.get('port'))
 MongoClient.connect("mongodb://ammanvedi:poopoo12@ds057528.mongolab.com:57528/seeder-dev", function(err, db) {
   if(!err) {
     console.log("database : connected to MongoDB");
+    db.createCollection('graphs', function(err, collection) {});
   }
      });
 
@@ -46,6 +47,9 @@ app.get('/users', user.list);
 //server side socket connection reciever
 io.sockets.on('connection', function (socket) {
 
+	var nds;
+	var egs;
+
 	console.log('server : sent id ' + socket.id + ' to client');
 	socket.emit('hs_id', {data: socket.id});
 
@@ -54,7 +58,7 @@ socket.on('savegraph_nodes', function (data) {
 
     //do database connection and saving here
 
-
+nds = data;
 
   });
 
@@ -64,11 +68,34 @@ socket.on('savegraph_edges', function (data) {
 
     //do database connection and saving here
 
+egs = data;
 
+db_push_graph(nds,egs, {id:'123'});
 
   });
 
+
+
 });
+
+function db_push_graph(nodes, edges, meta){
+
+	MongoClient.connect("mongodb://ammanvedi:poopoo12@ds057528.mongolab.com:57528/seeder-dev", function(err, db) {
+  if(!err) {
+    console.log("database : connected to MongoDB");
+    db.createCollection('graphs', function(err, collection) {
+
+var graph_send = [{Gnodes:nodes}, {Gedges:edges}, {Gmeta:meta}];
+
+collection.insert(graph_send, function(err, result){
+	console.log(result);
+});
+
+    });
+  }
+     });
+
+}
 
 
   
