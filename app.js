@@ -2,14 +2,17 @@
 /**
  * Module dependencies.
  */
-
-var express = require('express');
+ var express = require('express');
+var app = express();
 var routes = require('./routes');
 var user = require('./routes/user');
-var http = require('http');
+var http = require('http').createServer(app);
 var path = require('path');
+var MongoClient = require('mongodb').MongoClient;
+var io = require('socket.io').listen(http);
 
-var app = express();
+
+
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -23,14 +26,30 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
+http.listen(3000);
+console.log('listening on port ' + app.get('port'))
+
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
 app.get('/', routes.index);
+
 app.get('/users', user.list);
 
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+
+
+//server side socket connection reciever
+io.sockets.on('connection', function (socket) {
+
+socket.on('savegraph', function (data) {
+    console.log('server recieved ' + data.data + ' from ' + socket.id);
+
+  });
+
 });
+
+
+  
+

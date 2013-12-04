@@ -5,7 +5,13 @@ console.log("started handler");
 
 $(document).ready(function() {
 
-	var sigRoot = document.getElementById('graph_canvas');
+//create a socket to connect to the server
+var socket = io.connect('http://localhost:3000');
+
+
+
+
+var sigRoot = document.getElementById('graph_canvas');
 var sigInst = sigma.init(sigRoot).drawingProperties({
     defaultLabelColor: '#fff',
     defaultLabelSize: 10,
@@ -262,6 +268,12 @@ console.log('x: ' + out_x + ' y: ' + out_y);
 
 
 );
+
+$('#btn_savegraph').click(function() {
+
+socket.emit('savegraph', { data: 'graphdata' });
+
+  });
 
 $('#btn_addnode').click(function() {
 
