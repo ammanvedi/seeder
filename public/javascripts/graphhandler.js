@@ -252,7 +252,10 @@ console.log('x: ' + out_x + ' y: ' + out_y);
 
 $('#btn_savegraph').click(function() {
 
-socket.emit('savegraph', { data: 'graphdata' });
+var to_send = { data: 'graphdata' };
+console.log(socket);
+console.log('client socket ' + socket.id + 'sending ' + to_send + ' to server');
+socket.emit('savegraph', to_send);
 
   });
 
@@ -301,6 +304,18 @@ mouseRoot.addEventListener('mousemove', function(evt) {
 
       }, false);
 
+      //-------SOCKET HANDLERS
+
+socket.on('hs_id', function (data) {
+
+  socket.id = data.data;
+  console.log('client : recieved id ' + socket.id + ' from server');
+
 });
+
+});
+
+
+
 
 

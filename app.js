@@ -40,6 +40,9 @@ app.get('/users', user.list);
 //server side socket connection reciever
 io.sockets.on('connection', function (socket) {
 
+	console.log('server : sent id ' + socket.id + ' to client');
+	socket.emit('hs_id', {data: socket.id});
+
 socket.on('savegraph', function (data) {
     console.log('server recieved ' + data.data + ' from ' + socket.id);
 
