@@ -49,8 +49,18 @@ io.sockets.on('connection', function (socket) {
 	console.log('server : sent id ' + socket.id + ' to client');
 	socket.emit('hs_id', {data: socket.id});
 
-socket.on('savegraph', function (data) {
-    console.log('server : recieved ' + data.data + ' from ' + socket.id);
+socket.on('savegraph_nodes', function (data) {
+    console.log('server : recieved (nodes) ' + data + ' from ' + socket.id);
+
+    //do database connection and saving here
+
+
+
+  });
+
+
+socket.on('savegraph_edges', function (data) {
+    console.log('server : recieved (edges) ' + data + ' from ' + socket.id);
 
     //do database connection and saving here
 

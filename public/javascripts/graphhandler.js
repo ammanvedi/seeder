@@ -252,10 +252,31 @@ console.log('x: ' + out_x + ' y: ' + out_y);
 
 $('#btn_savegraph').click(function() {
 
-var to_send = { data: 'graphdata' };
+var nd = new Array();
+var ed = new Array();
+
+  var n = sigInst.iterNodes(function(nds){
+        nd.push(nds.id);
+  });
+
+  var e = sigInst.iterEdges(function(egs){
+        ed.push(egs.id);
+  });
+
+var to_send_nodes ={nodes: sigInst.getNodes(nd)};
+var to_send_edges = {edges: sigInst.getNodes(ed)};
+
+
+
 console.log(socket);
-console.log('client socket ' + socket.id + 'sending ' + to_send + ' to server');
-socket.emit('savegraph', to_send);
+console.log('client socket ' + socket.id + ' sending ' + to_send_nodes + ' ' + to_send_edges + ' to server');
+console.log(to_send_nodes)
+console.log(to_send_edges)
+
+
+socket.emit('savegraph_nodes', to_send_nodes);
+socket.emit('savegraph_edges', to_send_edges);
+
 
   });
 
