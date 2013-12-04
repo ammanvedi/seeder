@@ -2,7 +2,7 @@
 /**
  * Module dependencies.
  */
- var express = require('express');
+var express = require('express');
 var app = express();
 var routes = require('./routes');
 var user = require('./routes/user');
@@ -10,9 +10,6 @@ var http = require('http').createServer(app);
 var path = require('path');
 var MongoClient = require('mongodb').MongoClient;
 var io = require('socket.io').listen(http);
-
-
-
 
 // all environments
 app.set('port', process.env.PORT || 3000);

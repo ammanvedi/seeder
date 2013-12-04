@@ -9,8 +9,7 @@ $(document).ready(function() {
 var socket = io.connect('http://localhost:3000');
 
 
-
-
+//sigma.js preferences
 var sigRoot = document.getElementById('graph_canvas');
 var sigInst = sigma.init(sigRoot).drawingProperties({
     defaultLabelColor: '#fff',
@@ -29,28 +28,26 @@ var sigInst = sigma.init(sigRoot).drawingProperties({
     minRatio: 1
   });
 
-  	var making_edge = false;
-  	var overnode = false;
-  	var last_node;
-	var mouseRoot = document.getElementById('sigma_mouse_1');
-	sigInst.bind('overnodes',showInfo).activateFishEye().draw();
+var making_edge = false;
+var overnode = false;
+var last_node;
+var mouseRoot = document.getElementById('sigma_mouse_1');
+
+//instantiate the graph
+sigInst.bind('overnodes',showInfo).activateFishEye().draw();
 
 
 
-var c=document.getElementById("sigma_labels_1");
-var ctx=c.getContext("2d");
-ctx.fillStyle="#FF0000";
-ctx.fillRect(0,0,150,75);
-
-//initial jQuery UI element states
 
 
+//initial jquery ui settings
 $( "#tabs" ).tabs();
 $("input[type=submit]").button();
 $("#pallete").draggable();
+//expand the graph tab initally
 $('#graph_tab').height($("body").height());
+//hide the text tab initially
 $('#text_tab').height(0);
-
 $('.menu-link').bigSlide();
 //-----------------------VARIABLES
 
@@ -65,6 +62,7 @@ var node = {
 	name: 'initial node',
 }
 
+//additional arrays to hold the nodes and edges
 var nodes = new Array();
 var edge_path = new Array();
 
@@ -81,14 +79,15 @@ function get_random_color() {
 }
 
 
-//debug node set
+//debug node set, generates 50 random nodes for testing purposes
 
 for(var l = 0; l<50; l++){
   addNode(Math.floor(Math.random()*20), Math.floor(Math.random()*20), 5,'node ' + l, ("this is node " + l).substring(0,17), get_random_color());
 }
 
 
-
+//reference nodes, thesea re used in calculation of the cartesian 
+// mouse position
 addNode(5,5,3, 'reference', 'reference', '#ffffff');
 addNode(0,0,3, 'origin', 'origin', '#ffffff');
 
@@ -108,28 +107,14 @@ function getMousePos(canvas, evt) {
 
 
 
-function drawGraph(){
+function drawGraph(){ sigInst.draw();}
 
-
-sigInst.draw();
-
-
-/*  for(i = 1; i < (N-2); i++){
-      var cluster = clusters[(Math.random()*C)|0], n = cluster.nodes.length;
-      sigInst.addEdge(i,allnodes[i],allnodes[i+1]);
- } */
-
-
-  // Draw the graph :
-
-
-}
-
+//parse a node into a human readable form
 function showNode(n){
 	return '-   id: ' + n['id'] + ' name: ' + n['name'] + ' x: ' + n['posx'] + ' y: ' + n['posy'];
 }
 
-
+//list the nodes data 
 function listNodes(nodes){
 	var x = nodes.length;
 	
@@ -146,16 +131,17 @@ function listNodes(nodes){
 }
 
 
-
+//add a node to the graph
 function addNode(x, y, s, id, n, c){
 
+//attributes for debugging
   var attribs = [
     {name: 'link', val:'http://www.google.com/'},
     {name: 'description', val:'this is the description of the node'}
 
 ]
 
-
+//node to push to additional node array
 	var newnode = {
 	posx: x,
 	posy: y,
@@ -165,7 +151,7 @@ function addNode(x, y, s, id, n, c){
 	}
 
 	nodes.push(newnode);
-
+  //add node to the graph instance
 	sigInst.addNode(id,{
   label: n,
   color: c,
@@ -175,14 +161,11 @@ function addNode(x, y, s, id, n, c){
   attr: attribs
 });
 
-	//console.log('nodes');
-	//§console.log(nodes);
-
 	drawGraph();
-
 
 }
 
+//function called when the mouse is over a node
 function showInfo(event){
   var node;
       sigInst.iterNodes(function(n){
@@ -248,8 +231,6 @@ $('#graph_tab').height(0);
 
 $('#graph_canvas').click(function(evnt) {
 
-//console.log(sigInst.getNodes('origin').displayX);
-//console.log(sigInst.getNodes('reference'));
 
 var ratio_display_x = ((sigInst.getNodes('reference').x - sigInst.getNodes('origin').x) / (sigInst.getNodes('reference').displayX - sigInst.getNodes('origin').displayX));
 var ratio_display_y = ( (sigInst.getNodes('reference').y - sigInst.getNodes('origin').y) / (sigInst.getNodes('reference').displayY - sigInst.getNodes('origin').displayY));
@@ -309,7 +290,6 @@ mouseRoot.addEventListener('mousemove', function(evt) {
 
         if (making_edge) {
 
-        	
         	edge_path.push(last_node);
         	console.log('edge spans');
         	console.log(edge_path);
