@@ -105,6 +105,7 @@ function db_push_graph(nodes, edges, meta){
     console.log("database : connected to MongoDB");
     db.createCollection('graphs', function(err, collection) {
 
+var id = meta.id;
 
 var graph_send = [{graph:[{Gnodes:nodes}, {Gedges:edges}, {Gmeta:meta}]}];
 
