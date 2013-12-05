@@ -130,6 +130,13 @@ function listNodes(nodes){
 	return list;
 }
 
+function initiatePullGraph(gID){
+  socket.emit('request_pullGraph', {graphID: gID});
+}
+
+function rebuildPullGraph(pulled){
+  //TO DO
+}
 
 //add a node to the graph
 function addNode(x, y, s, id, n, c){
@@ -277,8 +284,13 @@ console.log(to_send_edges)
 socket.emit('savegraph_nodes', to_send_nodes);
 socket.emit('savegraph_edges', to_send_edges);
 
+initiatePullGraph("123");
+
 
   });
+
+
+
 
 $('#btn_addnode').click(function() {
 
@@ -332,6 +344,12 @@ socket.on('hs_id', function (data) {
   socket.id = data.data;
   console.log('client : recieved id ' + socket.id + ' from server');
 
+});
+
+socket.on('request_pullGraph_success', function (data){
+  console.log('client : pullGraph request successful, result:')
+  console.log(data.data);
+  rebuildPullGraph(data.data);
 });
 
 });

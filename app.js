@@ -62,6 +62,26 @@ nds = data;
 
   });
 
+socket.on('request_pullGraph', function (data){
+	console.log('server : client ' + socket.id + ' requesting pull of graph id ' + data.graphID);
+
+	MongoClient.connect("mongodb://ammanvedi:poopoo12@ds057528.mongolab.com:57528/seeder-dev", function(err, db) {
+var collection = db.collection('graphs');
+	collection.findOne({"graph.Gmeta.id":data.graphID}, function(err, item) {
+	if(err){
+		console.log('server : ERROR');
+		console.log(err);
+	}else{
+		console.log("server : pull request successful");
+		socket.emit('request_pullGraph_success', {data:item});
+	}
+
+});
+
+});
+
+});
+
 
 socket.on('savegraph_edges', function (data) {
     console.log('server : recieved (edges) ' + data + ' from ' + socket.id);
@@ -85,14 +105,27 @@ function db_push_graph(nodes, edges, meta){
     console.log("database : connected to MongoDB");
     db.createCollection('graphs', function(err, collection) {
 
-var graph_send = [{Gnodes:nodes}, {Gedges:edges}, {Gmeta:meta}];
+
+var graph_send = [{graph:[{Gnodes:nodes}, {Gedges:edges}, {Gmeta:meta}]}];
 
 collection.insert(graph_send, function(err, result){
 	console.log(result);
 });
 
+collection.findOne({"graph.Gmeta.id":"123"}, function(err, item) {
+	if(err){
+		console.log('server : ERROR');
+		console.log(err);
+	}else{
+		console.log("server : FOUND");
+		
+	}
+
+});
+
+
     });
-  }
+}
      });
 
 }
