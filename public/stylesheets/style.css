@@ -58,12 +58,10 @@ html{
 	height: 50px;
 	background-color: #413c4a;
 	z-index: 1000;
-
 	-webkit-box-shadow: 0px 0px 9px rgba(50, 50, 50, 0.75);
--moz-box-shadow:    0px 0px 9px rgba(50, 50, 50, 0.75);
-box-shadow:         0px 0px 9px rgba(50, 50, 50, 0.75);
-position: fixed;
-
+	-moz-box-shadow:    0px 0px 9px rgba(50, 50, 50, 0.75);
+	box-shadow:         0px 0px 9px rgba(50, 50, 50, 0.75);
+	position: fixed;
 }
 
 .nav_title{
@@ -107,8 +105,7 @@ dP                oo dP       dP
 
 
 #menu{
-z-index: 998;
-
+	z-index: 998;
 }
 
 .panel{
@@ -117,15 +114,13 @@ z-index: 998;
 	width: 200px;
 	position: absolute;
 	z-index: 998;
-
 	-webkit-box-shadow: 0px 0px 9px rgba(50, 50, 50, 0.75);
--moz-box-shadow:    0px 0px 9px rgba(50, 50, 50, 0.75);
-box-shadow:         0px 0px 9px rgba(50, 50, 50, 0.75);
-
+	-moz-box-shadow:    0px 0px 9px rgba(50, 50, 50, 0.75);
+	box-shadow:         0px 0px 9px rgba(50, 50, 50, 0.75);
 }
 
 a {
-  color: #00B7FF;
+	color: #00B7FF;
 }
 
 #contain_main{
@@ -148,9 +143,9 @@ a {
 	float: left;
 	position: absolute;
 	z-index: 1;
--webkit-box-shadow: 7px 7px 5px rgba(50, 50, 50, 0.75);
--moz-box-shadow:    7px 7px 5px rgba(50, 50, 50, 0.75);
-box-shadow:         7px 7px 5px rgba(50, 50, 50, 0.75);
+	-webkit-box-shadow: 7px 7px 5px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    7px 7px 5px rgba(50, 50, 50, 0.75);
+	box-shadow:         7px 7px 5px rgba(50, 50, 50, 0.75);
 }
 
 #pallete p{
@@ -217,25 +212,22 @@ ul{
 	height: 50px;
 	background-color: #413c4a;
 	z-index: 1000;
-
 	-webkit-box-shadow: 0px 0px 9px rgba(50, 50, 50, 0.75);
--moz-box-shadow:    0px 0px 9px rgba(50, 50, 50, 0.75);
-box-shadow:         0px 0px 9px rgba(50, 50, 50, 0.75);
-position: fixed;
-
+	-moz-box-shadow:    0px 0px 9px rgba(50, 50, 50, 0.75);
+	box-shadow:         0px 0px 9px rgba(50, 50, 50, 0.75);
+	position: fixed;
 }
 
 .nav_title{
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-   font-weight: 400;
-   color: #fff;
-   font-size: 23px;
-   height: auto;
-   margin-top: 0px;
-   padding-top: 9px;
-   margin-bottom: 0px;
-   margin-left: 0px;
-
+	font-weight: 400;
+	color: #fff;
+	font-size: 23px;
+   	height: auto;
+   	margin-top: 0px;
+   	padding-top: 9px;
+   	margin-bottom: 0px;
+   	margin-left: 0px;
 }
 
 #display_code{
