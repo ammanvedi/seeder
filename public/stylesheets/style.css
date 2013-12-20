@@ -11,6 +11,24 @@
 
 
 */
+.search_result{
+	width:auto;
+	height: auto;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	background-color: #222;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+#search_results_holder{
+	width: 100%;
+	overflow: scroll;
+	background-color: #fff;
+	transition:1s;
+
+}
 
 .panel {
     position: fixed;

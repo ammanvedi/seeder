@@ -12,29 +12,77 @@
 $(document).ready(function() {
 
 
+$('#search_results_holder').height(0);
 
-function search(url){
+
+
+function search(trm){
+$('#search_results_holder').height(300);
+
+
+	var json_dta = httpGet('https://www.googleapis.com/customsearch/v1?key=AIzaSyDM8_gZ-5DQVcBUt1y7qq_wAjUDbr4YSTA&cx=009521426283403904660:drg6vvs6o2a&q=' + trm);
+var json_objects = jQuery.parseJSON( json_dta ).items;
+
+//console.log(json_objects);
+
+json_objects.forEach(function(itm){
+	console.log(itm.title);
+	console.log(itm.snippet);
+	console.log(itm.formattedUrl)
+	console.log('\n');
+
+
+jQuery('<div/>', {
+	    class: 'search_result',
+    html: itm.title + '<br/><br/>' + itm.snippet + '<br/><br/>' + '<a href=\'http://' + itm.formattedUrl + '\'>view story</a>' +  '<br/><br/>'
+}).appendTo('#search_results_holder');
+
+
+
+});
+
+
+
+
 
 }
 
 function buildURLs(searchterm){
-	
+
 }
+
+//search id : 009521426283403904660:drg6vvs6o2a
+
+// api key : AIzaSyDM8_gZ-5DQVcBUt1y7qq_wAjUDbr4YSTA
+
+//base api : https://www.googleapis.com/customsearch/v1?key=AIzaSyDM8_gZ-5DQVcBUt1y7qq_wAjUDbr4YSTA&cx=009521426283403904660:drg6vvs6o2a&q=
+
+function httpGet(theUrl)
+{
+    var xmlHttp = null;
+
+    xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false );
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
+}
+
+
+
 
 
 $('#btn_searcharticles').click(function(){
 
-    console.log($('#input_searcharticles').val());
-
-    $.embedly.extract('http://embed.ly', {key: '365526c2e08d4ee5975adbb471147713'}).progress(function(data){
-  alert(data.title);
-});
-
+  
+    search($('#input_searcharticles').val())
 
 });
 
 
 
-
 });
+
+
+
+
 

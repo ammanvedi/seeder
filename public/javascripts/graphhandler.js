@@ -5,6 +5,9 @@ console.log("started handler");
 
 $(document).ready(function() {
 
+
+
+
   document.ontouchmove = function(event){
     event.preventDefault();
 }
