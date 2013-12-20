@@ -1,6 +1,27 @@
-	html{
-		height: 100%;
-	}
+/*
+
+         dP          dP                dP 
+         88          88                88 
+.d8888b. 88 .d8888b. 88d888b. .d8888b. 88 
+88'  `88 88 88'  `88 88'  `88 88'  `88 88 
+88.  .88 88 88.  .88 88.  .88 88.  .88 88 
+`8888P88 dP `88888P' 88Y8888' `88888P8 dP 
+     .88                                  
+ d8888P                                   
+
+
+*/
+
+.panel {
+    position: fixed;
+    left: -15.625em; /*left or right and the width of your navigation panel*/
+    width: 15.625em; /*should match the above value*/
+}
+
+
+html{
+	height: 100%;
+}
 
 	body {
  margin:0px;
@@ -8,6 +29,48 @@
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
  height:100%;
 }
+
+.lft_padded{
+	padding-left: 25px;
+}
+
+
+#navbar{
+	width: 100%;
+	height: 50px;
+	background-color: #413c4a;
+	z-index: 1000;
+
+	-webkit-box-shadow: 0px 0px 9px rgba(50, 50, 50, 0.75);
+-moz-box-shadow:    0px 0px 9px rgba(50, 50, 50, 0.75);
+box-shadow:         0px 0px 9px rgba(50, 50, 50, 0.75);
+position: fixed;
+
+}
+
+.nav_title{
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+   font-weight: 400;
+   color: #fff;
+   font-size: 23px;
+   height: auto;
+   margin-top: 0px;
+   padding-top: 9px;
+   margin-bottom: 0px;
+   margin-left: 0px;
+
+}
+
+/*
+
+dP                oo dP       dP 
+88                   88       88 
+88d888b. dP    dP dP 88 .d888b88 
+88'  `88 88    88 88 88 88'  `88 
+88.  .88 88.  .88 88 88 88.  .88 
+88Y8888' `88888P' dP dP `88888P8 
+
+*/
 
 .menu-link{
 	width: auto;
@@ -52,6 +115,10 @@ a {
 	height: 100%;
 	position: relative;
 	overflow: hidden;
+}
+
+.lft_padded{
+	padding-left: 25px;
 }
 
 #pallete{
@@ -179,3 +246,33 @@ position: fixed;
 	background-color: #111;
 	position: absolute;
 }
+
+/*
+
+                           dP                            
+                           88                            
+.d8888b. dP.  .dP 88d888b. 88 .d8888b. 88d888b. .d8888b. 
+88ooood8  `8bd8'  88'  `88 88 88'  `88 88'  `88 88ooood8 
+88.  ...  .d88b.  88.  .88 88 88.  .88 88       88.  ... 
+`88888P' dP'  `dP 88Y888P' dP `88888P' dP       `88888P' 
+                  88                                     
+                  dP                                    
+
+
+
+*/
+
+#explore_sidebar{
+	width:270px;
+	height: 100%;
+	z-index: 10;
+	position:fixed;
+	float: left;
+	background-color: #413c4a;
+}
+
+#search_input{
+	width: 90%; 
+}
+
+

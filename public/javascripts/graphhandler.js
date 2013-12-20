@@ -5,6 +5,14 @@ console.log("started handler");
 
 $(document).ready(function() {
 
+  document.ontouchmove = function(event){
+    event.preventDefault();
+}
+
+document.ontouchstart = function(event){
+  event.preventDefault();
+}
+
 //create a socket to connect to the server
 var socket = io.connect('http://localhost:3000');
 
@@ -37,13 +45,10 @@ var mouseRoot = document.getElementById('sigma_mouse_1');
 sigInst.bind('overnodes',showInfo).activateFishEye().draw();
 
 
-
-
-
 //initial jquery ui settings
 $( "#tabs" ).tabs();
 $("input[type=submit]").button();
-$("#pallete").draggable();
+$("#pallete").draggable({containment: "parent"});
 //expand the graph tab initally
 $('#graph_tab').height($("body").height());
 //hide the text tab initially
@@ -288,7 +293,6 @@ initiatePullGraph("123");
 
 
   });
-
 
 
 

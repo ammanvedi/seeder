@@ -5,11 +5,17 @@ block content
 	nav#menu(class='panel')
 		.tool_head
 			.tool_head_btn
+				h1 save
+			.tool_content
+			form#frm_savegraph
+				input#btn_savegraph(type='button' value='save graph')
+		.tool_head
+			.tool_head_btn
 				h1 search
 			.tool_content
-		form#frm_savegraph
-			input#btn_savegraph(type='button' value='save graph')
-
+				form#frm_searcharticles
+					input#input_searcharticles(type='text')
+					input#btn_searcharticles(type='button' value='search')
 
 	#contain_main(class='push')
 		#navbar(class='push')

@@ -6,6 +6,7 @@ var express = require('express');
 var app = express();
 var routes = require('./routes');
 var user = require('./routes/user');
+var explore = require('./routes/explore');
 var http = require('http').createServer(app);
 var path = require('path');
 var MongoClient = require('mongodb').MongoClient;
@@ -42,7 +43,7 @@ app.get('/', routes.index);
 
 app.get('/users', user.list);
 
-
+app.get('/explore', explore.explore);
 
 //server side socket connection reciever
 io.sockets.on('connection', function (socket) {
