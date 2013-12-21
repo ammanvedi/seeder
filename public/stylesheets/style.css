@@ -11,14 +11,32 @@
 
 
 */
+
+#article_dropper{
+	position: absolute;
+	width:80px;
+	height: 80px;
+	background-color: #fff;
+	
+
+}
+
 .search_result{
 	width:auto;
+	z-index: 0;
 	height: auto;
 	margin-top: 2px;
 	margin-bottom: 2px;
 	background-color: #222;
 	margin-left: auto;
 	margin-right: auto;
+	-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+cursor: default;
 }
 
 
@@ -27,7 +45,6 @@
 	overflow: scroll;
 	background-color: #fff;
 	transition:1s;
-
 }
 
 .panel {

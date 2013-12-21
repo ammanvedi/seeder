@@ -76,7 +76,7 @@ $(document).ready(function() {
 
           //debug node set, generates 50 random nodes for testing purposes
 
-          for(var l = 0; l<50; l++){
+          for(var l = 0; l<5; l++){
             addNode(Math.floor(Math.random()*20), Math.floor(Math.random()*20), 5,'node ' + l, ("this is node " + l).substring(0,17), get_random_color());
           }
 
@@ -148,6 +148,8 @@ $(document).ready(function() {
           	}
 
           	nodes.push(newnode);
+
+            console.log(newnode);
 
             //add node to the graph instance
           	sigInst.addNode(id,{
@@ -255,8 +257,6 @@ $(document).ready(function() {
 
           });
 
-
-
           $('#btn_addnode').click(function() {
 
                 var xpos = $('#field_node_xpos').val();
@@ -275,7 +275,72 @@ $(document).ready(function() {
 
           //-----------------------PERSISTANT LISTENERS
 
-          mouseRoot.addEventListener('mousemove', function(evt) {});
+          var is_adding_article = false;
+
+          document.body.addEventListener("mousedown", function(evt){
+            
+           if(evt.target.className == 'search_result'){
+
+                is_adding_article = true;
+                console.log('article clicked');
+
+                jQuery('<div/>', { id: 'article_dropper' }).appendTo('body');
+
+                $('#article_dropper').css({
+                     left:  evt.pageX ,
+                     top:   evt.pageY
+                  });
+
+            }else{
+              is_adding_article = false;
+            }
+
+          }, false);
+
+          document.body.addEventListener("mousemove", function(evt){
+
+            if(is_adding_article){
+
+                  console.log('drag to add article began');
+
+                  $('#article_dropper').css({
+                       left:  evt.pageX +10,
+                       top:   evt.pageY +10
+                  });
+              }
+
+          });
+
+$('#graph_canvas').mouseup(function(evt){
+  console.log('UPUPUPUPPUPUP');
+
+   if(is_adding_article){
+                $('#article_dropper').remove();
+                console.log('DROP DROP DROP DROP IT LIKE ITS HOT');
+                is_adding_article = false;
+
+
+                   //calculating the sigmajs cartesian co-ordinates canvas co-ords
+                  var ratio_display_x = ((sigInst.getNodes('reference').x - sigInst.getNodes('origin').x) / (sigInst.getNodes('reference').displayX - sigInst.getNodes('origin').displayX));
+                  var ratio_display_y = ((sigInst.getNodes('reference').y - sigInst.getNodes('origin').y) / (sigInst.getNodes('reference').displayY - sigInst.getNodes('origin').displayY));
+                  var out_x = ((evt.clientX - $('#menu').width()) - sigInst.getNodes('origin').displayX ) * ratio_display_x;
+                  var out_y = ((evt.clientY ) - sigInst.getNodes('origin').displayY ) * ratio_display_y;
+
+                  console.log( 'lol x: ' + out_x + ' lol y : ' + out_y + ' nb: ' + $('#navbar').height());
+                  addNode(parseFloat(out_x.toString().substring(0,4)), parseFloat(out_y.toString().substring(0,4)), 5, get_random_color(), 'article', get_random_color());
+                  
+
+              }
+
+});
+
+
+
+          // document.body.addEventListener('mouseup', function(evt) {
+            
+             
+
+          // }, false);
 
           mouseRoot.addEventListener('click', function(evt) {
 
