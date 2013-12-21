@@ -1,8 +1,8 @@
 # Seeder 
 
-Seeder is an under-development web application that will provide a platform for the creation and sharing of mind maps / knowledge graphs. The ultimate goal of seeder is to allow for any data (web or locally based) to become park of the knowledge map.
+Seeder is an under-development web application that will provide a platform for the creation and sharing of mind maps / knowledge graphs. The ultimate goal of seeder is to allow for any data (web or locally based) to become part of the knowledge map.
 
-![alt text](http://i.imgur.com/suraHQ2.png)
+![Seeder proff of concept screenshot](http://i.imgur.com/suraHQ2.png)
 
 The following feautures are currently implemented
 
