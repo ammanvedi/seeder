@@ -76,19 +76,15 @@ $(document).ready(function () {
         return color;
     }
 
-
     //debug node set, generates 50 random nodes for testing purposes
-
     for (var l = 0; l < 30; l++) {
         addNode(Math.floor(Math.random() * 20), Math.floor(Math.random() * 20), 5, 'node ' + l, ("this is node " + l).substring(0, 17), get_random_color());
     }
-
 
     //reference nodes, thesea re used in calculation of the cartesian 
     // mouse position
     addNode(5, 5, 3, 'reference', 'reference', '#ffffff');
     addNode(0, 0, 3, 'origin', 'origin', '#ffffff');
-
 
     function getMousePos(canvas, evt) {
         var rect = canvas.getBoundingClientRect();
@@ -125,7 +121,6 @@ $(document).ready(function () {
 
         return list;
     }
-
 
     //when a user wants to get a graph, use the socket connection to
     //send a message to the server indicating which graph to pull
@@ -172,8 +167,6 @@ $(document).ready(function () {
 
         }
 
-
-
         //node to push to additional node array
         var newnode = {
             posx: x,
@@ -184,7 +177,6 @@ $(document).ready(function () {
         }
 
         nodes.push(newnode);
-
         console.log(newnode);
 
         //add node to the graph instance
@@ -205,10 +197,6 @@ $(document).ready(function () {
     //function called when the mouse is over a node
     function showInfo(event) {
 
-
-
-            
-
             console.log('fdsfdfsd');
             console.log(event);
             var node;
@@ -218,17 +206,6 @@ $(document).ready(function () {
             //save this node as the last node hovered over
             last_node = node;
 
-            //show details in console
-            console.log(node['attr']['attr'][0]['name'] + ' : ' + node['attr']['attr'][0]['val']);
-            console.log(node['attr']['attr'][1]['name'] + ' : ' + node['attr']['attr'][1]['val']);
-            console.log(node['attr']['attr'][2]['name'] + ' : ' + node['attr']['attr'][2]['val']);
-            console.log(node['attr']['attr'][3]['name'] + ' : ' + node['attr']['attr'][3]['val']);
-            console.log(node['attr']['attr'][4]['name'] + ' : ' + node['attr']['attr'][4]['val']);
-            console.log(node['attr']['attr'][5]['name'] + ' : ' + node['attr']['attr'][5]['val']);
-
-            console.log('node centre xy ' + node['x'] + ' ' + node['y']);
-
-
             //show details in div
             jQuery('<div/>', {
                 id: 'node_detail_pane',
@@ -237,7 +214,6 @@ $(document).ready(function () {
                     node['attr']['attr'][2]['name'] + ' : ' + node['attr']['attr'][2]['val'] + '<br/>' +
                     node['attr']['attr'][4]['name'] + ' : ' + node['attr']['attr'][4]['val'] + '<br/>' +
                     node['attr']['attr'][5]['name'] + ' : ' + node['attr']['attr'][5]['val'] + '<br/>'
-
 
             }).appendTo('body');
 
@@ -249,23 +225,15 @@ $(document).ready(function () {
                 }).appendTo('#node_detail_pane');
             }
 
-
-
             $('#node_detail_pane').css({
                 left: node['displayX'],
                 top: node['displayY']
             });
 
-        
-
         showing_details = true;
 
     }
 
-
-
-
-    //-----------------------DELEGATES
 
     $('#text_tab').html(listNodes(nodes));
 
@@ -390,8 +358,6 @@ $(document).ready(function () {
 
     });
 
-    //-----------------------PERSISTANT LISTENERS
-
     var is_adding_article = false;
     var attribs_article;
 
@@ -483,14 +449,6 @@ $(document).ready(function () {
 
     });
 
-
-
-    // document.body.addEventListener('mouseup', function(evt) {
-
-
-
-    // }, false);
-
     mouseRoot.addEventListener('click', function (evt) {
 
         var mousePos = getMousePos(mouseRoot, evt);
@@ -504,8 +462,6 @@ $(document).ready(function () {
         };
 
     }, false);
-
-    //-------SOCKET HANDLERS
 
     socket.on('hs_id', function (data) {
         socket.id = data.data;
