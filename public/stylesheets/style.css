@@ -39,6 +39,14 @@ user-select: none;
 cursor: default;
 }
 
+#node_detail_pane{
+	width: 200px;
+	height: 200px;
+	background-color: #fff;
+	position: absolute;
+	font-size: 9px;
+}
+
 
 #search_results_holder{
 	width: 100%;

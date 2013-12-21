@@ -24,6 +24,8 @@ $(document).ready(function() {
 		//search results are stored in the 'items' array
 		var json_objects = jQuery.parseJSON( json_dta ).items;
 
+		console.log(json_objects);
+
 		json_objects.forEach(function(itm){
 
 			//for each result, add a corresponding search result division to the search
@@ -31,6 +33,12 @@ $(document).ready(function() {
 
 			jQuery('<div/>', {
 				    class: 'search_result',
+				    URL:itm.formattedUrl,
+				    DESCRIPTION: itm.snippet,
+				    TITLE: itm.title,
+				    IMAGE: itm.pagemap.cse_image[0].src,
+				    TYPE: 'article',
+				    DOMAIN: itm.displayLink,
 			    	html: itm.title 
 					    	+ '<br/><br/>' 
 					    	+ itm.snippet 
