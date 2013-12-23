@@ -65,6 +65,8 @@ $(document).ready(function () {
     var nodes = new Array();
     var edge_path = new Array();
 
+    var label_threshold = 50;
+
 
     //for generating debug graphs, retrieve a random hex color code
     function get_random_color() {
@@ -177,7 +179,7 @@ $(document).ready(function () {
         }
 
         nodes.push(newnode);
-        console.log(newnode);
+
 
         //add node to the graph instance
         sigInst.addNode(id, {
@@ -197,38 +199,38 @@ $(document).ready(function () {
     //function called when the mouse is over a node
     function showInfo(event) {
 
-            console.log('fdsfdfsd');
-            console.log(event);
-            var node;
-            sigInst.iterNodes(function (n) {
-                node = n;
-            }, [event.content[0]]);
-            //save this node as the last node hovered over
-            last_node = node;
+        var node;
+        sigInst.iterNodes(function (n) {
+            node = n;
+        }, [event.content[0]]);
+        //save this node as the last node hovered over
+        last_node = node;
 
-            //show details in div
-            jQuery('<div/>', {
-                id: 'node_detail_pane',
-                html: node['attr']['attr'][0]['name'] + ' : ' + node['attr']['attr'][0]['val'] + '<br/>' +
-                    node['attr']['attr'][1]['name'] + ' : ' + node['attr']['attr'][1]['val'] + '<br/>' +
-                    node['attr']['attr'][2]['name'] + ' : ' + node['attr']['attr'][2]['val'] + '<br/>' +
-                    node['attr']['attr'][4]['name'] + ' : ' + node['attr']['attr'][4]['val'] + '<br/>' +
-                    node['attr']['attr'][5]['name'] + ' : ' + node['attr']['attr'][5]['val'] + '<br/>'
+        // //show details in div
+        // console.log('ADDING');
+        // jQuery('<div/>', {
+        //     id: 'node_detail_pane',
+        //     html: node['attr']['attr'][0]['name'] + ' : ' + node['attr']['attr'][0]['val'] + '<br/>' +
+        //         node['attr']['attr'][1]['name'] + ' : ' + node['attr']['attr'][1]['val'] + '<br/>' +
+        //         node['attr']['attr'][2]['name'] + ' : ' + node['attr']['attr'][2]['val'] + '<br/>' +
+        //         node['attr']['attr'][4]['name'] + ' : ' + node['attr']['attr'][4]['val'] + '<br/>' +
+        //         node['attr']['attr'][5]['name'] + ' : ' + node['attr']['attr'][5]['val'] + '<br/>'
 
-            }).appendTo('body');
+        // }).appendTo('body');
 
-            if (node['attr']['attr'][3]['val'] != 'None') {
-                jQuery('<img/>', {
-                    src: node['attr']['attr'][3]['val'],
-                    width: 80,
-                    height: 80
-                }).appendTo('#node_detail_pane');
-            }
+        // if (node['attr']['attr'][3]['val'] != 'None' && ($('#detail_image').height() != undefined)) {
+        //     jQuery('<img/>', {
+        //         src: node['attr']['attr'][3]['val'],
+        //         id: 'detail_image',
+        //         width: 80,
+        //         height: 80
+        //     }).appendTo('#node_detail_pane');
+        // }
 
-            $('#node_detail_pane').css({
-                left: node['displayX'],
-                top: node['displayY']
-            });
+        // $('#node_detail_pane').css({
+        //     left: node['displayX'],
+        //     top: node['displayY']
+        // });
 
         showing_details = true;
 
@@ -267,11 +269,29 @@ $(document).ready(function () {
         $('#graph_tab').height(0);
     });
 
-    $('#graph_canvas').mousedown(function (a) {
-     
-            $('#node_detail_pane').remove();
-            
+    $('#graph_canvas').mousemove(function (a) {
+
+
+        if (showing_details) {
+
+            // var diff_y =  Math.abs(parseInt($('#node_detail_pane').css("top")) - parseInt(a.clientY));
+            // var diff_x = Math.abs(parseInt($('#node_detail_pane').css("left")) - parseInt(a.clientX));
+            // var ratio = ((sigInst.getNodes('reference').x - sigInst.getNodes('origin').x) / (sigInst.getNodes('reference').displayX - sigInst.getNodes('origin').displayX));
+
+            //         if((diff_x > (label_threshold + (0.5/ratio)) || diff_y > (label_threshold+ (0.5/ratio))) ){
+            //           console.log('rmv');
+            //            $('#node_detail_pane').remove();
+            //            showing_details = false;
+            //         }
+
+        };
+
+
+
+
     });
+
+
 
     $('#graph_canvas').click(function (evnt) {
 
@@ -304,10 +324,10 @@ $(document).ready(function () {
             edges: sigInst.getNodes(ed)
         };
 
-        console.log(socket);
+        //console.log(socket);
         console.log('client socket ' + socket.id + ' sending ' + to_send_nodes + ' ' + to_send_edges + ' to server');
-        console.log(to_send_nodes)
-        console.log(to_send_edges)
+        //console.log(to_send_nodes)
+        //console.log(to_send_edges)
 
         socket.emit('savegraph_nodes', to_send_nodes);
         socket.emit('savegraph_edges', to_send_edges);
@@ -335,7 +355,7 @@ $(document).ready(function () {
                 val: 'None'
             }, {
                 name: 'TITLE',
-                val: 'None'
+                val: node_name
             }, {
                 name: 'IMAGE',
                 val: 'None'
@@ -366,8 +386,8 @@ $(document).ready(function () {
         if (evt.target.className == 'search_result') {
 
             is_adding_article = true;
-            console.log('article clicked');
-            console.log(evt);
+            //console.log('article clicked');
+            //console.log(evt);
 
 
             //build attributes to be passed to the node on creation
@@ -411,7 +431,7 @@ $(document).ready(function () {
 
         if (is_adding_article) {
 
-            console.log('drag to add article began');
+            //console.log('drag to add article began');
 
             $('#article_dropper').css({
                 left: evt.pageX + 10,
@@ -435,14 +455,14 @@ $(document).ready(function () {
         if (is_adding_article) {
 
             $('#article_dropper').remove();
-            console.log($('#menu').width() + ' ');
+            //console.log($('#menu').width() + ' ');
             is_adding_article = false;
             //calculating the sigmajs cartesian co-ordinates canvas co-ords
             var ratio_display_x = ((sigInst.getNodes('reference').x - sigInst.getNodes('origin').x) / (sigInst.getNodes('reference').displayX - sigInst.getNodes('origin').displayX));
             var ratio_display_y = ((sigInst.getNodes('reference').y - sigInst.getNodes('origin').y) / (sigInst.getNodes('reference').displayY - sigInst.getNodes('origin').displayY));
             var out_x = ((evt.clientX - $('#menu').width()) - sigInst.getNodes('origin').displayX) * ratio_display_x;
             var out_y = ((evt.clientY) - sigInst.getNodes('origin').displayY) * ratio_display_y;
-            console.log('lol x: ' + out_x + ' lol y : ' + out_y + ' nb: ' + $('#navbar').height());
+            //console.log('lol x: ' + out_x + ' lol y : ' + out_y + ' nb: ' + $('#navbar').height());
             addNode(parseFloat(out_x.toString().substring(0, 4)), parseFloat(out_y.toString().substring(0, 4)), 5, get_random_color(), attribs_article[2].val, get_random_color(), attribs_article);
 
         }
@@ -456,8 +476,8 @@ $(document).ready(function () {
 
         if (making_edge) {
             edge_path.push(last_node);
-            console.log('edge spans');
-            console.log(edge_path);
+            //console.log('edge spans');
+            //console.log(edge_path);
             overnode = false;
         };
 

@@ -40,11 +40,15 @@ cursor: default;
 }
 
 #node_detail_pane{
-	width: 200px;
-	height: 200px;
+	width: auto;
+	height: auto;
 	background-color: #fff;
 	position: absolute;
 	font-size: 9px;
+		-webkit-box-shadow: 0px 0px 9px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    0px 0px 9px rgba(50, 50, 50, 0.75);
+	box-shadow:         0px 0px 9px rgba(50, 50, 50, 0.75);
+	padding: 8px;
 }
 
 
