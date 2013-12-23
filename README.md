@@ -31,3 +31,7 @@ The following have been used in the development of Seeder
 * [jQuery / jQuery UI](https://github.com/jquery/jquery)
 * [Socket.IO](https://github.com/learnboost/socket.io)
 * [BigSlide](https://github.com/ascott1/bigSlide.js)
+
+### Status
+
+The code provided is to illustrate proof of concept for the prospective main app
