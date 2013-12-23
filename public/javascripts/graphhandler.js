@@ -1,5 +1,8 @@
 $(document).ready(function () {
 
+
+  var test_nodes = 0;
+
     //create a socket to connect to the server
     var socket = io.connect('http://localhost:3000');
 
@@ -79,14 +82,14 @@ $(document).ready(function () {
     }
 
     //debug node set, generates 50 random nodes for testing purposes
-    for (var l = 0; l < 30; l++) {
+    for (var l = 0; l < test_nodes; l++) {
         addNode(Math.floor(Math.random() * 20), Math.floor(Math.random() * 20), 5, 'node ' + l, ("this is node " + l).substring(0, 17), get_random_color());
     }
 
     //reference nodes, thesea re used in calculation of the cartesian 
     // mouse position
-    addNode(5, 5, 3, 'reference', 'reference', '#ffffff');
-    addNode(0, 0, 3, 'origin', 'origin', '#ffffff');
+    addNode(5, 5, 3, 'reference', 'reference', '#000');
+    addNode(0, 0, 3, 'origin', 'origin', '#000');
 
     function getMousePos(canvas, evt) {
         var rect = canvas.getBoundingClientRect();
@@ -166,7 +169,6 @@ $(document).ready(function () {
 
             ];
 
-
         }
 
         //node to push to additional node array
@@ -236,7 +238,6 @@ $(document).ready(function () {
 
     }
 
-
     $('#text_tab').html(listNodes(nodes));
 
     $('#btn_show_graph').click(function () {
@@ -263,14 +264,12 @@ $(document).ready(function () {
 
     });
 
-
     $('#btn_show_text').click(function () {
         $('#text_tab').height(100);
         $('#graph_tab').height(0);
     });
 
     $('#graph_canvas').mousemove(function (a) {
-
 
         if (showing_details) {
 
@@ -285,13 +284,7 @@ $(document).ready(function () {
             //         }
 
         };
-
-
-
-
     });
-
-
 
     $('#graph_canvas').click(function (evnt) {
 
