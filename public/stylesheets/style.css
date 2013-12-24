@@ -9,14 +9,15 @@
      .88                                  
  d8888P                                   
 
+sitewide 
 
 */
 
 #article_dropper{
 	position: absolute;
-	width:80px;
-	height: 80px;
-	background-color: #fff;
+	width:60px;
+	height: 60px;
+	background-image: url('/img/node-dropper.png');
 	
 
 }
@@ -27,16 +28,57 @@
 	height: auto;
 	margin-top: 2px;
 	margin-bottom: 2px;
-	background-color: #222;
+	background-color: #fff;
 	margin-left: auto;
 	margin-right: auto;
-	-webkit-touch-callout: none;
--webkit-user-select: none;
--khtml-user-select: none;
--moz-user-select: none;
--ms-user-select: none;
-user-select: none;
-cursor: default;
+
+}
+
+.search_result h1{
+	font-size: 12px;
+	color: #000;
+	float: left;
+	width: 80%;
+		-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	cursor: default;
+
+
+}
+
+.search_result img{
+	width: 20%;
+	height: auto;
+	float: left
+		-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	cursor: default;
+}
+
+.search_result h2{
+
+}
+
+.search_result p{
+	font-size: 10px;
+	color:#000;
+	clear: both;
+		-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	cursor: default;
+
 }
 
 #node_detail_pane{
@@ -91,6 +133,14 @@ html{
 	-moz-box-shadow:    0px 0px 9px rgba(50, 50, 50, 0.75);
 	box-shadow:         0px 0px 9px rgba(50, 50, 50, 0.75);
 	position: fixed;
+
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	cursor: default;
 }
 
 .nav_title{
@@ -104,6 +154,14 @@ html{
    margin-bottom: 0px;
    margin-left: 0px;
 
+   -webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	cursor: default;
+
 }
 
 /*
@@ -114,6 +172,8 @@ dP                oo dP       dP
 88'  `88 88    88 88 88 88'  `88 
 88.  .88 88.  .88 88 88 88.  .88 
 88Y8888' `88888P' dP dP `88888P8 
+
+style information for graph builder interface
 
 */
 
@@ -135,6 +195,14 @@ dP                oo dP       dP
 
 #menu{
 	z-index: 998;
+
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	cursor: default;
 }
 
 .panel{
@@ -175,6 +243,14 @@ a {
 	-webkit-box-shadow: 7px 7px 5px rgba(50, 50, 50, 0.75);
 	-moz-box-shadow:    7px 7px 5px rgba(50, 50, 50, 0.75);
 	box-shadow:         7px 7px 5px rgba(50, 50, 50, 0.75);
+
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	cursor: default;
 }
 
 #pallete p{
@@ -245,6 +321,14 @@ ul{
 	-moz-box-shadow:    0px 0px 9px rgba(50, 50, 50, 0.75);
 	box-shadow:         0px 0px 9px rgba(50, 50, 50, 0.75);
 	position: fixed;
+
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	cursor: default;
 }
 
 .nav_title{
@@ -282,10 +366,12 @@ ul{
 #graph_canvas{
 	height: 85%;
 	width: 95%;
-	background-color: #111;
+	background-image: url('/img/graphy.png');
 	margin-top: 70px;
 	margin-left: auto;
 	margin-right: auto;
+	outline: 4px solid #fff;
+	 box-shadow: 0 5px 30px #000;
 	
 }
 
@@ -300,7 +386,7 @@ ul{
                   88                                     
                   dP                                    
 
-
+style infomation for /explore
 
 */
 

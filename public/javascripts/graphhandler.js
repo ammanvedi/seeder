@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
 
-  var test_nodes = 1;
+  var test_nodes = 10;
 
     //create a socket to connect to the server
     //this net
@@ -10,7 +10,7 @@ $(document).ready(function () {
     //sigma.js preferences/options
     var sigRoot = document.getElementById('graph_canvas');
     var sigInst = sigma.init(sigRoot).drawingProperties({
-        defaultLabelColor: '#fff',
+        defaultLabelColor: '#000',
         defaultLabelSize: 10,
         defaultLabelBGColor: '#fff',
         defaultLabelHoverColor: '#000',
@@ -117,28 +117,8 @@ $(document).ready(function () {
         sigInst.draw();
     }
 
-    //parse a node into a human readable form
-    function showNode(n) {
-        return '-   id: ' + n['id'] + ' name: ' + n['name'] + ' x: ' + n['posx'] + ' y: ' + n['posy'];
-    }
 
-    //list the nodes data 
-    function listNodes(nodes) {
-        var x = nodes.length;
 
-        var list = '';
-
-        if (x < 1) {
-            return 'no nodes to list'
-        };
-
-        for (var i = 0; i < x; i++) {
-            var nodeobj = nodes[i];
-            list += showNode(nodeobj) + '<br/>'
-        };
-
-        return list;
-    }
 
     //when a user wants to get a graph, use the socket connection to
     //send a message to the server indicating which graph to pull
@@ -251,7 +231,7 @@ $(document).ready(function () {
 
     }
 
-    $('#text_tab').html(listNodes(nodes));
+    
 
     $('#btn_show_graph').click(function () {
         $('#text_tab').height(0);
@@ -400,16 +380,21 @@ $(document).ready(function () {
 
     document.body.addEventListener("mousedown", function (evt) {
 
-        if (evt.target.className == 'search_result') {
+      console.log(evt);
+
+        if ((evt.target.className == 'search_result') || (evt.target.parentElement.className == 'search_result')) {
 
             is_adding_article = true;
-            //console.log('article clicked');
-            //console.log(evt);
+            console.log('article clicked');
+            console.log(evt);
 
 
             //build attributes to be passed to the node on creation
 
-            attribs_article = [{
+            if((evt.target.className == 'search_result')){
+
+
+              attribs_article = [{
                 name: 'URL',
                 val: evt.srcElement.attributes.URL.nodeValue
             }, {
@@ -428,6 +413,32 @@ $(document).ready(function () {
                 name: 'DOMAIN',
                 val: evt.srcElement.attributes.DOMAIN.nodeValue
             }];
+
+            }else{
+
+              attribs_article = [{
+                name: 'URL',
+                val: evt.srcElement.parentElement.attributes.URL.nodeValue
+            }, {
+                name: 'DESCRIPTION',
+                val: evt.srcElement.parentElement.attributes.DESCRIPTION.nodeValue
+            }, {
+                name: 'TITLE',
+                val: evt.srcElement.parentElement.attributes.TITLE.nodeValue
+            }, {
+                name: 'IMAGE',
+                val: evt.srcElement.parentElement.attributes.IMAGE.nodeValue
+            }, {
+                name: 'TYPE',
+                val: evt.srcElement.parentElement.attributes.TYPE.nodeValue
+            }, {
+                name: 'DOMAIN',
+                val: evt.srcElement.parentElement.attributes.DOMAIN.nodeValue
+            }];
+
+            }
+
+            
 
             jQuery('<div/>', {
                 id: 'article_dropper'

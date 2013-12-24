@@ -39,14 +39,13 @@ $(document).ready(function() {
 				    IMAGE: itm.pagemap.cse_image[0].src,
 				    TYPE: 'article',
 				    DOMAIN: itm.displayLink,
-			    	html: itm.title 
-					    	+ '<br/><br/>' 
-					    	+ itm.snippet 
-					    	+ '<br/><br/>' 
+			    	html: '<img src="' + itm.pagemap.cse_image[0].src + '"/>' + '<h1>' + itm.title + '</h1>' 
+					    	+ '<p>' + itm.snippet + '</p>'
+					    	
 					    	+ '<a href=\'http://' 
 					    	+ itm.formattedUrl 
 					    	+ '\'>view story</a>' 
-					    	+  '<br/><br/>'
+					    	
 
 			}).appendTo('#search_results_holder');
 			});
