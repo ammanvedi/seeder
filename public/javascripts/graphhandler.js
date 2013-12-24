@@ -1,9 +1,10 @@
 $(document).ready(function () {
 
 
-  var test_nodes = 0;
+  var test_nodes = 1;
 
     //create a socket to connect to the server
+    //this net
     var socket = io.connect('http://localhost:3000');
 
     //sigma.js preferences/options
@@ -42,6 +43,13 @@ $(document).ready(function () {
     //applys fisheye plugin
     sigInst.bind('overnodes', showInfo).activateFishEye().draw();
 
+    // 2.4278765515909404
+
+    // 0.2625419675446003
+
+    //actual
+    //2.465708068894392
+    //0.38719854739982723
 
     //initial jquery ui settings
     $("#tabs").tabs();
@@ -83,7 +91,12 @@ $(document).ready(function () {
 
     //debug node set, generates 50 random nodes for testing purposes
     for (var l = 0; l < test_nodes; l++) {
+      if(test_nodes == 1){
+
+        addNode(0, 0, 5, 'node ' + l, ("this is node " + l).substring(0, 17), get_random_color());
+      }else{
         addNode(Math.floor(Math.random() * 20), Math.floor(Math.random() * 20), 5, 'node ' + l, ("this is node " + l).substring(0, 17), get_random_color());
+      }
     }
 
     //reference nodes, thesea re used in calculation of the cartesian 
@@ -288,14 +301,23 @@ $(document).ready(function () {
 
     $('#graph_canvas').click(function (evnt) {
 
+      var graph_left_margin = parseInt($('#graph_canvas').css("margin-left"));
+      console.log('LOLLLLO ' + parseInt(graph_left_margin));
+      var graph_top_margin = parseInt($('#graph_canvas').css("margin-top"));
+
+      var navbar = parseInt($('#navbar').height());
+
+      console.log('clickat x: ' + evnt.offsetX + ' y : ' + evnt.offsetY);
+      console.log(evnt);
+
         //calculating the sigmajs cartesian co-ordinates canvas co-ords
         var ratio_display_x = ((sigInst.getNodes('reference').x - sigInst.getNodes('origin').x) / (sigInst.getNodes('reference').displayX - sigInst.getNodes('origin').displayX));
         var ratio_display_y = ((sigInst.getNodes('reference').y - sigInst.getNodes('origin').y) / (sigInst.getNodes('reference').displayY - sigInst.getNodes('origin').displayY));
-        var out_x = (evnt.clientX - sigInst.getNodes('origin').displayX) * ratio_display_x;
-        var out_y = (evnt.clientY - sigInst.getNodes('origin').displayY) * ratio_display_y;
+        var out_x = (evnt.offsetX  - sigInst.getNodes('origin').displayX) * ratio_display_x;
+        var out_y = (evnt.offsetY  - sigInst.getNodes('origin').displayY) * ratio_display_y;
 
-        $('#field_node_xpos').val(out_x.toString().substring(0, 4));
-        $('#field_node_ypos').val(out_y.toString().substring(0, 4));
+        $('#field_node_xpos').val(out_x);
+        $('#field_node_ypos').val(out_y);
     });
 
     $('#btn_savegraph').click(function () {
@@ -361,6 +383,8 @@ $(document).ready(function () {
             }
 
         ];
+
+        console.log('adding at ' + xpos + ' y: ' + ypos);
 
 
         addNode(xpos, ypos, size, node_id, node_name, node_color, attribs);
@@ -453,8 +477,8 @@ $(document).ready(function () {
             //calculating the sigmajs cartesian co-ordinates canvas co-ords
             var ratio_display_x = ((sigInst.getNodes('reference').x - sigInst.getNodes('origin').x) / (sigInst.getNodes('reference').displayX - sigInst.getNodes('origin').displayX));
             var ratio_display_y = ((sigInst.getNodes('reference').y - sigInst.getNodes('origin').y) / (sigInst.getNodes('reference').displayY - sigInst.getNodes('origin').displayY));
-            var out_x = ((evt.clientX - $('#menu').width()) - sigInst.getNodes('origin').displayX) * ratio_display_x;
-            var out_y = ((evt.clientY) - sigInst.getNodes('origin').displayY) * ratio_display_y;
+            var out_x = ((evt.offsetX) - sigInst.getNodes('origin').displayX) * ratio_display_x;
+            var out_y = ((evt.offsetY) - sigInst.getNodes('origin').displayY) * ratio_display_y;
             //console.log('lol x: ' + out_x + ' lol y : ' + out_y + ' nb: ' + $('#navbar').height());
             addNode(parseFloat(out_x.toString().substring(0, 4)), parseFloat(out_y.toString().substring(0, 4)), 5, get_random_color(), attribs_article[2].val, get_random_color(), attribs_article);
 
