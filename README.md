@@ -40,6 +40,8 @@ The following have been used in the development of Seeder
 * [Socket.IO](https://github.com/learnboost/socket.io)
 * [BigSlide](https://github.com/ascott1/bigSlide.js)
 * [Google Custom Search API](https://developers.google.com/custom-search/)
+* [NodeJS](http://nodejs.org/)
+* [ExpressJS](http://expressjs.com/)
 
 ### Status
 
