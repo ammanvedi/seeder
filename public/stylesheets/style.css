@@ -18,27 +18,33 @@ sitewide
 	width:60px;
 	height: 60px;
 	background-image: url('/img/node-dropper.png');
-	
+	z-index: 0;
 
 }
 
 .search_result{
-	width:auto;
+	width:90%;
 	z-index: 0;
 	height: auto;
-	margin-top: 2px;
-	margin-bottom: 2px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 	background-color: #fff;
 	margin-left: auto;
 	margin-right: auto;
+	padding: 7px;
+		-webkit-box-shadow: 0px 5px 5px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    0px 5px 5px rgba(50, 50, 50, 0.75);
+	box-shadow:         0px 5px 5px rgba(50, 50, 50, 0.75);
 
 }
 
 .search_result h1{
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+   font-weight: 300;
 	font-size: 12px;
 	color: #000;
 	float: left;
-	width: 80%;
+	width: 100px;
 		-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
@@ -51,10 +57,10 @@ sitewide
 }
 
 .search_result img{
-	width: 20%;
-	height: auto;
+	width: 40px;
+	height: 40px;
 	float: left
-		-webkit-touch-callout: none;
+	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
 	-moz-user-select: none;
@@ -68,9 +74,11 @@ sitewide
 }
 
 .search_result p{
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+   font-weight: 300;
 	font-size: 10px;
 	color:#000;
-	clear: both;
+
 		-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
@@ -79,6 +87,12 @@ sitewide
 	user-select: none;
 	cursor: default;
 
+}
+
+.search_result a{
+	text-decoration: none;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+   font-weight: 300;
 }
 
 #node_detail_pane{
@@ -233,17 +247,17 @@ a {
 
 #pallete{
 	width: 200px;
-	height: 230px;
-	padding: 0px;
+	height: auto;
+	padding: 7px;
 	background-color:  #413c4a;
 	color: #fff;
 	float: left;
 	position: absolute;
 	z-index: 1;
-	-webkit-box-shadow: 7px 7px 5px rgba(50, 50, 50, 0.75);
-	-moz-box-shadow:    7px 7px 5px rgba(50, 50, 50, 0.75);
-	box-shadow:         7px 7px 5px rgba(50, 50, 50, 0.75);
-
+	-webkit-box-shadow: 0px 5px 5px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    0px 5px 5px rgba(50, 50, 50, 0.75);
+	box-shadow:         0px 5px 5px rgba(50, 50, 50, 0.75);
+	border-radius: 6px;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
@@ -251,6 +265,20 @@ a {
 	-ms-user-select: none;
 	user-select: none;
 	cursor: default;
+}
+
+#pallete li{
+	font-size: 10px;
+	background-color: #34495E;
+	padding: 2px;
+}
+
+#pallete ul{
+	margin-left: auto;
+	margin-right: auto;
+	height: 10px; 
+	padding: 0px;
+	margin : 0px;
 }
 
 #pallete p{
@@ -291,21 +319,29 @@ ul{
 }
 
 .tool_head{
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-weight: bold;
+	text-transform: uppercase;
+	padding-top:5px;
 
 }
 
 .tool_head_btn{
 	background-color: #35323c;
 	width: 100%;
-	height: 30px;
-	margin-top: 5px;
+	height: auto;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 3px;
 }
 
 .tool_head_btn h1{
-	font-size: 17px;
-	margin-top: 10px;
+	font-size: 12px;
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-	font-weight: 100;
+	font-weight: bold;
+	opacity: 0.8;
+	margin-left: 5px;
+	margin-top: 10px;
 }
 
 .tool_content{
@@ -366,13 +402,27 @@ ul{
 #graph_canvas{
 	height: 85%;
 	width: 95%;
-	background-image: url('/img/graphy.png');
 	margin-top: 70px;
 	margin-left: auto;
 	margin-right: auto;
 	outline: 4px solid #fff;
 	 box-shadow: 0 5px 30px #000;
 	
+}
+
+#btn_addedge{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#input_searcharticles{
+	opacity: 0.4;
+}
+
+#btn_searcharticles{
+	background-color: #fff;
+	width: 30px;
+
 }
 
 /*

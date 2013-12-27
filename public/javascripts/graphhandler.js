@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
 
-  var test_nodes = 10;
+  var test_nodes = 1;
 
     //create a socket to connect to the server
     //this net
@@ -371,7 +371,7 @@ $(document).ready(function () {
         //$('#text_tab').html(listNodes(nodes));
         drawGraph();
         var nd = sigInst.getNodes(node_id);
-        sigInst.goTo(nd['displayX'], nd['displayY'], 2);
+        //sigInst.goTo(nd['displayX'], nd['displayY'], 2);
 
     });
 
