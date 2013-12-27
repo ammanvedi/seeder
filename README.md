@@ -43,4 +43,6 @@ The following have been used in the development of Seeder
 
 ### Status
 
-The code provided is to illustrate proof of concept for the prospective application. 
+The development has been carried out under Chrome 31.0.1650.63 and Safari 6.1
+
+The code provided is to illustrate proof of concept for the prospective application i.e. AS IS 
