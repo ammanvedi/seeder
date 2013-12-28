@@ -194,6 +194,8 @@ $(document).ready(function () {
     //function called when the mouse is over a node
     function showInfo(event) {
 
+      $('#node_detail_pane').remove();
+
         var node;
         sigInst.iterNodes(function (n) {
             node = n;
@@ -201,33 +203,29 @@ $(document).ready(function () {
         //save this node as the last node hovered over
         last_node = node;
 
-        // //show details in div
-        // console.log('ADDING');
-        // jQuery('<div/>', {
-        //     id: 'node_detail_pane',
-        //     html: node['attr']['attr'][0]['name'] + ' : ' + node['attr']['attr'][0]['val'] + '<br/>' +
-        //         node['attr']['attr'][1]['name'] + ' : ' + node['attr']['attr'][1]['val'] + '<br/>' +
-        //         node['attr']['attr'][2]['name'] + ' : ' + node['attr']['attr'][2]['val'] + '<br/>' +
-        //         node['attr']['attr'][4]['name'] + ' : ' + node['attr']['attr'][4]['val'] + '<br/>' +
-        //         node['attr']['attr'][5]['name'] + ' : ' + node['attr']['attr'][5]['val'] + '<br/>'
+        //show details in div
+        console.log('ADDING');
+        jQuery('<div/>', {
+            id: 'node_detail_pane',
+            html: '<p>' + node['attr']['attr'][0]['name'] + ' : ' + node['attr']['attr'][0]['val'] + '<br/>' +
+                node['attr']['attr'][1]['name'] + ' : ' + node['attr']['attr'][1]['val'] + '<br/>' +
+                node['attr']['attr'][2]['name'] + ' : ' + node['attr']['attr'][2]['val'] + '<br/>' +
+                node['attr']['attr'][4]['name'] + ' : ' + node['attr']['attr'][4]['val'] + '<br/>' +
+                node['attr']['attr'][5]['name'] + ' : ' + node['attr']['attr'][5]['val'] + '<br/></p>' 
 
-        // }).appendTo('body');
+        }).appendTo('#node_information_holder');
 
-        // if (node['attr']['attr'][3]['val'] != 'None' && ($('#detail_image').height() != undefined)) {
-        //     jQuery('<img/>', {
-        //         src: node['attr']['attr'][3]['val'],
-        //         id: 'detail_image',
-        //         width: 80,
-        //         height: 80
-        //     }).appendTo('#node_detail_pane');
-        // }
+        if (node['attr']['attr'][3]['val'] != 'None') {
+            jQuery('<img/>', {
+                src: node['attr']['attr'][3]['val'],
+                id: 'detail_image',
+                width: 80,
+                height: 80
+            }).appendTo('#node_detail_pane');
+        }
 
-        // $('#node_detail_pane').css({
-        //     left: node['displayX'],
-        //     top: node['displayY']
-        // });
+  console.log(node['attr']['attr'][3]['val']);
 
-        showing_details = true;
 
     }
 
