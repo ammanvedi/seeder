@@ -42,9 +42,9 @@ $(document).ready(function() {
 			    	html: '<img src="' + itm.pagemap.cse_image[0].src + '"/>' + '<h1>' + itm.title + '</h1>' 
 					    	+ '<p>' + itm.snippet + '</p>'
 					    	
-					    	+ '<a href=\'http://' 
+					    	+ '<a target="_blank" href=\'http://' 
 					    	+ itm.formattedUrl 
-					    	+ '\'>view story</a>' 
+					    	+ '\'>view source</a>' 
 					    	
 
 			}).appendTo('#search_results_holder');

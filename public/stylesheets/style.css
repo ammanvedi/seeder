@@ -40,11 +40,11 @@ sitewide
 
 .search_result h1{
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-   font-weight: 300;
-	font-size: 12px;
+   font-weight: 700;
+	font-size: 10px;
 	color: #000;
 	float: left;
-	width: 100px;
+	width: 70%;
 		-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
@@ -52,14 +52,21 @@ sitewide
 	-ms-user-select: none;
 	user-select: none;
 	cursor: default;
+	display: block;
+	margin-left: 3px;
+	text-overflow:ellipsis;
+	overflow: hidden;
+	height: 40px;
+	margin-top: 0px;
+	margin-bottom: 0px;
 
 
 }
 
 .search_result img{
-	width: 40px;
+	width: 20%;
 	height: 40px;
-	float: left
+	float: left;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
@@ -67,6 +74,7 @@ sitewide
 	-ms-user-select: none;
 	user-select: none;
 	cursor: default;
+	display: block;
 }
 
 .search_result h2{
@@ -76,9 +84,9 @@ sitewide
 .search_result p{
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
    font-weight: 300;
-	font-size: 10px;
+	font-size: 12px;
 	color:#000;
-
+text-overflow:ellipsis;
 		-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
@@ -86,6 +94,12 @@ sitewide
 	-ms-user-select: none;
 	user-select: none;
 	cursor: default;
+	clear: both;
+	display: block;
+	padding: 3px;
+		margin-top: 0px;
+	margin-bottom: 0px;
+	height: 100px;
 
 }
 
@@ -93,6 +107,7 @@ sitewide
 	text-decoration: none;
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
    font-weight: 300;
+   font-size: 9px;
 }
 
 #node_detail_pane{
@@ -319,7 +334,7 @@ ul{
 .tool_head{
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
 	font-weight: bold;
-	text-transform: uppercase;
+	
 	padding-top:5px;
 
 }
@@ -353,7 +368,8 @@ ul{
 
 #node_information_holder{
 	width: auto;
-	height: 200px;
+	height: auto;
+	transition:1s;
 
 }
 
