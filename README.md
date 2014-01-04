@@ -2,7 +2,7 @@
 
 Seeder is an under-development web application that will provide a platform for the creation and sharing of mind maps / knowledge graphs. The ultimate goal of seeder is to allow for any data (web or locally based) to become part of the knowledge map.
 
-![Seeder proff of concept screenshot](http://i.imgur.com/arw0ZZx.png)
+![Seeder proff of concept screenshot](http://i.imgur.com/2h0zr1P.png)
 
 The following feautures are currently implemented
 
