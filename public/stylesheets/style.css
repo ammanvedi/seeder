@@ -134,6 +134,25 @@ text-overflow:ellipsis;
     width: 15.625em; /*should match the above value*/
 }
 
+#load_more{
+	width: 100%;
+	height: 100px;
+	position:relative;
+}
+
+#load_more p{
+	text-transform: uppercase;
+margin-left: auto;
+margin-right: auto;
+text-align: center;
+opacity: 0.6;
+	color: black;
+		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-weight: bold;
+	font-size:15px;
+
+}
+
 
 html{
 	height: 100%;

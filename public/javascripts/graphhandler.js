@@ -380,6 +380,7 @@ $(document).ready(function () {
 
       console.log(evt);
 
+
         if ((evt.target.className == 'search_result') || (evt.target.parentElement.className == 'search_result')) {
 
             is_adding_article = true;
