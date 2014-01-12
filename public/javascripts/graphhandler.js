@@ -52,6 +52,7 @@ $(document).ready(function () {
     //0.38719854739982723
 
     //initial jquery ui settings
+    $('#graph_canvas').backgroundDraggable({ bound: false})
     $("#tabs").tabs();
     $("input[type=submit]").button();
     $("#pallete").draggable({
