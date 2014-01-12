@@ -136,8 +136,13 @@ text-overflow:ellipsis;
 
 #load_more{
 	width: 100%;
-	height: 100px;
+	height: auto;
 	position:relative;
+		padding: 7px;
+		-webkit-box-shadow: 0px 5px 5px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    0px 5px 5px rgba(50, 50, 50, 0.75);
+	box-shadow:         0px 5px 5px rgba(50, 50, 50, 0.75);
+
 }
 
 #load_more p{
@@ -150,6 +155,7 @@ opacity: 0.6;
 		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
 	font-weight: bold;
 	font-size:15px;
+
 
 }
 

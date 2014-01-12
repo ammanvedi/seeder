@@ -37,9 +37,6 @@ $(document).ready(function () {
         var json_dta = httpGet(json_results_url);
         //search results are stored in the 'items' array
         var json_objects = jQuery.parseJSON(json_dta).items;
-
-
-
         //console.log(jQuery.parseJSON( json_dta ));
         //console.log(jQuery.parseJSON( json_dta ).queries.nextPage[0].startIndex);
         next_page_idx = jQuery.parseJSON(json_dta).queries.nextPage[0].startIndex;
@@ -92,14 +89,17 @@ $(document).ready(function () {
     //on click of the search button, take the input in the text
     //field and pass it to the search function
     $('#btn_searcharticles').click(function () {
-        search($('#input_searcharticles').val())
+    	next_page_idx = 0;
+    	$('.search_result').remove();
+        search($('#input_searcharticles').val());
+
     });
 
 
     document.body.addEventListener("mousedown", function (evt) {
 console.log(evt);
     	if((evt.target.className == 'load_more') || (evt.target.parentElement.className == 'load_more')){
-    		console.log('sdsdasdsd');
+    		
         get_next_page();
     	}
     });

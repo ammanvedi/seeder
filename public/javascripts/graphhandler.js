@@ -27,12 +27,12 @@ $(document).ready(function () {
     });
 
     var showing_details = false;
-    //for the edge creation function, determines if an edge is 
+    //for the edge creation function, determines if an edge is
     //currently being drawn
     var making_edge = false;
     //boolean stores weather the mouse cursor is over a node in the graph
     var overnode = false;
-    //stores the last node that the mouse cursor passed over, 
+    //stores the last node that the mouse cursor passed over,
     //when drawing edges
     var last_node;
     //when initialising an instance of the sigma.js graph, sigma will
@@ -93,13 +93,15 @@ $(document).ready(function () {
     for (var l = 0; l < test_nodes; l++) {
       if(test_nodes == 1){
 
-        addNode(0, 0, 5, 'node ' + l, ("this is node " + l).substring(0, 17), get_random_color());
+        addNode(0, 0, 5, 'tst node #' + l, ("tst node #" + l).substring(0, 17), get_random_color());
       }else{
         addNode(Math.floor(Math.random() * 20), Math.floor(Math.random() * 20), 5, 'node ' + l, ("this is node " + l).substring(0, 17), get_random_color());
       }
     }
 
-    //reference nodes, thesea re used in calculation of the cartesian 
+
+
+    //reference nodes, thesea re used in calculation of the cartesian
     // mouse position
     addNode(5, 5, 3, 'reference', 'reference', '#000');
     addNode(0, 0, 3, 'origin', 'origin', '#000');
@@ -128,8 +130,8 @@ $(document).ready(function () {
         });
     }
 
-    //once a graph has been pulled from the server, it is neccacary to 
-    //rebuild it into a valid sigma graph 
+    //once a graph has been pulled from the server, it is neccacary to
+    //rebuild it into a valid sigma graph
     function rebuildPullGraph(pulled) {
         //TO DO
         //add all nodes and edges back to the sigmajs instance
@@ -211,7 +213,7 @@ $(document).ready(function () {
                 node['attr']['attr'][1]['name'] + ' : ' + node['attr']['attr'][1]['val'] + '<br/>' +
                 node['attr']['attr'][2]['name'] + ' : ' + node['attr']['attr'][2]['val'] + '<br/>' +
                 node['attr']['attr'][4]['name'] + ' : ' + node['attr']['attr'][4]['val'] + '<br/>' +
-                node['attr']['attr'][5]['name'] + ' : ' + node['attr']['attr'][5]['val'] + '<br/></p>' 
+                node['attr']['attr'][5]['name'] + ' : ' + node['attr']['attr'][5]['val'] + '<br/></p>'
 
         }).appendTo('#node_information_holder');
 
@@ -229,7 +231,7 @@ $(document).ready(function () {
 
     }
 
-    
+
 
     $('#btn_show_graph').click(function () {
         $('#text_tab').height(0);
@@ -437,7 +439,7 @@ $(document).ready(function () {
 
             }
 
-            
+
 
             jQuery('<div/>', {
                 id: 'article_dropper'
