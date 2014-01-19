@@ -458,7 +458,8 @@ ul{
 	outline: 4px solid #fff;
 	 box-shadow: 0 5px 30px #000;
 	 background-image: url('/img/graphy.png');
-
+	 background-position: center;
+	 background-repeat: repeat;
 	 background-size: 5% auto;
 
 	

@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
 
-  var test_nodes = 20;
+  var test_nodes = 0;
 
     //create a socket to connect to the server
     //this net
