@@ -4,6 +4,8 @@ Seeder is an under-development web application that will provide a platform for 
 
 ![Seeder proof of concept screenshot](http://i.imgur.com/XRK5DRY.png)
 
+A video of the prototype is available [here](http://www.youtube.com/watch?v=0R4mprn8PIE)
+
 The following feautures are currently implemented
 
  * Basic graph creation (node and edge addition)
