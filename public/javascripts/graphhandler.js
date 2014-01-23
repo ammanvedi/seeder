@@ -6,8 +6,9 @@ $(document).ready(function () {
     //create a socket to connect to the server
     //this net
     var socket = io.connect('http://localhost:3000');
+    var sig;
 
-    //sigma.js preferences/options
+/*    //sigma.js preferences/options
     var sigRoot = document.getElementById('graph_canvas');
     var sigInst = sigma.init(sigRoot).drawingProperties({
         defaultLabelColor: '#000',
@@ -24,7 +25,10 @@ $(document).ready(function () {
     }).mouseProperties({
         maxRatio: 5,
         minRatio: 1
-    });
+    });*/
+
+    // Instanciate sigma:
+
 
     var showing_details = false;
     //for the edge creation function, determines if an edge is
@@ -38,10 +42,8 @@ $(document).ready(function () {
     //when initialising an instance of the sigma.js graph, sigma will
     //create a canvas dedicated to intercepting mouse events
     //save this for later reference
-    var mouseRoot = document.getElementById('sigma_mouse_1');
-    //instantiate the graph, set the delegate for 'overnode' events
-    //applys fisheye plugin
-    sigInst.bind('overnodes', showInfo).activateFishEye().draw();
+   
+    
 
     // 2.4278765515909404
 
@@ -79,6 +81,11 @@ $(document).ready(function () {
 
     var label_threshold = 50;
 
+    var g = {
+            nodes: [],
+            edges: []
+          };
+
 
     //for generating debug graphs, retrieve a random hex color code
     function get_random_color() {
@@ -89,6 +96,12 @@ $(document).ready(function () {
         }
         return color;
     }
+
+      //reference nodes, thesea re used in calculation of the cartesian
+    // mouse position
+    addNode(5, 5, 3, 'reference', 'reference', '#000');
+    addNode(0, 0, 3, 'origin', 'origin', '#000');
+
 
     //debug node set, generates 50 random nodes for testing purposes
     for (var l = 0; l < test_nodes; l++) {
@@ -102,10 +115,24 @@ $(document).ready(function () {
 
 
 
-    //reference nodes, thesea re used in calculation of the cartesian
-    // mouse position
-    addNode(5, 5, 3, 'reference', 'reference', '#000');
-    addNode(0, 0, 3, 'origin', 'origin', '#000');
+  
+          // Instanciate sigma:
+      sig = new sigma({
+        renderer: {
+          // IMPORTANT:
+          // This works only with the canvas renderer, so the
+          // renderer type set as "canvas" is necessary here.
+          container: document.getElementById('graph_canvas'),
+          type: 'canvas'
+        }
+      });
+
+
+
+ var mouseRoot = document.getElementsByClassName('sigma-mouse')[0];
+    //instantiate the graph, set the delegate for 'overnode' events
+    //applys fisheye plugin
+
 
     function getMousePos(canvas, evt) {
         var rect = canvas.getBoundingClientRect();
@@ -117,7 +144,7 @@ $(document).ready(function () {
 
     //draw the sigmajs instance
     function drawGraph() {
-        sigInst.draw();
+        //this.s.refresh();
     }
 
 
@@ -139,7 +166,7 @@ $(document).ready(function () {
     }
 
     //add a node to the graph
-    function addNode(x, y, s, id, n, c, attr) {
+    function addNode(_x, _y, _s, id, n, c, attr) {
 
         if (attr == undefined) {
 
@@ -167,18 +194,25 @@ $(document).ready(function () {
 
         }
 
-        //node to push to additional node array
-        var newnode = {
-            posx: x,
-            posy: y,
-            size: s,
-            id: id,
-            name: n,
-        }
+var nd = {
+          id: id,
+          label: n,
+          x: _x,
+          y: _y,
+          size: _s,
+          color: c,
+          attr: attr
+        };
 
-        nodes.push(newnode);
+        console.log(nd);
 
+        g.nodes.push(nd);
+        console.log(this.s);
+        
 
+       
+
+/*
         //add node to the graph instance
         sigInst.addNode(id, {
             label: n,
@@ -187,50 +221,48 @@ $(document).ready(function () {
             x: x,
             y: y,
             attr: attr
-        });
+        });*/
 
         //redraw the graph after node addition
-        drawGraph();
+            
 
     }
 
     //function called when the mouse is over a node
-    function showInfo(event) {
+    sig.bind('overNode', function(event) {
 
       $('#node_detail_pane').remove();
 
-        var node;
-        sigInst.iterNodes(function (n) {
-            node = n;
-        }, [event.content[0]]);
+      
         //save this node as the last node hovered over
-        last_node = node;
+        node = event.data.node;
+        console.log(node);
 
         //show details in div
         console.log('ADDING');
         jQuery('<div/>', {
             id: 'node_detail_pane',
-            html: '<p>' + node['attr']['attr'][0]['name'] + ' : ' + node['attr']['attr'][0]['val'] + '<br/>' +
-                node['attr']['attr'][1]['name'] + ' : ' + node['attr']['attr'][1]['val'] + '<br/>' +
-                node['attr']['attr'][2]['name'] + ' : ' + node['attr']['attr'][2]['val'] + '<br/>' +
-                node['attr']['attr'][4]['name'] + ' : ' + node['attr']['attr'][4]['val'] + '<br/>' +
-                node['attr']['attr'][5]['name'] + ' : ' + node['attr']['attr'][5]['val'] + '<br/></p>'
+            html: '<p>' + node['attr'][0]['name'] + ' : ' + node['attr'][0]['val'] + '<br/>' +
+                node['attr'][1]['name'] + ' : ' + node['attr'][1]['val'] + '<br/>' +
+                node['attr'][2]['name'] + ' : ' + node['attr'][2]['val'] + '<br/>' +
+                node['attr'][4]['name'] + ' : ' + node['attr'][4]['val'] + '<br/>' +
+                node['attr'][5]['name'] + ' : ' + node['attr'][5]['val'] + '<br/></p>'
 
         }).appendTo('#node_information_holder');
 
-        if (node['attr']['attr'][3]['val'] != 'None') {
+        if (node['attr'][3]['val'] != 'None') {
             jQuery('<img/>', {
-                src: node['attr']['attr'][3]['val'],
+                src: node['attr'][3]['val'],
                 id: 'detail_image',
                 width: 80,
                 height: 80
             }).appendTo('#node_detail_pane');
         }
 
-  console.log(node['attr']['attr'][3]['val']);
+  console.log(node['attr'][3]['val']);
 
 
-    }
+    });
 
 
 
@@ -280,22 +312,23 @@ $(document).ready(function () {
         };
     });
 
-    $('#graph_canvas').click(function (evnt) {
+    $('.sigma-mouse').click(function (evnt) {
 
       var graph_left_margin = parseInt($('#graph_canvas').css("margin-left"));
-      console.log('LOLLLLO ' + parseInt(graph_left_margin));
+      //console.log('LOLLLLO ' + parseInt(graph_left_margin));
       var graph_top_margin = parseInt($('#graph_canvas').css("margin-top"));
 
       var navbar = parseInt($('#navbar').height());
+      
 
       console.log('clickat x: ' + evnt.offsetX + ' y : ' + evnt.offsetY);
       console.log(evnt);
 
         //calculating the sigmajs cartesian co-ordinates canvas co-ords
-        var ratio_display_x = ((sigInst.getNodes('reference').x - sigInst.getNodes('origin').x) / (sigInst.getNodes('reference').displayX - sigInst.getNodes('origin').displayX));
-        var ratio_display_y = ((sigInst.getNodes('reference').y - sigInst.getNodes('origin').y) / (sigInst.getNodes('reference').displayY - sigInst.getNodes('origin').displayY));
-        var out_x = (evnt.offsetX  - sigInst.getNodes('origin').displayX) * ratio_display_x;
-        var out_y = (evnt.offsetY  - sigInst.getNodes('origin').displayY) * ratio_display_y;
+        var ratio_display_x = ((sig.graph.nodes()[0].x - sig.graph.nodes()[1].x) / (sig.graph.nodes()[0]['renderer1:x'] - sig.graph.nodes()[1]['renderer1:x']));
+        var ratio_display_y = ((sig.graph.nodes()[0].y - sig.graph.nodes()[1].y) / (sig.graph.nodes()[0]['renderer1:y'] - sig.graph.nodes()[1]['renderer1:y']));
+        var out_x = (evnt.offsetX  - sig.graph.nodes()[1]['renderer1:x']) * ratio_display_x;
+        var out_y = (evnt.offsetY  - sig.graph.nodes()[1]['renderer1:y']) * ratio_display_y;
 
         $('#field_node_xpos').val(out_x);
         $('#field_node_ypos').val(out_y);
@@ -371,7 +404,7 @@ $(document).ready(function () {
         addNode(xpos, ypos, size, node_id, node_name, node_color, attribs);
         //$('#text_tab').html(listNodes(nodes));
         drawGraph();
-        var nd = sigInst.getNodes(node_id);
+        //var nd = sigInst.getNodes(node_id);
         //sigInst.goTo(nd['displayX'], nd['displayY'], 2);
 
     });
@@ -488,13 +521,13 @@ $(document).ready(function () {
             //console.log($('#menu').width() + ' ');
             is_adding_article = false;
             //calculating the sigmajs cartesian co-ordinates canvas co-ords
-            var ratio_display_x = ((sigInst.getNodes('reference').x - sigInst.getNodes('origin').x) / (sigInst.getNodes('reference').displayX - sigInst.getNodes('origin').displayX));
-            var ratio_display_y = ((sigInst.getNodes('reference').y - sigInst.getNodes('origin').y) / (sigInst.getNodes('reference').displayY - sigInst.getNodes('origin').displayY));
-            var out_x = ((evt.offsetX) - sigInst.getNodes('origin').displayX) * ratio_display_x;
-            var out_y = ((evt.offsetY) - sigInst.getNodes('origin').displayY) * ratio_display_y;
+            var ratio_display_x = ((s.graph.nodes()[0].x - s.graph.nodes()[1].x) / (sig.graph.nodes()[0]['renderer1:x'] - sig.graph.nodes()[1]['renderer1:x']));
+            var ratio_display_y = ((s.graph.nodes()[0].y - s.graph.nodes()[1].y) / (sig.graph.nodes()[0]['renderer1:y'] - sig.graph.nodes()[1]['renderer1:y']));
+            var out_x = ((evt.offsetX) - sig.graph.nodes()[1]['renderer1:x'] ) * ratio_display_x;
+            var out_y = ((evt.offsetY) - sig.graph.nodes()[1]['renderer1:y'] ) * ratio_display_y;
             //console.log('lol x: ' + out_x + ' lol y : ' + out_y + ' nb: ' + $('#navbar').height());
-            addNode(parseFloat(out_x.toString().substring(0, 4)), parseFloat(out_y.toString().substring(0, 4)), 5, get_random_color(), attribs_article[2].val, get_random_color(), attribs_article);
-
+            addNode(parseInt(out_x.toString()), parseInt(out_y.toString()), 5, get_random_color(), attribs_article[2].val, get_random_color(), attribs_article);
+            console.log(s.graph.nodes())
         }
 
     });
