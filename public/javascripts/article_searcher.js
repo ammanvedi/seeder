@@ -96,12 +96,5 @@ $(document).ready(function () {
     });
 
 
-    document.body.addEventListener("mousedown", function (evt) {
-console.log(evt);
-    	if((evt.target.className == 'load_more') || (evt.target.parentElement.className == 'load_more')){
-    		
-        get_next_page();
-    	}
-    });
 
 });

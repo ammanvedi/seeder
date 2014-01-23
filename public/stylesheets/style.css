@@ -13,6 +13,16 @@ sitewide
 
 */
 
+html {
+    overflow: hidden;
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    overflow: auto;
+}
+
 #article_dropper{
 	position: absolute;
 	width:60px;
@@ -268,9 +278,7 @@ style information for graph builder interface
 	box-shadow:         0px 0px 9px rgba(50, 50, 50, 0.75);
 }
 
-a {
-	color: #00B7FF;
-}
+
 
 #contain_main{
 	width: 100%;
@@ -296,12 +304,7 @@ a {
 	-moz-box-shadow:    0px 5px 5px rgba(50, 50, 50, 0.75);
 	box-shadow:         0px 5px 5px rgba(50, 50, 50, 0.75);
 	border-radius: 6px;
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
+
 	cursor: default;
 }
 
@@ -339,10 +342,7 @@ a {
 	width:150px;
 }
 
-ul{
-	list-style: none;
-	padding: 0px;
-}
+
 
 #tabs li{
 	float: left;
@@ -455,12 +455,9 @@ ul{
 	margin-top: 70px;
 	margin-left: auto;
 	margin-right: auto;
-	outline: 4px solid #fff;
-	 box-shadow: 0 5px 30px #000;
-	 background-image: url('/img/graphy.png');
-	 background-position: center;
-	 background-repeat: repeat;
-	 background-size: 5% auto;
+
+
+
 
 	
 }

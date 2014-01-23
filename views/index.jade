@@ -27,38 +27,6 @@ block content
 		#navbar(class='push')
 			a(class='menu-link' href='#menu') &#9776
 			p(class='nav_title') seeder
-			
-		#pallete
-			#tabs
-				ul
-					li
-						a(href='#tabs-1') Add Edge 
-					li
-						a(href='#tabs-2') Add Node
-					li
-						a(href='#tabs-3') Edit Node
-				br
-
-				#tabs-1
-					form
-						input#btn_addedge(type='button' value='add edge')
-					#add_edge_msg
-						p click the button to add an edge
-				#tabs-2
-					add node information
-					form#form_addnode
-						input#field_node_xpos(type='number' name='node_xpos' class='input_node_add' placeholder='node x position')
-						input#field_node_ypos(type='number' name='node_ypos' placeholder='node y position')
-						input#field_node_size(type='number' name='node_size' placeholder='node size')
-						input#field_node_id(type='text' name='node_id' placeholder='node id')
-						input#field_node_name(type='text' name='node_name' placeholder='node name')
-						br
-						input#picker_edgecolor(type='color' placeholder='#ffffff')
-						br
-						input#btn_addnode(type='button' value='add node')
-				#tabs-3
-					p edit node
-
 		#display_code
 
 			#text_tab
