@@ -41,7 +41,7 @@ $(document).ready(function () {
     var mouseRoot = document.getElementById('sigma_mouse_1');
     //instantiate the graph, set the delegate for 'overnode' events
     //applys fisheye plugin
-    sigInst.bind('overnodes', showInfo).activateFishEye().draw();
+    sigInst.bind('overnodes', showInfo).draw();
 
     // 2.4278765515909404
 

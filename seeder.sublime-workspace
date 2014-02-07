@@ -1,0 +1,1305 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"draw",
+				"drawGraph"
+			],
+			[
+				"rep",
+				"repeat"
+			],
+			[
+				"back",
+				"background-repeat"
+			],
+			[
+				"bac",
+				"background-position"
+			],
+			[
+				"graph",
+				"graph_canvas"
+			],
+			[
+				"ne",
+				"next_page_idx"
+			],
+			[
+				"ta",
+				"target"
+			],
+			[
+				"get",
+				"get_next_page"
+			],
+			[
+				"add",
+				"add_results"
+			],
+			[
+				"next",
+				"next_page_idx"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"mar",
+				"margin-right"
+			],
+			[
+				"marg",
+				"margin-left"
+			],
+			[
+				"searc",
+				"search_results_holder"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"font",
+				"font-weight"
+			],
+			[
+				"margin",
+				"margin-right"
+			],
+			[
+				"paren",
+				"parentElement"
+			],
+			[
+				"parse",
+				"parseInt"
+			],
+			[
+				"gr",
+				"graph_top_margin"
+			],
+			[
+				"gra",
+				"graph_left_margin"
+			],
+			[
+				"margi",
+				"margin-right"
+			],
+			[
+				"test",
+				"test_nodes"
+			],
+			[
+				"detail",
+				"detail_image"
+			],
+			[
+				"diff",
+				"diff_y"
+			],
+			[
+				"lab",
+				"label_threshold"
+			],
+			[
+				"la",
+				"label_threshold"
+			],
+			[
+				"node",
+				"node_detail_pane"
+			],
+			[
+				"remove",
+				"remove_details"
+			],
+			[
+				"paddin",
+				"padding"
+			],
+			[
+				"showin",
+				"showing_details"
+			],
+			[
+				"show",
+				"showing_details"
+			],
+			[
+				"app",
+				"appendTo"
+			],
+			[
+				"displa",
+				"displayY"
+			],
+			[
+				"att",
+				"attr"
+			],
+			[
+				"attri",
+				"attribs"
+			],
+			[
+				"forma",
+				"formattedUrl"
+			],
+			[
+				"arti",
+				"article_dropper"
+			],
+			[
+				"dra",
+				"drawGraph"
+			],
+			[
+				"out",
+				"out_x"
+			],
+			[
+				"b",
+				"background-color"
+			],
+			[
+				"mouse",
+				"mousemove"
+			],
+			[
+				"is",
+				"is_adding_article"
+			],
+			[
+				"sear",
+				"search_results_holder"
+			],
+			[
+				"json",
+				"json_objects"
+			],
+			[
+				"v",
+				"val"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"init",
+				"initiatePullGraph"
+			],
+			[
+				"db",
+				"db_push_graph"
+			],
+			[
+				"save",
+				"savegraph_nodes"
+			],
+			[
+				"to",
+				"to_send_edges"
+			],
+			[
+				"list",
+				"listen"
+			],
+			[
+				"lis",
+				"listen"
+			],
+			[
+				"link",
+				"link"
+			],
+			[
+				"attr",
+				"attribs"
+			],
+			[
+				"ou",
+				"out_y"
+			],
+			[
+				"ra",
+				"ratio_display_x"
+			],
+			[
+				"clien",
+				"clientX"
+			],
+			[
+				"g_",
+				"g_w"
+			],
+			[
+				"ans",
+				"ans_y"
+			],
+			[
+				"min",
+				"min_x"
+			],
+			[
+				"max_",
+				"max_x"
+			],
+			[
+				"sig",
+				"sigInst"
+			],
+			[
+				"backgrou",
+				"background-image"
+			],
+			[
+				"border-r",
+				"border-radius"
+			],
+			[
+				"te",
+				"text-decoration"
+			],
+			[
+				"border-bo",
+				"border-bottom-width"
+			],
+			[
+				"inl",
+				"inline-block"
+			],
+			[
+				"registration",
+				"registration_tbl"
+			],
+			[
+				"qu",
+				"query"
+			],
+			[
+				"registrat",
+				"registration_tbl"
+			],
+			[
+				"company",
+				"companyname"
+			],
+			[
+				"di",
+				"display"
+			],
+			[
+				"max",
+				"max-width"
+			],
+			[
+				"border",
+				"border-width"
+			],
+			[
+				"padding",
+				"padding-top"
+			],
+			[
+				"sh",
+				"shout"
+			],
+			[
+				"con",
+				"controls"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "public/stylesheets/style.css",
+			"settings":
+			{
+				"buffer_size": 9352,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "public/javascripts/article_searcher.js",
+			"settings":
+			{
+				"buffer_size": 3643,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "public/javascripts/graphhandler.js",
+			"settings":
+			{
+				"buffer_size": 15898,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "/*\n js-mindmap\n\n Copyright (c) 2008/09/10 Kenneth Kufluk http://kenneth.kufluk.com/\n\n MIT (X11) license\n\n Permission is hereby granted, free of charge, to any person obtaining a copy\n of this software and associated documentation files (the \"Software\"), to deal\n in the Software without restriction, including without limitation the rights\n to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n copies of the Software, and to permit persons to whom the Software is\n furnished to do so, subject to the following conditions:\n\n The above copyright notice and this permission notice shall be included in\n all copies or substantial portions of the Software.\n\n THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\n THE SOFTWARE.\n\n*/\n\n/*\n  Things to do:\n    - remove Lines - NO - they seem harmless enough!\n    - add better \"make active\" methods\n    - remove the \"root node\" concept.  Tie nodes to elements better, so we can check if a parent element is root\n\n    - allow progressive exploration\n      - allow easy supplying of an ajax param for loading new kids and a loader anim\n    - allow easy exploration of a ul or ol to find nodes\n    - limit to an area\n    - allow more content (div instead of an a)\n    - test multiple canvases\n    - Hidden children should not be bounded\n    - Layout children in circles\n    - Add/Edit nodes\n    - Resize event\n    - incorporate widths into the forces, so left boundaries push on right boundaries\n\n\n  Make demos:\n    - amazon explore\n    - directgov explore\n    - thesaurus\n    - themes\n\n*/\n\n(function ($) {\n  'use strict';\n\n  var TIMEOUT = 4,  // movement timeout in seconds\n    CENTRE_FORCE = 3,  // strength of attraction to the centre by the active node\n    Node,\n    Line;\n\n  // Define all Node related functions.\n  Node = function (obj, name, parent, opts) {\n    this.obj = obj;\n    this.options = obj.options;\n\n    this.name = name;\n    this.href = opts.href;\n    if (opts.url) {\n      this.url = opts.url;\n    }\n\n    // create the element for display\n    this.el = $('<a href=\"' + this.href + '\">' + this.name + '</a>').addClass('node');\n    $('#graph_canvas').prepend(this.el);\n\n    if (!parent) {\n      obj.activeNode = this;\n      this.el.addClass('active root');\n    } else {\n      obj.lines[obj.lines.length] = new Line(obj, this, parent);\n    }\n    this.parent = parent;\n    this.children = [];\n    if (this.parent) {\n      this.parent.children.push(this);\n    }\n\n    // animation handling\n    this.moving = false;\n    this.moveTimer = 0;\n    this.obj.movementStopped = false;\n    this.visible = true;\n    this.x = 1;\n    this.y = 1;\n    this.dx = 0;\n    this.dy = 0;\n    this.hasPosition = false;\n\n    this.content = []; // array of content elements to display onclick;\n\n    this.el.css('position', 'absolute');\n\n    var thisnode = this;\n\n    this.el.draggable({\n      drag: function () {\n        obj.root.animateToStatic();\n      }\n    });\n\n    this.el.click(function () {\n      if (obj.activeNode) {\n        obj.activeNode.el.removeClass('active');\n        if (obj.activeNode.parent) {\n          obj.activeNode.parent.el.removeClass('activeparent');\n        }\n      }\n      if (typeof opts.onclick === 'function') {\n        opts.onclick(thisnode);\n      }\n      obj.activeNode = thisnode;\n      obj.activeNode.el.addClass('active');\n      if (obj.activeNode.parent) {\n        obj.activeNode.parent.el.addClass('activeparent');\n      }\n      obj.root.animateToStatic();\n      return false;\n    });\n\n  };\n\n  // ROOT NODE ONLY:  control animation loop\n  Node.prototype.animateToStatic = function () {\n\n    clearTimeout(this.moveTimer);\n    // stop the movement after a certain time\n    var thisnode = this;\n    this.moveTimer = setTimeout(function () {\n      //stop the movement\n      thisnode.obj.movementStopped = true;\n    }, TIMEOUT * 1000);\n\n    if (this.moving) {\n      return;\n    }\n    this.moving = true;\n    this.obj.movementStopped = false;\n    this.animateLoop();\n  };\n\n  // ROOT NODE ONLY:  animate all nodes (calls itself recursively)\n  Node.prototype.animateLoop = function () {\n    var i, len, mynode = this;\n    this.obj.canvas.clear();\n    for (i = 0, len = this.obj.lines.length; i < len; i++) {\n      this.obj.lines[i].updatePosition();\n    }\n    if (this.findEquilibrium() || this.obj.movementStopped) {\n      this.moving = false;\n      return;\n    }\n    setTimeout(function () {\n      mynode.animateLoop();\n    }, 10);\n  };\n\n  // find the right position for this node\n  Node.prototype.findEquilibrium = function () {\n    var i, len, stable = true;\n    stable = this.display() && stable;\n    for (i = 0, len = this.children.length; i < len; i++) {\n      stable = this.children[i].findEquilibrium() && stable;\n    }\n    return stable;\n  };\n\n  //Display this node, and its children\n  Node.prototype.display = function (depth) {\n    var parent = this,\n      stepAngle,\n      angle;\n\n    depth = depth || 0;\n\n    if (this.visible) {\n      // if: I'm not active AND my parent's not active AND my children aren't active ...\n      if (this.obj.activeNode !== this && this.obj.activeNode !== this.parent && this.obj.activeNode.parent !== this) {\n        // TODO hide me!\n        this.el.hide();\n        this.visible = false;\n      }\n    } else {\n      if (this.obj.activeNode === this || this.obj.activeNode === this.parent || this.obj.activeNode.parent === this) {\n        this.el.show();\n        this.visible = true;\n      }\n    }\n    this.drawn = true;\n    // am I positioned?  If not, position me.\n    if (!this.hasPosition) {\n      this.x = this.options.mapArea.x / 2;\n      this.y = this.options.mapArea.y / 2;\n      this.el.css({'left': this.x + \"px\", 'top': this.y + \"px\"});\n      this.hasPosition = true;\n    }\n    // are my children positioned?  if not, lay out my children around me\n    stepAngle = Math.PI * 2 / this.children.length;\n    $.each(this.children, function (index) {\n      if (!this.hasPosition) {\n        if (!this.options.showProgressive || depth <= 1) {\n          angle = index * stepAngle;\n          this.x = (50 * Math.cos(angle)) + parent.x;\n          this.y = (50 * Math.sin(angle)) + parent.y;\n          this.hasPosition = true;\n          this.el.css({'left': this.x + \"px\", 'top': this.y + \"px\"});\n        }\n      }\n    });\n    // update my position\n    return this.updatePosition();\n  };\n\n  // updatePosition returns a boolean stating whether it's been static\n  Node.prototype.updatePosition = function () {\n    var forces, showx, showy;\n\n    if (this.el.hasClass(\"ui-draggable-dragging\")) {\n      this.x = parseInt(this.el.css('left'), 10) + (this.el.width() / 2);\n      this.y = parseInt(this.el.css('top'), 10) + (this.el.height() / 2);\n      this.dx = 0;\n      this.dy = 0;\n      return false;\n    }\n\n    //apply accelerations\n    forces = this.getForceVector();\n    this.dx += forces.x * this.options.timeperiod;\n    this.dy += forces.y * this.options.timeperiod;\n\n    // damp the forces\n    this.dx = this.dx * this.options.damping;\n    this.dy = this.dy * this.options.damping;\n\n    //ADD MINIMUM SPEEDS\n    if (Math.abs(this.dx) < this.options.minSpeed) {\n      this.dx = 0;\n    }\n    if (Math.abs(this.dy) < this.options.minSpeed) {\n      this.dy = 0;\n    }\n    if (Math.abs(this.dx) + Math.abs(this.dy) === 0) {\n      return true;\n    }\n    //apply velocity vector\n    this.x += this.dx * this.options.timeperiod;\n    this.y += this.dy * this.options.timeperiod;\n    this.x = Math.min(this.options.mapArea.x, Math.max(1, this.x));\n    this.y = Math.min(this.options.mapArea.y, Math.max(1, this.y));\n    // display\n    showx = this.x - (this.el.width() / 2);\n    showy = this.y - (this.el.height() / 2) - 10;\n    this.el.css({'left': showx + \"px\", 'top': showy + \"px\"});\n    return false;\n  };\n\n  Node.prototype.getForceVector = function () {\n    var i, x1, y1, xsign, dist, theta, f,\n      xdist, rightdist, bottomdist, otherend,\n      fx = 0,\n      fy = 0,\n      nodes = this.obj.nodes,\n      lines = this.obj.lines;\n\n    // Calculate the repulsive force from every other node\n    for (i = 0; i < nodes.length; i++) {\n      if (nodes[i] === this) {\n        continue;\n      }\n      if (!nodes[i].visible) {\n        continue;\n      }\n      // Repulsive force (coulomb's law)\n      x1 = (nodes[i].x - this.x);\n      y1 = (nodes[i].y - this.y);\n      //adjust for variable node size\n//    var nodewidths = (($(nodes[i]).width() + this.el.width())/2);\n      dist = Math.sqrt((x1 * x1) + (y1 * y1));\n//      var myrepulse = this.options.repulse;\n//      if (this.parent==nodes[i]) myrepulse=myrepulse*10;  //parents stand further away\n      if (Math.abs(dist) < 500) {\n        if (x1 === 0) {\n          theta = Math.PI / 2;\n          xsign = 0;\n        } else {\n          theta = Math.atan(y1 / x1);\n          xsign = x1 / Math.abs(x1);\n        }\n        // force is based on radial distance\n        f = (this.options.repulse * 500) / (dist * dist);\n        fx += -f * Math.cos(theta) * xsign;\n        fy += -f * Math.sin(theta) * xsign;\n      }\n    }\n\n    // add repulsive force of the \"walls\"\n    //left wall\n    xdist = this.x + this.el.width();\n    f = (this.options.wallrepulse * 500) / (xdist * xdist);\n    fx += Math.min(2, f);\n    //right wall\n    rightdist = (this.options.mapArea.x - xdist);\n    f = -(this.options.wallrepulse * 500) / (rightdist * rightdist);\n    fx += Math.max(-2, f);\n    //top wall\n    f = (this.options.wallrepulse * 500) / (this.y * this.y);\n    fy += Math.min(2, f);\n    //bottom wall\n    bottomdist = (this.options.mapArea.y - this.y);\n    f = -(this.options.wallrepulse * 500) / (bottomdist * bottomdist);\n    fy += Math.max(-2, f);\n\n    // for each line, of which I'm a part, add an attractive force.\n    for (i = 0; i < lines.length; i++) {\n      otherend = null;\n      if (lines[i].start === this) {\n        otherend = lines[i].end;\n      } else if (lines[i].end === this) {\n        otherend = lines[i].start;\n      } else {\n        continue;\n      }\n      // Ignore the pull of hidden nodes\n      if (!otherend.visible) {\n        continue;\n      }\n      // Attractive force (hooke's law)\n      x1 = (otherend.x - this.x);\n      y1 = (otherend.y - this.y);\n      dist = Math.sqrt((x1 * x1) + (y1 * y1));\n      if (Math.abs(dist) > 0) {\n        if (x1 === 0) {\n          theta = Math.PI / 2;\n          xsign = 0;\n        }\n        else {\n          theta = Math.atan(y1 / x1);\n          xsign = x1 / Math.abs(x1);\n        }\n        // force is based on radial distance\n        f = (this.options.attract * dist) / 10000;\n        fx += f * Math.cos(theta) * xsign;\n        fy += f * Math.sin(theta) * xsign;\n      }\n    }\n\n    // if I'm active, attract me to the centre of the area\n    if (this.obj.activeNode === this) {\n      // Attractive force (hooke's law)\n      otherend = this.options.mapArea;\n      x1 = ((otherend.x / 2) - this.options.centreOffset - this.x);\n      y1 = ((otherend.y / 2) - this.y);\n      dist = Math.sqrt((x1 * x1) + (y1 * y1));\n      if (Math.abs(dist) > 0) {\n        if (x1 === 0) {\n          theta = Math.PI / 2;\n          xsign = 0;\n        } else {\n          xsign = x1 / Math.abs(x1);\n          theta = Math.atan(y1 / x1);\n        }\n        // force is based on radial distance\n        f = (0.1 * this.options.attract * dist * CENTRE_FORCE) / 1000;\n        fx += f * Math.cos(theta) * xsign;\n        fy += f * Math.sin(theta) * xsign;\n      }\n    }\n\n    if (Math.abs(fx) > this.options.maxForce) {\n      fx = this.options.maxForce * (fx / Math.abs(fx));\n    }\n    if (Math.abs(fy) > this.options.maxForce) {\n      fy = this.options.maxForce * (fy / Math.abs(fy));\n    }\n    return {\n      x: fx,\n      y: fy\n    };\n  };\n\n  Node.prototype.removeNode = function () {\n    var i,\n      oldnodes = this.obj.nodes,\n      oldlines = this.obj.lines;\n\n    for (i = 0; i < this.children.length; i++) {\n      this.children[i].removeNode();\n    }\n\n    this.obj.nodes = [];\n    for (i = 0; i < oldnodes.length; i++) {\n      if (oldnodes[i] === this) {\n        continue;\n      }\n      this.obj.nodes.push(oldnodes[i]);\n    }\n\n    this.obj.lines = [];\n    for (i = 0; i < oldlines.length; i++) {\n      if (oldlines[i].start === this) {\n        continue;\n      } else if (oldlines[i].end === this) {\n        continue;\n      }\n      this.obj.lines.push(oldlines[i]);\n    }\n\n    this.el.remove();\n  };\n\n\n\n  // Define all Line related functions.\n  Line = function (obj, startNode, endNode) {\n    this.obj = obj;\n    this.options = obj.options;\n    this.start = startNode;\n    this.colour = \"blue\";\n    this.size = \"thick\";\n    this.end = endNode;\n  };\n\n  Line.prototype.updatePosition = function () {\n    if (!this.options.showSublines && (!this.start.visible || !this.end.visible)) {\n      return;\n    }\n    this.size = (this.start.visible && this.end.visible) ? \"thick\" : \"thin\";\n    this.color = (this.obj.activeNode.parent === this.start || this.obj.activeNode.parent === this.end) ? \"red\" : \"blue\";\n    this.strokeStyle = \"#FFF\";\n\n    this.obj.canvas.path(\"M\" + this.start.x + ' ' + this.start.y + \"L\" + this.end.x + ' ' + this.end.y).attr({'stroke': this.strokeStyle, 'opacity': 0.2, 'stroke-width': '5px'});\n  };\n\n  $.fn.addNode = function (parent, name, options) {\n    var obj = this[0],\n      node = obj.nodes[obj.nodes.length] = new Node(obj, name, parent, options);\n    console.log(obj.root);\n    obj.root.animateToStatic();\n    return node;\n  };\n\n  $.fn.addRootNode = function (name, opts) {\n    var node = this[0].nodes[0] = new Node(this[0], name, null, opts);\n    this[0].root = node;\n    return node;\n  };\n\n  $.fn.removeNode = function (name) {\n    return this.each(function () {\n//      if (!!this.mindmapInit) return false;\n      //remove a node matching the anme\n//      alert(name+' removed');\n    });\n  };\n\n  $.fn.mindmap = function (options) {\n    // Define default settings.\n    options = $.extend({\n      attract: 15,\n      repulse: 6,\n      damping: 0.55,\n      timeperiod: 10,\n      wallrepulse: 0.4,\n      mapArea: {\n        x: -1,\n        y: -1\n      },\n      canvasError: 'alert',\n      minSpeed: 0.05,\n      maxForce: 0.1,\n      showSublines: false,\n      updateIterationCount: 20,\n      showProgressive: true,\n      centreOffset: 100,\n      timer: 0\n    }, options);\n\n    var $window = $(window);\n\n    return this.each(function () {\n      var mindmap = this;\n\n      this.mindmapInit = true;\n      this.nodes = [];\n      this.lines = [];\n      this.activeNode = null;\n      this.options = options;\n      this.animateToStatic = function () {\n        this.root.animateToStatic();\n      };\n      $window.resize(function () {\n        mindmap.animateToStatic();\n      });\n\n      //canvas\n      if (options.mapArea.x === -1) {\n        options.mapArea.x = $window.width();\n      }\n      if (options.mapArea.y === -1) {\n        options.mapArea.y = $window.height();\n      }\n      //create drawing area\n      this.canvas = Raphael(0, 0, options.mapArea.x, options.mapArea.y);\n\n      // Add a class to the object, so that styles can be applied\n      $(this).addClass('js-mindmap-active');\n\n      // Add keyboard support (thanks to wadefs)\n      $(this).keyup(function (event) {\n        var newNode, i, activeParent = mindmap.activeNode.parent;\n        switch (event.which) {\n        case 33: // PgUp\n        case 38: // Up, move to parent\n          if (activeParent) {\n            activeParent.el.click();\n          }\n          break;\n        case 13: // Enter (change to insert a sibling)\n        case 34: // PgDn\n        case 40: // Down, move to first child\n          if (mindmap.activeNode.children.length) {\n            mindmap.activeNode.children[0].el.click();\n          }\n          break;\n        case 37: // Left, move to previous sibling\n          if (activeParent) {\n            newNode = null;\n            if (activeParent.children[0] === mindmap.activeNode) {\n              newNode = activeParent.children[activeParent.children.length - 1];\n            } else {\n              for (i = 1; i < activeParent.children.length; i++) {\n                if (activeParent.children[i] === mindmap.activeNode) {\n                  newNode = activeParent.children[i - 1];\n                }\n              }\n            }\n            if (newNode) {\n              newNode.el.click();\n            }\n          }\n          break;\n        case 39: // Right, move to next sibling\n          if (activeParent) {\n            newNode = null;\n            if (activeParent.children[activeParent.children.length - 1] === mindmap.activeNode) {\n              newNode = activeParent.children[0];\n            } else {\n              for (i = activeParent.children.length - 2; i >= 0; i--) {\n                if (activeParent.children[i] === mindmap.activeNode) {\n                  newNode = activeParent.children[i + 1];\n                }\n              }\n            }\n            if (newNode) {\n              newNode.el.click();\n            }\n          }\n          break;\n        case 45: // Ins, insert a child\n          break;\n        case 46: // Del, delete this node\n          break;\n        case 27: // Esc, cancel insert\n          break;\n        case 83: // 'S', save\n          break;\n        }\n        return false;\n      });\n\n    });\n  };\n}(jQuery));\n\n/*jslint devel: true, browser: true, continue: true, plusplus: true, indent: 2 */",
+			"file": "public/javascripts/js-mindmap.js",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 17611,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "body {\n}\n#debug1 {\n  display:block;\n}\n.js-mindmap-active h1 {\n   display:none;\n}\n.js-mindmap-active section h1 {\n   display:block;\n}\n.js-mindmap-active .node {\n  position:absolute;\n  top:0;\n  left:0;\n  font-family:verdana;\n  font-size:11px;\n  color:#003258;\n  opacity:0.9;\n  padding:0 7px;\n  cursor:pointer;\n  cursor:hand;\n  z-index:100;\n  list-style:none;\n}\n.js-mindmap-active a.node {\n  font: 30px/34px Arial, sans-serif;\n  font-size:1em;\n  letter-spacing: 0;\n  display:block;\n  color:black;\n  text-align:center;\n  text-decoration:none;\n}\n.js-mindmap-active .node.active{\n  font-size:1.5em;\n}\n.js-mindmap-active .node.active  a{\n  color:#003258;\n}\n.js-mindmap-active .node.activeparent  a{\n  color:#001228;\n}\n.js-mindmap-active img.line {\n  position:absolute;\n  width:200px;\n  height:133px;\n  top:0;\n  left:0;\n  display:block;\n  z-index:0;\n}\n.ui-draggable {\n  position:absolute;\n}\n.js-mindmap-active .node .node-action {\n  position:absolute;\n  right:-2em;\n  bottom:-1px;\n  text-align:center;\n  vertical-align:super;\n}\n\nbody {\n  background:green;\n}\n.js-mindmap-active a.node {\n  background:red;\n  border: 2px solid white;\n  -webkit-border-top-left-radius: 20px;\n  -webkit-border-bottom-right-radius: 20px;\n  -moz-border-radius-topleft: 20px;\n  -moz-border-radius-bottomright: 20px;\n  border-top-left-radius: 20px;\n  border-bottom-right-radius: 20px;  \n}\n.js-mindmap-active a.node.active {\n  padding:5px 10px !important;\n  border-width:5px !important;\n}\n.js-mindmap-active a.node.activeparent {\n  padding:5px 10px !important;\n  border-width:5px !important;\n  background:#8B0000;\n}\n",
+			"file": "public/stylesheets/js-mindmap.css",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 1581,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app.js",
+			"settings":
+			{
+				"buffer_size": 3154,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/form.jade",
+			"settings":
+			{
+				"buffer_size": 29,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/index.jade",
+			"settings":
+			{
+				"buffer_size": 1681,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/layout.jade",
+			"settings":
+			{
+				"buffer_size": 937,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "<html>\n  <head>\n    <style>\n      body {\n        margin: 0;\n        padding: 0;\n        background: #eee;\n      }\n\n      #graph-container {\n        background: #fff;\n        height: 600px;\n        max-width: 800px;\n        margin: auto;\n        position: relative;\n        overflow: hidden;\n      }\n\n      #disc {\n        position: absolute;\n        top: 100%;\n        bottom: 0;\n        left: 0;\n        right: 0;\n      }\n\n      #ground {\n        position: absolute;\n        background: #ccc;\n        top: 100%;\n        bottom: 0;\n        left: 0;\n        right: 0;\n      }\n    </style>\n  </head>\n  <body>\n    <div id=\"graph-container\">\n      <div id=\"disc\"></div>\n      <div id=\"ground\"></div>\n    </div>\n    <!-- START SIGMA IMPORTS -->\n    <script src=\"../src/sigma.core.js\"></script>\n    <script src=\"../src/conrad.js\"></script>\n    <script src=\"../src/utils/sigma.utils.js\"></script>\n    <script src=\"../src/utils/sigma.polyfills.js\"></script>\n    <script src=\"../src/sigma.settings.js\"></script>\n    <script src=\"../src/classes/sigma.classes.dispatcher.js\"></script>\n    <script src=\"../src/classes/sigma.classes.configurable.js\"></script>\n    <script src=\"../src/classes/sigma.classes.graph.js\"></script>\n    <script src=\"../src/classes/sigma.classes.camera.js\"></script>\n    <script src=\"../src/classes/sigma.classes.quad.js\"></script>\n    <script src=\"../src/captors/sigma.captors.mouse.js\"></script>\n    <script src=\"../src/captors/sigma.captors.touch.js\"></script>\n    <script src=\"../src/renderers/sigma.renderers.canvas.js\"></script>\n    <script src=\"../src/renderers/sigma.renderers.webgl.js\"></script>\n    <script src=\"../src/renderers/sigma.renderers.def.js\"></script>\n    <script src=\"../src/renderers/webgl/sigma.webgl.nodes.def.js\"></script>\n    <script src=\"../src/renderers/webgl/sigma.webgl.nodes.fast.js\"></script>\n    <script src=\"../src/renderers/webgl/sigma.webgl.edges.def.js\"></script>\n    <script src=\"../src/renderers/webgl/sigma.webgl.edges.fast.js\"></script>\n    <script src=\"../src/renderers/webgl/sigma.webgl.edges.arrow.js\"></script>\n    <script src=\"../src/renderers/canvas/sigma.canvas.labels.def.js\"></script>\n    <script src=\"../src/renderers/canvas/sigma.canvas.hovers.def.js\"></script>\n    <script src=\"../src/renderers/canvas/sigma.canvas.nodes.def.js\"></script>\n    <script src=\"../src/renderers/canvas/sigma.canvas.edges.def.js\"></script>\n    <script src=\"../src/renderers/canvas/sigma.canvas.edges.arrow.js\"></script>\n    <script src=\"../src/middlewares/sigma.middlewares.rescale.js\"></script>\n    <script src=\"../src/middlewares/sigma.middlewares.copy.js\"></script>\n    <script src=\"../src/misc/sigma.misc.animation.js\"></script>\n    <script src=\"../src/misc/sigma.misc.bindEvents.js\"></script>\n    <script src=\"../src/misc/sigma.misc.drawHovers.js\"></script>\n    <!-- END SIGMA IMPORTS -->\n    <script>\n      (function() {\n        'use strict';\n\n        var s,\n            c,\n            dom,\n            disc,\n            ground,\n            nId = 0,\n            eId = 0,\n            radius = 50,\n\n            mouseX,\n            mouseY,\n            spaceMode = false,\n            wheelRatio = 1.1,\n\n            nodeRadius = 10,\n            inertia = 0.8,\n            springForce = 0.01,\n            springLength = 50,\n            maxDisplacement = 15,\n            gravity = 1.5;\n\n\n\n\n        /**\n         * CUSTOM PHYSICS LAYOUT:\n         * **********************\n         */\n        sigma.classes.graph.addMethod('computePhysics', function() {\n          var i,\n              j,\n              l = this.nodesArray.length,\n\n              s,\n              t,\n              dX,\n              dY,\n              d,\n              v;\n\n          for (i = 0; i < l; i++) {\n            s = this.nodesArray[i];\n            s.dX *= inertia;\n            s.dY *= inertia;\n\n            s.dY += gravity;\n\n            for (j = i + 1; j < l; j++) {\n              t = this.nodesArray[j];\n\n              dX = s.x - t.x;\n              dY = s.y - t.y;\n              d = Math.sqrt(dX * dX + dY * dY);\n              v = ((d < 2 * nodeRadius) ? (2 * nodeRadius - d) / d / 2 : 0) -\n                ((this.allNeighborsIndex[s.id] || {})[t.id] ? springForce * (d - springLength) : 0);\n\n              t.dX -= v * dX;\n              t.dY -= v * dY;\n              s.dX += v * dX;\n              s.dY += v * dY;\n            }\n          }\n\n          for (i = 0; i < l; i++) {\n            s = this.nodesArray[i];\n            s.dX = Math.max(Math.min(s.dX, maxDisplacement), -maxDisplacement);\n            s.dY = Math.max(Math.min(s.dY, maxDisplacement), -maxDisplacement);\n            s.x += s.dX;\n            s.y += s.dY;\n\n            // Collision with the ground:\n            s.y = Math.min(-nodeRadius, s.y);\n          }\n        });\n\n\n\n\n        /**\n         * CUSTOM RENDERERS:\n         * *****************\n         */\n        sigma.canvas.edges.goo = function(e, s, t, ctx, settings) {\n          var color = e.color,\n              p = settings('prefix') || '',\n              edgeColor = settings('edgeColor'),\n              defaultNodeColor = settings('defaultNodeColor'),\n              defaultEdgeColor = settings('defaultEdgeColor'),\n              v,\n              d,\n              p1 = 5 / 6,\n              p2 = 1 / 6;\n\n          if (!color)\n            switch (edgeColor) {\n              case 'source':\n                color = s.color || defaultNodeColor;\n                break;\n              case 'target':\n                color = t.color || defaultNodeColor;\n                break;\n              default:\n                color = defaultEdgeColor;\n                break;\n            }\n\n          d = Math.sqrt(Math.pow(t[p + 'x'] - s[p + 'x'], 2) + Math.pow(t[p + 'y'] - s[p + 'y'], 2));\n          v = {\n            x: (t[p + 'x'] - s[p + 'x']) / d,\n            y: (t[p + 'y'] - s[p + 'y']) / d\n          };\n\n          ctx.fillStyle = color;\n          ctx.beginPath();\n          ctx.moveTo(\n            s[p + 'x'] + v.y * s[p + 'size'],\n            s[p + 'y'] - v.x * s[p + 'size']\n          );\n          ctx.bezierCurveTo(\n            s[p + 'x'] * p1 + t[p + 'x'] * p2 + v.y * e[p + 'size'],\n            s[p + 'y'] * p1 + t[p + 'y'] * p2 - v.x * e[p + 'size'],\n            t[p + 'x'] * p1 + s[p + 'x'] * p2 + v.y * e[p + 'size'],\n            t[p + 'y'] * p1 + s[p + 'y'] * p2 - v.x * e[p + 'size'],\n            t[p + 'x'] + v.y * t[p + 'size'],\n            t[p + 'y'] - v.x * t[p + 'size']\n          );\n          ctx.lineTo(\n            t[p + 'x'] - v.y * t[p + 'size'],\n            t[p + 'y'] + v.x * t[p + 'size']\n          );\n          ctx.bezierCurveTo(\n            t[p + 'x'] * p1 + s[p + 'x'] * p2 - v.y * e[p + 'size'],\n            t[p + 'y'] * p1 + s[p + 'y'] * p2 + v.x * e[p + 'size'],\n            s[p + 'x'] * p1 + t[p + 'x'] * p2 - v.y * e[p + 'size'],\n            s[p + 'y'] * p1 + t[p + 'y'] * p2 + v.x * e[p + 'size'],\n            s[p + 'x'] - v.y * s[p + 'size'],\n            s[p + 'y'] + v.x * s[p + 'size']\n          );\n          ctx.closePath();\n          ctx.fill();\n        };\n\n        sigma.canvas.nodes.goo = function(node, ctx, settings) {\n          var prefix = settings('prefix') || '';\n\n          ctx.fillStyle = node.color || settings('defaultNodeColor');\n          ctx.beginPath();\n          ctx.arc(\n            node[prefix + 'x'],\n            node[prefix + 'y'],\n            node[prefix + 'size'],\n            0,\n            Math.PI * 2,\n            true\n          );\n          ctx.closePath();\n          ctx.fill();\n\n          ctx.fillStyle = '#fff';\n          ctx.beginPath();\n          ctx.arc(\n            node[prefix + 'x'],\n            node[prefix + 'y'],\n            node[prefix + 'size'] * 0.5,\n            0,\n            Math.PI * 2,\n            true\n          );\n          ctx.closePath();\n          ctx.fill();\n        };\n\n\n\n\n        /**\n         * INITIALIZATION SCRIPT:\n         * **********************\n         */\n        s = new sigma({\n          renderer: {\n            container: document.getElementById('graph-container'),\n            type: 'canvas'\n          },\n          settings: {\n            autoRescale: false,\n            mouseEnabled: true,\n            touchEnabled: true,\n            nodesPowRatio: 1,\n            edgesPowRatio: 1,\n            defaultEdgeColor: '#333',\n            defaultNodeColor: '#333',\n            edgeColor: 'default'\n          }\n        });\n        dom = document.querySelector('#graph-container canvas:last-child');\n        disc = document.getElementById('disc');\n        ground = document.getElementById('ground');\n        c = s.cameras[0];\n\n        // Initialize graph:\n        s.graph.read({\n          nodes: [\n            {\n              id: (++nId) + '',\n              size: nodeRadius,\n              x: 0,\n              y: -80,\n              dX: 0,\n              dY: 0,\n              type: 'goo'\n            },\n            {\n              id: (++nId) + '',\n              size: nodeRadius,\n              x: 10,\n              y: -100,\n              dX: 0,\n              dY: 0,\n              type: 'goo'\n            },\n            {\n              id: (++nId) + '',\n              size: nodeRadius,\n              x: 20,\n              y: -80,\n              dX: 0,\n              dY: 0,\n              type: 'goo'\n            }\n          ],\n          edges: [\n            {\n              id: (++eId) + '',\n              source: '1',\n              target: '2',\n              type: 'goo'\n            },\n            {\n              id: (++eId) + '',\n              source: '1',\n              target: '3',\n              type: 'goo'\n            },\n            {\n              id: (++eId) + '',\n              source: '2',\n              target: '3',\n              type: 'goo'\n            }\n          ]\n        });\n\n        function frame() {\n          \n          s.refresh();\n\n          if (s.graph.nodes().length) {\n            var w = dom.offsetWidth,\n                h = dom.offsetHeight;\n\n            // The \"rescale\" middleware modifies the position of the nodes, but we\n            // need here the camera to deal with this. Here is the code:\n            var xMin = Infinity,\n                xMax = -Infinity,\n                yMin = Infinity,\n                yMax = -Infinity,\n                margin = 50,\n                scale;\n\n            s.graph.nodes().forEach(function(n) {\n              xMin = Math.min(n.x, xMin);\n              xMax = Math.max(n.x, xMax);\n              yMin = Math.min(n.y, yMin);\n              yMax = Math.max(n.y, yMax);\n            });\n\n            xMax += margin;\n            xMin -= margin;\n            yMax += margin;\n            yMin -= margin;\n\n            scale = Math.min(\n              w / Math.max(xMax - xMin, 1),\n              h / Math.max(yMax - yMin, 1)\n            );\n\n            c.goTo({\n              x: (xMin + xMax) / 2,\n              y: (yMin + yMax) / 2,\n              ratio: 1 / scale\n            });\n\n            ground.style.top =\n              Math.max(h / 2 - Math.min((yMin + yMax) / 2 * scale, h), 0) + 'px';\n            disc.style.borderRadius = radius * scale;\n            disc.style.width = 2 * radius * scale;\n            disc.style.height = 2 * radius * scale;\n            disc.style.top = mouseY - radius * scale;\n            disc.style.left = mouseX - radius * scale;\n            disc.style.backgroundColor = spaceMode ? '#f99' : '#9cf';\n\n          }\n\n          requestAnimationFrame(frame);\n        }\n\n        frame();\n\n\n\n\n        /**\n         * EVENTS BINDING:\n         * ***************\n         */\n        dom.addEventListener('click', function(e) {\n          // Find neighbors:\n          var x,\n              y,\n              p,\n              id,\n              neighbors;\n\n          x = sigma.utils.getX(e) - dom.offsetWidth / 2;\n          y = sigma.utils.getY(e) - dom.offsetHeight / 2;\n\n          p = c.cameraPosition(x, y);\n          x = p.x;\n          y = p.y;\n\n          neighbors = s.graph.nodes().filter(function(n) {\n            return (Math.sqrt(\n              Math.pow(n.x - x, 2) +\n              Math.pow(n.y - y, 2)\n            ) - n.size) < radius;\n          });\n\n          if (!spaceMode)\n            s.graph.addNode({\n              id: (id = (++nId) + ''),\n              size: nodeRadius,\n              x: x + Math.random() / 10,\n              y: y + Math.random() / 10,\n              dX: 0,\n              dY: 0,\n              type: 'goo'\n            });\n\n          neighbors.forEach(function(n) {\n            if (!spaceMode)\n              s.graph.addEdge({\n                id: (++eId) + '',\n                source: id,\n                target: n.id,\n                type: 'goo'\n              });\n            else\n              s.graph.dropNode(n.id);\n          });\n        }, false);\n        dom.addEventListener('mousemove', function(e) {\n          mouseX = sigma.utils.getX(e);\n          mouseY = sigma.utils.getY(e);\n        }, false);\n        dom.addEventListener('DOMMouseScroll', function(e) {\n          radius *= sigma.utils.getDelta(e) < 0 ? 1 / wheelRatio : wheelRatio;\n        }, false);\n        dom.addEventListener('mousewheel', function(e) {\n          radius *= sigma.utils.getDelta(e) < 0 ? 1 / wheelRatio : wheelRatio;\n        }, false);\n        document.addEventListener('keydown', function(e) {\n          spaceMode = (e.which == 32) ? true : spaceMode;\n        });\n        document.addEventListener('keyup', function(e) {\n          spaceMode = e.which == 32 ? false : spaceMode;\n        });\n      })();\n    </script>\n  </body>\n</html>\n",
+			"file": "public/javascripts/sigma_v1/examples/add-node-on-click.html",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 13436,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": ";(function(undefined) {\n  'use strict';\n\n  if (typeof sigma === 'undefined')\n    throw 'sigma is not declared';\n\n  if (typeof conrad === 'undefined')\n    throw 'conrad is not declared';\n\n  // Initialize packages:\n  sigma.utils.pkg('sigma.renderers');\n\n  /**\n   * This function is the constructor of the canvas sigma's renderer.\n   *\n   * @param  {sigma.classes.graph}            graph    The graph to render.\n   * @param  {sigma.classes.camera}           camera   The camera.\n   * @param  {configurable}           settings The sigma instance settings\n   *                                           function.\n   * @param  {object}                 object   The options object.\n   * @return {sigma.renderers.canvas}          The renderer instance.\n   */\n  sigma.renderers.canvas = function(graph, camera, settings, options) {\n    if (typeof options !== 'object')\n      throw 'sigma.renderers.canvas: Wrong arguments.';\n\n    if (!(options.container instanceof HTMLElement))\n      throw 'Container not found.';\n\n    var k,\n        i,\n        l,\n        a,\n        fn,\n        self = this;\n\n    sigma.classes.dispatcher.extend(this);\n\n    // Initialize main attributes:\n    Object.defineProperty(this, 'conradId', {\n      value: sigma.utils.id()\n    });\n    this.graph = graph;\n    this.camera = camera;\n    this.contexts = {};\n    this.domElements = {};\n    this.options = options;\n    this.container = this.options.container;\n    this.settings = (\n        typeof options.settings === 'object' &&\n        options.settings\n      ) ?\n        settings.embedObjects(options.settings) :\n        settings;\n\n    // Node indexes:\n    this.nodesOnScreen = [];\n    this.edgesOnScreen = [];\n\n    // Conrad related attributes:\n    this.jobs = {};\n\n    // Find the prefix:\n    this.options.prefix = 'renderer' + this.conradId + ':';\n\n    // Initialize the DOM elements:\n    if (\n      !this.settings('batchEdgesDrawing')\n    ) {\n      this.initDOM('canvas', 'scene');\n      this.contexts.edges = this.contexts.scene;\n      this.contexts.nodes = this.contexts.scene;\n      this.contexts.labels = this.contexts.scene;\n    } else {\n      this.initDOM('canvas', 'edges');\n      this.initDOM('canvas', 'scene');\n      this.contexts.nodes = this.contexts.scene;\n      this.contexts.labels = this.contexts.scene;\n    }\n\n    this.initDOM('canvas', 'mouse');\n    this.contexts.hover = this.contexts.mouse;\n\n    // Initialize captors:\n    this.captors = [];\n    a = this.options.captors || [sigma.captors.mouse, sigma.captors.touch];\n    for (i = 0, l = a.length; i < l; i++) {\n      fn = typeof a[i] === 'function' ? a[i] : sigma.captors[a[i]];\n      this.captors.push(\n        new fn(\n          this.domElements.mouse,\n          this.camera,\n          this.settings\n        )\n      );\n    }\n\n    // Bind resize:\n    window.addEventListener('resize', function() {\n      self.resize();\n    });\n\n    // Deal with sigma events:\n    sigma.misc.bindEvents.call(this, this.options.prefix);\n    sigma.misc.drawHovers.call(this, this.options.prefix);\n\n    this.resize(false);\n  };\n\n\n\n\n  /**\n   * This method renders the graph on the canvases.\n   *\n   * @param  {?object}                options Eventually an object of options.\n   * @return {sigma.renderers.canvas}         Returns the instance itself.\n   */\n  sigma.renderers.canvas.prototype.render = function(options) {\n    options = options || {};\n\n    var a,\n        i,\n        k,\n        l,\n        o,\n        id,\n        end,\n        job,\n        start,\n        edges,\n        renderers,\n        batchSize,\n        index = {},\n        graph = this.graph,\n        prefix = this.options.prefix || '',\n        drawEdges = this.settings(options, 'drawEdges'),\n        drawNodes = this.settings(options, 'drawNodes'),\n        drawLabels = this.settings(options, 'drawLabels'),\n        embedSettings = this.settings.embedObjects(options, {\n          prefix: this.options.prefix\n        });\n\n    // Check the 'hideEdgesOnMove' setting:\n    if (this.settings(options, 'hideEdgesOnMove'))\n      if (this.camera.isAnimated || this.camera.isMoving)\n        drawEdges = false;\n\n    // Apply the camera's view:\n    this.camera.applyView(\n      undefined,\n      this.options.prefix,\n      {\n        width: this.width,\n        height: this.height\n      }\n    );\n\n    // Clear canvases:\n    this.clear();\n\n    // Kill running jobs:\n    for (k in this.jobs)\n      if (conrad.hasJob(k))\n        conrad.killJob(k);\n\n    // Find which nodes are on screen:\n    this.edgesOnScreen = [];\n    this.nodesOnScreen = this.camera.quadtree.area(\n      this.camera.getRectangle(this.width, this.height)\n    );\n\n    for (a = this.nodesOnScreen, i = 0, l = a.length; i < l; i++)\n      index[a[i].id] = a[i];\n\n    // Draw edges:\n    // - If settings('batchEdgesDrawing') is true, the edges are displayed per\n    //   batches. If not, they are drawn in one frame.\n    if (drawEdges) {\n      // First, let's identify which edges to draw. To do this, we just draw\n      // every edges that have at least one extremity displayed, according to\n      // the quadtree:\n      for (a = graph.edges(), i = 0, l = a.length; i < l; i++) {\n        o = a[i];\n        if (index[o.source] || index[o.target])\n          this.edgesOnScreen.push(o);\n      }\n\n      // If the \"batchEdgesDrawing\" settings is true, edges are batched:\n      if (this.settings(options, 'batchEdgesDrawing')) {\n        id = 'edges_' + this.conradId;\n        batchSize = embedSettings('canvasEdgesBatchSize');\n\n        edges = this.edgesOnScreen;\n        l = edges.length;\n\n        start = 0;\n        end = Math.min(edges.length, start + batchSize);\n\n        job = function() {\n          renderers = sigma.canvas.edges;\n          for (i = start; i < end; i++) {\n            o = edges[i];\n            (renderers[o.type] || renderers.def)(\n              o,\n              graph.nodes(o.source),\n              graph.nodes(o.target),\n              this.contexts.edges,\n              embedSettings\n            );\n          }\n\n          // Catch job's end:\n          if (end === edges.length) {\n            delete this.jobs[id];\n            return false;\n          }\n\n          start = end + 1;\n          end = Math.min(edges.length, start + batchSize);\n          return true;\n        };\n\n        this.jobs[id] = job;\n        conrad.addJob(id, job.bind(this));\n\n      // If not, they are drawn in one frame:\n      } else {\n        renderers = sigma.canvas.edges;\n        for (a = this.edgesOnScreen, i = 0, l = a.length; i < l; i++) {\n          o = a[i];\n          (renderers[o.type] || renderers.def)(\n            o,\n            graph.nodes(o.source),\n            graph.nodes(o.target),\n            this.contexts.edges,\n            embedSettings\n          );\n        }\n      }\n    }\n\n    // Draw nodes:\n    // - No batching\n    if (drawNodes) {\n      renderers = sigma.canvas.nodes;\n      for (a = this.nodesOnScreen, i = 0, l = a.length; i < l; i++)\n        (renderers[a[i].type] || renderers.def)(\n          a[i],\n          this.contexts.nodes,\n          embedSettings\n        );\n    }\n\n    // Draw labels:\n    // - No batching\n    if (drawLabels) {\n      renderers = sigma.canvas.labels;\n      for (a = this.nodesOnScreen, i = 0, l = a.length; i < l; i++)\n        (renderers[a[i].type] || renderers.def)(\n          a[i],\n          this.contexts.labels,\n          embedSettings\n        );\n    }\n\n    this.dispatchEvent('render');\n\n    return this;\n  };\n\n  /**\n   * This method creates a DOM element of the specified type, switches its\n   * position to \"absolute\", references it to the domElements attribute, and\n   * finally appends it to the container.\n   *\n   * @param  {string} tag The label tag.\n   * @param  {string} id  The id of the element (to store it in \"domElements\").\n   */\n  sigma.renderers.canvas.prototype.initDOM = function(tag, id) {\n    var dom = document.createElement(tag);\n\n    dom.style.position = 'absolute';\n    dom.setAttribute('class', 'sigma-' + id);\n\n    this.domElements[id] = dom;\n    this.container.appendChild(dom);\n\n    if (tag.toLowerCase() === 'canvas')\n      this.contexts[id] = dom.getContext('2d');\n  };\n\n  /**\n   * This method resizes each DOM elements in the container and stores the new\n   * dimensions. Then, it renders the graph.\n   *\n   * @param  {?number}                width  The new width of the container.\n   * @param  {?number}                height The new height of the container.\n   * @return {sigma.renderers.canvas}        Returns the instance itself.\n   */\n  sigma.renderers.canvas.prototype.resize = function(w, h) {\n    var k,\n        oldWidth = this.width,\n        oldHeight = this.height,\n        pixelRatio = 1;\n        // TODO:\n        // *****\n        // This pixelRatio is the solution to display with the good definition\n        // on canvases on Retina displays (ie oversampling). Unfortunately, it\n        // has a huge performance cost...\n        //  > pixelRatio = window.devicePixelRatio || 1;\n\n    if (w !== undefined && h !== undefined) {\n      this.width = w;\n      this.height = h;\n    } else {\n      this.width = this.container.offsetWidth;\n      this.height = this.container.offsetHeight;\n\n      w = this.width;\n      h = this.height;\n    }\n\n    if (oldWidth !== this.width || oldHeight !== this.height) {\n      for (k in this.domElements) {\n        this.domElements[k].style.width = w + 'px';\n        this.domElements[k].style.height = h + 'px';\n\n        if (this.domElements[k].tagName.toLowerCase() === 'canvas') {\n          this.domElements[k].setAttribute('width', (w * pixelRatio) + 'px');\n          this.domElements[k].setAttribute('height', (h * pixelRatio) + 'px');\n\n          if (pixelRatio !== 1)\n            this.contexts[k].scale(pixelRatio, pixelRatio);\n        }\n      }\n    }\n\n    return this;\n  };\n\n  /**\n   * This method clears each canvas.\n   *\n   * @return {sigma.renderers.canvas} Returns the instance itself.\n   */\n  sigma.renderers.canvas.prototype.clear = function() {\n    var k;\n\n    for (k in this.domElements)\n      if (this.domElements[k].tagName === 'CANVAS')\n        this.domElements[k].width = this.domElements[k].width;\n\n    return this;\n  };\n\n\n\n\n  /**\n   * The labels, nodes and edges renderers are stored in the three following\n   * objects. When an element is drawn, its type will be checked and if a\n   * renderer with the same name exists, it will be used. If not found, the\n   * default renderer will be used instead.\n   *\n   * They are stored in different files, in the \"./canvas\" folder.\n   */\n  sigma.utils.pkg('sigma.canvas.nodes');\n  sigma.utils.pkg('sigma.canvas.edges');\n  sigma.utils.pkg('sigma.canvas.labels');\n}).call(this);\n",
+			"file": "public/javascripts/sigma_v1/src/renderers/sigma.renderers.canvas.js",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 10591,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": ";(function(undefined) {\n  'use strict';\n\n  var _methods = Object.create(null),\n      _indexes = Object.create(null),\n      _initBindings = Object.create(null),\n      _methodBindings = Object.create(null),\n      _defaultSettings = {\n        immutable: true,\n        clone: true\n      },\n      _defaultSettingsFunction = function(key) {\n        return _defaultSettings[key];\n      };\n\n  /**\n   * The graph constructor. It initializes the data and the indexes, and binds\n   * the custom indexes and methods to its own scope.\n   *\n   * Recognized parameters:\n   * **********************\n   * Here is the exhaustive list of every accepted parameters in the settings\n   * object:\n   *\n   *   {boolean} clone     Indicates if the data have to be cloned in methods\n   *                       to add nodes or edges.\n   *   {boolean} immutable Indicates if nodes \"id\" values and edges \"id\",\n   *                       \"source\" and \"target\" values must be set as\n   *                       immutable.\n   *\n   * @param  {?configurable} settings Eventually a settings function.\n   * @return {graph}                  The new graph instance.\n   */\n  var graph = function(settings) {\n    var k,\n        fn,\n        data;\n\n    /**\n     * DATA:\n     * *****\n     * Every data that is callable from graph methods are stored in this \"data\"\n     * object. This object will be served as context for all these methods,\n     * and it is possible to add other type of data in it.\n     */\n    data = {\n      /**\n       * SETTINGS FUNCTION:\n       * ******************\n       */\n      settings: settings || _defaultSettingsFunction,\n\n      /**\n       * MAIN DATA:\n       * **********\n       */\n      nodesArray: [],\n      edgesArray: [],\n\n      /**\n       * GLOBAL INDEXES:\n       * ***************\n       * These indexes just index data by ids.\n       */\n      nodesIndex: Object.create(null),\n      edgesIndex: Object.create(null),\n\n      /**\n       * LOCAL INDEXES:\n       * **************\n       * These indexes refer from node to nodes. Each key is an id, and each\n       * value is the array of the ids of related nodes.\n       */\n      inNeighborsIndex: Object.create(null),\n      outNeighborsIndex: Object.create(null),\n      allNeighborsIndex: Object.create(null),\n\n      inNeighborsCount: Object.create(null),\n      outNeighborsCount: Object.create(null),\n      allNeighborsCount: Object.create(null)\n    };\n\n    // Execute bindings:\n    for (k in _initBindings)\n      _initBindings[k].call(data);\n\n    // Add methods to both the scope and the data objects:\n    for (k in _methods) {\n      fn = __bindGraphMethod(k, data, _methods[k]);\n      this[k] = fn;\n      data[k] = fn;\n    }\n  };\n\n\n\n\n  /**\n   * A custom tool to bind methods such that function that are bound to it will\n   * be executed anytime the method is called.\n   *\n   * @param  {string}   methodName The name of the method to bind.\n   * @param  {object}   scope      The scope where the method must be executed.\n   * @param  {function} fn         The method itself.\n   * @return {function}            The new method.\n   */\n  function __bindGraphMethod(methodName, scope, fn) {\n    var result = function() {\n      var k,\n          res;\n\n      // Apply the method:\n      res = fn.apply(scope, arguments);\n\n      // Execute bound functions:\n      for (k in _methodBindings[methodName])\n        _methodBindings[methodName][k].apply(scope, arguments);\n\n      // Return res:\n      return res;\n    };\n\n    return result;\n  }\n\n  /**\n   * This custom tool function removes every pair key/value from an hash. The\n   * goal is to avoid creating a new object while some other references are\n   * still hanging in some scopes...\n   *\n   * @param  {object} obj The object to empty.\n   * @return {object}     The empty object.\n   */\n  function __emptyObject(obj) {\n    var k;\n\n    for (k in obj)\n      if (!('hasOwnProperty' in obj) || obj.hasOwnProperty(k))\n        delete obj[k];\n\n    return obj;\n  }\n\n\n\n\n  /**\n   * This global method adds a method that will be bound to the futurly created\n   * graph instances.\n   *\n   * Since these methods will be bound to their scope when the instances are\n   * created, it does not use the prototype. Because of that, methods have to\n   * be added before instances are created to make them available.\n   *\n   * Here is an example:\n   *\n   *  > graph.addMethod('getNodesCount', function() {\n   *  >   return this.nodesArray.length;\n   *  > });\n   *  >\n   *  > var myGraph = new graph();\n   *  > console.log(myGraph.getNodesCount()); // outputs 0\n   *\n   * @param  {string}   methodName The name of the method.\n   * @param  {function} fn         The method itself.\n   * @return {object}              The global graph constructor.\n   */\n  graph.addMethod = function(methodName, fn) {\n    if (\n      typeof methodName !== 'string' ||\n      typeof fn !== 'function' ||\n      arguments.length !== 2\n    )\n      throw 'addMethod: Wrong arguments.';\n\n    if (_methods[methodName])\n      throw 'The method \"' + methodName + '\" already exists.';\n\n    _methods[methodName] = fn;\n    _methodBindings[methodName] = Object.create(null);\n\n    return this;\n  };\n\n  /**\n   * This global methods attaches a function to a method. Anytime the specified\n   * method is called, the attached function is called right after, with the\n   * same arguments and in the same scope.\n   *\n   * To attach a function to the graph constructor, use 'constructor' as the\n   * method name (first argument).\n   *\n   * The main idea is to have a clean way to keep custom indexes up to date,\n   * for instance:\n   *\n   *  > var timesAddNodeCalled = 0;\n   *  > graph.attach('addNode', 'timesAddNodeCalledInc', function() {\n   *  >   timesAddNodeCalled++;\n   *  > });\n   *  >\n   *  > var myGraph = new graph();\n   *  > console.log(timesAddNodeCalled); // outputs 0\n   *  >\n   *  > myGraph.addNode({ id: '1' }).addNode({ id: '2' });\n   *  > console.log(timesAddNodeCalled); // outputs 2\n   *\n   * @param  {string}   methodName The name of the related method or\n   *                               \"constructor\".\n   * @param  {string}   key        The key to identify the function to attach.\n   * @param  {function} fn         The function to bind.\n   * @return {object}              The global graph constructor.\n   */\n  graph.attach = function(methodName, key, fn) {\n    if (\n      typeof methodName !== 'string' ||\n      typeof key !== 'string' ||\n      typeof fn !== 'function' ||\n      arguments.length !== 3\n    )\n      throw 'attach: Wrong arguments.';\n\n    var bindings;\n\n    if (methodName === 'constructor')\n      bindings = _initBindings;\n    else {\n      if (!_methodBindings[methodName])\n        throw 'The method \"' + methodName + '\" does not exist.';\n\n      bindings = _methodBindings[methodName];\n    }\n\n    if (bindings[key])\n      throw 'A function \"' + key + '\" is already attached ' +\n            'to the method \"' + methodName + '\".';\n\n    bindings[key] = fn;\n\n    return this;\n  };\n\n  /**\n   * This methods is just an helper to deal with custom indexes. It takes as\n   * arguments the name of the index and an object containing all the different\n   * functions to bind to the methods.\n   *\n   * Here is a basic example, that creates an index to keep the number of nodes\n   * in the current graph. It also adds a method to provide a getter on that\n   * new index:\n   *\n   *  > sigma.classes.graph.addIndex('nodesCount', {\n   *  >   constructor: function() {\n   *  >     this.nodesCount = 0;\n   *  >   },\n   *  >   addNode: function() {\n   *  >     this.nodesCount++;\n   *  >   },\n   *  >   dropNode: function() {\n   *  >     this.nodesCount--;\n   *  >   }\n   *  > });\n   *  >\n   *  > sigma.classes.graph.addMethod('getNodesCount', function() {\n   *  >   return this.nodesCount;\n   *  > });\n   *  >\n   *  > var myGraph = new sigma.classes.graph();\n   *  > console.log(myGraph.getNodesCount()); // outputs 0\n   *  >\n   *  > myGraph.addNode({ id: '1' }).addNode({ id: '2' });\n   *  > console.log(myGraph.getNodesCount()); // outputs 2\n   *\n   * @param  {string} name     The name of the index.\n   * @param  {object} bindings The object containing the functions to bind.\n   * @return {object}          The global graph constructor.\n   */\n  graph.addIndex = function(name, bindings) {\n    if (\n      typeof name !== 'string' ||\n      Object(bindings) !== bindings ||\n      arguments.length !== 2\n    )\n      throw 'addIndex: Wrong arguments.';\n\n    if (_indexes[name])\n      throw 'The index \"' + name + '\" already exists.';\n\n    var k;\n\n    // Store the bindings:\n    _indexes[name] = bindings;\n\n    // Attach the bindings:\n    for (k in bindings)\n      if (typeof bindings[k] !== 'function')\n        throw 'The bindings must be functions.';\n      else\n        graph.attach(k, name, bindings[k]);\n\n    return this;\n  };\n\n\n\n\n  /**\n   * This method adds a node to the graph. The node must be an object, with a\n   * string under the key \"id\". Except for this, it is possible to add any\n   * other attribute, that will be preserved all along the manipulations.\n   *\n   * If the graph option \"clone\" has a truthy value, the node will be cloned\n   * when added to the graph. Also, if the graph option \"immutable\" has a\n   * truthy value, its id will be defined as immutable.\n   *\n   * @param  {object} node The node to add.\n   * @return {object}      The graph instance.\n   */\n  graph.addMethod('addNode', function(node) {\n    // Check that the node is an object and has an id:\n    if (Object(node) !== node || arguments.length !== 1)\n      throw 'addNode: Wrong arguments.';\n\n    if (typeof node.id !== 'string')\n      throw 'The node must have a string id.';\n\n    if (this.nodesIndex[node.id])\n      throw 'The node \"' + node.id + '\" already exists.';\n\n    var k,\n        id = node.id,\n        validNode = Object.create(null);\n\n    // Check the \"clone\" option:\n    if (this.settings('clone')) {\n      for (k in node)\n        if (k !== 'id')\n          validNode[k] = node[k];\n    } else\n      validNode = node;\n\n    // Check the \"immutable\" option:\n    if (this.settings('immutable'))\n      Object.defineProperty(validNode, 'id', {\n        value: id,\n        enumerable: true\n      });\n    else\n      validNode.id = id;\n\n    // Add empty containers for edges indexes:\n    this.inNeighborsIndex[id] = Object.create(null);\n    this.outNeighborsIndex[id] = Object.create(null);\n    this.allNeighborsIndex[id] = Object.create(null);\n\n    this.inNeighborsCount[id] = 0;\n    this.outNeighborsCount[id] = 0;\n    this.allNeighborsCount[id] = 0;\n\n    // Add the node to indexes:\n    this.nodesArray.push(validNode);\n    this.nodesIndex[validNode.id] = validNode;\n\n    // Return the current instance:\n    return this;\n  });\n\n  /**\n   * This method adds an edge to the graph. The edge must be an object, with a\n   * string under the key \"id\", and strings under the keys \"source\" and\n   * \"target\" that design existing nodes. Except for this, it is possible to\n   * add any other attribute, that will be preserved all along the\n   * manipulations.\n   *\n   * If the graph option \"clone\" has a truthy value, the edge will be cloned\n   * when added to the graph. Also, if the graph option \"immutable\" has a\n   * truthy value, its id, source and target will be defined as immutable.\n   *\n   * @param  {object} edge The edge to add.\n   * @return {object}      The graph instance.\n   */\n  graph.addMethod('addEdge', function(edge) {\n    // Check that the edge is an object and has an id:\n    if (Object(edge) !== edge || arguments.length !== 1)\n      throw 'addEdge: Wrong arguments.';\n\n    if (typeof edge.id !== 'string')\n      throw 'The edge must have a string id.';\n\n    if (typeof edge.source !== 'string' || !this.nodesIndex[edge.source])\n      throw 'The edge source must have an existing node id.';\n\n    if (typeof edge.target !== 'string' || !this.nodesIndex[edge.target])\n      throw 'The edge target must have an existing node id.';\n\n    if (this.edgesIndex[edge.id])\n      throw 'The edge \"' + edge.id + '\" already exists.';\n\n    var k,\n        validEdge = Object.create(null);\n\n    // Check the \"clone\" option:\n    if (this.settings('clone')) {\n      for (k in edge)\n        if (k !== 'id' && k !== 'source' && k !== 'target')\n          validEdge[k] = edge[k];\n    } else\n      validEdge = edge;\n\n    // Check the \"immutable\" option:\n    if (this.settings('immutable')) {\n      Object.defineProperty(validEdge, 'id', {\n        value: edge.id,\n        enumerable: true\n      });\n\n      Object.defineProperty(validEdge, 'source', {\n        value: edge.source,\n        enumerable: true\n      });\n\n      Object.defineProperty(validEdge, 'target', {\n        value: edge.target,\n        enumerable: true\n      });\n    } else {\n      validEdge.id = edge.id;\n      validEdge.source = edge.source;\n      validEdge.target = edge.target;\n    }\n\n    // Add the edge to indexes:\n    this.edgesArray.push(validEdge);\n    this.edgesIndex[validEdge.id] = validEdge;\n\n    if (!this.inNeighborsIndex[edge.target][edge.source])\n      this.inNeighborsIndex[edge.target][edge.source] = Object.create(null);\n    this.inNeighborsIndex[edge.target][edge.source][edge.id] = edge;\n\n    if (!this.outNeighborsIndex[edge.source][edge.target])\n      this.outNeighborsIndex[edge.source][edge.target] = Object.create(null);\n    this.outNeighborsIndex[edge.source][edge.target][edge.id] = edge;\n\n    if (!this.allNeighborsIndex[edge.source][edge.target])\n      this.allNeighborsIndex[edge.source][edge.target] = Object.create(null);\n    this.allNeighborsIndex[edge.source][edge.target][edge.id] = edge;\n\n    if (!this.allNeighborsIndex[edge.target][edge.source])\n      this.allNeighborsIndex[edge.target][edge.source] = Object.create(null);\n    this.allNeighborsIndex[edge.target][edge.source][edge.id] = edge;\n\n    // Keep counts up to date:\n    this.inNeighborsCount[edge.target]++;\n    this.outNeighborsCount[edge.source]++;\n    this.allNeighborsCount[edge.target]++;\n    this.allNeighborsCount[edge.source]++;\n\n    return this;\n  });\n\n  /**\n   * This method drops a node from the graph. It also removes each edge that is\n   * bound to it, through the dropEdge method. An error is thrown if the node\n   * does not exist.\n   *\n   * @param  {string} id The node id.\n   * @return {object}    The graph instance.\n   */\n  graph.addMethod('dropNode', function(id) {\n    // Check that the arguments are valid:\n    if (typeof id !== 'string' || arguments.length !== 1)\n      throw 'dropNode: Wrong arguments.';\n\n    if (!this.nodesIndex[id])\n      throw 'The node \"' + id + '\" does not exist.';\n\n    var i, k, l;\n\n    // Remove the node from indexes:\n    delete this.nodesIndex[id];\n    for (i = 0, l = this.nodesArray.length; i < l; i++)\n      if (this.nodesArray[i].id === id) {\n        this.nodesArray.splice(i, 1);\n        break;\n      }\n\n    // Remove related edges:\n    for (i = this.edgesArray.length - 1; i >= 0; i--)\n      if (this.edgesArray[i].source === id || this.edgesArray[i].target === id)\n        this.dropEdge(this.edgesArray[i].id);\n\n    // Remove related edge indexes:\n    delete this.inNeighborsIndex[id];\n    delete this.outNeighborsIndex[id];\n    delete this.allNeighborsIndex[id];\n\n    delete this.inNeighborsCount[id];\n    delete this.outNeighborsCount[id];\n    delete this.allNeighborsCount[id];\n\n    for (k in this.nodesIndex) {\n      delete this.inNeighborsIndex[k][id];\n      delete this.outNeighborsIndex[k][id];\n      delete this.allNeighborsIndex[k][id];\n    }\n\n    return this;\n  });\n\n  /**\n   * This method drops an edge from the graph. An error is thrown if the edge\n   * does not exist.\n   *\n   * @param  {string} id The edge id.\n   * @return {object}    The graph instance.\n   */\n  graph.addMethod('dropEdge', function(id) {\n    // Check that the arguments are valid:\n    if (typeof id !== 'string' || arguments.length !== 1)\n      throw 'dropEdge: Wrong arguments.';\n\n    if (!this.edgesIndex[id])\n      throw 'The edge \"' + id + '\" does not exist.';\n\n    var i, l, edge;\n\n    // Remove the edge from indexes:\n    edge = this.edgesIndex[id];\n    delete this.edgesIndex[id];\n    for (i = 0, l = this.edgesArray.length; i < l; i++)\n      if (this.edgesArray[i].id === id) {\n        this.edgesArray.splice(i, 1);\n        break;\n      }\n\n    delete this.inNeighborsIndex[edge.target][edge.source][edge.id];\n    if (!Object.keys(this.inNeighborsIndex[edge.target][edge.source]).length)\n      delete this.inNeighborsIndex[edge.target][edge.source];\n\n    delete this.outNeighborsIndex[edge.source][edge.target][edge.id];\n    if (!Object.keys(this.outNeighborsIndex[edge.source][edge.target]).length)\n      delete this.outNeighborsIndex[edge.source][edge.target];\n\n    delete this.allNeighborsIndex[edge.source][edge.target][edge.id];\n    if (!Object.keys(this.allNeighborsIndex[edge.source][edge.target]).length)\n      delete this.allNeighborsIndex[edge.source][edge.target];\n\n    delete this.allNeighborsIndex[edge.target][edge.source][edge.id];\n    if (!Object.keys(this.allNeighborsIndex[edge.target][edge.source]).length)\n      delete this.allNeighborsIndex[edge.target][edge.source];\n\n    this.inNeighborsCount[edge.target]--;\n    this.outNeighborsCount[edge.source]--;\n    this.allNeighborsCount[edge.source]--;\n    this.allNeighborsCount[edge.target]--;\n\n    return this;\n  });\n\n  /**\n   * This method destroys the current instance. It basically empties each index\n   * and methods attached to the graph.\n   */\n  graph.addMethod('kill', function() {\n    // Delete arrays:\n    this.nodesArray.length = 0;\n    this.edgesArray.length = 0;\n    delete this.nodesArray;\n    delete this.edgesArray;\n\n    // Delete indexes:\n    delete this.nodesIndex;\n    delete this.edgesIndex;\n    delete this.inNeighborsIndex;\n    delete this.outNeighborsIndex;\n    delete this.allNeighborsIndex;\n    delete this.inNeighborsCount;\n    delete this.outNeighborsCount;\n    delete this.allNeighborsCount;\n  });\n\n  /**\n   * This method empties the nodes and edges arrays, as well as the different\n   * indexes.\n   *\n   * @return {object} The graph instance.\n   */\n  graph.addMethod('clear', function() {\n    this.nodesArray.length = 0;\n    this.edgesArray.length = 0;\n\n    // Due to GC issues, I prefer not to create new object. These objects are\n    // only available from the methods and attached functions, but still, it is\n    // better to prevent ghost references to unrelevant data...\n    __emptyObject(this.nodesIndex);\n    __emptyObject(this.edgesIndex);\n    __emptyObject(this.nodesIndex);\n    __emptyObject(this.inNeighborsIndex);\n    __emptyObject(this.outNeighborsIndex);\n    __emptyObject(this.allNeighborsIndex);\n    __emptyObject(this.inNeighborsCount);\n    __emptyObject(this.outNeighborsCount);\n    __emptyObject(this.allNeighborsCount);\n\n    return this;\n  });\n\n  /**\n   * This method reads an object and adds the nodes and edges, through the\n   * proper methods \"addNode\" and \"addEdge\".\n   *\n   * Here is an example:\n   *\n   *  > var myGraph = new graph();\n   *  > myGraph.read({\n   *  >   nodes: [\n   *  >     { id: 'n0' },\n   *  >     { id: 'n1' }\n   *  >   ],\n   *  >   edges: [\n   *  >     {\n   *  >       id: 'e0',\n   *  >       source: 'n0',\n   *  >       target: 'n1'\n   *  >     }\n   *  >   ]\n   *  > });\n   *  >\n   *  > console.log(\n   *  >   myGraph.nodes().length,\n   *  >   myGraph.edges().length\n   *  > ); // outputs 2 1\n   *\n   * @param  {object} g The graph object.\n   * @return {object}   The graph instance.\n   */\n  graph.addMethod('read', function(g) {\n    var i,\n        a,\n        l;\n\n    a = g.nodes || [];\n    for (i = 0, l = a.length; i < l; i++)\n      this.addNode(a[i]);\n\n    a = g.edges || [];\n    for (i = 0, l = a.length; i < l; i++)\n      this.addEdge(a[i]);\n\n    return this;\n  });\n\n  /**\n   * This methods returns one or several nodes, depending on how it is called.\n   *\n   * To get the array of nodes, call \"nodes\" without argument. To get a\n   * specific node, call it with the id of the node. The get multiple node,\n   * call it with an array of ids, and it will return the array of nodes, in\n   * the same order.\n   *\n   * @param  {?(string|array)} v Eventually one id, an array of ids.\n   * @return {object|array}      The related node or array of nodes.\n   */\n  graph.addMethod('nodes', function(v) {\n    // Clone the array of nodes and return it:\n    if (!arguments.length)\n      return this.nodesArray.slice(0);\n\n    // Return the related node:\n    if (arguments.length === 1 && typeof v === 'string')\n      return this.nodesIndex[v];\n\n    // Return an array of the related node:\n    if (\n      arguments.length === 1 &&\n      Object.prototype.toString.call(v) === '[object Array]'\n    ) {\n      var i,\n          l,\n          a = [];\n\n      for (i = 0, l = v.length; i < l; i++)\n        if (typeof v[i] === 'string')\n          a.push(this.nodesIndex[v[i]]);\n        else\n          throw 'nodes: Wrong arguments.';\n\n      return a;\n    }\n\n    throw 'nodes: Wrong arguments.';\n  });\n\n  /**\n   * This methods returns the degree of one or several nodes, depending on how\n   * it is called. It is also possible to get incoming or outcoming degrees\n   * instead by specifying 'in' or 'out' as a second argument.\n   *\n   * @param  {string|array} v     One id, an array of ids.\n   * @param  {?string}      which Which degree is required. Values are 'in',\n   *                              'out', and by default the normal degree.\n   * @return {number|array}       The related degree or array of degrees.\n   */\n  graph.addMethod('degree', function(v, which) {\n    // Check which degree is required:\n    which = {\n      'in': this.inNeighborsCount,\n      'out': this.outNeighborsCount\n    }[which || ''] || this.allNeighborsCount;\n\n    // Return the related node:\n    if (typeof v === 'string')\n      return which[v];\n\n    // Return an array of the related node:\n    if (Object.prototype.toString.call(v) === '[object Array]') {\n      var i,\n          l,\n          a = [];\n\n      for (i = 0, l = v.length; i < l; i++)\n        if (typeof v[i] === 'string')\n          a.push(which[v[i]]);\n        else\n          throw 'degree: Wrong arguments.';\n\n      return a;\n    }\n\n    throw 'degree: Wrong arguments.';\n  });\n\n  /**\n   * This methods returns one or several edges, depending on how it is called.\n   *\n   * To get the array of edges, call \"edges\" without argument. To get a\n   * specific edge, call it with the id of the edge. The get multiple edge,\n   * call it with an array of ids, and it will return the array of edges, in\n   * the same order.\n   *\n   * @param  {?(string|array)} v Eventually one id, an array of ids.\n   * @return {object|array}      The related edge or array of edges.\n   */\n  graph.addMethod('edges', function(v) {\n    // Clone the array of edges and return it:\n    if (!arguments.length)\n      return this.edgesArray.slice(0);\n\n    // Return the related edge:\n    if (arguments.length === 1 && typeof v === 'string')\n      return this.edgesIndex[v];\n\n    // Return an array of the related edge:\n    if (\n      arguments.length === 1 &&\n      Object.prototype.toString.call(v) === '[object Array]'\n    ) {\n      var i,\n          l,\n          a = [];\n\n      for (i = 0, l = v.length; i < l; i++)\n        if (typeof v[i] === 'string')\n          a.push(this.edgesIndex[v[i]]);\n        else\n          throw 'edges: Wrong arguments.';\n\n      return a;\n    }\n\n    throw 'edges: Wrong arguments.';\n  });\n\n\n\n\n  /**\n   * EXPORT:\n   * *******\n   */\n  if (typeof sigma !== 'undefined') {\n    sigma.classes = sigma.classes || Object.create(null);\n    sigma.classes.graph = graph;\n  } else if (typeof exports !== 'undefined') {\n    if (typeof module !== 'undefined' && module.exports)\n      exports = module.exports = graph;\n    exports.graph = graph;\n  } else\n    this.graph = graph;\n}).call(this);\n",
+			"file": "public/javascripts/sigma_v1/src/classes/sigma.classes.graph.js",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 23672,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": ";(function(undefined) {\n  'use strict';\n\n  var __instances = {};\n\n  /**\n   * This is the sigma instances constructor. One instance of sigma represent\n   * one graph. It is possible to represent this grapĥ with several renderers\n   * at the same time. By default, the default renderer (WebGL + Canvas\n   * polyfill) will be used as the only renderer, with the container specified\n   * in the configuration.\n   *\n   * @param  {?*}    conf The configuration of the instance. There are a lot of\n   *                      different recognized forms to instanciate sigma, check\n   *                      example files, documentation in this file and unit\n   *                      tests to know more.\n   * @return {sigma}      The fresh new sigma instance.\n   *\n   * Instanciating sigma:\n   * ********************\n   * If no parameter is given to the constructor, the instance will be created\n   * without any renderer or camera. It will just instanciate the graph, and\n   * other modules will have to be instanciated through the public methods,\n   * like \"addRenderer\" etc:\n   *\n   *  > s0 = new sigma();\n   *  > s0.addRenderer({\n   *  >   type: 'canvas',\n   *  >   container: 'my-container-id'\n   *  > });\n   *\n   * In most of the cases, sigma will simply be used with the default renderer.\n   * Then, since the only required parameter is the DOM container, there are\n   * some simpler way to call the constructor. The four following calls do the\n   * exact same things:\n   *\n   *  > s1 = new sigma('my-container-id');\n   *  > s2 = new sigma(document.getElementById('my-container-id'));\n   *  > s3 = new sigma({\n   *  >   container: document.getElementById('my-container-id')\n   *  > });\n   *  > s4 = new sigma({\n   *  >   renderers: [{\n   *  >     container: document.getElementById('my-container-id')\n   *  >   }]\n   *  > });\n   *\n   * Recognized parameters:\n   * **********************\n   * Here is the exhaustive list of every accepted parameters, when calling the\n   * constructor with to top level configuration object (fourth case in the\n   * previous examples):\n   *\n   *   {?string} id        The id of the instance. It will be generated\n   *                       automatically if not specified.\n   *   {?array}  renderers An array containing objects describing renderers.\n   *   {?object} graph     An object containing an array of nodes and an array\n   *                       of edges, to avoid having to add them by hand later.\n   *   {?object} settings  An object containing instance specific settings that\n   *                       will override the default ones defined in the object\n   *                       sigma.settings.\n   */\n  var sigma = function(conf) {\n    // Local variables:\n    // ****************\n    var i,\n        l,\n        a,\n        c,\n        o,\n        id;\n\n    sigma.classes.dispatcher.extend(this);\n\n    // Private attributes:\n    // *******************\n    var _self = this,\n        _conf = conf || {};\n\n    // Little shortcut:\n    // ****************\n    // The configuration is supposed to have a list of the configuration\n    // objects for each renderer.\n    //  - If there are no configuration at all, then nothing is done.\n    //  - If there are no renderer list, the given configuration object will be\n    //    considered as describing the first and only renderer.\n    //  - If there are no renderer list nor \"container\" object, it will be\n    //    considered as the container itself (a DOM element).\n    //  - If the argument passed to sigma() is a string, it will be considered\n    //    as the ID of the DOM container.\n    if (\n      typeof _conf === 'string' ||\n      _conf instanceof HTMLElement\n    )\n      _conf = {\n        renderers: [_conf]\n      };\n    else if (Object.prototype.toString.call(_conf) === '[object Array]')\n      _conf = {\n        renderers: _conf\n      };\n\n    // Also check \"renderer\" and \"container\" keys:\n    o = _conf.renderers || _conf.renderer || _conf.container;\n    if (!_conf.renderers || _conf.renderers.length === 0)\n      if (\n        typeof o === 'string' ||\n        o instanceof HTMLElement ||\n        (typeof o === 'object' && 'container' in o)\n      )\n        _conf.renderers = [o];\n\n    // Recense the instance:\n    if (_conf.id) {\n      if (__instances[_conf.id])\n        throw 'sigma: Instance \"' + _conf.id + '\" already exists.';\n      Object.defineProperty(this, 'id', {\n        value: _conf.id\n      });\n    } else {\n      id = 0;\n      while (__instances[id])\n        id++;\n      Object.defineProperty(this, 'id', {\n        value: '' + id\n      });\n    }\n    __instances[this.id] = this;\n\n    // Initialize settings function:\n    this.settings = new sigma.classes.configurable(\n      sigma.settings,\n      _conf.settings || {}\n    );\n\n    // Initialize locked attributes:\n    Object.defineProperty(this, 'graph', {\n      value: new sigma.classes.graph(this.settings),\n      configurable: true\n    });\n    Object.defineProperty(this, 'middlewares', {\n      value: [],\n      configurable: true\n    });\n    Object.defineProperty(this, 'cameras', {\n      value: {},\n      configurable: true\n    });\n    Object.defineProperty(this, 'renderers', {\n      value: {},\n      configurable: true\n    });\n    Object.defineProperty(this, 'renderersPerCamera', {\n      value: {},\n      configurable: true\n    });\n    Object.defineProperty(this, 'cameraFrames', {\n      value: {},\n      configurable: true\n    });\n\n    // Add a custom handler, to redispatch events from renderers:\n    this._handler = (function(e) {\n      var k,\n          data = {};\n\n      for (k in e.data)\n        data[k] = e.data[k];\n\n      data.renderer = e.target;\n      this.dispatchEvent(e.type, data);\n    }).bind(this);\n\n    // Initialize renderers:\n    a = _conf.renderers || [];\n    for (i = 0, l = a.length; i < l; i++)\n      this.addRenderer(a[i]);\n\n    // Initialize middlewares:\n    a = _conf.middlewares || [];\n    for (i = 0, l = a.length; i < l; i++)\n      this.middlewares.push(\n        typeof a[i] === 'string' ?\n          sigma.middlewares[a[i]] :\n          a[i]\n      );\n\n    // Check if there is already a graph to fill in:\n    if (typeof _conf.graph === 'object' && _conf.graph) {\n      this.graph.read(_conf.graph);\n\n      // If a graph is given to the to the instance, the \"refresh\" method is\n      // directly called:\n      this.refresh();\n    }\n\n    // Deal with resize:\n    window.addEventListener('resize', function() {\n      if (_self.settings)\n        _self.refresh();\n    });\n  };\n\n\n\n\n  /**\n   * This methods will instanciate and reference a new camera. If no id is\n   * specified, then an automatic id will be generated.\n   *\n   * @param  {?string}              id Eventually the camera id.\n   * @return {sigma.classes.camera}    The fresh new camera instance.\n   */\n  sigma.prototype.addCamera = function(id) {\n    var self = this,\n        camera;\n\n    if (!arguments.length) {\n      id = 0;\n      while (this.cameras['' + id])\n        id++;\n      id = '' + id;\n    }\n\n    if (this.cameras[id])\n      throw 'sigma.addCamera: The camera \"' + id + '\" already exists.';\n\n    camera = new sigma.classes.camera(id, this.graph, this.settings);\n    this.cameras[id] = camera;\n\n    // Add a quadtree to the camera:\n    camera.quadtree = new sigma.classes.quad();\n\n    camera.bind('coordinatesUpdated', function(e) {\n      self.renderCamera(camera, camera.isAnimated);\n    });\n\n    this.renderersPerCamera[id] = [];\n\n    return camera;\n  };\n\n  /**\n   * This method kills a camera, and every renderer attached to it.\n   *\n   * @param  {string|camera} v The camera to kill or its ID.\n   * @return {sigma}           Returns the instance.\n   */\n  sigma.prototype.killCamera = function(v) {\n    v = typeof v === 'string' ? this.cameras[v] : v;\n\n    if (!v)\n      throw 'sigma.killCamera: The camera is undefined.';\n\n    var i,\n        l,\n        a = this.renderersPerCamera[v.id];\n\n    for (l = a.length, i = l - 1; i >= 0; i--)\n      this.killRenderer(a[i]);\n\n    delete this.renderersPerCamera[v.id];\n    delete this.cameraFrames[v.id];\n    delete this.cameras[v.id];\n\n    if (v.kill)\n      v.kill();\n\n    return this;\n  };\n\n  /**\n   * This methods will instanciate and reference a new renderer. The \"type\"\n   * argument can be the constructor or its name in the \"sigma.renderers\"\n   * package. If no type is specified, then \"sigma.renderers.def\" will be used.\n   * If no id is specified, then an automatic id will be generated.\n   *\n   * @param  {?object}  options Eventually some options to give to the renderer\n   *                            constructor.\n   * @return {renderer}         The fresh new renderer instance.\n   *\n   * Recognized parameters:\n   * **********************\n   * Here is the exhaustive list of every accepted parameters in the \"options\"\n   * object:\n   *\n   *   {?string}            id     Eventually the renderer id.\n   *   {?(function|string)} type   Eventually the renderer constructor or its\n   *                               name in the \"sigma.renderers\" package.\n   *   {?(camera|string)}   camera Eventually the renderer camera or its\n   *                               id.\n   */\n  sigma.prototype.addRenderer = function(options) {\n    var id,\n        fn,\n        camera,\n        renderer,\n        o = options || {};\n\n    // Polymorphism:\n    if (typeof o === 'string')\n      o = {\n        container: document.getElementById(o)\n      };\n    else if (o instanceof HTMLElement)\n      o = {\n        container: o\n      };\n\n    // Reference the new renderer:\n    if (!('id' in o)) {\n      id = 0;\n      while (this.renderers['' + id])\n        id++;\n      id = '' + id;\n    } else\n      id = o.id;\n\n    if (this.renderers[id])\n      throw 'sigma.addRenderer: The renderer \"' + id + '\" already exists.';\n\n    // Find the good constructor:\n    fn = typeof o.type === 'function' ? o.type : sigma.renderers[o.type];\n    fn = fn || sigma.renderers.def;\n\n    // Find the good camera:\n    camera = 'camera' in o ?\n      (\n        o.camera instanceof sigma.classes.camera ?\n          o.camera :\n          this.cameras[o.camera] || this.addCamera(o.camera)\n      ) :\n      this.addCamera();\n\n    if (this.cameras[camera.id] !== camera)\n      throw 'sigma.addRenderer: The camera is not properly referenced.';\n\n    // Instanciate:\n    renderer = new fn(this.graph, camera, this.settings, o);\n    this.renderers[id] = renderer;\n    Object.defineProperty(renderer, 'id', {\n      value: id\n    });\n\n    // Bind events:\n    if (renderer.bind)\n      renderer.bind(\n        [\n          'click',\n          'clickNode',\n          'clickNodes',\n          'overNode',\n          'overNodes',\n          'outNode',\n          'outNodes',\n          'downNode',\n          'downNodes',\n          'upNode',\n          'upNodes'\n        ],\n        this._handler\n      );\n\n    // Reference the renderer by its camera:\n    this.renderersPerCamera[camera.id].push(renderer);\n\n    return renderer;\n  };\n\n  /**\n   * This method kills a renderer.\n   *\n   * @param  {string|renderer} v The renderer to kill or its ID.\n   * @return {sigma}             Returns the instance.\n   */\n  sigma.prototype.killRenderer = function(v) {\n    v = typeof v === 'string' ? this.renderers[v] : v;\n\n    if (!v)\n      throw 'sigma.killRenderer: The renderer is undefined.';\n\n    var a = this.renderersPerCamera[v.camera.id],\n        i = a.indexOf(v);\n\n    if (i >= 0)\n      a.splice(i, 1);\n\n    if (v.kill)\n      v.kill();\n\n    delete this.renderers[v.id];\n\n    return this;\n  };\n\n\n\n\n  /**\n   * This method calls the \"render\" method of each renderer, with the same\n   * arguments than the \"render\" method, but will also check if the renderer\n   * has a \"process\" method, and call it if it exists.\n   *\n   * It is useful for quadtrees or WebGL processing, for instance.\n   *\n   * @return {sigma} Returns the instance itself.\n   */\n  sigma.prototype.refresh = function() {\n    var i,\n        l,\n        k,\n        a,\n        c,\n        bounds,\n        prefix = 0;\n\n    // Call each middleware:\n    a = this.middlewares || [];\n    for (i = 0, l = a.length; i < l; i++)\n      a[i].call(\n        this,\n        (i === 0) ? '' : 'tmp' + prefix + ':',\n        (i === l - 1) ? 'ready:' : ('tmp' + (++prefix) + ':')\n      );\n\n    // Then, for each camera, call the \"rescale\" middleware, unless the\n    // settings specify not to:\n    for (k in this.cameras) {\n      c = this.cameras[k];\n      if (\n        c.settings('autoRescale') &&\n        this.renderersPerCamera[c.id] &&\n        this.renderersPerCamera[c.id].length\n      )\n        sigma.middlewares.rescale.call(\n          this,\n          a.length ? 'ready:' : '',\n          c.readPrefix,\n          {\n            width: this.renderersPerCamera[c.id][0].width,\n            height: this.renderersPerCamera[c.id][0].height\n          }\n        );\n      else\n        sigma.middlewares.copy.call(\n          this,\n          a.length ? 'ready:' : '',\n          c.readPrefix\n        );\n\n      // Find graph boundaries:\n      bounds = sigma.utils.getBoundaries(\n        this.graph,\n        c.readPrefix\n      );\n\n      // Refresh quadtree:\n      c.quadtree.index(this.graph.nodes(), {\n        prefix: c.readPrefix,\n        bounds: {\n          x: bounds.minX,\n          y: bounds.minY,\n          width: bounds.maxX - bounds.minX,\n          height: bounds.maxY - bounds.minY\n        }\n      });\n    }\n\n    // Call each renderer:\n    a = Object.keys(this.renderers);\n    for (i = 0, l = a.length; i < l; i++)\n      if (this.renderers[a[i]].process) {\n        if (this.settings('skipErrors'))\n          try {\n            this.renderers[a[i]].process();\n          } catch (e) {\n            console.log(\n              'Warning: The renderer \"' + a[i] + '\" crashed on \".process()\"'\n            );\n          }\n        else\n          this.renderers[a[i]].process();\n      }\n\n    this.render();\n\n    return this;\n  };\n\n  /**\n   * This method calls the \"render\" method of each renderer.\n   *\n   * @return {sigma} Returns the instance itself.\n   */\n  sigma.prototype.render = function() {\n    var i,\n        l,\n        a,\n        prefix = 0;\n\n    // Call each renderer:\n    a = Object.keys(this.renderers);\n    for (i = 0, l = a.length; i < l; i++)\n      if (this.settings('skipErrors'))\n        try {\n          this.renderers[a[i]].render();\n        } catch (e) {\n          console.log(\n            'Warning: The renderer \"' + a[i] + '\" crashed on \".render()\"'\n          );\n        }\n      else\n        this.renderers[a[i]].render();\n\n    return this;\n  };\n\n  /**\n   * This method calls the \"render\" method of each renderer that is bound to\n   * the specified camera. To improve the performances, if this method is\n   * called too often, the number of effective renderings is limitated to one\n   * per frame, unless you are using the \"force\" flag.\n   *\n   * @param  {sigma.classes.camera} camera The camera to render.\n   * @param  {?boolean}             force  If true, will render the camera\n   *                                       directly.\n   * @return {sigma}                       Returns the instance itself.\n   */\n  sigma.prototype.renderCamera = function(camera, force) {\n    var i,\n        l,\n        a,\n        self = this;\n\n    if (force) {\n      a = this.renderersPerCamera[camera.id];\n      for (i = 0, l = a.length; i < l; i++)\n        if (this.settings('skipErrors'))\n          try {\n            a[i].render();\n          } catch (e) {\n            console.log(\n              'Warning: The renderer \"' + a[i].id + '\" crashed on \".render()\"'\n            );\n          }\n        else\n          a[i].render();\n    } else {\n      if (!this.cameraFrames[camera.id]) {\n        a = this.renderersPerCamera[camera.id];\n        for (i = 0, l = a.length; i < l; i++)\n          if (this.settings('skipErrors'))\n            try {\n              a[i].render();\n            } catch (e) {\n              console.log(\n                'Warning: The renderer \"' + a[i].id + '\" crashed on \".render()\"'\n              );\n            }\n          else\n            a[i].render();\n\n        this.cameraFrames[camera.id] = requestAnimationFrame(function() {\n          delete self.cameraFrames[camera.id];\n        });\n      }\n    }\n\n    return this;\n  };\n\n  /**\n   * This method calls the \"kill\" method of each module and destroys any\n   * reference from the instance.\n   */\n  sigma.prototype.kill = function() {\n    var k;\n\n    // Kill graph:\n    this.graph.kill();\n\n    // Kill middlewares:\n    delete this.middlewares;\n\n    // Kill each renderer:\n    for (k in this.renderers)\n      this.killRenderer(this.renderers[k]);\n\n    // Kill each camera:\n    for (k in this.cameras)\n      this.killCamera(this.camera[k]);\n\n    delete this.renderers;\n    delete this.cameras;\n\n    // Kill everything else:\n    for (k in this)\n      if (this.hasOwnProperty(k))\n        delete this[k];\n\n    delete __instances[this.id];\n  };\n\n\n\n\n  /**\n   * Returns a clone of the instances object or a specific running instance.\n   *\n   * @param  {?string} id Eventually an instance ID.\n   * @return {object}     The related instance or a clone of the instances\n   *                      object.\n   */\n  sigma.instances = function(id) {\n    return arguments.length ?\n      __instances[id] :\n      sigma.utils.extends({}, __instances);\n  };\n\n\n\n\n  /**\n   * EXPORT:\n   * *******\n   */\n  if (typeof this.sigma !== 'undefined')\n    throw 'An object called sigma is already in the global scope.';\n  else if (typeof exports !== 'undefined') {\n    if (typeof module !== 'undefined' && module.exports)\n      exports = module.exports = sigma;\n    exports.sigma = sigma;\n  } else\n    this.sigma = sigma;\n\n}).call(this);\n",
+			"file": "public/javascripts/sigma_v1/src/sigma.core.js",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 17539,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "README.md",
+			"settings":
+			{
+				"buffer_size": 2321,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/default_layout.jade",
+			"settings":
+			{
+				"buffer_size": 584,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "public/javascripts/sigma_js/sigma.js/build/sigma.concat.js",
+			"settings":
+			{
+				"buffer_size": 94847,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"set syntax ja",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"set syntax css",
+				"Set Syntax: CSS"
+			],
+			[
+				"set",
+				"Set Syntax: Python"
+			],
+			[
+				"set sy",
+				"Set Syntax: Python"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"css",
+				"Set Syntax: CSS"
+			],
+			[
+				"",
+				"Set Syntax: JavaScript (Rails)"
+			],
+			[
+				"packa",
+				"Preferences: Browse Packages"
+			],
+			[
+				"Package Control: dis",
+				"Package Control: Disable Package"
+			]
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib2,os; pf='Package Control.sublime-package'; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler( ))); open( os.path.join( ipp, pf), 'wb' ).write( urllib2.urlopen( 'http://sublime.wbond.net/' +pf.replace( ' ','%20' )).read()); print( 'Please restart Sublime Text to finish installation')",
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())",
+			"\"theme\": \"Soda Light.sublime-theme\",",
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/user/Documents/cs/COMP2013/Seeder/seeder-code/public/javascripts/sigma_v1/build/sigma.min.js",
+		"/Users/user/Documents/cs/COMP2013/Seeder/seeder-code/public/javascripts/explorehandler.js",
+		"/Users/user/Documents/cs/COMP2013/Seeder/seeder-code/public/javascripts/buildtabs.js",
+		"/Users/user/Documents/cs/COMP2013/Seeder/seeder-code/routes/index.js",
+		"/Users/user/Documents/cs/COMP2013/Seeder/seeder-code/routes/explore.js",
+		"/Users/user/Documents/cs/COMP2013/Seeder/seeder-code/public/javascripts/sigma_js/sigma.js/src/core/plotter.js",
+		"/Users/user/Documents/cs/COMP2013/Seeder/seeder-code/public/javascripts/sigma_js/sigma.js/src/core/graph.js",
+		"/Users/user/Documents/cs/COMP2013/Seeder/seeder-code/public/javascripts/sigma_js/sigma.js/src/core/mousecaptor.js",
+		"/Users/user/Documents/cs/COMP2013/Seeder/seeder-code/public/stylesheets/style.css",
+		"/Users/user/Documents/cs/COMP2013/Seeder/seeder-code/views/explore.jade",
+		"/Users/user/Documents/cs/COMP2013/Seeder/seeder-code/public/javascripts/graphhandler.js",
+		"/Users/user/Documents/cs/COMP2013/Seeder/seeder-code/package.json",
+		"/Users/user/Documents/cs/COMP2013/Seeder/seeder-code/views/layout.jade",
+		"/Users/user/Documents/cs/COMP2013/Seeder/seeder-code/views/index.jade",
+		"/Users/user/Documents/cs/COMP2013/Seeder/seeder-code/views/form.jade",
+		"/Users/user/Documents/cs/COMP2013/Seeder/seeder-code/app.js",
+		"/Users/user/Documents/cs/COMP2013/coursework3/drawTurtle.js",
+		"/Users/user/Documents/cs/COMP2013/coursework3-site/style.css",
+		"/Users/user/Documents/cs/COMP2013/coursework3-site/index.html",
+		"/Applications/MAMP/htdocs/personal/login/VIEWS/index.ejs",
+		"/Applications/MAMP/htdocs/personal/login/VIEWS/head.ejs",
+		"/Applications/MAMP/htdocs/personal/login/VIEWS/so.json",
+		"/Applications/MAMP/htdocs/personal/login/VIEWS/graphscript.ejs",
+		"/Applications/MAMP/htdocs/personal/login/server.js",
+		"/Applications/MAMP/htdocs/personal/login/graphing.js",
+		"/Applications/MAMP/htdocs/personal/login/sigma.min.js",
+		"/Users/user/Desktop/stack",
+		"/Users/user/Documents/important stuff/idea for website",
+		"/Users/user/Desktop/winter/stl.css",
+		"/Users/user/Desktop/winter/index.html",
+		"/Users/user/Desktop/Site/style.css",
+		"/Users/user/Desktop/Site/index.php",
+		"/Users/user/Desktop/Host: sql4.freemysqlhosting.net",
+		"/Users/user/Desktop/idea for website",
+		"/Users/user/Desktop/winter/style.css",
+		"/Users/user/Desktop/portfolio/stl.css",
+		"/Users/user/Desktop/portfolio/index.html",
+		"/Applications/MAMP/htdocs/personal/shorthought/ststyle.css",
+		"/Applications/MAMP/htdocs/personal/shorthought/index.php",
+		"/scripts/newgitrepo.sh",
+		"/Applications/MAMP/htdocs/registration/style.css",
+		"/Applications/MAMP/htdocs/index.html",
+		"/Applications/MAMP/htdocs/index.php",
+		"/Users/user/Desktop/new git repo.sh",
+		"/Users/user/Desktop/go to web root.sh",
+		"/Users/user/Desktop/MAMP.txt",
+		"/Users/user/Desktop/commit.sh",
+		"/Applications/MAMP/htdocs/registration/index.php",
+		"/Library/WebServer/Documents/index.php",
+		"/Users/user/Desktop/scholar.py",
+		"/Users/user/Desktop/Site/registration/index.php",
+		"/Users/user/Cloud Drive/WELCOME TO THE ROBOTS DOCUMENT PLACE",
+		"/Users/user/Downloads/sample/index.html",
+		"/Users/user/Desktop/test.js",
+		"/Users/user/Downloads/sample/slotted_disk.stl",
+		"/Users/user/Desktop/portfolio/bootstrap-3.0.0/examples/grid/grid.css",
+		"/Users/user/Documents/lol.html",
+		"/Users/user/Documents/cs/COMP2009/2009 to do list 1",
+		"/Users/user/Desktop/portfolio/bootstrap/css/bootstrap.css",
+		"/Users/user/Desktop/portfolio/bootstrap/css/bootstrap.min.css",
+		"/Users/user/Documents/cs/COMP2008/Databases CW1/answers/queries. txt",
+		"/Users/user/Documents/cs/Databases CW1/answers/queries. txt",
+		"/Users/user/Documents/cs/2009 to do list 1"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"graph",
+			"body",
+			"addno",
+			"add",
+			"s",
+			"refresh",
+			"draw",
+			"bind",
+			"overnode",
+			"overnodes",
+			"draw",
+			"mouseroot",
+			"80*ratio",
+			"wheel",
+			"ZoomTo",
+			"wheel",
+			"btn_search",
+			"/>',",
+			"uppercase",
+			"detail_image",
+			"img",
+			"#input_searcharticles",
+			"move",
+			"drag",
+			"nodesCtx",
+			"draw",
+			"addnode",
+			"move",
+			"moveto",
+			"zoom",
+			"zoomto",
+			"console.log",
+			");\n",
+			"is_add",
+			"overn",
+			"fish",
+			"background",
+			"consol",
+			"left",
+			"remove",
+			"overnode",
+			"}).",
+			"cons",
+			"over",
+			"link",
+			"addNode",
+			">'",
+			"',",
+			"innerhtm",
+			"downhandler",
+			"drag",
+			"dom",
+			"mousemove",
+			"moousemove",
+			"iternodes",
+			"getid",
+			"getnodes",
+			"graph",
+			"graph.",
+			"nodes",
+			"getnodes",
+			"shape",
+			"attr",
+			"addnode",
+			"node",
+			"ratio",
+			"goto",
+			"drawnode",
+			"move",
+			"movehan",
+			"move",
+			"drag",
+			"startinterpolate",
+			"rati",
+			"wheel",
+			"getnode",
+			"console",
+			"margin",
+			"startin",
+			"whee",
+			"scroll",
+			"console.log",
+			"max_x",
+			"graph",
+			"max_x",
+			"max",
+			"rescale",
+			"min_x",
+			"resca",
+			"rea",
+			"rescale",
+			"translate",
+			"resca",
+			"displayx",
+			"drawnode",
+			"draw",
+			"node['x']",
+			"displayx",
+			"mouse",
+			"div",
+			"12px",
+			"addlight"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"article",
+			"section"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "public/stylesheets/style.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9352,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8219,
+								8219
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 4133.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "public/javascripts/article_searcher.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3643,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3405,
+								3405
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 821.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "public/javascripts/graphhandler.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 15898,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4118,
+								4118
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 12.0,
+						"translation.y": 422.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "public/javascripts/js-mindmap.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 17611,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6736,
+								6738
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3045.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "public/stylesheets/js-mindmap.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1581,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1580,
+								1580
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 615.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3154,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1264,
+								1264
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 6,
+					"file": "views/form.jade",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 29,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "views/index.jade",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1681,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								637,
+								637
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "views/layout.jade",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 937,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								788,
+								788
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "public/javascripts/sigma_v1/examples/add-node-on-click.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13436,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8151,
+								8151
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4061.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "public/javascripts/sigma_v1/src/renderers/sigma.renderers.canvas.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10591,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10087,
+								10087
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 5.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "public/javascripts/sigma_v1/src/classes/sigma.classes.graph.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 23672,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1989,
+								1992
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 735.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "public/javascripts/sigma_v1/src/sigma.core.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 17539,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11793,
+								11800
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 7760.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "README.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2321,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								422,
+								422
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "views/default_layout.jade",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 584,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								473,
+								473
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "public/javascripts/sigma_js/sigma.js/build/sigma.concat.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 94847,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								39908,
+								39908
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 22743.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
