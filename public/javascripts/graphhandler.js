@@ -5,7 +5,7 @@ $(document).ready(function () {
 
     //create a socket to connect to the server
     //this net
-    var socket = io.connect('http://localhost:3000');
+    var socket = io.connect('http://54.201.24.162:3000');
 
     //sigma.js preferences/options
     var sigRoot = document.getElementById('graph_canvas');

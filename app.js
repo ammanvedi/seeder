@@ -13,7 +13,7 @@ var MongoClient = require('mongodb').MongoClient;
 var io = require('socket.io').listen(http);
 
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 8080);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(express.favicon());
@@ -24,7 +24,7 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
-http.listen(3000);
+http.listen(8080);
 console.log('listening on port ' + app.get('port'))
 
 MongoClient.connect("mongodb://ammanvedi:poopoo12@ds057528.mongolab.com:57528/seeder-dev", function(err, db) {
