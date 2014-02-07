@@ -2,10 +2,12 @@ $(document).ready(function () {
 
 
   var test_nodes = 0;
+  var DEPLOYIP = 'http://54.201.24.162'; //localhost
+
 
     //create a socket to connect to the server
     //this net
-    var socket = io.connect('http://54.201.24.162:3000');
+    var socket = io.connect(DEPLOYIP + ':8080');
 
     //sigma.js preferences/options
     var sigRoot = document.getElementById('graph_canvas');

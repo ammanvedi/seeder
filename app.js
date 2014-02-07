@@ -2,6 +2,11 @@
 /**
  * Module dependencies.
  */
+
+
+var DEPLOYPORT = 8080; //3000
+
+
 var express = require('express');
 var app = express();
 var routes = require('./routes');
@@ -13,7 +18,7 @@ var MongoClient = require('mongodb').MongoClient;
 var io = require('socket.io').listen(http);
 
 // all environments
-app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PORT || DEPLOYPORT);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(express.favicon());
@@ -24,7 +29,7 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
-http.listen(8080);
+http.listen(DEPLOYPORT);
 console.log('listening on port ' + app.get('port'))
 
 MongoClient.connect("mongodb://ammanvedi:poopoo12@ds057528.mongolab.com:57528/seeder-dev", function(err, db) {
