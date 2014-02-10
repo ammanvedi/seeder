@@ -56,12 +56,25 @@ var Renderer = function(canvas){
 
           // draw a rectangle centered at pt
           var w = 10
-          ctx.fillStyle = (node.data.alone) ? "orange" : "black"
-          ctx.fillRect(pt.x-w/2, pt.y-w/2, w,w)
-         // gfx.rect(pt.x-w/2, pt.y-8, w, 20, 4, {fill:node.data.color, alpha:node.data.alpha});
-         //gfx.text(node.name, pt.x, pt.y+9, {color:"black", align:"center", font:"Arial", size:12});
-          //gfx.text(node.name, pt.x, pt.y+9, {color:"black", align:"center", font:"Arial", size:12});
-          ctx.fillText(node.name, pt.x+15, pt.y+15);
+          //ctx.fillStyle =  "orange";
+          //ctx.fillRect(pt.x-w/2, pt.y-w/2, w,w)
+         
+        //
+
+              var radius = 10;
+
+      ctx.beginPath();
+      ctx.arc(pt.x, pt.y, radius, 0, 2 * Math.PI, false);
+      ctx.fillStyle = 'green';
+      ctx.fill();
+      ctx.lineWidth = 3;
+      ctx.strokeStyle = '#003300';
+      ctx.stroke();
+
+        ctx.font = '12pt Arial';
+        ctx.fillStyle = 'black';
+        ctx.fillText(node.name, pt.x-4, pt.y+3);
+
         })              
       },
       
@@ -123,8 +136,10 @@ var Renderer = function(canvas){
 
 $(document).ready(function () {
 
+    var adding = false;
 
-    var sys = arbor.ParticleSystem(500, 300, 0.5) // create the system with sensible repulsion/stiffness/friction
+
+    var sys = arbor.ParticleSystem(1000, 2000, 1.0) // create the system with sensible repulsion/stiffness/friction
     sys.parameters({gravity:true}) // use center-gravity to make the graph settle nicely (ymmv)
     sys.renderer = Renderer("#graph_canvas") // our newly created renderer will have its .init() method called shortly by sys...
 
@@ -136,13 +151,39 @@ $(document).ready(function () {
 
     var ct = 0;
 
-    $('body').click(function (a) {
+    $('#graph_canvas').click(function (a) {
 
       console.log('heyy');
       var nearme = sys.nearest({x:a.pageX, y:a.pageY});
       console.log(nearme);
       sys.addEdge(nearme.node.name, ct+'');
       ct++;
+    });
+
+    $('body').mousedown(function (e){
+        console.log(e);
+        if(e.srcElement.className == 'result_adder')
+        {
+            adding = true;
+            console.log('adder clicked');
+        }
+    });
+    var menuwidth = $('#menu').width();
+    var navheight = $('#nav').height();
+
+
+    $('body').mouseup(function (e){
+        if(adding){
+            adding = false;
+            console.log('event');
+            console.log(e);
+                  var nearme_ = sys.nearest({x:e.pageX - menuwidth, y:e.pageY-navheight});
+                  console.log('nearest');
+        console.log(nearme_);
+        sys.addEdge(nearme_.node.name, ct+'');
+        ct++;
+
+        }
     });
 
 

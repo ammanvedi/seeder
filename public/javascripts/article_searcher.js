@@ -53,9 +53,9 @@ $(document).ready(function () {
                 IMAGE: itm.pagemap.cse_image[0].src,
                 TYPE: 'article',
                 DOMAIN: itm.displayLink,
-                html: '<img src="' + itm.pagemap.cse_image[0].src + '"/>' + '<h1>' + itm.title + '</h1>' + '<p>' + itm.snippet + '</p>'
+                html: '<div class="result_title"><img src="' + itm.pagemap.cse_image[0].src + '"/>' + '<h1>' + itm.title + '</h1><h2>' + itm.displayLink +'</h2></div><div class="result_text">' + '<p>' + itm.snippet + '</p></div>'
 
-                + '<a target="_blank" href=\'http://' + itm.formattedUrl + '\'>view source</a>'
+                + '<div class="result_link"><a target="_blank" href=\'http://' + itm.formattedUrl + '\'>view source</a></div><div class="result_adder"></div>'
 
 
             }).appendTo('#search_results_holder');
