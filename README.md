@@ -6,6 +6,8 @@ Seeder is an under-development web application that will provide a platform for 
 
 ![Seeder proof of concept screenshot](http://i.imgur.com/1q6lNYo.png)
 
+there is a video [here](http://youtu.be/879IhcXFcpU)
+
 
 The following feautures are currently implemented
 

@@ -1,6 +1,6 @@
 
  /*
- 
+
  /$$$$$$$                            /$$                                       
 | $$__  $$                          | $$                                       
 | $$  \ $$  /$$$$$$  /$$$$$$$   /$$$$$$$  /$$$$$$   /$$$$$$  /$$$$$$   /$$$$$$ 
@@ -57,7 +57,7 @@ var Renderer = function (canvas) {
 
                 // draw a line from pt1 to pt2
                 ctx.strokeStyle = "rgba(0,0,0, .333)";
-                ctx.lineWidth = 1;
+                ctx.lineWidth = 3;
                 ctx.beginPath();
                 ctx.moveTo(pt1.x, pt1.y);
                 ctx.lineTo(pt2.x, pt2.y);
@@ -92,6 +92,10 @@ var Renderer = function (canvas) {
                         ctx.save();
                         ctx.beginPath();
                         ctx.arc(pt.x, pt.y, radius, 0, 2 * Math.PI, false);
+                        ctx.lineWidth = 5;
+                        ctx.strokeStyle = '#003300';
+                        ctx.stroke();
+
 
                         //clip the arc and draw the image, restore canvas state after
                         ctx.clip();
@@ -241,7 +245,8 @@ $(document).ready(function () {
         gravity: false
     });
     sys.renderer = Renderer("#graph_canvas"); 
-    sys.addEdge('a', 'b');
+    
+    sys.addEdge('a','e');
 
 
     var ct = 0;
@@ -349,6 +354,18 @@ $(document).ready(function () {
             adding = false;
             console.log('event');
             console.log(e);
+
+            var len = 0;
+
+            sys.eachNode(function (node, pt){
+              len++;
+            });
+
+
+
+           
+              console.log('loldsdlsld 33');
+
             var nearme_ = sys.nearest({
                 x: e.pageX - menuwidth,
                 y: e.pageY - navheight
@@ -356,7 +373,13 @@ $(document).ready(function () {
 
             sys.addNode(ct + '', data_to_add);
             sys.addEdge(nearme_.node.name, ct + '');
+            
+
+
+ 
             ct++;
+
+
 
         }
     });
@@ -425,9 +448,6 @@ $(document).ready(function () {
 
     }
 
-
-
-
     $('#btn_savegraph').click(function () {
 
     });
@@ -435,8 +455,6 @@ $(document).ready(function () {
     $('#btn_addnode').click(function () {
 
     });
-
-
 
 
 });
