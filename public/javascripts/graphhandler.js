@@ -61,7 +61,25 @@ var Renderer = function(canvas){
          
         //
 
-              var radius = 10;
+        if(node.data.length > 0){
+          //draw a data rich node
+                        var radius = 10;
+
+      ctx.beginPath();
+      ctx.arc(pt.x, pt.y, radius, 0, 2 * Math.PI, false);
+      ctx.fillStyle = 'green';
+      ctx.fill();
+      ctx.lineWidth = 3;
+      ctx.strokeStyle = '#003300';
+      ctx.stroke();
+
+        ctx.font = '12pt Arial';
+        ctx.fillStyle = 'black';
+        ctx.fillText(node.data[2].val, pt.x-4, pt.y+3);
+
+        }else{
+          //draw a normal node 
+                        var radius = 10;
 
       ctx.beginPath();
       ctx.arc(pt.x, pt.y, radius, 0, 2 * Math.PI, false);
@@ -74,6 +92,9 @@ var Renderer = function(canvas){
         ctx.font = '12pt Arial';
         ctx.fillStyle = 'black';
         ctx.fillText(node.name, pt.x-4, pt.y+3);
+        }
+
+
 
         })              
       },
@@ -137,39 +158,97 @@ var Renderer = function(canvas){
 $(document).ready(function () {
 
     var adding = false;
+        var menuwidth = $('#menu').width();
+    var navheight = $('#nav').height();
 
 
-    var sys = arbor.ParticleSystem(1000, 2000, 1.0) // create the system with sensible repulsion/stiffness/friction
+    var sys = arbor.ParticleSystem(100, 1000, 0.3) // create the system with sensible repulsion/stiffness/friction
     sys.parameters({gravity:true}) // use center-gravity to make the graph settle nicely (ymmv)
     sys.renderer = Renderer("#graph_canvas") // our newly created renderer will have its .init() method called shortly by sys...
 
     // add some nodes to the graph and watch it go...
     sys.addEdge('a','b');
-    sys.addEdge('a','c');
-    sys.addEdge('a','d');
-    sys.addEdge('a','e');
+
 
     var ct = 0;
+    var data_to_add;
 
     $('#graph_canvas').click(function (a) {
 
-      console.log('heyy');
+/*      console.log('heyy');
       var nearme = sys.nearest({x:a.pageX, y:a.pageY});
       console.log(nearme);
       sys.addEdge(nearme.node.name, ct+'');
-      ct++;
+      ct++;*/
     });
 
-    $('body').mousedown(function (e){
-        console.log(e);
-        if(e.srcElement.className == 'result_adder')
-        {
+    $('body').mousedown(function (evt){
+        console.log(evt);
+
+
+
+         if ((evt.target.className == 'search_result') || (evt.target.parentElement.className == 'search_result')) {
+
             adding = true;
-            console.log('adder clicked');
+            console.log('article clicked');
+            console.log(evt);
+
+
+            //build attributes to be passed to the node on creation
+
+            if((evt.target.className == 'search_result')){
+
+
+              attribs_article = [{
+                name: 'URL',
+                val: evt.srcElement.attributes.URL.nodeValue
+            }, {
+                name: 'DESCRIPTION',
+                val: evt.srcElement.attributes.DESCRIPTION.nodeValue
+            }, {
+                name: 'TITLE',
+                val: evt.srcElement.attributes.TITLE.nodeValue
+            }, {
+                name: 'IMAGE',
+                val: evt.srcElement.attributes.IMAGE.nodeValue
+            }, {
+                name: 'TYPE',
+                val: evt.srcElement.attributes.TYPE.nodeValue
+            }, {
+                name: 'DOMAIN',
+                val: evt.srcElement.attributes.DOMAIN.nodeValue
+            }];
+
+            }else{
+
+              attribs_article = [{
+                name: 'URL',
+                val: evt.srcElement.parentElement.attributes.URL.nodeValue
+            }, {
+                name: 'DESCRIPTION',
+                val: evt.srcElement.parentElement.attributes.DESCRIPTION.nodeValue
+            }, {
+                name: 'TITLE',
+                val: evt.srcElement.parentElement.attributes.TITLE.nodeValue
+            }, {
+                name: 'IMAGE',
+                val: evt.srcElement.parentElement.attributes.IMAGE.nodeValue
+            }, {
+                name: 'TYPE',
+                val: evt.srcElement.parentElement.attributes.TYPE.nodeValue
+            }, {
+                name: 'DOMAIN',
+                val: evt.srcElement.parentElement.attributes.DOMAIN.nodeValue
+            }];
+
+            }
+
+            console.log(attribs_article);
+            data_to_add = attribs_article;
+
         }
     });
-    var menuwidth = $('#menu').width();
-    var navheight = $('#nav').height();
+
 
 
     $('body').mouseup(function (e){
@@ -177,9 +256,10 @@ $(document).ready(function () {
             adding = false;
             console.log('event');
             console.log(e);
-                  var nearme_ = sys.nearest({x:e.pageX - menuwidth, y:e.pageY-navheight});
-                  console.log('nearest');
-        console.log(nearme_);
+            var nearme_ = sys.nearest({x:e.pageX - menuwidth, y:e.pageY-navheight});
+            console.log('nearest');
+            sys.addNode(ct+'', data_to_add);
+            console.log(sys.getNode(ct+''));
         sys.addEdge(nearme_.node.name, ct+'');
         ct++;
 
