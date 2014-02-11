@@ -63,7 +63,45 @@ var Renderer = function(canvas){
 
         if(node.data.length > 0){
           //draw a data rich node
-                        var radius = 10;
+
+          if(node.data['imagedata'] != undefined){
+                                    var imagesize = 70;
+                                    var radius = imagesize/2;
+
+     ctx.beginPath();
+    //if (mouse.x > 20) alert(mouse.x);
+/*    ctx.arc(pt.x, pt.y, radius, 0, 6.28, false); //draw the circle
+    ctx.clip(); //call the clip method so the next render is clipped in last path
+    ctx.stroke();
+    ctx.closePath();*/
+
+    
+    var x = new Image();
+    x = node.data['imagedata'];
+    x.width = imagesize+'px';
+    x.height = imagesize+'px';
+    
+    
+
+       // var prefetch = new Image();
+      //prefetch.src = node.data[3].val;
+      //data_to_add['imagedata'] = prefetch;
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(pt.x, pt.y, radius, 0, 2 * Math.PI, false);
+      ctx.clip();
+
+
+    ctx.drawImage(x, pt.x-(imagesize/2), pt.y-(imagesize/2), imagesize, imagesize);
+    ctx.restore();
+
+        ctx.font = '10pt Arial';
+        ctx.fillStyle = 'black';
+        ctx.fillText(node.data[2].val, pt.x + (imagesize/2) +3, pt.y+3);
+
+          }else{
+
+                                    var radius = 10;
 
       ctx.beginPath();
       ctx.arc(pt.x, pt.y, radius, 0, 2 * Math.PI, false);
@@ -76,6 +114,9 @@ var Renderer = function(canvas){
         ctx.font = '12pt Arial';
         ctx.fillStyle = 'black';
         ctx.fillText(node.data[2].val, pt.x-4, pt.y+3);
+
+          }
+
 
         }else{
           //draw a normal node 
@@ -253,6 +294,12 @@ $(document).ready(function () {
 
     $('body').mouseup(function (e){
         if(adding){
+            //preload the image 
+            
+            var prefetch = new Image();
+            prefetch.src = data_to_add[3].val;
+            data_to_add['imagedata'] = prefetch;
+
             adding = false;
             console.log('event');
             console.log(e);
@@ -308,7 +355,6 @@ $(document).ready(function () {
     $('#graph_tab').height($("body").height());
     $('#text_tab').height(0);
     $('.menu-link').bigSlide();
-
 
 
 

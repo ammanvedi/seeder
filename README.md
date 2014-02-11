@@ -1,26 +1,28 @@
-# Seeder 
+# Seeder (with arbor)
+
+This branch holds a version of seeder that uses arbor to render graphs instead of sigmajs.
 
 Seeder is an under-development web application that will provide a platform for the creation and sharing of mind maps / knowledge graphs. The ultimate goal of seeder is to allow for any data (web or locally based) to become part of the knowledge map.
 
-![Seeder proof of concept screenshot](http://i.imgur.com/XRK5DRY.png)
+![Seeder proof of concept screenshot](http://i.imgur.com/1q6lNYo.png)
 
-A video of the prototype is available [here](http://www.youtube.com/watch?v=0R4mprn8PIE)
 
 The following feautures are currently implemented
 
  * Basic graph creation (node and edge addition)
  * Saving of graph data to a MongoDB Server
- * Addition of nodes to the graph via drag and drop from an article search via Google Custom Search API
+ * Addition of nodes to the graph via drag and drop from the article search
  * Viewing node attributes (Title, URL, Description, Image)
- * Addition of node by mouse click
+ * Addition of node by mouse click 
  
+
 The search system currently returns results from the following sites : Wall Street Journal, Forbes, Vibe (Music/Entertainment), National Geographic, Harvard Business Review, JSTOR (Research Articles), Reuters, The Guardian (Tabloid), Financial Times, Time Magazine, New York Times, Wordpress, Blogger, Yahoo News, BBC News.
 
 More sources will be added over time, subject to requirement.
  
 ### Architecture / Structure
 
-The application uses a node.js (express) server (app.js), with Jade layouts. The core interface is built on a modified version of [SigmaJS](https://github.com/jacomyal/sigma.js/)
+The application uses a node.js (express) server (app.js), with Jade layouts. The graph drawing is done with [arbor](http://arborjs.org/)
 
 The core of the application logic is written in javascript and is largely contained in /public/javascripts/graphhandler.js
 
@@ -37,7 +39,7 @@ and then navigate to http://localhost:3000/ in your web browser
 
 The following have been used in the development of Seeder
 
-* [SigmaJS](https://github.com/jacomyal/sigma.js/)
+* [arborjs](http://arborjs.org/)
 * [jQuery / jQuery UI](https://github.com/jquery/jquery)
 * [Socket.IO](https://github.com/learnboost/socket.io)
 * [BigSlide](https://github.com/ascott1/bigSlide.js)
@@ -49,4 +51,3 @@ The following have been used in the development of Seeder
 
 The development has been carried out under Chrome 31.0.1650.63 and Safari 6.1
 
-The code provided is to illustrate proof of concept for the prospective application i.e. AS IS 

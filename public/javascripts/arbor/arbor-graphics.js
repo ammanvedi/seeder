@@ -2,11 +2,11 @@
 //  arbor-graphics.js
 //  canvas fructose
 //
-{{LICENSE}}
+
 
 (function($){
 
-  {{DEPS}}
+
 
   arbor = (typeof(arbor)!=='undefined') ? arbor : {}
   $.extend(arbor, {
