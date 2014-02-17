@@ -78,7 +78,9 @@ var Renderer = function (canvas) {
 
                 //
 
-                if (node.data.length > 0) {
+
+                //console.log(node.data.size);
+                if ((node.data.length > 0) || (node.data.size > 0)) {
                     //draw a data rich node
 
                     if (node.data['imagedata'] != undefined) {
@@ -99,7 +101,11 @@ var Renderer = function (canvas) {
 
                         //clip the arc and draw the image, restore canvas state after
                         ctx.clip();
+                        try{
                         ctx.drawImage(node.data['imagedata'], pt.x - (imagesize / 2), pt.y - (imagesize / 2), imagesize, imagesize);
+                        }catch(InvalidStateError){
+                         //console.log('ssssssss');
+                        }
                         ctx.restore();
 
                         //draw the node title
@@ -109,11 +115,10 @@ var Renderer = function (canvas) {
 
                     } else {
 
-                        
 
                         ctx.beginPath();
-                        ctx.arc(pt.x, pt.y, radius_imageless, 0, 2 * Math.PI, false);
-                        ctx.fillStyle = 'green';
+                        ctx.arc(pt.x, pt.y, node.data['size'], 0, 2 * Math.PI, false);
+                        ctx.fillStyle = node.data['color'];
                         ctx.fill();
                         ctx.lineWidth = 3;
                         ctx.strokeStyle = '#003300';
@@ -121,13 +126,16 @@ var Renderer = function (canvas) {
 
                         ctx.font = '12pt Arial';
                         ctx.fillStyle = 'black';
-                        ctx.fillText(node.data[2].val, pt.x - 4, pt.y + 3);
+                        ctx.fillText(node.data['name'], pt.x - 4, pt.y + 3);
 
                     }
 
 
                 } else {
                     //draw a normal node 
+
+                        //console.log(node);
+
                     var radius = 10;
 
                     ctx.beginPath();
@@ -142,6 +150,8 @@ var Renderer = function (canvas) {
                     ctx.fillStyle = 'black';
                     ctx.fillText(node.name, pt.x - 4, pt.y + 3);
                 }
+
+
 
 
 
@@ -223,6 +233,9 @@ $(document).ready(function () {
     var DEPLOYIP = 'localhost'; //localhost
     var socket = io.connect(DEPLOYIP + ':8080');
 
+    var addnodemode = false;
+
+
     $("#tabs").tabs();
     $("input[type=submit]").button();
 
@@ -238,15 +251,29 @@ $(document).ready(function () {
     var adding = false;
     var menuwidth = $('#menu').width();
     var navheight = $('#nav').height();
+    var addnodePREFS = new Object();
 
+
+    //def
+    addnodePREFS['name'] = 'default name';
+    addnodePREFS['text'] = 'lorem ipsum';
+    addnodePREFS['link'] = 'http://www.google.com/';
+    addnodePREFS['size'] = 10;
+    addnodePREFS['id'] = 0;
+    addnodePREFS['color'] = '#81CF2D';
 
     var sys = arbor.ParticleSystem(100, 1000, 0.3) //repulsion/stiffness/friction
     sys.parameters({
         gravity: false
     });
     sys.renderer = Renderer("#graph_canvas"); 
-    
+
+
+    sys.addNode('a', addnodePREFS);
+    sys.addNode('e', addnodePREFS);
     sys.addEdge('a','e');
+
+    var nearestmouse;
 
 
     var ct = 0;
@@ -265,26 +292,48 @@ $(document).ready(function () {
                                                           
 */                                                  
                                                           
+    $('body').mousemove(function (e){
+        nearestmouse  = sys.nearest({
+                x: e.layerX - menuwidth,
+                y: e.layerY - navheight
+            });
+
+        //nearestmouse.node.data
+        if(nearestmouse.node.data.length > 0){
+            //nearestmouse.node.data[6].val = true;
+        }else{
+          //console.log('id is : ' + nearestmouse.node.name);
+        }
+
+
+
+    });
 
     $('#graph_canvas').click(function (a) {
 
-        /*      console.log('heyy');
-      var nearme = sys.nearest({x:a.pageX, y:a.pageY});
-      console.log(nearme);
-      sys.addEdge(nearme.node.name, ct+'');
-      ct++;*/
+      if(addnodemode){
+      var nearme = sys.nearest({x:a.pageX - menuwidth, y:a.pageY- navheight});
+      console.log('called1');
+      var i = addnodePREFS;
+
+var data = jQuery.extend(true, {}, addnodePREFS);
+
+
+      sys.addNode(data['name'], data);
+      sys.addEdge(nearme.node.name, data['name']);
+      ct++;
+
+      }
+
     });
 
     $('body').mousedown(function (evt) {
-        console.log(evt);
-
-
-
+        //console.log(evt);
         if ((evt.target.className == 'search_result') || (evt.target.parentElement.className == 'search_result')) {
 
             adding = true;
-            console.log('article clicked');
-            console.log(evt);
+            //console.log('article clicked');
+            //console.log(evt);
 
             //build attributes to be passed to the node on creation
 
@@ -309,6 +358,9 @@ $(document).ready(function () {
                 }, {
                     name: 'DOMAIN',
                     val: evt.srcElement.attributes.DOMAIN.nodeValue
+                }, {
+                    name:'NEAREST',
+                    val:false
                 }];
 
             } else {
@@ -331,11 +383,14 @@ $(document).ready(function () {
                 }, {
                     name: 'DOMAIN',
                     val: evt.srcElement.parentElement.attributes.DOMAIN.nodeValue
+                }, {
+                    name:'NEAREST',
+                    val:false
                 }];
 
             }
 
-            console.log(attribs_article);
+            //console.log(attribs_article);
             data_to_add = attribs_article;
 
         }
@@ -352,8 +407,8 @@ $(document).ready(function () {
             data_to_add['imagedata'] = prefetch;
 
             adding = false;
-            console.log('event');
-            console.log(e);
+            //console.log('event');
+            //console.log(e);
 
             var len = 0;
 
@@ -364,7 +419,7 @@ $(document).ready(function () {
 
 
            
-              console.log('loldsdlsld 33');
+              //console.log('loldsdlsld 33');
 
             var nearme_ = sys.nearest({
                 x: e.pageX - menuwidth,
@@ -452,7 +507,32 @@ $(document).ready(function () {
 
     });
 
+    $('#btn_export').click(function (e){
+      var blob = new Blob(["Hello, world!"], {type: "text/plain;charset=utf-8"});
+saveAs(blob, "hello world.txt");
+    });
+
+
+
     $('#btn_addnode').click(function () {
+
+      addnodemode = !addnodemode;
+
+console.log('called2');
+
+  var updated = new Object();
+
+    updated['name']  =  $('#field_node_name').val();
+    updated['text']  =  $('#field_node_text').val();
+    updated['link']  =  $('#field_node_link').val();
+    updated['size']  =  $('#field_node_size').val();
+    updated['id']    =  $('#field_node_id').val();
+    updated['color'] =  $('#picker_edgecolor').val();
+
+
+
+addnodePREFS = updated;
+
 
     });
 

@@ -37,6 +37,8 @@ block content
 						a(href='#tabs-2') Add Node
 					li
 						a(href='#tabs-3') Edit Node
+					li
+						a(href='#tabs-4') Export
 				br
 
 				#tabs-1
@@ -47,17 +49,20 @@ block content
 				#tabs-2
 					add node information
 					form#form_addnode
-						input#field_node_xpos(type='number' name='node_xpos' class='input_node_add' placeholder='node x position')
-						input#field_node_ypos(type='number' name='node_ypos' placeholder='node y position')
-						input#field_node_size(type='number' name='node_size' placeholder='node size')
-						input#field_node_id(type='text' name='node_id' placeholder='node id')
 						input#field_node_name(type='text' name='node_name' placeholder='node name')
+						input#field_node_text(type='text' name='node_text' class='input_node_add' placeholder='add text')
+						input#field_node_link(type='text' name='node_link' placeholder='add a link')
+						input#field_node_size(type='number' name='node_size' placeholder='size')
+						input#field_node_id(type='text' name='node_id' placeholder='an id')
 						br
 						input#picker_edgecolor(type='color' placeholder='#ffffff')
 						br
 						input#btn_addnode(type='button' value='add node')
 				#tabs-3
 					p edit node
+				#tabs-4
+					p export graph data 
+					input#btn_export(type='button' value='export')
 
 		#display_code
 
