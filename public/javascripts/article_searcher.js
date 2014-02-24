@@ -44,6 +44,7 @@ $(document).ready(function () {
 
             //for each result, add a corresponding search result division to the search
             //results container
+            console.log(itm);
 
             jQuery('<div/>', {
                 class: 'search_result',

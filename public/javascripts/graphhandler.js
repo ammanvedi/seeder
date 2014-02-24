@@ -62,7 +62,7 @@ var Renderer = function (canvas) {
                 ctx.moveTo(pt1.x, pt1.y);
                 ctx.lineTo(pt2.x, pt2.y);
                 ctx.stroke();
-            })
+            });
 
             particleSystem.eachNode(function (node, pt) {
                 // node: {mass:#, p:{x,y}, name:"", data:{}}
@@ -79,10 +79,12 @@ var Renderer = function (canvas) {
                 //
 
 
-                //console.log(node.data.size);
+
+
+
                 if ((node.data.length > 0) || (node.data.size > 0)) {
                     //draw a data rich node
-
+                    //console.log('here');
                     if (node.data['imagedata'] != undefined) {
 
                         
@@ -258,6 +260,7 @@ $(document).ready(function () {
     addnodePREFS['name'] = 'default name';
     addnodePREFS['text'] = 'lorem ipsum';
     addnodePREFS['link'] = 'http://www.google.com/';
+    addnodePREFS['TYPE'] = 'TEST';
     addnodePREFS['size'] = 10;
     addnodePREFS['id'] = 0;
     addnodePREFS['color'] = '#81CF2D';
@@ -267,6 +270,7 @@ $(document).ready(function () {
         gravity: false
     });
     sys.renderer = Renderer("#graph_canvas"); 
+
 
 
     sys.addNode('a', addnodePREFS);
@@ -293,10 +297,14 @@ $(document).ready(function () {
 */                                                  
                                                           
     $('body').mousemove(function (e){
+        
         nearestmouse  = sys.nearest({
                 x: e.layerX - menuwidth,
                 y: e.layerY - navheight
             });
+
+        if(nearestmouse){
+
 
         //nearestmouse.node.data
         if(nearestmouse.node.data.length > 0){
@@ -305,7 +313,8 @@ $(document).ready(function () {
           //console.log('id is : ' + nearestmouse.node.name);
         }
 
-
+        }
+        //sys.stop();
 
     });
 
@@ -412,25 +421,41 @@ var data = jQuery.extend(true, {}, addnodePREFS);
 
             var len = 0;
 
-            sys.eachNode(function (node, pt){
-              len++;
-            });
+            
 
-
-
-           
-              //console.log('loldsdlsld 33');
+              
 
             var nearme_ = sys.nearest({
                 x: e.pageX - menuwidth,
                 y: e.pageY - navheight
             });
 
-            sys.addNode(ct + '', data_to_add);
+            var res;
+
+            if(nearme_){
+                
+               res = sys.addNode(ct + '', data_to_add);
             sys.addEdge(nearme_.node.name, ct + '');
+        }else{
+           res = sys.addNode(ct + '', data_to_add);
+        }
+
+        if(res){
+            console.log('returned something');
+            console.log(res);
+        }else{
+            console.log('returned nothing');
+        }
+
             
+            
+            sys.eachNode(function (node, pt){
+              console.log('node');
+              console.log(node);
+              len++;
+            });
 
-
+            console.log('ct: ' + len);
  
             ct++;
 
@@ -457,7 +482,7 @@ var data = jQuery.extend(true, {}, addnodePREFS);
     });
 
     socket.on('request_pullGraph_success', function (data) {
-        console.log('client : pullGraph request successful, result:')
+        console.log('client : pullGraph request successful, result:');
         console.log(data.data);
         rebuildPullGraph(data.data);
     });
@@ -508,8 +533,40 @@ var data = jQuery.extend(true, {}, addnodePREFS);
     });
 
     $('#btn_export').click(function (e){
-      var blob = new Blob(["Hello, world!"], {type: "text/plain;charset=utf-8"});
-saveAs(blob, "hello world.txt");
+
+var xport_string = "";
+
+
+    sys.eachNode(function (node, pt){
+        console.log(node);
+        if(node.data[4]){
+            if(node.data[4].val == 'article'){
+                console.log('has data 4');
+                //title Available From <URL>
+                //an article has been found, need to export this to the list
+                xport_string +=  node.data[2].val + " Available From <" +  node.data[0].val + ">\n\n";
+            }
+
+
+        }else{
+            console.log(node);
+                if(node.data['TYPE'] == 'TEXT'){
+                    //the node is a text node add it and format appropriatley
+                    xport_string += node.data['name'] + " Available From <" + node.data['link'] + ">\n\n";
+                }
+        }
+    });
+
+    console.log(xport_string);
+
+      var blob = new Blob([xport_string ], {type: "text/plain;charset=utf-8"});
+      saveAs(blob, "reference list.txt");
+
+
+
+
+
+
     });
 
 
@@ -528,6 +585,7 @@ console.log('called2');
     updated['size']  =  $('#field_node_size').val();
     updated['id']    =  $('#field_node_id').val();
     updated['color'] =  $('#picker_edgecolor').val();
+    updated['TYPE'] = 'TEXT';
 
 
 
