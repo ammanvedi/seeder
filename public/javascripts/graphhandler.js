@@ -237,7 +237,7 @@ $(document).ready(function () {
 
     var addnodemode = false;
 
-
+	//initial ui
     $("#tabs").tabs();
     $("input[type=submit]").button();
 
