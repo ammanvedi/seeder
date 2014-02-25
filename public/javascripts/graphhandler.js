@@ -257,7 +257,7 @@ $(document).ready(function () {
 
 
     //def
-    addnodePREFS['name'] = 'cooler yet name';
+    addnodePREFS['name'] = 'start here';
     addnodePREFS['text'] = 'lorem ipsum';
     addnodePREFS['link'] = 'http://www.google.com/';
     addnodePREFS['TYPE'] = 'TEST';
