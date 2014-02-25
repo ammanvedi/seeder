@@ -46,6 +46,10 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 
+app.post('/hook', function (req,res){
+
+});
+
 app.get('/users', user.list);
 
 app.get('/explore', explore.explore);
