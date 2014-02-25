@@ -232,7 +232,7 @@ var Renderer = function (canvas) {
 
 $(document).ready(function () {
 
-    var DEPLOYIP = 'localhost'; //localhost
+    var DEPLOYIP = 'localhost'; //localhost for dev, ip for prod
     var socket = io.connect(DEPLOYIP + ':8080');
 
     var addnodemode = false;
