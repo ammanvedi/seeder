@@ -279,7 +279,7 @@ $(document).ready(function () {
 
     var nearestmouse;
 
-
+	//keep a count of node id's
     var ct = 0;
     var data_to_add;
 
@@ -307,6 +307,7 @@ $(document).ready(function () {
 
 
         //nearestmouse.node.data
+        
         if(nearestmouse.node.data.length > 0){
             //nearestmouse.node.data[6].val = true;
         }else{
