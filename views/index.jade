@@ -1,73 +1,93 @@
 extends layout
 
 block content
-
-	nav#menu(class='panel')
-		.tool_head
-			.tool_head_btn
-				h1 Node 
-			.tool_content(id='node_information_holder')
-		.tool_head
-			.tool_head_btn
-				h1 search
-			.tool_content
-				form#frm_searcharticles
-					input#input_searcharticles(type='text')
-					input#btn_searcharticles(type='button' value='search')
-			#search_results_holder
-		.tool_head
-			.tool_head_btn
-				h1 save
-			.tool_content
-			form#frm_savegraph
-				input#btn_savegraph(type='button' value='save graph')
-
-
+	.ui.menu.purple.inverted
+		ai#sidebar-toggle.item
+			i.reorder.icon
+		a.item
+			i.home.icon
+			| Seeder
+		a.item
+			i.map.icon
+			| Explore
+		a.item.purple.active
+			i.wrench.icon
+			| Build
+		.right.menu
+			.item
+				.ui.icon.input
+					input(type="text" placeholder="search the graph...")
+					i.search.link.icon
+	#explore-sidebar.ui.floating.sidebar
+		.ui.fluid.vertical.menu
+			.header.item
+				|Reference Details
+				i.purple.book.icon
+			.item
+				img#node-image.rounded.ui.small.left.floated.image(src='http://placehold.it/100x100.png')
+				#info-header.smalltext
+					p#node-title
+					p#node-domain
+				#clear
+				#info-body.smalltext
+					p#node-description
+					a#node-link.ui.purple.label
+						|read full article
+			.header.item
+				|Graph Tools
+				i.purple.edit.icon
+			#frm_searcharticles.item
+				.ui.icon.input
+					input#input_searcharticles(type='text' placeholder="search...")
+					i#btn_searcharticles.search.link.icon
+				#search_results_holder
+			.item
+				.ui.buttons
+					#btn_savegraph.ui.button.small
+						|Save
+					.or
+					#btn_publishgraph.ui.button.small.positive
+						|Publish
 	#contain_main(class='push')
-		#navbar(class='push')
-			a(class='menu-link' href='#menu') &#9776
-			p(class='nav_title') seeder
-			
 		#pallete
-			#tabs
-				ul
-					li
-						a(href='#tabs-1') Add Edge 
-					li
-						a(href='#tabs-2') Add Node
-					li
-						a(href='#tabs-3') Edit Node
-					li
-						a(href='#tabs-4') Export
+			#pallete-menu.ui.vertical.pointing.menu
+				a.item.active.purple.edittab(tablink='#tabs-1')
+					|Add Edge 
+					i.fork.code.icon
+				a.item.edittab(tablink='#tabs-2')
+					| Add Node
+					i.add.icon
+				a.item.edittab(tablink='#tabs-3')
+					| Edit Node
+					i.edit.icon
+				a.item.edittab(tablink='#tabs-4')
+					|Export
+					i.indent.right.icon
 				br
-
-				#tabs-1
-					form
-						input#btn_addedge(type='button' value='add edge')
-					#add_edge_msg
-						p click the button to add an edge
-				#tabs-2
-					add node information
-					form#form_addnode
-						input#field_node_name(type='text' name='node_name' placeholder='node name')
-						input#field_node_text(type='text' name='node_text' class='input_node_add' placeholder='add text')
-						input#field_node_link(type='text' name='node_link' placeholder='add a link')
-						input#field_node_size(type='number' name='node_size' placeholder='size')
-						input#field_node_id(type='text' name='node_id' placeholder='an id')
-						br
-						input#picker_edgecolor(type='color' placeholder='#ffffff')
-						br
-						input#btn_addnode(type='button' value='add node')
-				#tabs-3
-					p edit node
-				#tabs-4
-					p export graph data 
-					input#btn_export(type='button' value='export')
+			#tabs-1
+				form
+					input#btn_addedge(type='button' value='add edge')
+				#add_edge_msg
+					p click the button to add an edge
+			#tabs-2
+				add node information
+				form#form_addnode
+					input#field_node_name(type='text' name='node_name' placeholder='node name')
+					input#field_node_text(type='text' name='node_text' class='input_node_add' placeholder='add text')
+					input#field_node_link(type='text' name='node_link' placeholder='add a link')
+					input#field_node_size(type='number' name='node_size' placeholder='size')
+					input#field_node_id(type='text' name='node_id' placeholder='an id')
+					br
+					input#picker_edgecolor(type='color' placeholder='#ffffff')
+					br
+					input.tiny.ui.button#btn_addnode(type='button' value='add node')
+			#tabs-3
+				p edit node
+			#tabs-4
+				p export graph data 
+				input#btn_export(type='button' value='export')
 
 		#display_code
-
-			#text_tab
-
 			#graph_tab
 				canvas#graph_canvas(width='900px' height='550px')
 				

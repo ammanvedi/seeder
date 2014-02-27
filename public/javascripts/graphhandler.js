@@ -248,6 +248,16 @@ $(document).ready(function () {
     $('#graph_tab').height($("body").height());
     $('#text_tab').height(0);
     $('.menu-link').bigSlide();
+    
+    $('#tabs-1').show();
+    $('#tabs-2').hide();
+    $('#tabs-3').hide();
+    $('#tabs-4').hide();
+    
+    var  MainSidebarBuild = $('.ui.sidebar');
+    
+    MainSidebarBuild.sidebar('toggle');
+    MainSidebarBuild.sidebar('attach events','#sidebar-toggle' , 'toggle');
 
 
     var adding = false;
@@ -299,8 +309,8 @@ $(document).ready(function () {
     $('body').mousemove(function (e){
         
         nearestmouse  = sys.nearest({
-                x: e.layerX - menuwidth,
-                y: e.layerY - navheight
+                x: e.pageX + menuwidth,
+                y: e.pageY - navheight
             });
 
         if(nearestmouse){
@@ -309,9 +319,16 @@ $(document).ready(function () {
         //nearestmouse.node.data
         
         if(nearestmouse.node.data.length > 0){
-            //nearestmouse.node.data[6].val = true;
+            nearestmouse.node.data[6].val = true;
+            $('#node-title').text(nearestmouse.node.data[2].val);
+            $('#node-domain').text(nearestmouse.node.data[5].val);
+            $('#node-description').text(nearestmouse.node.data[1].val);
+            $('#node-image').attr("src",nearestmouse.node.data[3].val);
+            $('#node-link').attr("href", nearestmouse.node.data[0].val);
+            //console.log(nearestmouse.node);
         }else{
           //console.log('id is : ' + nearestmouse.node.name);
+          
         }
 
         }
@@ -531,6 +548,22 @@ var data = jQuery.extend(true, {}, addnodePREFS);
 
     $('#btn_savegraph').click(function () {
 
+    });
+    
+    $('.edittab').click(function (evt) {
+    
+    	$('.edittab').removeClass('active');
+    	
+    	$(evt.srcElement).addClass('active');
+    	$(evt.srcElement).addClass('purple');
+    	console.log(evt.srcElement.attributes[0].nodeValue);
+    	
+    	$('#tabs-1').hide();
+    	$('#tabs-2').hide();
+    	$('#tabs-3').hide();
+    	$('#tabs-4').hide();
+    	
+    	$(evt.srcElement.attributes[0].nodeValue).show();
     });
 
     $('#btn_export').click(function (e){

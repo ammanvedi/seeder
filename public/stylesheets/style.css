@@ -306,8 +306,8 @@ a {
 
 #contain_main{
 	width: 100%;
-	height: 100%;
-	position: relative;
+	height: 600px;
+
 	overflow: hidden;
 }
 
@@ -315,15 +315,53 @@ a {
 	padding-left: 25px;
 }
 
+#info-header{
+	float: left;
+	width: 140px;
+	height: 80px;
+	
+	
+}
+
+.smalltext{
+	
+	font-size: 13px;
+}
+
+.smalltext p{
+	
+	padding: 0px;
+	margin: 0px;
+	max-height: 70px;
+	margin-bottom: 10px;
+	margin-left: 5px;
+}
+
+#clear{
+	
+	clear: both;
+	width: 100%;
+	
+}
+
+#info-body{
+width: 100%;
+height: 100px;
+	
+	
+}
 #pallete{
-	width: 200px;
-	height: auto;
-	padding: 7px;
+	width: 350px;
+	height: 200px;
+	padding: 10px;
+	position: absolute;
+	z-index: 1000;
+/*	padding: 7px;
 	background-color:  #413c4a;
 	color: #fff;
 	float: left;
-	position: absolute;
-	z-index: 1;
+	
+	
 	-webkit-box-shadow: 0px 5px 5px rgba(50, 50, 50, 0.75);
 	-moz-box-shadow:    0px 5px 5px rgba(50, 50, 50, 0.75);
 	box-shadow:         0px 5px 5px rgba(50, 50, 50, 0.75);
@@ -334,10 +372,20 @@ a {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	cursor: default;
+	cursor: default;*/
+box-shadow: 0 0 5px #5a5a5a;
+	opacity: 1;
+	background-color: #ffffff;
 }
 
 #pallete li{
+	
+	width: 20px;
+	height: 20px;
+	font-size: 9;
+}
+
+/*#pallete li{
 	font-size: 10px;
 	background-color: #34495E;
 	padding: 2px;
@@ -371,7 +419,7 @@ a {
 	width:150px;
 }
 
-ul{
+/*ul{
 	list-style: none;
 	padding: 0px;
 }
@@ -380,6 +428,11 @@ ul{
 	float: left;
 	margin-left: 3px;
 	margin-right: 3px;
+}*/
+
+#pallete-menu {
+	width: 150px;
+	float: left;
 }
 
 #display_code_pallete li{
@@ -417,7 +470,7 @@ ul{
 .tool_content{
 
 	width: 100%;
-	height: auto;
+	height: 30px;
 
 
 }
@@ -463,9 +516,9 @@ ul{
 
 #display_code{
 	width: 100%;
-	height: 100%;
+	height: 600px;
 	float:left;
-	z-index: 2;
+	z-index: 900;
 	overflow: hidden;
 }
 
@@ -474,19 +527,19 @@ ul{
 }
 
 #graph_tab{
-	height: 100%;
+	height: auto;
 	width: 100%;
 	
-	position: absolute;
-	overflow: hidden;
+	height: 600px;
+	overflow-x: hidden;
 }
 
 #graph_canvas{
 
-	margin-top: 70px;
 	margin-left: auto;
 	margin-right: auto;
 	outline: 4px solid #fff;
+	overflow-x: hidden;
 	/*box-shadow: 0 5px 30px #000;*/
 
 
@@ -494,19 +547,27 @@ ul{
 	
 }
 
+
+
 #btn_addedge{
 	margin-left: auto;
 	margin-right: auto;
 }
 
 #input_searcharticles{
-	opacity: 0.4;
+	/*opacity: 0.4;*/
 }
 
 #btn_searcharticles{
-	background-color: #fff;
-	width: 30px;
 
+
+}
+
+#frm_searcharticles{
+	
+	width: 100%;
+	height: auto;
+	padding-bottom: 10px;
 }
 
 /*
@@ -524,13 +585,22 @@ style infomation for /explore
 
 */
 
-#explore_sidebar{
-	width:270px;
-	height: 100%;
-	z-index: 10;
-	position:fixed;
-	float: left;
-	background-color: #413c4a;
+
+#graphs-view{
+max-width: 1000px;
+min-width: 400px;
+margin-left: auto;
+margin-right: auto;
+padding: 30px;
+
+
+	
+}
+
+
+
+#explore-sidebar{
+	background-color: #fff;
 }
 
 #search_input{
