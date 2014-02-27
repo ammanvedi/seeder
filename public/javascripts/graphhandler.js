@@ -316,7 +316,7 @@ $(document).ready(function () {
         if(nearestmouse){
 
 
-        //nearestmouse.node.data
+        
         
         if(nearestmouse.node.data.length > 0){
             nearestmouse.node.data[6].val = true;
