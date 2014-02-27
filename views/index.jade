@@ -31,7 +31,7 @@ block content
 				#clear
 				#info-body.smalltext
 					p#node-description
-					a#node-link.ui.purple.label
+					a#node-link.ui.purple.label(target="_blank")
 						|read full article
 			.header.item
 				|Graph Tools
@@ -52,7 +52,7 @@ block content
 		#pallete
 			#pallete-menu.ui.vertical.pointing.menu
 				a.item.active.purple.edittab(tablink='#tabs-1')
-					|Add Edge 
+					| Add Edge 
 					i.fork.code.icon
 				a.item.edittab(tablink='#tabs-2')
 					| Add Node
@@ -63,14 +63,12 @@ block content
 				a.item.edittab(tablink='#tabs-4')
 					|Export
 					i.indent.right.icon
-				br
-			#tabs-1
+			#tabs-1.tabwindow
 				form
 					input#btn_addedge(type='button' value='add edge')
 				#add_edge_msg
 					p click the button to add an edge
-			#tabs-2
-				add node information
+			#tabs-2.tabwindow
 				form#form_addnode
 					input#field_node_name(type='text' name='node_name' placeholder='node name')
 					input#field_node_text(type='text' name='node_text' class='input_node_add' placeholder='add text')
@@ -81,9 +79,9 @@ block content
 					input#picker_edgecolor(type='color' placeholder='#ffffff')
 					br
 					input.tiny.ui.button#btn_addnode(type='button' value='add node')
-			#tabs-3
+			#tabs-3.tabwindow
 				p edit node
-			#tabs-4
+			#tabs-4.tabwindow
 				p export graph data 
 				input#btn_export(type='button' value='export')
 

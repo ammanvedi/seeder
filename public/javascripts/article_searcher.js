@@ -47,19 +47,20 @@ $(document).ready(function () {
             console.log(itm);
 
             jQuery('<div/>', {
-                class: 'search_result',
-                URL: itm.formattedUrl,
+                class: 'search_result rounded',
+                URL: itm.link,
                 DESCRIPTION: itm.snippet,
                 TITLE: itm.title,
                 IMAGE: itm.pagemap.cse_image[0].src,
                 TYPE: 'article',
                 DOMAIN: itm.displayLink,
-                html: '<div class="result_title"><img src="' + itm.pagemap.cse_image[0].src + '"/>' + '<h1>' + itm.title + '</h1><h2>' + itm.displayLink +'</h2></div><div class="result_text">' + '<p>' + itm.snippet + '</p></div>'
+                html: '<div class="result_title"><img class="rounded ui left floated image" src="' + itm.pagemap.cse_image[0].src + '"/>' + '<h1>' + itm.title + '</h1><h2>' + itm.displayLink +'</h2></div><div class="result_text">' + '<p>' + itm.snippet + '</p></div>'
 
-                + '<div class="result_link"><a target="_blank" href=\'http://' + itm.formattedUrl + '\'>view source</a></div><div class="result_adder"></div>'
+                + '<div class="result_link ui purple label"><a target="_blank" href=\'' + itm.link + '\'>view source</a></div><i class="result_adder add purple icon"></>'
 
 
             }).appendTo('#search_results_holder');
+            
 
         });
 

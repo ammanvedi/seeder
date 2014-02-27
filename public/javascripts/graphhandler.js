@@ -335,6 +335,8 @@ $(document).ready(function () {
         //sys.stop();
 
     });
+    
+    
 
     $('#graph_canvas').click(function (a) {
 
@@ -355,10 +357,13 @@ var data = jQuery.extend(true, {}, addnodePREFS);
     });
 
     $('body').mousedown(function (evt) {
-        //console.log(evt);
-        if ((evt.target.className == 'search_result') || (evt.target.parentElement.className == 'search_result')) {
+    	console.log('amman here');
+        console.log(evt);
+        if ((evt.target.className.indexOf('search_result')!=-1) || (evt.target.parentElement.className.indexOf('search_result')!=-1)) {
 
             adding = true;
+             $('body').addClass('unselectable');
+             $('search_results_holder').addClass('stop-scroll');
             //console.log('article clicked');
             //console.log(evt);
 
@@ -426,6 +431,10 @@ var data = jQuery.extend(true, {}, addnodePREFS);
 
 
     $('body').mouseup(function (e) {
+    
+    $('body').removeClass('unselectable');
+     $('search_results_holder').removeClass('stop-scrolling');
+     
         if (adding) {
             //preload the image 
 
@@ -434,6 +443,7 @@ var data = jQuery.extend(true, {}, addnodePREFS);
             data_to_add['imagedata'] = prefetch;
 
             adding = false;
+            
             //console.log('event');
             //console.log(e);
 
