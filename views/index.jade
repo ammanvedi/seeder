@@ -13,7 +13,22 @@ block content
 		a.item.purple.active
 			i.wrench.icon
 			| Build
-		.right.menu
+		.right.compact.menu
+			.ui.simple.dropdown.item
+				i.user.icon
+				|Me
+				i.dropdown.icon
+				.menu
+					a.item
+						i.bolt.icon
+						|My Profile
+					a.item
+						i.lightbulb.icon
+						|My Graphs
+					a.item
+						i.settings.icon
+						|Settings
+						
 			.item
 				.ui.icon.input
 					input(type="text" placeholder="search the graph...")
@@ -68,13 +83,13 @@ block content
 					input#btn_addedge(type='button' value='add edge')
 			#tabs-2.tabwindow
 				form#form_addnode
-					input#field_node_name(type='text' name='node_name' placeholder='node name')
-					input#field_node_text(type='text' name='node_text' class='input_node_add' placeholder='add text')
-					input#field_node_link(type='text' name='node_link' placeholder='add a link')
-					input#field_node_size(type='number' name='node_size' placeholder='size')
-					input#field_node_id(type='text' name='node_id' placeholder='an id')
+					input#field_node_name.ui.mini.input(type='text' name='node_name' placeholder='node name')
+					input#field_node_text.ui.mini.input(type='text' name='node_text' class='input_node_add' placeholder='add text')
+					input#field_node_link.ui.mini.input(type='text' name='node_link' placeholder='add a link')
+					input#field_node_size.ui.mini.input(type='number' name='node_size' placeholder='size')
+					input#field_node_id.ui.mini.input(type='text' name='node_id' placeholder='an id')
 					br
-					input#picker_edgecolor(type='color' placeholder='#ffffff')
+					input#picker_edgecolor.ui.mini.input(type='color' placeholder='#ffffff')
 					br
 					input.tiny.ui.button#btn_addnode(type='button' value='add node')
 			#tabs-3.tabwindow
