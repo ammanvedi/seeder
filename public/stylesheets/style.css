@@ -102,8 +102,10 @@ sitewide
 .tabwindow{
 	
 	float: left;
-	width: 170px;
+	max-width: 150px;
+	min-width: auto;
 	margin-left: 20px;
+	padding-right: 10px;
 }
 
 .result_adder{
@@ -170,6 +172,8 @@ text-overflow:ellipsis;
 ::-webkit-scrollbar { 
     display: none; 
 }
+
+
 
 .scroll{
 	
@@ -374,7 +378,8 @@ height: 100px;
 	
 }
 #pallete{
-	width: 350px;
+	width: auto;
+	max-width: 350px;
 	height: 175px;
 	padding: 10px;
 	position: absolute;
