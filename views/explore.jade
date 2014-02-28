@@ -1,24 +1,55 @@
 extends default_layout
 
 block content
-	.ui.menu
+	.ui.menu.purple.inverted
 		ai#sidebar-toggle.item
 			i.reorder.icon
 		a.item
 			i.home.icon
 			| Seeder
-		a.item.active
+		a.item.purple.active
 			i.map.icon
 			| Explore
 		a.item
 			i.wrench.icon
 			| Build
-		.right.menu
-			.item
-				.ui.icon.input
-					input(type="text" placeholder="search...")
-					i.search.link.icon
-	#explore-sidebar.ui.sidebar
+		.right.compact.menu
+			.ui.simple.dropdown.item
+				i.user.icon
+				|Me
+				i.dropdown.icon
+				.menu
+					a.item
+						i.bolt.icon
+						|My Profile
+					a.item
+						i.lightbulb.icon
+						|My Graphs
+					a.item
+						i.settings.icon
+						|Settings
+					a.item
+						i.sign.out.icon
+						|Sign Out
+						
+	#explore-sidebar.ui.floating.sidebar.inverted.red
+	
+	#explore-banner-contain
+		.hideme
+			#explore-banner
+		#banner-overlay
+			#search-header
+				.ui.white.icon.huge.header
+					i.map.massive.icon
+					|Explore
+			#explore-searchbar
+				.ui.fluid.action.input
+					input(type="text" placeholder="find something interesting!")
+					.ui.teal.right.labeled.icon.button
+						i.search.icon
+						|Search
+
+
 	#graphs-view.ui.stackable.four.items
 		.item
 			.image

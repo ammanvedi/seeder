@@ -630,10 +630,95 @@ padding: 30px;
 	
 }
 
+#explore-banner-contain
+{
+	width: 100%;
+	height: 430px;
+	overflow: hidden;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	overflow-style: none;
+	margin-top: -17px;
+	background-color: #000;
+}
+
+#explore-banner{
+	width: 105%;
+	
+	height: 450px;
+	background-color: #000;
+	background-image: url(/img/space-banner.jpg);
+	background-size: cover;
+	background-position: center;
+	opacity: 0.8;
+	/*transition:0.5s;*/
+	overflow: hidden;
+	position: relative;
+}
+
+#banner-overlay{
+	width: 700px;
+	height: 300px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	top: -300px;
+	max-width: 600px;
+	min-width: 200px;
+	
+}
+
+#explore-banner:after{
+	
+	-moz-box-shadow: inset 0 0 15em #000000;  
+	 -webkit-box-shadow: inset 0 0 15em #000000;   
+	 box-shadow: inset 0 0 15em #000000;
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 width: 100%;
+	 height: 100%;
+	 z-index: 2;
+	 content: "";
+	 
+}
+
+.hideme{
+	margin: -10px -10px -10px -10px;
+	overflow: hidden;
+}
+
+#search-header{
+	width: 110px;
+	color: white;
+	margin-left: auto;
+	margin-right: auto;
+	
+}
+
+#explore-searchbar{
+	
+	max-width: 600px;
+	min-width: 100px;
+	width: auto;
+	height: 80px;
+margin-left: auto;
+margin-right: auto;
+	margin-top: 20px;
+	display: block;
+	
+
+}
+
+/*#explore-banner:hover{
+	-webkit-filter: blur(2px);
+	
+}*/
+
 
 
 #explore-sidebar{
-	background-color: #fff;
+	background-color: #262E32;
 }
 
 #search_input{
