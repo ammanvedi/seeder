@@ -1,36 +1,36 @@
 extends default_layout
 
 block content
-	.ui.menu.purple.inverted
-		ai#sidebar-toggle.item
-			i.reorder.icon
-		a.item
-			i.home.icon
-			| Seeder
-		a.item.purple.active
-			i.map.icon
-			| Explore
-		a.item
-			i.wrench.icon
-			| Build
-		.right.compact.menu
-			.ui.simple.dropdown.item
-				i.user.icon
-				|Me
-				i.dropdown.icon
-				.menu
-					a.item
-						i.bolt.icon
-						|My Profile
-					a.item
-						i.lightbulb.icon
-						|My Graphs
-					a.item
-						i.settings.icon
-						|Settings
-					a.item
-						i.sign.out.icon
-						|Sign Out
+	.fixed
+		.ui.menu.purple.inverted
+			ai#sidebar-toggle.item
+				i.reorder.icon
+			a.item
+				| Seeder
+			a.item.purple.active
+				i.map.icon
+				| Explore
+			a.item
+				i.wrench.icon
+				| Build
+			.right.compact.menu
+				.ui.simple.dropdown.item
+					i.user.icon
+					|Me
+					i.dropdown.icon
+					.menu
+						a.item
+							i.bolt.icon
+							|My Profile
+						a.item
+							i.lightbulb.icon
+							|My Graphs
+						a.item
+							i.settings.icon
+							|Settings
+						a.item
+							i.sign.out.icon
+							|Sign Out
 						
 	#explore-sidebar.ui.floating.sidebar.inverted.red
 	
@@ -57,38 +57,17 @@ block content
 			.content
 				.name
 					|Graph Name
-				p.description
-					| description here
-		.item
-			.image
-				img(src="http://placehold.it/300x300.png")
-			.content
-				.name
-					|Graph Name
-				p.description
-					| description here
-		.item
-			.image
-				img(src="http://placehold.it/300x300.png")
-			.content
-				.name
-					|Graph Name
-				p.description
-					| description here
-		.item
-			.image
-				img(src="http://placehold.it/300x300.png")
-			.content
-				.name
-					|Graph Name
-				p.description
-					| description here
-		.item
-			.image
-				img(src="http://placehold.it/300x300.png")
-			.content
-				.name
-					|Graph Name
-				p.description
-					| description here
-	
+				p.description.smalltext
+					| by Amman Vedi
+				p.description.graphdesc
+					| Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+					|sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				.graphmeta
+					.ui.label.green
+						| Views
+						a.detail
+							| 23
+					.ui.label.red
+						| Likes
+						a.detail
+							| 23

@@ -46,6 +46,15 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 
+app.get('/build', function(req, res){
+
+  res.render('index', { title: 'Seeder' });
+
+
+
+  
+});
+
 app.post('/hook', function (req,res){
 
 });

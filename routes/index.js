@@ -6,7 +6,7 @@
 
 exports.index = function(req, res){
 
-  res.render('index', { title: 'Seeder' });
+  res.render('home', { title: 'Home' });
 
 
 
