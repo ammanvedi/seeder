@@ -1,16 +1,16 @@
-extends default_layout
+extends homelayout
 
 block content
 	.ui.menu.purple.inverted
 		ai#sidebar-toggle.item
 			i.reorder.icon
-		a.item
+		a.item.purple.active(href="/")
 			i.home.icon
 			| Seeder
-		a.item.purple.active
+		a.item(href="/explore")
 			i.map.icon
 			| Explore
-		a.item
+		a.item(href="/build")
 			i.wrench.icon
 			| Build
 		.right.compact.menu
@@ -36,8 +36,16 @@ block content
 	
 	#explore-banner-contain
 		.hideme
-			#home-banner
-		#banner-overlay
+			#explore-banner
+		.home-banner-overlay
+			#hometext
+				|a new way to <span id="shuffleme">mindmap.</span>
+			#home-banner-img-c
+				#home-banner-image
+	.home-feature.fblue.vign
+			#mbookimgholder
+				#macbookimg
+	.home-feature.fblack.vign
 			
 
 	

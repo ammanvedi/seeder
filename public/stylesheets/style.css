@@ -777,10 +777,7 @@ margin-right: auto;
 	
 }*/
 
-.home{
-	
-	background-image: url(/img/home-banner.jpg);
-}
+
 
 #explore-sidebar{
 	background-color: #262E32;
@@ -790,7 +787,94 @@ margin-right: auto;
 	width: 90%; 
 }
 
+.home-banner-overlay{
+width: 900px;
+height: 100%;
+overflow: hidden;
+left: 10%;
+	
+	position: absolute;
+	top: 0;
+	
+}
 
+#mbookimgholder{
+	
+	position: relative;
+	height: 300px;
+	width: auto;
+}
+
+#macbookimg{
+	
+	width: 1500px;
+	height: 700px;
+	background-image: url(/img/mb-explore.png);
+	background-size: cover;
+	position: absolute;
+	top: -130px;
+	left: -100px;
+	opacity: 0.9;
+	
+}
+
+.home-feature{
+	
+	width: inherit;
+	height: 300px;
+	overflow: hidden;
+	padding: 40px;
+	padding-bottom: 0;
+
+}
+
+#shuffleme{
+	
+	width: auto;
+	height: auto;
+}
+
+#hometext{
+	width: 500px;
+	font-size: 30px;
+	height: 100px;
+	font-family: 'Roboto Slab', serif;
+	color: white;
+	font-weight: 300;
+	position: absolute;
+	left: 310px;
+	top: 100px;
+	opacity: 0.9;
+}
+
+.fblue{
+	
+background-color: #197FD9;
+	
+}
+
+.fblack{
+	
+	background-color: #2C425D;
+}
+
+#home-banner-img-c{
+	width: 1100px;
+	height: 700px;
+	overflow: hidden;
+	position: relative;
+	top: 72px;
+	right: 70px;
+	opacity: 0.9;
+}
+
+#home-banner-image{
+width: 1100px;
+height:400px;
+
+	background-image: url(/img/imac-build.png);
+	background-size: cover;
+}
 
 
 
