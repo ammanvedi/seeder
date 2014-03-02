@@ -654,9 +654,6 @@ padding: 30px;
 	width: 100%;
 	height: 430px;
 	overflow: hidden;
-	overflow-x: hidden;
-	overflow-y: hidden;
-	overflow-style: none;
 	margin-top: -17px;
 	background-color: #000;
 }
@@ -777,7 +774,10 @@ margin-right: auto;
 	
 }*/
 
-
+.top{
+	
+	z-index: 0;
+}
 
 #explore-sidebar{
 	background-color: #262E32;
@@ -789,12 +789,13 @@ margin-right: auto;
 
 .home-banner-overlay{
 width: 900px;
-height: 100%;
+height: 700px;
 overflow: hidden;
 left: 10%;
-	
+	top: 30px;
 	position: absolute;
-	top: 0;
+	padding-top: 30px;
+	z-index: 100;
 	
 }
 
@@ -843,7 +844,7 @@ left: 10%;
 	font-weight: 300;
 	position: absolute;
 	left: 310px;
-	top: 100px;
+	top: 80px;
 	opacity: 0.9;
 }
 
@@ -863,7 +864,7 @@ background-color: #197FD9;
 	height: 700px;
 	overflow: hidden;
 	position: relative;
-	top: 72px;
+	top: 12px;
 	right: 70px;
 	opacity: 0.9;
 }
