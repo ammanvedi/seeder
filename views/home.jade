@@ -1,42 +1,41 @@
 extends homelayout
 
 block content
-	.ui.menu.purple.inverted
-		ai#sidebar-toggle.item
-			i.reorder.icon
-		a.item.purple.active(href="/")
-			i.home.icon
-			| Seeder
-		a.item(href="/explore")
-			i.map.icon
-			| Explore
-		a.item(href="/build")
-			i.wrench.icon
-			| Build
-		.right.compact.menu
-			.ui.simple.dropdown.item
-				i.user.icon
-				|Me
-				i.dropdown.icon
-				.menu
-					a.item
-						i.bolt.icon
-						|My Profile
-					a.item
-						i.lightbulb.icon
-						|My Graphs
-					a.item
-						i.settings.icon
-						|Settings
-					a.item
-						i.sign.out.icon
-						|Sign Out
+	.fixed-home
+		.ui.menu.purple.inverted
+			ai#sidebar-toggle.item
+				i.reorder.icon
+			a.item.purple.active(href="/")
+				i.home.icon
+				| Seeder
+			a.item(href="/explore")
+				i.map.icon
+				| Explore
+			a.item(href="/build")
+				i.wrench.icon
+				| Build
+			.right.compact.menu
+				.ui.simple.dropdown.item
+					i.user.icon
+					|Me
+					i.dropdown.icon
+					.menu
+						a.item
+							i.bolt.icon
+							|My Profile
+						a.item
+							i.lightbulb.icon
+							|My Graphs
+						a.item
+							i.settings.icon
+							|Settings
+						a.item
+							i.sign.out.icon
+							|Sign Out
 						
 	#explore-sidebar.ui.floating.sidebar.inverted.red
 	
-	#explore-banner-contain
-		.hideme
-			#explore-banner
+	#home-main-banner
 		.home-banner-overlay
 			#hometext
 				|a new way to <span id="shuffleme">mindmap.</span>

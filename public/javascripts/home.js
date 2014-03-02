@@ -1,3 +1,5 @@
+
+
 $(document).ready(function() {
 
 var  MainSidebarExplore = $('.ui.sidebar');
@@ -16,9 +18,9 @@ var count = 1;
 
 function updatetext(){
 	$("#shuffleme").shuffleText(words[count%words.length], {
-	    frames : 30,
-	    maxSpeed : 500,
-	    amount : 4,
+	    frames : 20,
+	    maxSpeed : 10000,
+	    amount : 2,
 	    complete : function(){
 	        // Do something
 	    }});
@@ -34,3 +36,6 @@ console.log('loloool');
 
 
 });
+
+
+
