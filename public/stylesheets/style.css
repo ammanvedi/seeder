@@ -841,20 +841,28 @@ overflow: hidden;
 
 #mbookimgholder{
 	
-	position: relative;
-	height: 300px;
-	width: auto;
+	float: left;
+	width: 50%;
+	height: 100%;
+	overflow: visible;
+}
+
+#home-desc1{
+	
+	width: 50%;
+	height: 100%;
+	float: left;
+
 }
 
 #macbookimg{
 	
-	width: 1500px;
-	height: 700px;
+	width: 200%;
+	height: inherit;
 	background-image: url(/img/mb-explore.png);
 	background-size: cover;
-	position: absolute;
-	top: -100px;
-	left: -100px;
+	overflow: visible;
+
 	opacity: 0.9;
 	
 }
@@ -921,6 +929,13 @@ height:400px;
 	background-size: cover;
 }
 
+.featuretext h1{
+	color: white;
+	opacity: 0.6;
+	font-family: 'Roboto Slab', serif;
+	font-size: 50px;
+	font-weight: 300;
+}
 
 
 

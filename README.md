@@ -5,7 +5,9 @@ This branch holds a version of seeder that uses arbor to render graphs instead o
 Seeder is an under-development web application that will provide a platform for the creation and sharing of mind maps / knowledge graphs. The ultimate goal of seeder is to allow for any data (web or locally based) to become part of the knowledge map.
 
 ![Seeder proof of concept screenshot](http://i.imgur.com/cv1aoOe.png)
-![Seeder proof of concept screenshot](http://i.imgur.com/jqTakPB.png)
+
+
+
 
 there is a video [here](http://youtu.be/879IhcXFcpU)
 
@@ -24,6 +26,8 @@ The search system currently returns results from the following sites : Wall Stre
 More sources will be added over time, subject to requirement.
  
 ### Architecture / Structure
+
+![Seeder proof ofoncept screenshot](http://i.imgur.com/jqTakPB.png)
 
 The application uses a node.js (express) server (app.js), with Jade layouts. The graph drawing is done with [arbor](http://arborjs.org/)
 
@@ -53,4 +57,3 @@ The following have been used in the development of Seeder
 ### Status
 
 The development has been carried out under Chrome 31.0.1650.63 and Safari 6.1
-
