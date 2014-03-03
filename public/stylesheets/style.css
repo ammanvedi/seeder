@@ -724,7 +724,7 @@ padding: 30px;
 	position: fixed;
 	width: 100%;
 	height: auto;
-	z-index: 1;
+	z-index: 10;
 	margin-top: 16px;
 }
 
@@ -873,6 +873,16 @@ overflow: hidden;
 	
 }
 
+.fpink{
+	
+	background-color: #2ECC71;
+}
+
+.fppl{
+	
+	background-color: #9B59B6;
+}
+
 .home-feature{
 	
 	max-width: 100%;
@@ -993,6 +1003,16 @@ height:400px;
 .tealborder{
 	
 	border-left-color: #00B2AA;
+}
+
+.greenborder{
+	
+	border-left-color: #2ECC71;
+}
+
+.pplborder{
+	border-left-color:  #9B59B6;
+	
 }
 .blueborder{
 	
