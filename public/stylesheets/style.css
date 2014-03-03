@@ -842,39 +842,55 @@ overflow: hidden;
 #mbookimgholder{
 	
 	float: left;
-	width: 50%;
+	width: 45%;
 	height: 100%;
 	overflow: visible;
+	min-width: 500px;
 }
 
 #home-desc1{
 	
-	width: 50%;
+	width: 45%;
 	height: 100%;
-	float: left;
+	min-width: 150px;
+	margin-left: 40px;
+
 
 }
 
 #macbookimg{
 	
-	width: 200%;
-	height: inherit;
+	width: 250%;
+	height: 500px;
 	background-image: url(/img/mb-explore.png);
 	background-size: cover;
 	overflow: visible;
-
+	position: relative;
+	top: -100px;
+	right: 200px;
 	opacity: 0.9;
+	
 	
 }
 
 .home-feature{
 	
-	width: 100%;
+	max-width: 100%;
+	min-width: 100px;
 	height: 400px;
 	overflow: hidden;
 	padding: 0px;
-	padding-bottom: 0;
+	padding-bottom: 20px;
+	
 
+}
+
+.opensource{
+	
+	background-image: url(/img/open-source.png);
+	background-repeat: no-repeat;
+	background-size: 30%;
+	background-position: 11%;
 }
 
 #shuffleme{
@@ -906,6 +922,11 @@ background-color: #197FD9;
 	
 }
 
+.fgreen{
+	
+	background-color: #00B2AA;
+}
+
 .fblack{
 	
 	background-color: #2C425D;
@@ -929,13 +950,84 @@ height:400px;
 	background-size: cover;
 }
 
-.featuretext h1{
-	color: white;
-	opacity: 0.6;
-	font-family: 'Roboto Slab', serif;
-	font-size: 50px;
-	font-weight: 300;
+.macbook-feature{
+	
+	background-image: url(/img/mb-explore.png);
+	background-size: 1800px;
+	background-repeat: no-repeat;
+	background-position: -50% 20%;
 }
 
+.featuretext{
+	
+	min-width: 100px;
+}
 
+.tealtext{
+	
+	color: #00B2AA;
+}
+
+.featuredesc p{
+	font-family: 'Roboto Slab', serif;
+
+		color: white;
+		opacity: 0.9;
+		font-size: 15px;
+		font-weight: 300;
+		width: 350px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		padding-left: 14px;
+		padding-right: 10px;
+		background-color: #262E32;
+		opacity: 0.99;
+		position: relative;
+		border-radius: 3px;
+		box-shadow: 0 0 3px rgba(0, 0, 0, 0.76);
+	border-left-style: dashed;
+	border-left-width: 3px;
+	
+}
+
+.tealborder{
+	
+	border-left-color: #00B2AA;
+}
+.blueborder{
+	
+	border-left-color: #2C425D;
+}
+
+.featuretext h1{
+display: inline-block;
+font-family: 'Roboto Slab', serif;
+margin-top: 50px;
+
+	color: white;
+	opacity: 0.9;
+	font-size: 25px;
+	font-weight: 300;
+	
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-color: #262E32;
+	opacity: 0.99;
+	position: relative;
+	border-radius: 3px;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.87);
+}
+
+.floatleft{
+	
+	float: left;
+}
+
+.floatright{
+	
+	float: right;
+	margin-right: -5%;
+}
 
