@@ -9,7 +9,7 @@ Seeder is an under-development web application that will provide a platform for 
 
 
 
-there is a video [here](http://youtu.be/879IhcXFcpU)
+there is a video of the poc [here](http://youtu.be/879IhcXFcpU)
 
 
 The following feautures are currently implemented
