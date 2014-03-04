@@ -681,9 +681,9 @@ padding: 30px;
 	/*transition:0.5s;*/
 	 padding-top: 14px;
 	overflow: hidden;
-	-moz-box-shadow: inset 0 0 15em #000000;  
-	 -webkit-box-shadow: inset 0 0 15em #000000;   
-	 box-shadow: inset 0 0 15em #000000;
+-webkit-box-shadow: inset 0px 0px 104px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: inset 0px 0px 104px 0px rgba(0,0,0,0.75);
+box-shadow: inset 0px 0px 104px 0px rgba(0,0,0,0.75);
 	
 }
 
