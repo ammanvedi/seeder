@@ -1,5 +1,4 @@
-
- /*
+/*
 
  /$$$$$$$                            /$$                                       
 | $$__  $$                          | $$                                       
@@ -9,9 +8,7 @@
 | $$  \ $$| $$_____/| $$  | $$| $$  | $$| $$_____/| $$     | $$_____/| $$      
 | $$  | $$|  $$$$$$$| $$  | $$|  $$$$$$$|  $$$$$$$| $$     |  $$$$$$$| $$      
 |__/  |__/ \_______/|__/  |__/ \_______/ \_______/|__/      \_______/|__/                                                                       
-*/                                                                        
-
-
+*/
 var Renderer = function (canvas) {
     var canvas = $(canvas).get(0);
     var ctx = canvas.getContext("2d");
@@ -81,13 +78,12 @@ var Renderer = function (canvas) {
 
 
 
-
                 if ((node.data.length > 0) || (node.data.size > 0)) {
                     //draw a data rich node
                     //console.log('here');
                     if (node.data['imagedata'] != undefined) {
 
-                        
+
                         node.data['imagedata'].width = imagesize + 'px';
                         node.data['imagedata'].height = imagesize + 'px';
 
@@ -103,10 +99,10 @@ var Renderer = function (canvas) {
 
                         //clip the arc and draw the image, restore canvas state after
                         ctx.clip();
-                        try{
-                        ctx.drawImage(node.data['imagedata'], pt.x - (imagesize / 2), pt.y - (imagesize / 2), imagesize, imagesize);
-                        }catch(InvalidStateError){
-                         //console.log('ssssssss');
+                        try {
+                            ctx.drawImage(node.data['imagedata'], pt.x - (imagesize / 2), pt.y - (imagesize / 2), imagesize, imagesize);
+                        } catch (InvalidStateError) {
+                            //console.log('ssssssss');
                         }
                         ctx.restore();
 
@@ -136,7 +132,7 @@ var Renderer = function (canvas) {
                 } else {
                     //draw a normal node 
 
-                        //console.log(node);
+                    //console.log(node);
 
                     var radius = 10;
 
@@ -152,7 +148,6 @@ var Renderer = function (canvas) {
                     ctx.fillStyle = 'black';
                     ctx.fillText(node.name, pt.x - 4, pt.y + 3);
                 }
-
 
 
 
@@ -228,36 +223,65 @@ var Renderer = function (canvas) {
                                   | $$                
                                   |__/                
   */
+  
+var sys;
+  
+function getSaveState(particlesys){
+
+	var Edges = new Array();
+	var Nodes = new Array();
+
+	particlesys.eachNode(function (node, pt) {
+		Nodes.push(node);
+	});
+	particlesys.eachEdge(function (edge, pt1, pt2){
+		Edges.push(edge);
+	});
+	
+	var userdata = JSON.parse($.cookie('seederuser'));
+	var GraphMeta = new Object();
+	GraphMeta.author = userdata.id;
+	GraphMeta.datecreated = +new Date;
+	GraphMeta.likes = 0;
+	GraphMeta.dislikes = 0;
+	GraphMeta.views = 0;
+
+	var Graph = new Object();
+	Graph.nodes = Nodes;
+	Graph.edges = Edges;
+	
+	var Savestate = new Object();
+	Savestate.graphid = "abc";
+	Savestate.graph = Graph;
+	Savestate.graphmeta = GraphMeta;
+	
+	return Savestate;
+
+};
 
 
 $(document).ready(function () {
 
-    var DEPLOYIP = 'localhost'; //localhost for dev, ip for prod
+    var DEPLOYIP = '54.201.24.162'; //localhost for dev, ip for prod
     var socket = io.connect(DEPLOYIP + ':8080');
-
+    console.log( socket);
     var addnodemode = false;
 
-	//initial ui
+    //initial ui
     $("#tabs").tabs();
     $("input[type=submit]").button();
-
-    $("#pallete").draggable({
-        containment: "parent"
-    });
-
+    $("#pallete").draggable({containment: "parent"});
     $('#graph_tab').height($("body").height());
     $('#text_tab').height(0);
     $('.menu-link').bigSlide();
-    
     $('#tabs-1').show();
     $('#tabs-2').hide();
     $('#tabs-3').hide();
     $('#tabs-4').hide();
-    
-    var  MainSidebarBuild = $('.ui.sidebar');
-    
+
+    var MainSidebarBuild = $('.ui.sidebar');
     MainSidebarBuild.sidebar('toggle');
-    MainSidebarBuild.sidebar('attach events','#sidebar-toggle' , 'toggle');
+    MainSidebarBuild.sidebar('attach events', '#sidebar-toggle', 'toggle');
 
 
     var adding = false;
@@ -275,26 +299,26 @@ $(document).ready(function () {
     addnodePREFS['id'] = 0;
     addnodePREFS['color'] = '#81CF2D';
 
-    var sys = arbor.ParticleSystem(100, 1000, 0.3) //repulsion/stiffness/friction
+    sys = arbor.ParticleSystem(100, 1000, 0.3) //repulsion/stiffness/friction
     sys.parameters({
         gravity: false
     });
-    sys.renderer = Renderer("#graph_canvas"); 
+    sys.renderer = Renderer("#graph_canvas");
 
 
 
     sys.addNode('a', addnodePREFS);
     sys.addNode('e', addnodePREFS);
-    sys.addEdge('a','e');
+    sys.addEdge('a', 'e');
 
     var nearestmouse;
 
-	//keep a count of node id's
+    //keep a count of node id's
     var ct = 0;
     var data_to_add;
 
 
-/*
+    /*
                                           /$$             
                                          | $$             
   /$$$$$$  /$$    /$$/$$$$$$  /$$$$$$$  /$$$$$$   /$$$$$$$
@@ -304,66 +328,68 @@ $(document).ready(function () {
 |  $$$$$$$   \  $/ |  $$$$$$$| $$  | $$  |  $$$$//$$$$$$$/
  \_______/    \_/   \_______/|__/  |__/   \___/ |_______/ 
                                                           
-*/                                                  
-                                                          
-    $('body').mousemove(function (e){
-        
-        nearestmouse  = sys.nearest({
-                x: e.pageX + menuwidth,
-                y: e.pageY - navheight
-            });
+*/
 
-        if(nearestmouse){
+    $('body').mousemove(function (e) {
+
+        nearestmouse = sys.nearest({
+            x: e.pageX + menuwidth,
+            y: e.pageY - navheight
+        });
+
+        if (nearestmouse) {
 
 
-        
-        
-        if(nearestmouse.node.data.length > 0){
-            nearestmouse.node.data[6].val = true;
-            $('#node-title').text(nearestmouse.node.data[2].val);
-            $('#node-domain').text(nearestmouse.node.data[5].val);
-            $('#node-description').text(nearestmouse.node.data[1].val);
-            $('#node-image').attr("src",nearestmouse.node.data[3].val);
-            $('#node-link').attr("href", nearestmouse.node.data[0].val);
-            //console.log(nearestmouse.node);
-        }else{
-          //console.log('id is : ' + nearestmouse.node.name);
-          
-        }
+
+
+            if (nearestmouse.node.data.length > 0) {
+                nearestmouse.node.data[6].val = true;
+                $('#node-title').text(nearestmouse.node.data[2].val);
+                $('#node-domain').text(nearestmouse.node.data[5].val);
+                $('#node-description').text(nearestmouse.node.data[1].val);
+                $('#node-image').attr("src", nearestmouse.node.data[3].val);
+                $('#node-link').attr("href", nearestmouse.node.data[0].val);
+                //console.log(nearestmouse.node);
+            } else {
+                //console.log('id is : ' + nearestmouse.node.name);
+
+            }
 
         }
         //sys.stop();
 
     });
-    
-    
+
+
 
     $('#graph_canvas').click(function (a) {
 
-      if(addnodemode){
-      var nearme = sys.nearest({x:a.pageX - menuwidth, y:a.pageY- navheight});
-      console.log('called1');
-      var i = addnodePREFS;
+        if (addnodemode) {
+            var nearme = sys.nearest({
+                x: a.pageX - menuwidth,
+                y: a.pageY - navheight
+            });
+            console.log('called1');
+            var i = addnodePREFS;
 
-var data = jQuery.extend(true, {}, addnodePREFS);
+            var data = jQuery.extend(true, {}, addnodePREFS);
 
 
-      sys.addNode(data['name'], data);
-      sys.addEdge(nearme.node.name, data['name']);
-      ct++;
+            sys.addNode(data['name'], data);
+            sys.addEdge(nearme.node.name, data['name']);
+            ct++;
 
-      }
+        }
 
     });
 
     $('body').mousedown(function (evt) {
-    	console.log('amman here');
-        console.log(evt);
-        if ((evt.target.className.indexOf('search_result')!=-1) || (evt.target.parentElement.className.indexOf('search_result')!=-1)) {
+        //console.log(evt);
+        if ((evt.target.className.indexOf('search_result') != -1) || (evt.target.parentElement.className.indexOf('search_result') != -1)) {
 
             adding = true;
-             $('body').addClass('unselectable');
-             $('search_results_holder').addClass('stop-scroll');
+            $('body').addClass('unselectable');
+            $('search_results_holder').addClass('stop-scroll');
             //console.log('article clicked');
             //console.log(evt);
 
@@ -391,8 +417,8 @@ var data = jQuery.extend(true, {}, addnodePREFS);
                     name: 'DOMAIN',
                     val: evt.srcElement.attributes.DOMAIN.nodeValue
                 }, {
-                    name:'NEAREST',
-                    val:false
+                    name: 'NEAREST',
+                    val: false
                 }];
 
             } else {
@@ -416,8 +442,8 @@ var data = jQuery.extend(true, {}, addnodePREFS);
                     name: 'DOMAIN',
                     val: evt.srcElement.parentElement.attributes.DOMAIN.nodeValue
                 }, {
-                    name:'NEAREST',
-                    val:false
+                    name: 'NEAREST',
+                    val: false
                 }];
 
             }
@@ -431,10 +457,10 @@ var data = jQuery.extend(true, {}, addnodePREFS);
 
 
     $('body').mouseup(function (e) {
-    
-    $('body').removeClass('unselectable');
-     $('search_results_holder').removeClass('stop-scrolling');
-     
+
+        $('body').removeClass('unselectable');
+        $('search_results_holder').removeClass('stop-scrolling');
+
         if (adding) {
             //preload the image 
 
@@ -443,15 +469,14 @@ var data = jQuery.extend(true, {}, addnodePREFS);
             data_to_add['imagedata'] = prefetch;
 
             adding = false;
-            
+
             //console.log('event');
             //console.log(e);
 
             var len = 0;
 
-            
 
-              
+
 
             var nearme_ = sys.nearest({
                 x: e.pageX - menuwidth,
@@ -460,31 +485,31 @@ var data = jQuery.extend(true, {}, addnodePREFS);
 
             var res;
 
-            if(nearme_){
-                
-               res = sys.addNode(ct + '', data_to_add);
-            sys.addEdge(nearme_.node.name, ct + '');
-        }else{
-           res = sys.addNode(ct + '', data_to_add);
-        }
+            if (nearme_) {
 
-        if(res){
-            console.log('returned something');
-            console.log(res);
-        }else{
-            console.log('returned nothing');
-        }
+                res = sys.addNode(ct + '', data_to_add);
+                sys.addEdge(nearme_.node.name, ct + '');
+            } else {
+                res = sys.addNode(ct + '', data_to_add);
+            }
 
-            
-            
-            sys.eachNode(function (node, pt){
-              console.log('node');
-              console.log(node);
-              len++;
+            if (res) {
+                //console.log('returned something');
+                //console.log(res);
+            } else {
+                //console.log('returned nothing');
+            }
+
+
+
+            sys.eachNode(function (node, pt) {
+                //console.log('node');
+                //console.log(node);
+                len++;
             });
 
-            console.log('ct: ' + len);
- 
+            //console.log('ct: ' + len);
+
             ct++;
 
 
@@ -492,7 +517,7 @@ var data = jQuery.extend(true, {}, addnodePREFS);
         }
     });
 
-/*
+    /*
                                /$$                   /$$             
                               | $$                  | $$             
   /$$$$$$$  /$$$$$$   /$$$$$$$| $$   /$$  /$$$$$$  /$$$$$$   /$$$$$$$
@@ -502,16 +527,16 @@ var data = jQuery.extend(true, {}, addnodePREFS);
  /$$$$$$$/|  $$$$$$/|  $$$$$$$| $$ \  $$|  $$$$$$$  |  $$$$//$$$$$$$/
 |_______/  \______/  \_______/|__/  \__/ \_______/   \___/ |_______/ 
                                                                                                                                           
-*/                                                                
+*/
 
     socket.on('hs_id', function (data) {
         socket.id = data.data;
-        console.log('client : recieved id ' + socket.id + ' from server');
+        //console.log('client : recieved id ' + socket.id + ' from server');
     });
 
     socket.on('request_pullGraph_success', function (data) {
-        console.log('client : pullGraph request successful, result:');
-        console.log(data.data);
+        //console.log('client : pullGraph request successful, result:');
+        //console.log(data.data);
         rebuildPullGraph(data.data);
     });
 
@@ -535,7 +560,11 @@ var data = jQuery.extend(true, {}, addnodePREFS);
         };
     };
 
-
+	
+	function transportSaveState(ss){
+		socket.emit('USER_SAVEGRAPH', {payload: ss});
+	}
+	
     //when a user wants to get a graph, use the socket connection to
     //send a message to the server indicating which graph to pull
     function initiatePullGraph(gID) {
@@ -557,56 +586,56 @@ var data = jQuery.extend(true, {}, addnodePREFS);
     }
 
     $('#btn_savegraph').click(function () {
-
+  		transportSaveState(getSaveState(sys))
     });
-    
+
     $('.edittab').click(function (evt) {
-    
-    	$('.edittab').removeClass('active');
-    	
-    	$(evt.srcElement).addClass('active');
-    	$(evt.srcElement).addClass('purple');
-    	console.log(evt.srcElement.attributes[0].nodeValue);
-    	
-    	$('#tabs-1').hide();
-    	$('#tabs-2').hide();
-    	$('#tabs-3').hide();
-    	$('#tabs-4').hide();
-    	
-    	$(evt.srcElement.attributes[0].nodeValue).show();
+
+        $('.edittab').removeClass('active');
+
+        $(evt.srcElement).addClass('active');
+        $(evt.srcElement).addClass('purple');
+        //console.log(evt.srcElement.attributes[0].nodeValue);
+
+        $('#tabs-1').hide();
+        $('#tabs-2').hide();
+        $('#tabs-3').hide();
+        $('#tabs-4').hide();
+
+        $(evt.srcElement.attributes[0].nodeValue).show();
     });
 
-    $('#btn_export').click(function (e){
+    $('#btn_export').click(function (e) {
 
-var xport_string = "";
-
-
-    sys.eachNode(function (node, pt){
-        console.log(node);
-        if(node.data[4]){
-            if(node.data[4].val == 'article'){
-                console.log('has data 4');
-                //title Available From <URL>
-                //an article has been found, need to export this to the list
-                xport_string +=  node.data[2].val + " Available From <" +  node.data[0].val + ">\n\n";
-            }
+        var xport_string = "";
 
 
-        }else{
-            console.log(node);
-                if(node.data['TYPE'] == 'TEXT'){
+        sys.eachNode(function (node, pt) {
+            //console.log(node);
+            if (node.data[4]) {
+                if (node.data[4].val == 'article') {
+                    //console.log('has data 4');
+                    //title Available From <URL>
+                    //an article has been found, need to export this to the list
+                    xport_string += node.data[2].val + " Available From <" + node.data[0].val + ">\n\n";
+                }
+
+
+            } else {
+                //console.log(node);
+                if (node.data['TYPE'] == 'TEXT') {
                     //the node is a text node add it and format appropriatley
                     xport_string += node.data['name'] + " Available From <" + node.data['link'] + ">\n\n";
                 }
-        }
-    });
+            }
+        });
 
-    console.log(xport_string);
+        //console.log(xport_string);
 
-      var blob = new Blob([xport_string ], {type: "text/plain;charset=utf-8"});
-      saveAs(blob, "reference list.txt");
-
-
+        var blob = new Blob([xport_string], {
+            type: "text/plain;charset=utf-8"
+        });
+        saveAs(blob, "reference list.txt");
 
 
 
@@ -617,23 +646,23 @@ var xport_string = "";
 
     $('#btn_addnode').click(function () {
 
-      addnodemode = !addnodemode;
+        addnodemode = !addnodemode;
 
-console.log('called2');
+        //console.log('called2');
 
-  var updated = new Object();
+        var updated = new Object();
 
-    updated['name']  =  $('#field_node_name').val();
-    updated['text']  =  $('#field_node_text').val();
-    updated['link']  =  $('#field_node_link').val();
-    updated['size']  =  $('#field_node_size').val();
-    updated['id']    =  $('#field_node_id').val();
-    updated['color'] =  $('#picker_edgecolor').val();
-    updated['TYPE'] = 'TEXT';
+        updated['name'] = $('#field_node_name').val();
+        updated['text'] = $('#field_node_text').val();
+        updated['link'] = $('#field_node_link').val();
+        updated['size'] = $('#field_node_size').val();
+        updated['id'] = $('#field_node_id').val();
+        updated['color'] = $('#picker_edgecolor').val();
+        updated['TYPE'] = 'TEXT';
 
 
 
-addnodePREFS = updated;
+        addnodePREFS = updated;
 
 
     });

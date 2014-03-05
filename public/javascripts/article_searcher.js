@@ -18,7 +18,7 @@ $(document).ready(function () {
     //this function is passed the searchterm 
     function search(trm) {
 
-    	term = trm;
+        term = trm;
         //re-extend the search results holder, to show the results to the user
         $('#search_results_holder').height(300);
         //use the httpget function to grab the custom google search
@@ -54,19 +54,19 @@ $(document).ready(function () {
                 IMAGE: itm.pagemap.cse_image[0].src,
                 TYPE: 'article',
                 DOMAIN: itm.displayLink,
-                html: '<div class="result_title"><img class="rounded ui left floated image" src="' + itm.pagemap.cse_image[0].src + '"/>' + '<h1>' + itm.title + '</h1><h2>' + itm.displayLink +'</h2></div><div class="result_text">' + '<p>' + itm.snippet + '</p></div>'
+                html: '<div class="result_title"><img class="rounded ui left floated image" src="' + itm.pagemap.cse_image[0].src + '"/>' + '<h1>' + itm.title + '</h1><h2>' + itm.displayLink + '</h2></div><div class="result_text">' + '<p>' + itm.snippet + '</p></div>'
 
                 + '<div class="result_link ui purple label"><a target="_blank" href=\'' + itm.link + '\'>view source</a></div><i class="result_adder add purple icon"></>'
 
 
             }).appendTo('#search_results_holder');
-            
+
 
         });
 
         jQuery('<div/>', {
             id: 'load_more',
-            class:'load_more',
+            class: 'load_more',
             html: '<p>load more</p>'
         }).appendTo('#search_results_holder');
 
@@ -91,19 +91,19 @@ $(document).ready(function () {
     //on click of the search button, take the input in the text
     //field and pass it to the search function
     $('#btn_searcharticles').click(function () {
-    	next_page_idx = 0;
-    	$('.search_result').remove();
+        next_page_idx = 0;
+        $('.search_result').remove();
         search($('#input_searcharticles').val());
 
     });
 
 
     document.body.addEventListener("mousedown", function (evt) {
-console.log(evt);
-    	if((evt.target.className == 'load_more') || (evt.target.parentElement.className == 'load_more')){
-    		
-        get_next_page();
-    	}
+        console.log(evt);
+        if ((evt.target.className == 'load_more') || (evt.target.parentElement.className == 'load_more')) {
+
+            get_next_page();
+        }
     });
 
 });
