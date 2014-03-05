@@ -2,10 +2,14 @@
 
 $(document).ready(function() {
 
+
+
 var  MainSidebarExplore = $('.ui.sidebar');
 
 //MainSidebarExplore.sidebar('toggle');
 MainSidebarExplore.sidebar('attach events','#sidebar-toggle' , 'toggle');
+
+$('.shape').shape()
 
 var words = new Array();
 
@@ -25,6 +29,8 @@ function updatetext(){
 	        // Do something
 	    }});
 	count++;
+	
+	console.log($('.shape').shape('flip down'));
 
 }
 
