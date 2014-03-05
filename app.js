@@ -32,7 +32,9 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+//this is for development, when the user login has been impleented 
+//the cookie with this data will be replaced by a client specific
+//dataset passed through login
 var defaultuser = new Object();
 defaultuser.username = "admin-amman";
 defaultuser.id = "0407av94";
