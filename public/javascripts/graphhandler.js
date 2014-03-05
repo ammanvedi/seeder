@@ -16,7 +16,7 @@
   
 var sys;
   
-function getSaveState(particlesys){
+function getSaveState(particlesys, gname, gdesc){
 
 	var Edges = new Array();
 	var Nodes = new Array();
@@ -42,6 +42,8 @@ function getSaveState(particlesys){
 	var Savestate = new Object();
 	Savestate.graphid = "abc";
 	Savestate.author = userdata.id;
+	Savestate.graphname = gname;
+	Savestate.graphdesc = gdesc;
 	Savestate.graph = Graph;
 	Savestate.graphmeta = GraphMeta;
 	
@@ -52,7 +54,7 @@ function getSaveState(particlesys){
 
 $(document).ready(function () {
 
-    var DEPLOYIP = '54.201.24.162'; //localhost for dev, ip for prod
+    var DEPLOYIP = '192.168.0.2'; //localhost for dev, ip for prod
     var socket = io.connect(DEPLOYIP + ':8080');
     console.log( socket);
     var addnodemode = false;
@@ -68,6 +70,7 @@ $(document).ready(function () {
     $('#tabs-2').hide();
     $('#tabs-3').hide();
     $('#tabs-4').hide();
+    
     
 
     var MainSidebarBuild = $('.ui.sidebar');
@@ -350,6 +353,18 @@ $(document).ready(function () {
             y: evt.clientY
         };
     };
+    
+    function flipSaveButton(){
+    	
+    	if($('#btn_publishgraph').hasClass('positive')){
+    		$('#btn_publishgraph').removeClass('positive');
+    		$('#btn_savegraph').addClass('positive');
+    	}else{
+	    	$('#btn_publishgraph').addClass('positive');
+	    	$('#btn_savegraph').removeClass('positive');
+    	}
+    
+    }
 
 	
 	function transportSaveState(ss){
@@ -381,8 +396,19 @@ $(document).ready(function () {
     //open up the save console
     $('#search_results_holder').height(0);
     $('#savepanel').css("height","100px");
+    $('#savepanel').css("background-color","#564F8A");
+    flipSaveButton();
+    
+    var name = $('#sp_graphname').val();
+    var desc = $('#sp_graphdesc').val();
+    
+    console.log('namedesc: ' + name + ' ' +desc);
+    if((name != '') && (desc != '')){
+    	transportSaveState(getSaveState(sys, name, desc));
     	
-  		transportSaveState(getSaveState(sys));
+    	console.log('sent graph data');
+    }
+  		//transportSaveState(getSaveState(sys));
     });
 
     $('.edittab').click(function (evt) {
@@ -397,6 +423,8 @@ $(document).ready(function () {
         $('#tabs-2').hide();
         $('#tabs-3').hide();
         $('#tabs-4').hide();
+        
+       
 
         $(evt.srcElement.attributes[0].nodeValue).show();
     });

@@ -89,7 +89,7 @@ app.get('/explore', explore.explore);
 io.sockets.on('connection', function (socket) {
 
 	socket.on('USER_SAVEGRAPH', function (data){
-		console.log('server : user with id' + data.payload.graphmeta.author + ' requested graph save');
+		console.log('server : user with id' + data.payload.graphname + ' requested graph save');
 		db_push_graph(data.payload)
 	});
 });

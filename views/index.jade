@@ -5,7 +5,7 @@ block content
 		ai#sidebar-toggle.item
 			i.reorder.icon
 		a.item(href="/")
-			i.home.icon
+			i.leaf.icon
 			img(src="/img/logo-small.png")
 		a.item(href="/explore")
 			i.map.icon
@@ -67,6 +67,17 @@ block content
 					#btn_publishgraph.ui.button.small.positive
 						|Publish
 			#savepanel
+				ul
+					li
+						.ui.labeled.input
+							input#sp_graphname.text(placeholder="Graph Name")
+							.ui.corner.label
+								i.asterisk.icon
+					li
+						.ui.labeled.input
+							input#sp_graphdesc.text(placeholder="Graph Name")
+							.ui.corner.label
+								i.asterisk.icon
 	#contain_main(class='push')
 		#pallete
 			#pallete-menu.ui.vertical.pointing.menu

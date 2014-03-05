@@ -6,7 +6,7 @@ block content
 			ai#sidebar-toggle.item
 				i.reorder.icon
 			a.item.purple.active(href="/")
-				i.home.icon
+				i.leaf.icon
 				img(src="/img/logo-small.png")
 			a.item(href="/explore")
 				i.map.icon
@@ -96,14 +96,15 @@ block content
 						i.users.icon
 						| Learn More
 	.home-feature.fpinks.vign
-		#home-desc1.floatleft
-			.featuretext
-					h1 reference export
+		#home-desc1.floatmiddle
+			.featuretext.center
+					h1 Join In.
 				.featuredesc
-					p.pplborder Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. 
-				.ui.orange.github.button
-					i.github.icon
-					| View Source on Github
+					#explore-searchbar
+						.ui.fluid.action.input
+							input(type="text" placeholder="some.one@example.com")
+							.ui.teal.right.labeled.button
+								|notify me
 			.clear
 			
 		

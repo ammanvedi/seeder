@@ -606,7 +606,9 @@ box-shadow: 0 0 5px #5a5a5a;
 	
 	height: 0px;
 	width: 100%;
-	transition:3s;
+	transition:1.5s;
+	padding-top: 20px;
+	overflow: hidden;
 }
 
 #btn_addedge{
@@ -862,7 +864,7 @@ overflow: hidden;
 	
 	height: 100%;
 	min-width: 150px;
-	margin-left: 40px;
+	
 
 
 }
@@ -1021,6 +1023,12 @@ height:400px;
 	min-width: 100px;
 }
 
+.center{
+	
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .tealtext{
 	
 	color: #00B2AA;
@@ -1096,6 +1104,7 @@ margin-top: 50px;
 .floatleft{
 	width: 45%;
 	float: left;
+	margin-left: 40px;
 }
 
 .floatright{
@@ -1103,6 +1112,14 @@ margin-top: 50px;
 	min-width: 45%;
 	float: right;
 	margin-right:30px;
+	
+}
+
+.floatmiddle{
+	max-width: 600px;
+	
+	margin-left: auto;
+	margin-right: auto;
 	
 }
 
