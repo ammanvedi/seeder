@@ -30,7 +30,6 @@ function getSaveState(particlesys){
 	
 	var userdata = JSON.parse($.cookie('seederuser'));
 	var GraphMeta = new Object();
-	GraphMeta.author = userdata.id;
 	GraphMeta.datecreated = +new Date;
 	GraphMeta.likes = 0;
 	GraphMeta.dislikes = 0;
@@ -42,6 +41,7 @@ function getSaveState(particlesys){
 	
 	var Savestate = new Object();
 	Savestate.graphid = "abc";
+	Savestate.author = userdata.id;
 	Savestate.graph = Graph;
 	Savestate.graphmeta = GraphMeta;
 	
@@ -68,6 +68,7 @@ $(document).ready(function () {
     $('#tabs-2').hide();
     $('#tabs-3').hide();
     $('#tabs-4').hide();
+    
 
     var MainSidebarBuild = $('.ui.sidebar');
     MainSidebarBuild.sidebar('toggle');
@@ -376,7 +377,12 @@ $(document).ready(function () {
     }
 
     $('#btn_savegraph').click(function () {
-  		transportSaveState(getSaveState(sys))
+    
+    //open up the save console
+    $('#search_results_holder').height(0);
+    $('#savepanel').css("height","100px");
+    	
+  		transportSaveState(getSaveState(sys));
     });
 
     $('.edittab').click(function (evt) {

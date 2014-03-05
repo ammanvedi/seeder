@@ -602,7 +602,12 @@ box-shadow: 0 0 5px #5a5a5a;
 	
 }
 
-
+#savepanel{
+	
+	height: 0px;
+	width: 100%;
+	transition:3s;
+}
 
 #btn_addedge{
 	margin-left: auto;
@@ -611,6 +616,11 @@ box-shadow: 0 0 5px #5a5a5a;
 
 #input_searcharticles{
 	/*opacity: 0.4;*/
+}
+
+#btn_savegraph{
+	
+	z-index: 5;
 }
 
 #btn_searcharticles{
@@ -849,7 +859,7 @@ overflow: hidden;
 
 #home-desc1{
 	
-	width: 45%;
+	
 	height: 100%;
 	min-width: 150px;
 	margin-left: 40px;
@@ -872,24 +882,61 @@ overflow: hidden;
 	
 }
 
+.floatstacked{
+	width: 30%;
+	float: left;
+	
+}
+
 .fpink{
 	
 	background-color: #2ECC71;
 }
+
+.fpinks{
+	
+	background-color: #3498DB;
+}
+
+
 
 .fppl{
 	
 	background-color: #9B59B6;
 }
 
+.minifeature{
+	min-width: 200px;
+	max-width: 80%;
+	height: 200px;
+	background-color: rgb(32, 48, 76);
+	padding-left: 16px;
+	padding-right: 0;
+	margin-right: auto;
+	margin-left: auto;
+	padding-top: 20px;
+	margin-top: 20px;
+	border-radius: 5px;
+	padding-right: 10px;
+}
+
+.minifeature p{
+	
+	color: white;
+	opacity: 0.8;
+}
+
 .home-feature{
 	
 	max-width: 100%;
 	min-width: 100px;
-	height: 400px;
+	max-height: 800px;
+	min-height: 200px;
 	overflow: hidden;
 	padding: 0px;
 	padding-bottom: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
 	
 
 }
@@ -952,7 +999,7 @@ background-color: #197FD9;
 }
 
 #home-banner-image{
-width: 950px;
+max-width: 950px;
 height:400px;
 
 	background-image: url(/img/imac-build.png);
@@ -964,7 +1011,9 @@ height:400px;
 	background-image: url(/img/mb-explore.png);
 	background-size: 1800px;
 	background-repeat: no-repeat;
-	background-position: -50% 20%;
+	background-position:center;
+	background-position-x: 290px;
+	background-position-y: -170px;
 }
 
 .featuretext{
@@ -1018,6 +1067,11 @@ height:400px;
 	border-left-color: #2C425D;
 }
 
+.navindex{
+	z-index: 1000;
+	
+}
+
 .featuretext h1{
 display: inline-block;
 font-family: 'Roboto Slab', serif;
@@ -1040,14 +1094,16 @@ margin-top: 50px;
 }
 
 .floatleft{
-	
+	width: 45%;
 	float: left;
 }
 
 .floatright{
-	
+	max-width: 100%;
+	min-width: 45%;
 	float: right;
-	margin-right: -5%;
+	margin-right:30px;
+	
 }
 
 .shapetext{

@@ -1,12 +1,12 @@
 extends layout
 
 block content
-	.ui.menu.purple.inverted
+	.ui.menu.purple.inverted.navindex
 		ai#sidebar-toggle.item
 			i.reorder.icon
 		a.item(href="/")
 			i.home.icon
-			| Seeder
+			img(src="/img/logo-small.png")
 		a.item(href="/explore")
 			i.map.icon
 			| Explore
@@ -66,6 +66,7 @@ block content
 					.or
 					#btn_publishgraph.ui.button.small.positive
 						|Publish
+			#savepanel
 	#contain_main(class='push')
 		#pallete
 			#pallete-menu.ui.vertical.pointing.menu
