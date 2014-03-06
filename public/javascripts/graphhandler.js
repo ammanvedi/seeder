@@ -16,7 +16,7 @@
   
 var sys;
   
-function getSaveState(particlesys, gname, gdesc){
+function getSaveState(particlesys, gname, gdesc, publishme){
 
 	var Edges = new Array();
 	var Nodes = new Array();
@@ -41,6 +41,7 @@ function getSaveState(particlesys, gname, gdesc){
 	
 	var Savestate = new Object();
 	Savestate.graphid = "abc";
+	Savestate.publish = publishme;
 	Savestate.author = userdata.id;
 	Savestate.graphname = gname;
 	Savestate.graphdesc = gdesc;
@@ -368,7 +369,10 @@ $(document).ready(function () {
 
 	
 	function transportSaveState(ss){
-		socket.emit('USER_SAVEGRAPH', {payload: ss});
+	
+			socket.emit('USER_SAVEGRAPH', {payload: ss});
+
+		
 	}
 	
     //when a user wants to get a graph, use the socket connection to
@@ -390,6 +394,26 @@ $(document).ready(function () {
     function addNode(x, y, s, id, n, c, attr) {
 
     }
+    
+    $('#btn_publishgraph').click(function () {
+    
+    //open up the save console
+    $('#search_results_holder').height(0);
+    $('#savepanel').css("height","100px");
+    $('#savepanel').css("background-color","#564F8A");
+    
+    
+    var name = $('#sp_graphname').val();
+    var desc = $('#sp_graphdesc').val();
+    
+    console.log('namedesc: ' + name + ' ' +desc);
+    if((name != '') && (desc != '')){
+    	transportSaveState(getSaveState(sys, name, desc, 1));
+    	
+    	console.log('sent publish graph data');
+    }
+    		//transportSaveState(getSaveState(sys));
+    });
 
     $('#btn_savegraph').click(function () {
     
@@ -404,7 +428,7 @@ $(document).ready(function () {
     
     console.log('namedesc: ' + name + ' ' +desc);
     if((name != '') && (desc != '')){
-    	transportSaveState(getSaveState(sys, name, desc));
+    	transportSaveState(getSaveState(sys, name, desc, 0));
     	
     	console.log('sent graph data');
     }

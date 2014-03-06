@@ -52,6 +52,39 @@ MongoClient.connect("mongodb://ammanvedi:poopoo12@ds057528.mongolab.com:57528/se
     }
 });
 
+function getPublic(filter, next){
+
+	var ItemList = new Array();
+
+	if(filter == 'all'){
+	
+	MongoClient.connect("mongodb://ammanvedi:poopoo12@ds057528.mongolab.com:57528/seeder-dev", function (err, db) {
+	        if (!err) {
+	            db.createCollection('publicgraphs', function (err, collection) {
+	
+					collection.find().toArray(function(err, items) {
+						items.forEach(function (obj){
+							ItemList.push(obj);
+							
+							
+						});
+						console.log(ItemList);
+						next(ItemList);
+						//return JSON.stringify(ItemList);
+					});
+	
+	            });
+	        }
+	    });
+	
+		
+		
+	}
+	
+}
+
+
+
 // development only
 if ('development' == app.get('env')) {
     app.use(express.errorHandler());
@@ -90,16 +123,36 @@ io.sockets.on('connection', function (socket) {
 
 	socket.on('USER_SAVEGRAPH', function (data){
 		console.log('server : user with id' + data.payload.graphname + ' requested graph save');
-		db_push_graph(data.payload)
+		if(data.payload.publish){
+		db_push_graph(data.payload, true);
+		}else{
+		db_push_graph(data.payload, false);
+		}
 	});
+	
+	//SERVE_EXPLORE_HOMEPAGE
+	
+	socket.on('SERVE_EXPLORE_HOMEPAGE', function (data){
+		//console.log('server : user with id' + data.payload.graphname + ' requested graph save');
+		//get public graphs and serve back to client
+		//database
+		var exploredata = getPublic('all', function (dta){
+			socket.emit('EXPLORE_SERVE_RESPONSE', {payload: dta});
+			
+		});
+		
+	});
+	
+
 });
 
-function db_push_graph(fullgraph) {
+function db_push_graph(fullgraph, public) {
 
+if(public){
     MongoClient.connect("mongodb://ammanvedi:poopoo12@ds057528.mongolab.com:57528/seeder-dev", function (err, db) {
         if (!err) {
             console.log("database : connected to MongoDB");
-            db.createCollection('usergraphs', function (err, collection) {
+            db.createCollection('publicgraphs', function (err, collection) {
 
                 console.log('insert with id ' + fullgraph.graphid);
                 collection.update({graphid:fullgraph.graphid}, fullgraph,{upsert:true}, function (er,res){
@@ -109,5 +162,20 @@ function db_push_graph(fullgraph) {
             });
         }
     });
+    }else{
+        MongoClient.connect("mongodb://ammanvedi:poopoo12@ds057528.mongolab.com:57528/seeder-dev", function (err, db) {
+            if (!err) {
+                console.log("database : connected to MongoDB");
+                db.createCollection('usergraphs', function (err, collection) {
+    
+                    console.log('insert with id ' + fullgraph.graphid);
+                    collection.update({graphid:fullgraph.graphid}, fullgraph,{upsert:true}, function (er,res){
+                    console.log(res);
+                    });
+    
+                });
+            }
+        });
+    }
 
 }
