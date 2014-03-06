@@ -597,8 +597,55 @@ box-shadow: 0 0 5px #5a5a5a;
 	overflow-x: hidden;
 	/*box-shadow: 0 5px 30px #000;*/
 
+}
 
 
+#clearcirc{
+	width: 100%;
+	height: 2px;
+	clear: both;
+}
+
+#circlefloatleft{
+
+overflow: hidden;
+	width: 90px;
+	height: 90px;
+	border-radius: 45px;
+	background-color: #564F8A;
+	float: left;
+	margin-left:10px ;
+	-webkit-box-shadow: inset 0 0 104px rgba(0, 0, 0, 0.46);
+	-moz-box-shadow: inset 0 0 104px rgba(0, 0, 0, 0.46);
+	box-shadow: inset 0 0 104px rgba(0, 0, 0, 0.46);
+	border: 3px dashed #ffffff;
+}
+
+.circletext{
+	
+	position: relative;
+	left: 0px;
+	top: 20px;
+	text-align: center;
+}
+
+#circlefloatright{
+
+overflow: hidden;
+	width: 90px;
+	height: 90px;
+	border-radius: 45px;
+	background-color: #564F8A;
+	float: right;
+	margin-right:10px ;
+-webkit-box-shadow: inset 0 0 104px rgba(0, 0, 0, 0.46);
+-moz-box-shadow: inset 0 0 104px rgba(0, 0, 0, 0.46);
+box-shadow: inset 0 0 104px rgba(0, 0, 0, 0.46);
+border: 3px dashed #ffffff;
+}
+
+#circlefloatright:first-child{
+	
 	
 }
 
@@ -662,6 +709,11 @@ padding: 30px;
 
 
 	
+}
+
+#graphs-view .item{
+	
+	height: 30px;
 }
 
 #explore-banner-contain

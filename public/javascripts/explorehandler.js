@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-var DEPLOYIP = '54.201.24.162'; //localhost for dev, ip for prod
+var DEPLOYIP = '192.168.0.2'; //localhost for dev, ip for prod
 var socket = io.connect(DEPLOYIP + ':8080');
 console.log( socket);
 

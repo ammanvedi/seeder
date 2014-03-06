@@ -50,26 +50,39 @@ block content
 						i.search.icon
 						|Search
 
-
+	
 	#graphs-view.ui.stackable.four.items
-		.item
-			.image
-				img(src="http://placehold.it/300x300.png")
-			.content
-				.name
-					|Graph Name
-				p.description.smalltext
-					| by Amman Vedi
-				p.description.graphdesc
-					| Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-					|sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-				.graphmeta
-					.ui.label.purple
-						| Views
-						a.detail
-							| 23
-					.ui.label.green
-						| Likes
-						a.detail
-							| 23
+		-var ob = graphs
+		-for(var prop in ob)
+			.item
+				#circlefloatleft
+					h2.ui.inverted.small.header.circletext
+						| 22
+						.small.sub.header
+							| Nodes
+				#circlefloatright
+					h2.ui.inverted.small.header.circletext
+						| 22
+						.small.sub.header
+							| Edges
+				#clearcirc
+				.content
+					.meta
+						|5 days ago
+					.name
+						|#{ob[prop].graphname}
+					p.description.smalltext
+						| by #{ob[prop].author}
+					p.description.graphdesc
+						| #{ob[prop].graphdesc}
+					.graphmeta
+						.ui.label.purple
+							| Views
+							a.detail
+								|#{ob[prop].graphmeta.views}
+						.ui.label.green
+							| Likes
+							a.detail
+								| #{ob[prop].graphmeta.likes}
+			
 		

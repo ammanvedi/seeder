@@ -40,7 +40,7 @@ function getSaveState(particlesys, gname, gdesc, publishme){
 	Graph.edges = Edges;
 	
 	var Savestate = new Object();
-	Savestate.graphid = "abc";
+	Savestate.graphid = "abc2";
 	Savestate.publish = publishme;
 	Savestate.author = userdata.id;
 	Savestate.graphname = gname;
@@ -55,7 +55,7 @@ function getSaveState(particlesys, gname, gdesc, publishme){
 
 $(document).ready(function () {
 
-    var DEPLOYIP = '54.201.24.162'; //localhost for dev, ip for prod
+    var DEPLOYIP = '192.168.0.2'; //localhost for dev, ip for prod
     var socket = io.connect(DEPLOYIP + ':8080');
     console.log( socket);
     var addnodemode = false;

@@ -116,7 +116,18 @@ app.post('/hook', function (req, res) {
 
 app.get('/users', user.list);
 
-app.get('/explore', explore.explore);
+app.get('/explore', function(req, res){
+
+
+var exploredata = getPublic('all', function (dta){
+	//socket.emit('EXPLORE_SERVE_RESPONSE', {payload: dta});
+	console.log('got ' + dta);
+	res.render('explore', { title: 'Explore', graphs: dta, len: dta.length });
+});
+
+
+  
+});
 
 //server side socket connection reciever
 io.sockets.on('connection', function (socket) {
@@ -136,10 +147,7 @@ io.sockets.on('connection', function (socket) {
 		//console.log('server : user with id' + data.payload.graphname + ' requested graph save');
 		//get public graphs and serve back to client
 		//database
-		var exploredata = getPublic('all', function (dta){
-			socket.emit('EXPLORE_SERVE_RESPONSE', {payload: dta});
-			
-		});
+
 		
 	});
 	
