@@ -1,0 +1,50 @@
+extends bloglayout
+script(src="/javascripts/bloghandler.js")
+
+block content
+	.ui.menu.purple.inverted.navindex
+		ai#sidebar-toggle.item
+			i.reorder.icon
+		a.item(href="/")
+			i.leaf.icon
+			img(src="/img/logo-small.png")
+		a.item(href="/explore")
+			i.map.icon
+			| Explore
+		a.item.purple.active(href="/build")
+			i.wrench.icon
+			| Build
+		.right.compact.menu
+			.ui.simple.dropdown.item
+				i.user.icon
+				|Me
+				i.dropdown.icon
+				.menu
+					a.item
+						i.bolt.icon
+						|My Profile
+					a.item
+						i.lightbulb.icon
+						|My Graphs
+					a.item
+						i.settings.icon
+						|Settings
+					a.item
+						i.sign.out.icon
+						|Sign Out
+						
+			.item
+				.ui.icon.input
+					input(type="text" placeholder="search the graph...")
+					i.search.link.icon
+	#blogbanner
+	
+	.postcontainer
+		.ui.piled.segment
+			.postdata
+				h2 Blog Post Title
+				h3 by Amman on 02/2/14 at 23:50 pm
+				p Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+			#btn_readmore.ui.fluid.basic.button
+				i.icon.add
+				|Read More

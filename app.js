@@ -116,6 +116,10 @@ app.post('/hook', function (req, res) {
 
 app.get('/users', user.list);
 
+app.get('/blog',  function(req, res){
+	res.render('blog', {});
+});
+
 app.get('/explore', function(req, res){
 
 
