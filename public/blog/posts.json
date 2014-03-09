@@ -1,0 +1,53 @@
+{
+    "posts": [
+        {
+  "post": [
+    {
+        "type": "text",
+        "data": "Recently the site and webapp made a transition from interfaces styled from custom css to <a href='http://semantic-ui.com/'>Semantic UI</a>. The change means we can build out the site faster, and prettier."
+    },
+    {
+        "type": "image",
+        "data": "http://i.imgur.com/cv1aoOe.png"
+    },
+     {
+        "type": "text",
+        "data": "The overall design in terms of layout has stayed the same, but most components are linked to semantic css, the combination of semantic and jade makes html source read well and write fast."
+    },
+    {
+        "type": "image",
+    	"data": "http://localhost:8080/blog/img/sidebar-old-new.png"
+    },
+     {
+        "type": "text",
+        "data": "alongside the redesign i am also considering mobile devices, although the web app will not run on these devices the other parts of the site should be responsive. As well as the ui some other functionality was updated:<br/> <br/> &#8226; added a save option to builder<br/>&#8226; added a publish option to builder<br/>&#8226; implemented saving of graph data to database<br/>&#8226; explore page now lists basic information of published graphs<br/>&#8226; added cookie storage for quick access to basic user information<br/>&#8226; created socket connection between server and client for saving of graphs<br/>&#8226; the most recent changelog/build of the source is on the github page<br/><br/>you can find it <a href='https://github.com/ammanvedi/seeder'>here</a>"
+    }
+  ],
+  "title": "UI Redesign (Semantic)",
+  "date": "09/03/14",
+  "time": "2:50 pm",
+  "author": "Amman"
+},{
+  "post": [
+    {
+        "type": "image",
+        "data": "http://localhost:8080/blog/img/hookerblog.png"
+    },
+    {
+        "type": "text",
+        "data": "we host the code for the project on github, and they provide an api to send POSTDATA to a server whenever a commit is made. I used this webhook api to write a server that listens on our development server for githubs notifications and then pulls the new code if neccacary.<br/><br/>if our commit message is something like<br/><pre>git commit -m \"added some feature [redeploy]\"</pre>"
+    },
+    {
+    	"type": "text",
+    	"data": "then the listening server catches the \"[redeploy}\" directive in the commit message and redeploys the new code. The code for the server is available here, with a bit of doc"
+    }
+  ],
+  "title": "Automatic Deployment to Amazon EC2",
+  "date": "09/03/14",
+  "time": "02:41 am",
+  "author": "Amman"
+}
+    
+    
+    ]
+}
