@@ -32,7 +32,7 @@ function generateBlogPosts(posts){
 			if(partialpost.type == 'image'){
 			console.log('imgpost');
 			var postimg = $('<div class="postimage"></div>')
-			postimg.append('<img src="'+ partialpost.data +'" class="shadowimg"></img>');
+			postimg.append('<img src="'+ partialpost.data +'"></img>');
 			postdata.append(postimg)
 			}
 		});
