@@ -33,10 +33,6 @@ block content
 						i.sign.out.icon
 						|Sign Out
 						
-			.item
-				.ui.icon.input
-					input(type="text" placeholder="search the graph...")
-					i.search.link.icon
 	#blogbanner
 	
 	.postcontainer
@@ -84,7 +80,7 @@ block content
 				h3 by Amman on 09/03/14 at 2:50 pm
 				.postimage
 					img(src="/blog/img/hookerblog.png")
-					p part of the homepage redesign
+					p hooker server
 				p we host the code for the project on github, and they provide an api to send POSTDATA to a server whenever a commit is made. I used this webhook api to write a server that listens on our development server for githubs notifications and then pulls the new code if neccacary.
 				p if our commit message is something like 
 				pre git commit -m "added some feature [redeploy]
