@@ -8,7 +8,8 @@
     },
     {
         "type": "image",
-        "data": "http://i.imgur.com/cv1aoOe.png"
+        "data": "http://i.imgur.com/cv1aoOe.png",
+        "subtitle": "part of the homepage redesign"
     },
      {
         "type": "text",
@@ -16,7 +17,8 @@
     },
     {
         "type": "image",
-    	"data": "/blog/img/sidebar-old-new.png"
+    	"data": "/blog/img/sidebar-old-new.png",
+    	"subtitle": "old graph builder ui vs new"
     },
      {
         "type": "text",
@@ -31,7 +33,8 @@
   "post": [
     {
         "type": "image",
-        "data": "/blog/img/hookerblog.png"
+        "data": "/blog/img/hookerblog.png",
+        "subtitle": "hooker-server"
     },
     {
         "type": "text",
