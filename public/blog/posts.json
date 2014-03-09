@@ -16,7 +16,7 @@
     },
     {
         "type": "image",
-    	"data": "http://localhost:8080/blog/img/sidebar-old-new.png"
+    	"data": "/blog/img/sidebar-old-new.png"
     },
      {
         "type": "text",
@@ -31,7 +31,7 @@
   "post": [
     {
         "type": "image",
-        "data": "http://localhost:8080/blog/img/hookerblog.png"
+        "data": "/blog/img/hookerblog.png"
     },
     {
         "type": "text",
