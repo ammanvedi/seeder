@@ -1,8 +1,8 @@
 $(document).ready(function() {
 
 
-var postheight = 200;
- $('#btn_readmore').click(function (evt) {
+var postheight = 400;
+ $('.btn_readmore').click(function (evt) {
 	console.log(evt);
 	var el = $(evt.srcElement.previousElementSibling);
 	if(el.height() > postheight){

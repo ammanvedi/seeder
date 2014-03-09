@@ -45,16 +45,50 @@ block content
 				h2 UI Redesign (Semantic)
 				img.ui.mini.right.floated.image(src="https://0.gravatar.com/avatar/4a373cf3edb4c83ae97249e6e5ef19d4?d=https%3A%2F%2Fidenticons.github.com%2F7ec612f35a07b9a83f2f7086d152decb.png&r=x&s=460")
 				#clear
-				h3 by Amman on 02/2/14 at 23:50 pm
-				p Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+				h3 by Amman on 09/03/14 at 2:50 pm
+				p Recently the site and webapp made a transition from interfaces styled from custom css to <a href="http://semantic-ui.com/" target="_blank">Semantic UI</a>. The change means we can build out the site faster, and prettier.
 				.postimage
-					img(src="http://i.imgur.com/cv1aoOe.png")
-					
-				p Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
+					img.shadowimg(src="http://i.imgur.com/cv1aoOe.png")
+					p part of the homepage redesign
+				p The overall design in terms of layout has stayed the same, but most components are linked to semantic css, the combination of semantic and jade makes html source read well and write fast.
 				.postimage
-					img(src="http://i.imgur.com/jqTakPB.png")
-					p image subtitle here
-				p nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
-			#btn_readmore.ui.fluid.basic.button
+					img.shadowimg(src="/blog/img/sidebar-old-new.png")
+					p old graph builder vs new ui
+				p alongside the redesign i am also considering mobile devices, although the web app will not run on these devices the other parts of the site should be responsive. As well as the ui some other functionality was updated;
+				ul 
+					li added a save option to builder
+					li added a publish option to builder
+					li implemented saving of graph data to database
+					li explore page now lists basic information of published graphs
+					li added cookie storage for quick access to basic user information
+					li created socket connection between server and client for saving of graphs 
+				p the most recent changelog/build of the source is on the github page
+				p you can find it 
+					a(href="https://github.com/ammanvedi/seeder" target="_blank")
+						| here
+			.btn_readmore.ui.fluid.basic.button
+				i.icon.add
+				|Read More
+				
+				
+				
+				
+				
+				
+	.postcontainer
+		.ui.piled.purple.segment
+			.postdata
+				h2 Automatic Deployment to Amazon EC2
+				img.ui.mini.right.floated.image(src="https://0.gravatar.com/avatar/4a373cf3edb4c83ae97249e6e5ef19d4?d=https%3A%2F%2Fidenticons.github.com%2F7ec612f35a07b9a83f2f7086d152decb.png&r=x&s=460")
+				#clear
+				h3 by Amman on 09/03/14 at 2:50 pm
+				.postimage
+					img(src="/blog/img/hookerblog.png")
+					p part of the homepage redesign
+				p we host the code for the project on github, and they provide an api to send POSTDATA to a server whenever a commit is made. I used this webhook api to write a server that listens on our development server for githubs notifications and then pulls the new code if neccacary.
+				p if our commit message is something like 
+				pre git commit -m "added some feature [redeploy]
+				p then the listening server catches the "[redeploy}" directive in the commit message and redeploys the new code. The code for the server is available <a href="https://github.com/ammanvedi/hooker" target="_blank">here</a>, with a bit of doc
+			.btn_readmore.ui.fluid.basic.button
 				i.icon.add
 				|Read More
