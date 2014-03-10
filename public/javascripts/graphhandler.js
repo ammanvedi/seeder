@@ -69,7 +69,7 @@ $(document).ready(function () {
     $("#pallete").draggable({containment: "parent"});
     $('#graph_tab').height($("body").height());
     $('#text_tab').height(0);
-    $('.menu-link').bigSlide();
+    //$('.menu-link').bigSlide();
     $('#tabs-1').show();
     $('#tabs-2').hide();
     $('#tabs-3').hide();
