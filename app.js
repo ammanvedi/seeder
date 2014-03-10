@@ -45,42 +45,42 @@ defaultuser.profilepage = "http://www.google.com";
 http.listen(DEPLOYPORT);
 console.log('listening on port ' + app.get('port'))
 
+var databaseconnection;
+
+//single connection instance creates a connection pool that the server can use whenever
+//database interaction is needed
 MongoClient.connect("mongodb://ammanvedi:poopoo12@ds057528.mongolab.com:57528/seeder-dev", function (err, db) {
     if (!err) {
-        console.log("database : connected to MongoDB");
-        db.createCollection('graphs', function (err, collection) {});
+        //console.log("database : connected to MongoDB");
+        databaseconnection = db;
+        //db.createCollection('graphs', function (err, collection) {});
     }
 });
 
-function getPublic(filter, next){
 
-	var ItemList = new Array();
 
-	if(filter == 'all'){
-	
-	MongoClient.connect("mongodb://ammanvedi:poopoo12@ds057528.mongolab.com:57528/seeder-dev", function (err, db) {
-	        if (!err) {
-	            db.createCollection('publicgraphs', function (err, collection) {
-	
-					collection.find().toArray(function(err, items) {
-						items.forEach(function (obj){
-							ItemList.push(obj);
-							
-							
-						});
-						console.log(ItemList);
-						next(ItemList);
-						//return JSON.stringify(ItemList);
-					});
-	
-	            });
-	        }
-	    });
-	
-		
-		
-	}
-	
+function getPublic(filter, next) {
+
+    var ItemList = new Array();
+
+    if (filter == 'all') {
+
+        databaseconnection.createCollection('publicgraphs', function (err, collection) {
+
+            collection.find().toArray(function (err, items) {
+                items.forEach(function (obj) {
+                    ItemList.push(obj);
+
+
+                });
+                console.log(ItemList);
+                next(ItemList);
+                //return JSON.stringify(ItemList);
+            });
+
+        });
+    }
+
 }
 
 
@@ -94,6 +94,11 @@ app.get('/', routes.index);
 
 app.get('/build', function (req, res) {
 
+
+    databaseconnection.createCollection('graphs', function (err, collection) {
+
+        console.log(collection);
+    });
 
     res.cookie('seederuser', JSON.stringify(defaultuser), {
         maxAge: 3600000,
@@ -116,78 +121,105 @@ app.post('/hook', function (req, res) {
 
 app.get('/users', user.list);
 
-app.get('/blog',  function(req, res){
-	res.render('blog', {});
+app.get('/blog', function (req, res) {
+    res.render('blog', {});
 });
 
-app.get('/explore', function(req, res){
+app.get('/explore', function (req, res) {
 
 
-var exploredata = getPublic('all', function (dta){
-	//socket.emit('EXPLORE_SERVE_RESPONSE', {payload: dta});
-	console.log('got ' + dta);
-	res.render('explore', { title: 'Explore', graphs: dta, len: dta.length });
-});
+    var exploredata = getPublic('all', function (dta) {
+        //socket.emit('EXPLORE_SERVE_RESPONSE', {payload: dta});
+        //console.log('got ' + dta);
+        res.render('explore', {
+            title: 'Explore',
+            graphs: dta,
+            len: dta.length
+        });
+    });
 
 
-  
+
 });
 
 //server side socket connection reciever
 io.sockets.on('connection', function (socket) {
 
-	socket.on('USER_SAVEGRAPH', function (data){
-		console.log('server : user with id' + data.payload.graphname + ' requested graph save');
-		if(data.payload.publish){
-		db_push_graph(data.payload, true);
-		}else{
-		db_push_graph(data.payload, false);
-		}
-	});
-	
-	//SERVE_EXPLORE_HOMEPAGE
-	
-	socket.on('SERVE_EXPLORE_HOMEPAGE', function (data){
-		//console.log('server : user with id' + data.payload.graphname + ' requested graph save');
-		//get public graphs and serve back to client
-		//database
+    function respondurl(url_res) {
+        
+    }
 
-		
-	});
-	
 
-});
+    socket.on('USER_SAVEGRAPH', function (data) {
+        //console.log('server : user with id' + data.payload.graphname + ' requested graph save');
+        if (data.payload.publish) {
+            var url = db_push_graph(data.payload, true);
+            socket.emit('PUBLISH_SUCCESS', {
+                payload: url
+            });
 
-function db_push_graph(fullgraph, public) {
 
-if(public){
-    MongoClient.connect("mongodb://ammanvedi:poopoo12@ds057528.mongolab.com:57528/seeder-dev", function (err, db) {
-        if (!err) {
-            console.log("database : connected to MongoDB");
-            db.createCollection('publicgraphs', function (err, collection) {
-
-                console.log('insert with id ' + fullgraph.graphid);
-                collection.update({graphid:fullgraph.graphid}, fullgraph,{upsert:true}, function (er,res){
-                console.log(res);
-                });
-
+        } else {
+            //db_push_graph(data.payload, false);
+            socket.emit('SAVE_SUCCESS', {
+                payload: db_push_graph(data.payload, false)
             });
         }
     });
-    }else{
-        MongoClient.connect("mongodb://ammanvedi:poopoo12@ds057528.mongolab.com:57528/seeder-dev", function (err, db) {
-            if (!err) {
-                console.log("database : connected to MongoDB");
-                db.createCollection('usergraphs', function (err, collection) {
-    
-                    console.log('insert with id ' + fullgraph.graphid);
-                    collection.update({graphid:fullgraph.graphid}, fullgraph,{upsert:true}, function (er,res){
-                    console.log(res);
-                    });
-    
-                });
-            }
+
+    //SERVE_EXPLORE_HOMEPAGE
+
+    socket.on('SERVE_EXPLORE_HOMEPAGE', function (data) {
+        //console.log('server : user with id' + data.payload.graphname + ' requested graph save');
+        //get public graphs and serve back to client
+        //database
+
+
+    });
+
+
+});
+
+
+
+function db_push_graph(fullgraph, public) {
+
+    var url = "http://seeder.default.url/";
+
+    if (public) {
+
+        //console.log("database : connected to MongoDB");
+        databaseconnection.createCollection('publicgraphs', function (err, collection) {
+
+            //console.log('insert with id ' + fullgraph.graphid);
+            collection.update({
+                graphid: fullgraph.graphid
+            }, fullgraph, {
+                upsert: true
+            }, function (er, res) {
+                console.log(res);
+            });
+
         });
+
+    } else {
+
+        //console.log("database : connected to MongoDB");
+        databaseconnection.createCollection('usergraphs', function (err, collection) {
+
+            //console.log('insert with id ' + fullgraph.graphid);
+            collection.update({
+                graphid: fullgraph.graphid
+            }, fullgraph, {
+                upsert: true
+            }, function (er, res) {
+                console.log(res);
+            });
+
+        });
+
     }
+
+    return url;
 
 }

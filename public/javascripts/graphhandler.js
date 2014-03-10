@@ -15,6 +15,9 @@
   */
   
 var sys;
+
+var waiting_save_confirm = false;
+var waiting_publish_confirm = false;
   
 function getSaveState(particlesys, gname, gdesc, publishme){
 
@@ -55,7 +58,7 @@ function getSaveState(particlesys, gname, gdesc, publishme){
 
 $(document).ready(function () {
 
-    var DEPLOYIP = '192.168.0.2'; //localhost for dev, ip for prod
+    var DEPLOYIP = '192.168.0.3'; //localhost for dev, ip for prod
     var socket = io.connect(DEPLOYIP + ':8080');
     console.log( socket);
     var addnodemode = false;
@@ -71,6 +74,7 @@ $(document).ready(function () {
     $('#tabs-2').hide();
     $('#tabs-3').hide();
     $('#tabs-4').hide();
+    $('#updatelabel').hide();
     
     
 
@@ -242,10 +246,8 @@ $(document).ready(function () {
                 }];
 
             }
-
             //console.log(attribs_article);
             data_to_add = attribs_article;
-
         }
     });
 
@@ -310,6 +312,47 @@ $(document).ready(function () {
 
 
         }
+        
+        socket.on('hs_id', function (data) {
+            socket.id = data.data;
+            //console.log('client : recieved id ' + socket.id + ' from server');
+        });
+    
+        socket.on('request_pullGraph_success', function (data) {
+            //console.log('client : pullGraph request successful, result:');
+            //console.log(data.data);
+            rebuildPullGraph(data.data);
+        });
+        
+        socket.on('SAVE_SUCCESS', function (data){
+        
+        if(waiting_save_confirm){
+        	console.log('got save confirm');
+        	waiting_save_confirm = false;
+        	console.log($('#updatelabel').height() +"px");
+        	$('#savepanel').css("height",$('#updatelabel').height() +10 +"px");
+        	$('#updatelabel').show();
+        }
+    
+        	
+        });
+        
+        socket.on('PUBLISH_SUCCESS', function (data){
+        
+        if(waiting_publish_confirm){
+        console.log('got publish confirm');
+        	waiting_publish_confirm = false;
+        	
+        	 $('#savepanel').css("height",$('#updatelabel').height() +10 +"px");
+        	 $('#savepanel').css("background-color",'#ffffff');
+        	 var date = new Date();
+        	 $('#lastsave').text(" " + date);
+        	 $('#updatelabel').show();
+        }
+        	
+        });
+        
+        
     });
 
     /*
@@ -324,17 +367,7 @@ $(document).ready(function () {
                                                                                                                                           
 */
 
-    socket.on('hs_id', function (data) {
-        socket.id = data.data;
-        //console.log('client : recieved id ' + socket.id + ' from server');
-    });
-
-    socket.on('request_pullGraph_success', function (data) {
-        //console.log('client : pullGraph request successful, result:');
-        //console.log(data.data);
-        rebuildPullGraph(data.data);
-    });
-
+ 
 
     //for generating debug graphs, retrieve a random hex color code
     function get_random_color() {
@@ -371,6 +404,14 @@ $(document).ready(function () {
 	function transportSaveState(ss){
 	
 			socket.emit('USER_SAVEGRAPH', {payload: ss});
+			
+			if(ss.publish){
+				waiting_publish_confirm = true;
+				console.log('waiting publish confirm');
+			}else{
+				waiting_save_confirm = true;
+				console.log('waiting save confirm');
+			}
 
 		
 	}
@@ -399,12 +440,15 @@ $(document).ready(function () {
     
     //open up the save console
     $('#search_results_holder').height(0);
-    $('#savepanel').css("height","100px");
+    $('#savepanel').css("height","150px");
     $('#savepanel').css("background-color","#564F8A");
     
     
     var name = $('#sp_graphname').val();
     var desc = $('#sp_graphdesc').val();
+    
+    $('#sp_graphname').val('');
+    $('#sp_graphdesc').val('');
     
     console.log('namedesc: ' + name + ' ' +desc);
     if((name != '') && (desc != '')){

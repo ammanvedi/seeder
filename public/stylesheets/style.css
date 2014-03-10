@@ -228,7 +228,8 @@ html{
  padding:0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
  height:100%;
- width: 100%;
+ max-width: 100%;
+ min-width: auto;
  overflow: hidden;
  overflow-y: scroll;
 }
@@ -290,6 +291,8 @@ dP                oo dP       dP
 style information for graph builder interface
 
 */
+
+
 
 .menu-link{
 	width: auto;
@@ -650,12 +653,23 @@ border: 3px dashed #ffffff;
 	
 }
 
+#savepanel ul{
+	
+	padding-top: 20px;
+}
+
+#updatelabel{
+	
+	height: 60px;
+	padding-bottom: 10px;
+}
+
 #savepanel{
 	
 	height: 0px;
-	width: 100%;
+	max-width: 100%;
 	transition:1.5s;
-	padding-top: 20px;
+	padding: 10px;
 	overflow: hidden;
 }
 
