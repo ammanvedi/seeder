@@ -1,0 +1,314 @@
+html{
+	height: 100%;
+}
+
+	body {
+ margin:0px;
+ padding:0px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+ height:100%;
+ max-width: 100%;
+ min-width: auto;
+ overflow: hidden;
+ overflow-y: scroll;
+}
+
+
+.fixed-home{
+	position: fixed;
+width: 100%;
+min-width: 70%;
+	height: auto;
+	z-index: 1;
+	
+}
+
+#home-main-banner{
+	width: 100%;
+	z-index: 999;
+	height: 450px;
+	background-color: #000;
+	background-image: url(/img/home-banner.jpg);
+	background-size: cover;
+	background-position: center;
+	/*transition:0.5s;*/
+	 padding-top: 14px;
+	overflow: hidden;
+	-moz-box-shadow: inset 0 0 15em #000000;  
+	 -webkit-box-shadow: inset 0 0 15em #000000;   
+	 box-shadow: inset 0 0 15em #000000;
+	
+}
+
+#home-main-banner:after{
+		-moz-box-shadow: inset 0 0 15em #000000;  
+		 -webkit-box-shadow: inset 0 0 15em #000000;   
+		 box-shadow: inset 0 0 15em #000000;
+	
+		 z-index: 2;
+		 content: "";
+	
+}
+
+.home-banner-overlay{
+width: 800px;
+height: 800px;
+overflow: hidden;
+
+	
+	padding-top: 30px;
+	
+	margin-left: auto;
+	margin-right: auto;
+	
+}
+
+#hometext{
+text-align: center;
+	width: 100%;
+	font-size: 30px;
+	height: 50px;
+	font-family: 'Roboto Slab', serif;
+	color: white;
+	font-weight: 300;
+	left: 310px;
+	top: 100px;
+	opacity: 0.9;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 30px;
+	margin-bottom: -30px;
+}
+
+#home-banner-img-c{
+	width: 1100px;
+	height: 700px;
+	overflow: hidden;
+	position: relative;
+	right:  10%;
+	top: -30px;
+	opacity: 0.9;
+}
+
+
+#home-banner-image{
+max-width: 950px;
+height:400px;
+
+	background-image: url(/img/imac-build.png);
+	background-size: cover;
+}
+
+.home-feature{
+	
+	max-width: 100%;
+	min-width: 100px;
+	max-height: 800px;
+	min-height: 200px;
+	overflow: hidden;
+	padding: 0px;
+	padding-bottom: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+	
+
+}
+
+.fblue{
+	
+background-color: #197FD9;
+	
+}
+
+.fgreen{
+	
+	background-color: #00B2AA;
+}
+
+.fpink{
+	
+	background-color: #2ECC71;
+}
+
+.fpinks{
+	
+	background-color: #3498DB;
+}
+
+.fblack{
+	
+	background-color: #2C425D;
+}
+
+
+.macbook-feature{
+	
+	background-image: url(/img/mb-explore.png);
+	background-size: 1800px;
+	background-repeat: no-repeat;
+	background-position:center;
+	background-position-x: 290px;
+	background-position-y: -170px;
+}
+
+#home-desc1{
+	
+	
+	height: 100%;
+	min-width: 150px;
+	
+
+
+}
+
+.floatleft{
+	width: 45%;
+	float: left;
+	margin-left: 40px;
+}
+
+.floatright{
+	max-width: 100%;
+	min-width: 45%;
+	float: right;
+	margin-right:30px;
+	
+}
+
+.floatmiddle{
+	max-width: 600px;
+	
+	margin-left: auto;
+	margin-right: auto;
+	
+}
+
+.featuretext{
+	
+	min-width: 100px;
+}
+
+.featuretext h1{
+display: inline-block;
+font-family: 'Roboto Slab', serif;
+margin-top: 50px;
+
+	color: white;
+	opacity: 0.9;
+	font-size: 25px;
+	font-weight: 300;
+	
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-color: #262E32;
+	opacity: 0.99;
+	position: relative;
+	border-radius: 3px;
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.87);
+}
+
+.featuredesc p{
+	font-family: 'Roboto Slab', serif;
+
+		color: white;
+		opacity: 0.9;
+		font-size: 15px;
+		font-weight: 300;
+		width: 350px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		padding-left: 14px;
+		padding-right: 10px;
+		background-color: #262E32;
+		opacity: 0.99;
+		position: relative;
+		border-radius: 3px;
+		box-shadow: 0 0 3px rgba(0, 0, 0, 0.76);
+	border-left-style: dashed;
+	border-left-width: 3px;
+	
+}
+
+
+.opensource{
+	
+	background-image: url(/img/open-source.png);
+	background-repeat: no-repeat;
+	background-size: 30%;
+	background-position: 11%;
+}
+
+#clear{
+	
+	clear: both;
+	height: 1px;
+	width: 100%;
+	
+}
+
+
+.minifeature{
+	min-width: 200px;
+	max-width: 80%;
+	height: 200px;
+	background-color: rgb(32, 48, 76);
+	padding-left: 16px;
+	padding-right: 0;
+	margin-right: auto;
+	margin-left: auto;
+	padding-top: 20px;
+	margin-top: 20px;
+	border-radius: 5px;
+	padding-right: 10px;
+}
+
+.minifeature p{
+	
+	color: white;
+	opacity: 0.8;
+}
+
+.fppl{
+	
+	background-color: #9B59B6;
+}
+
+
+
+#explore-sidebar{
+	background-color: #262E32;
+}
+
+
+#shuffleme{
+	
+	width: auto;
+	height: auto;
+}
+
+.center{
+	
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.tealborder{
+	
+	border-left-color: #00B2AA;
+}
+
+.greenborder{
+	
+	border-left-color: #2ECC71;
+}
+
+.pplborder{
+	border-left-color:  #9B59B6;
+	
+}
+.blueborder{
+	
+	border-left-color: #2C425D;
+}

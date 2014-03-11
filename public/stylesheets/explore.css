@@ -1,0 +1,191 @@
+html{
+	height: 100%;
+}
+
+	body {
+ margin:0px;
+ padding:0px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+ height:100%;
+ max-width: 100%;
+ min-width: auto;
+ overflow: hidden;
+ overflow-y: scroll;
+}
+.fixed{
+	
+	position: fixed;
+	width: 100%;
+	height: auto;
+	z-index: 10;
+	margin-top: 16px;
+}
+
+
+#explore-sidebar{
+	background-color: #262E32;
+}
+
+#explore-banner-contain
+{
+	width: 100%;
+	height: 430px;
+	overflow: hidden;
+	margin-top: -17px;
+	background-color: #000;
+}
+
+.hideme{
+	margin: -10px -10px -10px -10px;
+	overflow: hidden;
+}
+
+#explore-banner{
+	width: 100%;
+	z-index: 999;
+	height: 450px;
+	background-color: #000;
+	background-image: url(/img/space-banner.jpg);
+	background-size: cover;
+	background-position: center;
+	opacity: 1;
+	/*transition:0.5s;*/
+	 padding-top: 14px;
+	overflow: hidden;
+-webkit-box-shadow: inset 0px 0px 104px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: inset 0px 0px 104px 0px rgba(0,0,0,0.75);
+box-shadow: inset 0px 0px 104px 0px rgba(0,0,0,0.75);
+	
+}
+
+#explore-banner:after{
+	
+	-moz-box-shadow: inset 0 0 15em #000000;  
+	 -webkit-box-shadow: inset 0 0 15em #000000;   
+	 box-shadow: inset 0 0 15em #000000;
+
+	 z-index: 2;
+	 content: "";
+	 
+}
+
+#banner-overlay{
+	width: 700px;
+	height: 300px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	top: -300px;
+	max-width: 600px;
+	min-width: 200px;
+	
+}
+
+#search-header{
+	width: 110px;
+	color: white;
+	margin-left: auto;
+	margin-right: auto;
+	
+}
+
+#explore-searchbar{
+	
+	max-width: 600px;
+	min-width: 100px;
+	width: auto;
+	height: 80px;
+margin-left: auto;
+margin-right: auto;
+	margin-top: 20px;
+	display: block;
+	
+
+}
+
+#circlefloatleft{
+
+overflow: hidden;
+	width: 90px;
+	height: 90px;
+	border-radius: 45px;
+	background-color: #564F8A;
+	float: left;
+	margin-left:10px ;
+	-webkit-box-shadow: inset 0 0 104px rgba(0, 0, 0, 0.46);
+	-moz-box-shadow: inset 0 0 104px rgba(0, 0, 0, 0.46);
+	box-shadow: inset 0 0 104px rgba(0, 0, 0, 0.46);
+	border: 3px dashed #ffffff;
+}
+
+.circletext{
+	
+	position: relative;
+	left: 0px;
+	top: 20px;
+	text-align: center;
+}
+
+#circlefloatright{
+
+overflow: hidden;
+	width: 90px;
+	height: 90px;
+	border-radius: 45px;
+	background-color: #564F8A;
+	float: right;
+	margin-right:10px ;
+-webkit-box-shadow: inset 0 0 104px rgba(0, 0, 0, 0.46);
+-moz-box-shadow: inset 0 0 104px rgba(0, 0, 0, 0.46);
+box-shadow: inset 0 0 104px rgba(0, 0, 0, 0.46);
+border: 3px dashed #ffffff;
+}
+
+#clearcirc{
+	width: 100%;
+	height: 2px;
+	clear: both;
+}
+
+.smalltext{
+	font-size: 12px;
+}
+
+.smalltext p{
+	
+	padding: 0px;
+	margin: 0px;
+	max-height: 70px;
+	margin-bottom: 10px;
+	margin-left: 5px;
+}
+
+.graphmeta{
+	
+	padding-top: 10px;
+}
+
+
+.graphdesc{
+	padding-top: 10px;
+	max-height: 50px;
+	max-width: 90%;
+	overflow: hidden;
+	
+}
+
+#graphs-view{
+max-width: 1000px;
+min-width: 400px;
+margin-left: auto;
+margin-right: auto;
+padding: 30px;
+
+
+	
+}
+
+#graphs-view .item{
+	
+	height: 30px;
+}
