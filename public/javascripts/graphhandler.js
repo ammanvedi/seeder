@@ -100,6 +100,8 @@ $(document).ready(function () {
     addnodePREFS['size'] = 10;
     addnodePREFS['id'] = 0;
     addnodePREFS['color'] = '#81CF2D';
+    
+    
 
     sys = arbor.ParticleSystem(100, 1000, 0.3) //repulsion/stiffness/friction
     sys.parameters({
@@ -158,6 +160,28 @@ $(document).ready(function () {
 
         }
         //sys.stop();
+        
+        
+        //handle the re drawing of the node dropper div 
+        
+        if(addnodemode){
+        
+        	
+        	var size = $('#field_node_size').val();
+        	var col = $('#picker_edgecolor').val();
+        	
+        	if((size == '') || (col == '')){
+        	//some properties not set render default
+        	$('#node-dropper').css('top',(e.pageY - navheight)+'px').css('left',(e.pageX + menuwidth)+'px');
+        	}else{
+        		$('#node-dropper').css('top',(e.pageY - navheight)+'px').css('left',(e.pageX + menuwidth)+'px');
+        		$('#node-dropper').css('background-color',col);
+        		$('#node-dropper').css('width',size+'px');
+        		$('#node-dropper').css('height',size+'px');
+        		$('#node-dropper').css('border-radius',(size/2)+'px');
+        	}
+
+        }
 
     });
 
@@ -179,6 +203,11 @@ $(document).ready(function () {
             sys.addNode(data['name'], data);
             sys.addEdge(nearme.node.name, data['name']);
             ct++;
+            $('#node-dropper').remove();
+            $('#btn_addnode').removeClass('red').addClass('green');
+            $('#btn_addnode').val('Add Node');
+            addnodemode = false;
+            
 
         }
 
@@ -536,27 +565,52 @@ $(document).ready(function () {
 
     });
 
+	function updateAddNodePrefs(){
+	
+	        var updated = new Object();
+	
+	        updated['name'] = $('#field_node_name').val();
+	        updated['text'] = $('#field_node_text').val();
+	        updated['link'] = $('#field_node_link').val();
+	        updated['size'] = $('#field_node_size').val();
+	        updated['id'] = $('#field_node_id').val();
+	        updated['color'] = $('#picker_edgecolor').val();
+	        updated['TYPE'] = 'TEXT';
+	
+		return updated;
+	}
+	
+	$('input').on('input',function (){
+	
+	addnodePREFS = updateAddNodePrefs();
+	});
 
 
     $('#btn_addnode').click(function () {
+    
+    if(addnodemode){
+    	//the user wants to cancel the addnode operation
+    	$('#btn_addnode').removeClass('red').addClass('green');
+    	$('#btn_addnode').val('Add Node');
+    	addnodemode = !addnodemode;
+    	$('#node-dropper').remove();
+    }else{
+    	
+    	        addnodemode = !addnodemode;
+    	
+    	        //console.log('called2');
+    	
+    	
+    	        addnodePREFS = updateAddNodePrefs();
+    	        
+    	        $('#btn_addnode').removeClass('green').addClass('red');
+    	        $('#btn_addnode').val('cancel');
+    	        
+    	        $( "body" ).append( '<div id="node-dropper"></div>' );
+    
+    }
 
-        addnodemode = !addnodemode;
 
-        //console.log('called2');
-
-        var updated = new Object();
-
-        updated['name'] = $('#field_node_name').val();
-        updated['text'] = $('#field_node_text').val();
-        updated['link'] = $('#field_node_link').val();
-        updated['size'] = $('#field_node_size').val();
-        updated['id'] = $('#field_node_id').val();
-        updated['color'] = $('#picker_edgecolor').val();
-        updated['TYPE'] = 'TEXT';
-
-
-
-        addnodePREFS = updated;
 
 
     });

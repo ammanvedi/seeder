@@ -110,7 +110,7 @@ height: 100px;
 
 #pallete{
 	width: auto;
-	max-width: 350px;
+	max-width: 700px;
 	height: 175px;
 	padding: 10px;
 	position: absolute;
@@ -132,6 +132,8 @@ box-shadow: 0 0 5px #5a5a5a;
 	float: left;
 }
 
+
+
 .tabwindow{
 	
 	float: left;
@@ -144,6 +146,10 @@ box-shadow: 0 0 5px #5a5a5a;
 #btn_addedge{
 	margin-left: auto;
 	margin-right: auto;
+}
+#form_addnode{
+	
+	height: 200px;
 }
 
 #form_addnode input{
@@ -320,6 +326,17 @@ text-overflow:ellipsis;
 	
    font-weight: 300;
    font-size: 9px;
+}
+
+#node-dropper{
+	
+	width: 40px;
+	height: 40px;
+	border-radius: 20px;
+	background-color: black;
+	position: absolute;
+	opacity: 0.5;
+	box-shadow: 0 0 5px #5a5a5a;
 }
 
 
