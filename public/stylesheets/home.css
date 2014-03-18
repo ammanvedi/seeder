@@ -64,8 +64,8 @@ overflow: hidden;
 }
 
 #hometext{
-text-align: center;
-	width: 100%;
+text-align: left;
+	width: 400px;
 	font-size: 30px;
 	height: 50px;
 	font-family: 'Roboto Slab', serif;

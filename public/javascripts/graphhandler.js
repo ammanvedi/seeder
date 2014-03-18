@@ -18,6 +18,9 @@ var sys;
 
 var waiting_save_confirm = false;
 var waiting_publish_confirm = false;
+
+//this function will generate a state object of the entire graph
+// so it can be saved to the database
   
 function getSaveState(particlesys, gname, gdesc, publishme){
 
@@ -116,8 +119,7 @@ $(document).ready(function () {
     var ct = 0;
     var data_to_add;
 
-
-    /*
+/*
                                           /$$             
                                          | $$             
   /$$$$$$  /$$    /$$/$$$$$$  /$$$$$$$  /$$$$$$   /$$$$$$$
