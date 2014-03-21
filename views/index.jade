@@ -98,15 +98,19 @@ block content
 					|Export
 					i.indent.right.icon
 			#tabs-1.tabwindow
+				#edgebuilder
+					#edgesource
+					.ui.horizontal.icon.divider
+						i.circular.long.arrow.down.icon
+					#edgedestination
 				form
-					input#btn_addedge(type='button' value='add edge')
+					input.tiny.ui.submit.green.button#btn_addedge(type='button' value='add edge')
 			#tabs-2.tabwindow
 				form#form_addnode
 					input#field_node_name.ui.mini.input(type='text' name='node_name' placeholder='node name')
 					input#field_node_text.ui.mini.input(type='text' name='node_text' class='input_node_add' placeholder='add text')
 					input#field_node_link.ui.mini.input(type='text' name='node_link' placeholder='add a link')
-					input#field_node_size.ui.mini.input(type='number' name='node_size' placeholder='size')
-					input#field_node_id.ui.mini.input(type='text' name='node_id' placeholder='an id')
+					input#field_node_size.ui.mini.input(type='number' name='node_size' value='20')
 					br
 					input#picker_edgecolor.ui.mini.input(type='color' placeholder='#ffffff')
 					br

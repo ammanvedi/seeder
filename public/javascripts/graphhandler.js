@@ -65,6 +65,8 @@ $(document).ready(function () {
     var socket = io.connect(DEPLOYIP + ':8080');
     console.log( socket);
     var addnodemode = false;
+    var addedgemode = false;
+    var edgepath = new Array();
 
     //initial ui
     $("#tabs").tabs();
@@ -134,16 +136,15 @@ $(document).ready(function () {
 */
 
     $('body').mousemove(function (e) {
+    
+    var mouse = {
+        x: e.pageX - 270,
+        y: e.pageY - 50
+    };
 
-        nearestmouse = sys.nearest({
-            x: e.pageX + menuwidth,
-            y: e.pageY - navheight
-        });
+        nearestmouse = sys.nearest(mouse);
 
         if (nearestmouse) {
-
-
-
 
             if (nearestmouse.node.data.length > 0) {
                 nearestmouse.node.data[6].val = true;
@@ -176,9 +177,9 @@ $(document).ready(function () {
         	}else{
         		$('#node-dropper').css('top',(e.pageY - navheight)+'px').css('left',(e.pageX + menuwidth)+'px');
         		$('#node-dropper').css('background-color',col);
-        		$('#node-dropper').css('width',size+'px');
-        		$('#node-dropper').css('height',size+'px');
-        		$('#node-dropper').css('border-radius',(size/2)+'px');
+        		$('#node-dropper').css('width',(size*2)+'px');
+        		$('#node-dropper').css('height',(size*2)+'px');
+        		$('#node-dropper').css('border-radius',size+'px');
         	}
 
         }
@@ -188,37 +189,83 @@ $(document).ready(function () {
 
 
     $('#graph_canvas').click(function (a) {
+    
+    var nearme = sys.nearest({
+        x: a.offsetX,
+        y: a.offsetY
+    });
+    
+    //console.log(a);
+    
+		console.log(nearme.node.name);
 
         if (addnodemode) {
-            var nearme = sys.nearest({
-                x: a.pageX - menuwidth,
-                y: a.pageY - navheight
-            });
+
             console.log('called1');
             var i = addnodePREFS;
 
             var data = jQuery.extend(true, {}, addnodePREFS);
-
-
-            sys.addNode(data['name'], data);
-            sys.addEdge(nearme.node.name, data['name']);
-            ct++;
-            $('#node-dropper').remove();
-            $('#btn_addnode').removeClass('red').addClass('green');
-            $('#btn_addnode').val('Add Node');
-            addnodemode = false;
-            
-
+			
+			if(sys.getNode(addnodePREFS['name']) != undefined){
+				//a node was found that matched the id, dont add the node
+				//issue a notification to the user
+				alert('node name already exists, you can edit nodes by clicking "edit nodes"');
+			}else{
+				sys.addNode(data['name'], data);
+				sys.addEdge(nearme.node.name, data['name']);
+				ct++;
+			}
+			
+			$('#node-dropper').remove();
+			$('#btn_addnode').removeClass('red').addClass('green');
+			$('#btn_addnode').val('Add Node');
+			addnodemode = false;
+			
+			return;
+        }
+        
+        if(addedgemode){
+        	//the user is adding an edge 
+        	
+        	if((edgepath.length == 0) || (edgepath.length == 1)){
+        		edgepath.push(nearme);
+        		console.log('added edge to edge path');
+        		//edgepath[0].node.name
+        		
+        		if(edgepath.length == 1){
+        			$('#edgesource').text(edgepath[0].node.name);
+        		}
+			}
+			
+			if(edgepath.length == 2){
+			$('#edgedestination').text(edgepath[1].node.name);
+				//edge is full
+				//build and erase
+				console.log(edgepath);
+				
+				$('#btn_addedge').removeClass('red').addClass('green');
+				$('#btn_addedge').val('Add Edge');
+				sys.addEdge(edgepath[0].node.name, edgepath[1].node.name);
+				addedgemode = false;
+				edgepath = new Array();
+			}
         }
 
     });
+    
+    $(window).scroll(function(event){
+        if(addnodemode){
+        event.preventDefault();
+        } 
+    })
 
     $('body').mousedown(function (evt) {
         //console.log(evt);
         if ((evt.target.className.indexOf('search_result') != -1) || (evt.target.parentElement.className.indexOf('search_result') != -1)) {
-
+			
             adding = true;
-            $('body').addClass('unselectable');
+            //$('body').addClass('unselectable');
+            $('#search_results_holder').css('overflow-x', 'hidden');
             $('search_results_holder').addClass('stop-scroll');
             //console.log('article clicked');
             //console.log(evt);
@@ -291,7 +338,7 @@ $(document).ready(function () {
 
         if (adding) {
             //preload the image 
-
+			 $('#search_results_holder').css('overflow-x', 'scroll');
             var prefetch = new Image();
             prefetch.src = data_to_add[3].val;
             data_to_add['imagedata'] = prefetch;
@@ -307,8 +354,8 @@ $(document).ready(function () {
 
 
             var nearme_ = sys.nearest({
-                x: e.pageX - menuwidth,
-                y: e.pageY - navheight
+					x: e.pageX - 270,
+					y: e.pageY - 50
             });
 
             var res;
@@ -568,23 +615,46 @@ $(document).ready(function () {
 	function updateAddNodePrefs(){
 	
 	        var updated = new Object();
+	        
+	        //validate form
 	
 	        updated['name'] = $('#field_node_name').val();
 	        updated['text'] = $('#field_node_text').val();
 	        updated['link'] = $('#field_node_link').val();
 	        updated['size'] = $('#field_node_size').val();
-	        updated['id'] = $('#field_node_id').val();
+	        updated['id'] = get_random_color();
 	        updated['color'] = $('#picker_edgecolor').val();
 	        updated['TYPE'] = 'TEXT';
+	        
+	        
+	        if(updated['name'] == ""){
+	        	$('#field_node_name').addClass('errorform');
+	        	return -1;
+	        }else{
+	        	$('#field_node_name').removeClass('errorform');
+	        	return updated;
+	        }
 	
-		return updated;
+
 	}
 	
 	$('input').on('input',function (){
 	
 	addnodePREFS = updateAddNodePrefs();
 	});
-
+	
+	$('#btn_addedge').click(function (evt){
+		if(!addedgemode){
+		addedgemode = true;
+		$('#btn_addedge').removeClass('green').addClass('red');
+		$('#btn_addedge').val('cancel');
+		}else{
+		//cancel
+		$('#btn_addedge').removeClass('red').addClass('green');
+		$('#btn_addedge').val('Add Edge');
+		addedgemode = false;
+		}
+	});
 
     $('#btn_addnode').click(function () {
     
@@ -595,18 +665,26 @@ $(document).ready(function () {
     	addnodemode = !addnodemode;
     	$('#node-dropper').remove();
     }else{
+    
+    		//validate form input
+    		
+    		addnodePREFS = updateAddNodePrefs();
+    		
+    		if(addnodePREFS != -1){
+    		
+    			        addnodemode = true;
+    			        $('#btn_addnode').removeClass('green').addClass('red');
+    			        $('#btn_addnode').val('cancel');
+    			        $( "body" ).append( '<div id="node-dropper"></div>' );
+    		}else{
+    			//addnodeprefs returned a -1, [so form was not valid
+    			//issue an error
+    			
+    			alert('form invalid ');
+    		}
+    		
     	
-    	        addnodemode = !addnodemode;
-    	
-    	        //console.log('called2');
-    	
-    	
-    	        addnodePREFS = updateAddNodePrefs();
-    	        
-    	        $('#btn_addnode').removeClass('green').addClass('red');
-    	        $('#btn_addnode').val('cancel');
-    	        
-    	        $( "body" ).append( '<div id="node-dropper"></div>' );
+
     
     }
 
