@@ -1,0 +1,33 @@
+function note(domcontext, opts){
+	console.log(domcontext);
+	clearnotes();
+	
+	var w = opts.w;
+	var h = opts.h;
+	var title = opts.title;
+	var subtext = opts.subtext;
+	
+	$(domcontext).prepend('<div class="note"></div>');
+	$('.note').append('<div class="notetext"></div>');
+	$('.notetext').append('<h1>' + title + '</h1>');
+	$('.notetext').append('<p>' + subtext + '</p>');
+	$('.note').append('<div id="hidenote" class="ui tiny black icon button"><i class="remove inverted icon"></i></div>');
+
+	$('.note').css('right', '-300px');
+	$('.note').css('width', w+'px');
+	$('.note').css('height', h+'px');
+	$(".note").animate({right:'5px'});
+
+	
+	$('#hidenote').click(function (a){
+		clearnotes();
+	});
+}
+
+function clearnotes(){
+	//remove all notes from the dom tree
+	$('.note').fadeOut( 1500 , function (){
+			this.remove();
+			//console.log('ehehehehe');
+	});
+}

@@ -122,6 +122,16 @@ $(document).ready(function () {
     //keep a count of node id's
     var ct = 0;
     var data_to_add;
+    
+    
+    var op = new Object();
+    op.w = 300;
+    op.h = 70;
+    op.title = "Welcome!";
+    op.subtext = "begin by adding some nodes";
+    
+    
+    note('#contain_main', op);
 
 /*
                                           /$$             
@@ -213,6 +223,18 @@ $(document).ready(function () {
 			}else{
 				sys.addNode(data['name'], data);
 				sys.addEdge(nearme.node.name, data['name']);
+				
+						//alert the user
+						var op = new Object();
+						op.w = 300;
+						op.h = 70;
+						op.title = "Node Added!";
+						op.subtext = "node named " + data['name'] + " added.";
+						
+						
+						note('#contain_main', op);
+						
+						
 				ct++;
 			}
 			
@@ -264,6 +286,9 @@ $(document).ready(function () {
         if ((evt.target.className.indexOf('search_result') != -1) || (evt.target.parentElement.className.indexOf('search_result') != -1)) {
 			
             adding = true;
+            	
+
+            
             //$('body').addClass('unselectable');
             $('#search_results_holder').css('overflow-x', 'hidden');
             $('search_results_holder').addClass('stop-scroll');
@@ -325,6 +350,20 @@ $(document).ready(function () {
 
             }
             //console.log(attribs_article);
+            
+            
+            //provide a ui conformation that a article is being dragged
+            //alert the user
+            var op = new Object();
+            op.w = 300;
+            op.h = 70;
+            op.title = "Adding Article!";
+            op.subtext = "release near destination to add";
+            
+            
+            note('#contain_main', op);
+            
+            
             data_to_add = attribs_article;
         }
     });
@@ -382,6 +421,15 @@ $(document).ready(function () {
                 //console.log(node);
                 len++;
             });
+            
+            var op = new Object();
+            op.w = 300;
+            op.h = 70;
+            op.title = "Added Article!";
+            op.subtext = "Article bound to node " + nearme_.node.name;
+            
+            
+            note('#contain_main', op);
 
             //console.log('ct: ' + len);
 
@@ -680,7 +728,7 @@ $(document).ready(function () {
     			//addnodeprefs returned a -1, [so form was not valid
     			//issue an error
     			
-    			alert('form invalid ');
+    			alert('form invalid, please enter a name for the node ');
     		}
     		
     	
