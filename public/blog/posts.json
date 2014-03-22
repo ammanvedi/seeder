@@ -1,5 +1,41 @@
 {
     "posts": [
+    {
+      "post": [
+        {
+            "type": "image",
+            "data": "http://imgur.com/X83p4QC.png",
+            "subtitle": "Adding edges interface"
+        },
+        {
+            "type": "text",
+            "data": "The basic functions of the build page needed refactoring, to make them more user friendly, and closer to the final product. The add edge interface has been improved to show details of the nodes being added to the edge path, as they are being added."
+        },
+        {
+            "type": "image",
+            "data": "http://imgur.com/GgdlLyW.png",
+            "subtitle": "Adding nodes"
+        },
+        {
+        	"type": "text",
+        	"data": "The add node form has had validation implemented and also provides a preview (attached to the users mouse pointer) of what their node will look like, both add edge/node have also been linked to a new notification system"
+        },
+        {
+            "type": "image",
+            "data": "http://imgur.com/pqJDMrF.png",
+            "subtitle": "notifications"
+        },
+        {
+        	"type": "text",
+        	"data": "I wrote a small function using jQuery <tt>fadeout</tt> to draw notifications to the screen, these help provide interface feedback to the user and confirm their actions, the updated build page can be found live <a href='http://54.201.24.162:8080/build'>here</a>. Latest source is on <a href='https://github.com/ammanvedi/seeder'>git</a>"
+        }
+      ],
+      "title": "UX Improvments in Graph Builder ",
+      "date": "22/03/14",
+      "time": "6:47 pm",
+      "author": "Amman"
+    },
+    
         {
   "post": [
     {
@@ -42,7 +78,7 @@
     },
     {
     	"type": "text",
-    	"data": "then the listening server catches the \"[redeploy}\" directive in the commit message and redeploys the new code. The code for the server is available here, with a bit of doc"
+    	"data": "then the listening server catches the \"[redeploy}\" directive in the commit message and redeploys the new code. The code for the server is available <a href='https://github.com/ammanvedi/hooker'>here</a>, with a bit of doc"
     }
   ],
   "title": "Automatic Deployment to Amazon EC2",
