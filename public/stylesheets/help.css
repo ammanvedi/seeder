@@ -38,6 +38,8 @@
 	margin-top: 20px;;
 }
 
+
+
 .listitem{
 	width: 100%;
 	height: auto;
@@ -65,6 +67,15 @@
 	display: block;
 	border: 2px dashed rgba(85, 79, 137, 0.18);
 
+}
+
+#docsholder li{
+	width: 80%;
+	line-height: 25px;
+	margin: 0 auto;
+	margin-bottom: 7px;
+	opacity: 0.8;
+	list-style: square;
 }
 
 .docp{

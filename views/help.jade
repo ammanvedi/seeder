@@ -57,15 +57,15 @@ html(lang="en")
 					.ui.inverted.divider
 					.listheader
 						|Graph Builder
-					.listitem
+					.listitem(href="#addingnodes")
 						|Adding Nodes
-					.listitem
+					.listitem(href="#addingedges")
 						|Adding Edges
 					.listitem
 						|Deleting Objects
 					.listitem
 						|Article Search
-					.listitem
+					.listitem(href="#addingarticles")
 						|Adding Articles
 					.listitem
 						|Publishing
@@ -98,28 +98,42 @@ html(lang="en")
 				p.docp The graph builder is the core interface of seeder, the following document will describe the use of the main features.
 				h1.doch2 
 					|Main Interface
-				img(src="/img/mainui.png" width="700")
+				img(src="/img/mainui.png" width="80%")
 				p.docp several modules make up the interface;
 				br
 				p.docp <b>Reference Panel (1)</b> :: The reference panel displays information from nodes in the graph, by default it will show the data from the node nearest to the current cursor/mouse position.
 				br
 				p.docp <b>Graph Tools (2)</b> :: searches for academic and other articles can be performed using in the search, The Save and Publish options are also here.
 				br
-				p.docp <b>Pallete (3)</b> :: The pallete contains the tools for adding/deleting/editing nodes and edges, as well as the export feature, for downloading a reference list formatted version of your graph.
+				p.docp <b>palette (3)</b> :: The palette contains the tools for adding/deleting/editing nodes and edges, as well as the export feature, for downloading a reference list formatted version of your graph.
 				br
 				p.docp <b>Graph View (4)</b> :: The majority of the view is taken up by your graph, the view is fully interactive and the nodes can be moved around with the mouse. The graph uses a Physics based system to evolve the shape over time, options to disable this, and improvements to it, will be included in future versions.
 				br
-				h1.doch2
+				h1#addingnodes.doch2
 					| Adding Nodes
-				img(src="/img/gif/addnode.gif" width="700")
+				img(src="/img/gif/addnode.gif" width="80%")
+				p.docp Nodes are the default items that make up mind-maps in Seeder. Nodes can be added via the <b>palette</b>, the standard fields are as follows;
+				ul
+					li Name : A name that will be used to refer to the node and that will be displayed alongside its visual representation on the mind-map (Required)
+					li Text : A further description of the node
+					li Link : Add a hyperlink to the node 
+					li Size : The desired final size of the node (default : 20, Required)
+					li Colour : Set the fill colour of the node 
+				p.docp Entering the data and clicking "Add Node" will allow you to click anywhere on the screen to place the node. The node will form an edge with the nearest pre-existing node in the graph. The process can be cancelled at any time by clicking the <b>"Cancel"</b> button on the palette.
 				br
-				h1.doch2
+				img(src="/img/gif/canceladdnode.gif" width="40%")
+				br
+				h1#addingedges.doch2
 					| Adding Edges
-				img(src="/img/gif/addedge.gif" width="700")
+				img(src="/img/gif/addedge.gif" width="80%")
+				p.docp Edges can be added between any two nodes, the edge tools can be found in the palette under the <b>Add Edge</b> palette.
+				p.docp To add an edge, first click <b>"Add Edge"</b>, then use the mouse to select the two nodes to connect. The edge will be added when the second (destination) node is selected. The operation can be cancelled at any time by using the <b>"Cancel"</b> button on the palette.
 				br
-				h1.doch2
+				h1#addingarticles.doch2
 					| Adding Articles
-				img(src="/img/gif/addart.gif" width="700")
+				p.docp Articles are nodes in the graph that have rich metadata attached to them (images, URL's, descriptions, publication dates etc). They are added from the built in search (under <b>Graph Tools</b>
+				img(src="/img/gif/addart.gif" width="80%")
+				p.docp After performing a search, articles can be added by dragging and dropping from the <i class=" large add purple icon"></i> icon that is present on each search result item. Much like adding a standard node the article will attach itself to the nearest node.                                             
 				
 				
 				
