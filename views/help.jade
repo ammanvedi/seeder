@@ -1,0 +1,128 @@
+doctype 5
+html(lang="en")
+	head
+		meta(name='viewport', content='width=device-width, maximum-scale=1.0')
+		title= title
+		link(href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700", rel="stylesheet", type="text/css")
+		link(rel='stylesheet', href='/javascripts/semantic/packaged/css/semantic.min.css')
+		link(rel='stylesheet', href='/stylesheets/help.css')
+		script(src='http://code.jquery.com/jquery-1.8.2.js')
+		script(src='https://rawgithub.com/Anthodpnt/JQuery-ShuffleText-Plugin/master/jquery.shuffleText.js')
+		script(src='/javascripts/semantic/packaged/javascript/semantic.min.js')
+		script(src="/javascripts/help.js")
+	body
+		.fixed-home
+			.ui.menu.purple.inverted
+				ai#sidebar-toggle.item
+					i.reorder.icon
+				a.item.purple.active(href="/")
+					i.leaf.icon
+					img(src="/img/logo-small.png")
+				a.item(href="/explore")
+					i.map.icon
+					| Explore
+				a.item(href="/build")
+					i.wrench.icon
+					| Build
+				.right.compact.menu
+					.ui.simple.dropdown.item
+						i.user.icon
+						|Me
+						i.dropdown.icon
+						.menu
+							a.item
+								i.bolt.icon
+								|My Profile
+							a.item
+								i.lightbulb.icon
+								|My Graphs
+							a.item
+								i.settings.icon
+								|Settings
+							a.item
+								i.sign.out.icon
+								|Sign Out
+							
+				#help-sidebar.ui.styled.floating.sidebar
+					.help-menu-header
+					.ui.inverted.divider
+					.listheader
+						|Getting Started
+					.listitem
+						|Create an Account
+					.listitem
+						|About Seeder
+					.listitem
+						|Key Features
+					.ui.inverted.divider
+					.listheader
+						|Graph Builder
+					.listitem
+						|Adding Nodes
+					.listitem
+						|Adding Edges
+					.listitem
+						|Deleting Objects
+					.listitem
+						|Article Search
+					.listitem
+						|Adding Articles
+					.listitem
+						|Publishing
+					.listitem
+						|Saving
+					.listitem
+						|Exporting 
+					.ui.inverted.divider
+					.listheader
+						|API
+					.listitem
+						|Architecture
+					.listitem
+						|Public Methods
+					.listitem
+						|Authentication
+					.listitem
+						|User-Specific Methods
+					.ui.inverted.divider
+					.listheader
+						|FAQ
+					.ui.inverted.divider
+					.listheader
+						|Contact
+					.ui.inverted.divider
+		#docs
+			#docsholder.ui.stacked.segment
+				h1.doch
+					|Graph Builder
+				p.docp The graph builder is the core interface of seeder, the following document will describe the use of the main features.
+				h1.doch2 
+					|Main Interface
+				img(src="/img/mainui.png" width="700")
+				p.docp several modules make up the interface;
+				br
+				p.docp <b>Reference Panel (1)</b> :: The reference panel displays information from nodes in the graph, by default it will show the data from the node nearest to the current cursor/mouse position.
+				br
+				p.docp <b>Graph Tools (2)</b> :: searches for academic and other articles can be performed using in the search, The Save and Publish options are also here.
+				br
+				p.docp <b>Pallete (3)</b> :: The pallete contains the tools for adding/deleting/editing nodes and edges, as well as the export feature, for downloading a reference list formatted version of your graph.
+				br
+				p.docp <b>Graph View (4)</b> :: The majority of the view is taken up by your graph, the view is fully interactive and the nodes can be moved around with the mouse. The graph uses a Physics based system to evolve the shape over time, options to disable this, and improvements to it, will be included in future versions.
+				br
+				h1.doch2
+					| Adding Nodes
+				img(src="/img/gif/addnode.gif" width="700")
+				br
+				h1.doch2
+					| Adding Edges
+				img(src="/img/gif/addedge.gif" width="700")
+				br
+				h1.doch2
+					| Adding Articles
+				img(src="/img/gif/addart.gif" width="700")
+				
+				
+				
+				
+					
+				

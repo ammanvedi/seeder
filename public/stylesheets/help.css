@@ -1,0 +1,102 @@
+	body {
+ margin:0px;
+ padding:0px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+ height:100%;
+ max-width: 100%;
+ min-width: auto;
+ overflow: hidden;
+ overflow-y: scroll;
+ -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+#help-sidebar{
+	
+	background-color: #262E32;
+	overflow-x: hidden;
+	
+}
+
+.help-menu-header{
+	
+	width: 100%;
+	height: 200px;
+}
+
+.listheader{
+	
+	width: 100%;
+	height: 35px;
+	font-size: 20px;
+	text-align: left;
+	padding-left: 30px;
+	color: #fff;
+	z-index: 1000;
+	font-weight: bolder;
+	margin-top: 20px;;
+}
+
+.listitem{
+	width: 100%;
+	height: auto;
+	font-size: 13px;
+	text-align: left;
+	padding-left: 60px;
+	color: #fff;
+	z-index: 1000;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	margin: 0px;
+	margin-top: 4px;
+	opacity: 0.8;
+	transition:0.25s;
+	border-left: 3px solid #262E32;
+}
+#docs h2{
+	
+	opacity: 0.8;
+}
+
+#docsholder img{
+
+	margin: 30px auto;
+	display: block;
+	border: 2px dashed rgba(85, 79, 137, 0.18);
+
+}
+
+.docp{
+	
+	width: 80%;
+	margin: 0 auto;
+	line-height: 25px;
+}
+
+.doch{
+	
+	padding-left: 30px;
+	padding-top: 15px;
+}
+
+.doch2{
+	
+	font-size: 15px;
+	padding-left: 40px;
+	opacity: 0.7;
+}
+
+#docs{
+	
+	width: 80%;
+	height: auto;
+	padding: 50px;
+	margin: 0 auto;
+}
+
+.listitem:hover{
+	opacity: 1.0;
+	cursor: pointer;
+	border-left: 10px solid #564F8A;
+}

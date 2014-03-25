@@ -92,6 +92,14 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 
+app.get('/help', function (req, res) {
+		
+		res.render('help', {
+		    title: 'Seeder - Help'
+		});
+		
+});
+
 app.get('/build', function (req, res) {
 
 

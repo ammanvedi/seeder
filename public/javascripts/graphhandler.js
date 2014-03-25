@@ -724,6 +724,15 @@ $(document).ready(function () {
     			        $('#btn_addnode').removeClass('green').addClass('red');
     			        $('#btn_addnode').val('cancel');
     			        $( "body" ).append( '<div id="node-dropper"></div>' );
+    			        
+    			        var op = new Object();
+    			        op.w = 300;
+    			        op.h = 70;
+    			        op.title = "Adding node!";
+    			        op.subtext = "click to place the node : ";
+    			        console.log('dhdhdhhdhdhdh');
+    			        
+    			        note('#contain_main', op);
     		}else{
     			//addnodeprefs returned a -1, [so form was not valid
     			//issue an error
