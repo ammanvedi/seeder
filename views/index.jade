@@ -91,7 +91,7 @@ block content
 				a.item.edittab(tablink='#tabs-2')
 					| Add Node
 					i.add.icon
-				a.item.edittab(tablink='#tabs-3')
+				a.item.edittab(tablink='#tabs-3' id='editnode_tab_button')
 					| Edit Node
 					i.edit.icon
 				a.item.edittab(tablink='#tabs-4')
@@ -116,6 +116,20 @@ block content
 					br
 					input.tiny.ui.submit.green.button#btn_addnode(type='button' value='add node')
 			#tabs-3.tabwindow
+				#edit_notice
+					.ui.icon.header
+						i.edit.circular.icon
+						.sub.header
+							|Click a node
+				form#form_editnode
+					input#field_edit_node_name.ui.mini.input(type='text' name='node_name' placeholder='node name')
+					input#field_edit_node_text.ui.mini.input(type='text' name='node_text' class='input_node_add' placeholder='add text')
+					input#field_edit_node_link.ui.mini.input(type='text' name='node_link' placeholder='add a link')
+					input#field_edit_node_size.ui.mini.input(type='number' name='node_size' value='20')
+					br
+					input#picker_edit_edgecolor.ui.mini.input(type='color' placeholder='#ffffff')
+					br
+					input.tiny.ui.submit.green.button#btn_editnode(type='button' value='edit node')
 			#tabs-4.tabwindow
 				p export
 				input#btn_export(type='button' value='export')

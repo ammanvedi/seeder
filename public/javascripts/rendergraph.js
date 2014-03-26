@@ -138,11 +138,11 @@ var Renderer = function (canvas) {
 
                     //console.log(node);
 
-                    var radius = 10;
+                    var radius = node.data['size'];
 
                     ctx.beginPath();
                     ctx.arc(pt.x, pt.y, radius, 0, 2 * Math.PI, false);
-                    ctx.fillStyle = 'green';
+                    ctx.fillStyle = node.data['color'];
                     ctx.fill();
                     ctx.lineWidth = 3;
                     ctx.strokeStyle = '#003300';

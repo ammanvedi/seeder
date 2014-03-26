@@ -92,10 +92,12 @@ $(document).ready(function () {
     var menuwidth = $('#menu').width();
     var navheight = $('#nav').height();
     var addnodePREFS = new Object();
+    var editnodePREFS = new Object();
+    var current_edit_focus;
 
 
     //def
-    addnodePREFS['name'] = 'welcome!';
+    addnodePREFS['name'] = 'Start';
     addnodePREFS['text'] = 'lorem ipsum';
     addnodePREFS['link'] = 'http://www.google.com/';
     addnodePREFS['TYPE'] = 'NORMAL';
@@ -112,10 +114,11 @@ $(document).ready(function () {
         repulsion : 0
     });
     sys.renderer = Renderer("#graph_canvas");
+	
+	console.log('here is the system in full');
+	console.log(sys);
 
-
-
-    sys.addNode('Start', addnodePREFS);
+    sys.addNode(addnodePREFS['name'], addnodePREFS);
 
 
     var nearestmouse;
@@ -322,8 +325,26 @@ $(document).ready(function () {
 				addedgemode = false;
 				edgepath = new Array();
 			}
+			
+			return;
+        }
+        
+        if ($('#tabs-3').is(":visible")) {
+        	//user has the edit tab visible, and has clicked the graph view
+        	//show the edit form
+        	$('#form_editnode').show();
+        	$('#edit_notice').hide();
+           console.log('edit tab is visible');
+           displayEditNodePrefs(nearme);
+           
+           
         }
 
+    });
+    
+    $('#editnode_tab_button').click(function (evt){
+    
+    	$('#edit_notice').show();
     });
     
     $(window).scroll(function(event){
@@ -546,7 +567,23 @@ $(document).ready(function () {
                                                                                                                                           
 */
 
- 
+ 	function displayEditNodePrefs(n){
+ 	
+ 		//after the information is passed to the view to show the user may change the
+ 		//node name, in order to edit the old node, save the name in a var
+ 		
+ 		current_edit_focus = n.node.data['name'];
+ 		//get a node and draw it to the tab window
+ 		
+ 		        //validate form
+ 		        console.log(n);
+ 		
+ 		        $('#field_edit_node_name').val(n.node.data['name']);
+ 		        $('#field_edit_node_text').val(n.node.data['text']);
+ 		        $('#field_edit_node_link').val(n.node.data['link']);
+ 		        $('#field_edit_node_size').val(n.node.data['size']);
+ 		        $('#picker_edit_edgecolor').val(n.node.data['color']);
+ 	}
 
     //for generating debug graphs, retrieve a random hex color code
     function get_random_color() {
@@ -670,6 +707,7 @@ $(document).ready(function () {
         $('#tabs-2').hide();
         $('#tabs-3').hide();
         $('#tabs-4').hide();
+        $('#form_editnode').hide();
         
        
 
@@ -712,6 +750,32 @@ $(document).ready(function () {
 
 
     });
+    
+	function updateEditNodePrefs(){
+	
+	        var updatededits = new Object();
+	        
+	        //validate form
+	
+	        updatededits['name'] = $('#field_edit_node_name').val();
+	        updatededits['text'] = $('#field_edit_node_text').val();
+	        updatededits['link'] = $('#field_edit_node_link').val();
+	        updatededits['size'] = $('#field_edit_node_size').val();
+	        updatededits['id'] = get_random_color();
+	        updatededits['color'] = $('#picker_edit_edgecolor').val();
+	        updatededits['TYPE'] = 'TEXT';
+	        
+	        
+	        if(updatededits['name'] == ""){
+	        	$('#field_edit_node_name').addClass('errorform');
+	        	return -1;
+	        }else{
+	        	$('#field_edit_node_name').removeClass('errorform');
+	        	return updatededits;
+	        }
+	
+
+	}
 
 	function updateAddNodePrefs(){
 	
@@ -739,9 +803,18 @@ $(document).ready(function () {
 
 	}
 	
-	$('input').on('input',function (){
+	$('input').on('input',function (e){
 	
-	addnodePREFS = updateAddNodePrefs();
+		var itemclass = e.srcElement.className;
+		
+		if(itemclass.indexOf("add")){
+			addnodePREFS = updateAddNodePrefs();
+		}
+		
+		if(itemclass.indexOf("edit")){
+			editnodePREFS = updateEditNodePrefs();
+		}
+		
 	});
 	
 	$('#btn_addedge').click(function (evt){
@@ -755,6 +828,17 @@ $(document).ready(function () {
 		$('#btn_addedge').val('Add Edge');
 		addedgemode = false;
 		}
+	});
+	
+	$('#btn_editnode').click(function (evt){
+	console.log(editnodePREFS);
+	
+	//editnodePREFS['color'] = 'aliceblue';
+	
+		sys.tweenNode(current_edit_focus, 0.5, editnodePREFS);
+		$('#form_editnode').hide();
+		$('#edit_notice').show();
+		
 	});
 
     $('#btn_addnode').click(function () {
