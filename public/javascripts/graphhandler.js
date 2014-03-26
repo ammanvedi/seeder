@@ -98,24 +98,25 @@ $(document).ready(function () {
     addnodePREFS['name'] = 'welcome!';
     addnodePREFS['text'] = 'lorem ipsum';
     addnodePREFS['link'] = 'http://www.google.com/';
-    addnodePREFS['TYPE'] = 'TEST';
-    addnodePREFS['size'] = 10;
+    addnodePREFS['TYPE'] = 'NORMAL';
+    addnodePREFS['size'] = 30;
     addnodePREFS['id'] = 0;
-    addnodePREFS['color'] = '#81CF2D';
+    addnodePREFS['color'] = '#564F8A';
     
     
 
-    sys = arbor.ParticleSystem(100, 1000, 0.3) //repulsion/stiffness/friction
+    sys = arbor.ParticleSystem(0, 0, 1.0) //repulsion/stiffness/friction
     sys.parameters({
-        gravity: false
+        gravity: true,
+        friction: 1.0, 
+        repulsion : 0
     });
     sys.renderer = Renderer("#graph_canvas");
 
 
 
-    sys.addNode('a', addnodePREFS);
-    sys.addNode('e', addnodePREFS);
-    sys.addEdge('a', 'e');
+    sys.addNode('Start', addnodePREFS);
+
 
     var nearestmouse;
 
@@ -200,16 +201,19 @@ $(document).ready(function () {
 
     $('#graph_canvas').click(function (a) {
     
+    sys.start();
+    
     var nearme = sys.nearest({
         x: a.offsetX,
         y: a.offsetY
     });
     
-    //console.log(a);
+    console.log(nearme);
     
-		console.log(nearme.node.name);
+		//console.log(nearme.node.name);
 
         if (addnodemode) {
+        	
 
             console.log('called1');
             var i = addnodePREFS;
@@ -221,8 +225,12 @@ $(document).ready(function () {
 				//issue a notification to the user
 				alert('node name already exists, you can edit nodes by clicking "edit nodes"');
 			}else{
-				sys.addNode(data['name'], data);
+			
+			if(nearme != null){
+				sys.addNode(data['name'], addnodePREFS);
 				sys.addEdge(nearme.node.name, data['name']);
+				console.log(nearme.node.name + ' ' + data['name']);
+				//sys.stop();
 				
 						//alert the user
 						var op = new Object();
@@ -236,12 +244,55 @@ $(document).ready(function () {
 						
 						
 				ct++;
+				}else{
+				
+					sys.addNode(data['name'], addnodePREFS);
+					
+					console.log('ahahahah');
+					
+							//alert the user
+							var op = new Object();
+							op.w = 300;
+							op.h = 70;
+							op.title = "Node Added!";
+							op.subtext = "node named " + data['name'] + " added.";
+							
+							
+							note('#contain_main', op);
+				
+					
+						
+				}
+				//sys.stop();
 			}
 			
 			$('#node-dropper').remove();
 			$('#btn_addnode').removeClass('red').addClass('green');
 			$('#btn_addnode').val('Add Node');
 			addnodemode = false;
+			
+			var leng = 0;
+			
+			sys.eachNode(function (node, pt) {
+			    //console.log('node');
+			    console.log('inside count');
+			    leng++;
+			});
+			
+			//console.log(s);
+			
+			if(leng >= 1){
+			
+				sys.parameters({
+				    gravity: true,
+				    friction: 0.1, 
+				    repulsion : 00,
+				    stiffness: 500
+				});
+		
+				console.log(sys.parameters());
+			}
+	
 			
 			return;
         }
@@ -421,6 +472,8 @@ $(document).ready(function () {
                 //console.log(node);
                 len++;
             });
+            
+            
             
             var op = new Object();
             op.w = 300;

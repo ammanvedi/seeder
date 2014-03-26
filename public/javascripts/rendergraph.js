@@ -44,6 +44,7 @@ var Renderer = function (canvas) {
             // which allow you to step through the actual node objects but also pass an
             // x,y point in the screen's coordinate system
             // 
+            //console.log('renderer running ');
             ctx.fillStyle = "white";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -62,6 +63,7 @@ var Renderer = function (canvas) {
             });
 
             particleSystem.eachNode(function (node, pt) {
+            
                 // node: {mass:#, p:{x,y}, name:"", data:{}}
                 // pt:   {x:#, y:#}  node position in screen coords
 
@@ -75,12 +77,13 @@ var Renderer = function (canvas) {
 
                 //
 
+				//console.log('eachnode');
 
 
-
-                if ((node.data.length > 0) || (node.data.size > 0)) {
+                if (node.data['TYPE'] != 'NORMAL') {
                     //draw a data rich node
                     //console.log('here');
+                    //console.log(node);
                     if (node.data['imagedata'] != undefined) {
 
 
@@ -131,6 +134,7 @@ var Renderer = function (canvas) {
 
                 } else {
                     //draw a normal node 
+                    //console.log('normal node');
 
                     //console.log(node);
 
