@@ -115,8 +115,8 @@ $(document).ready(function () {
     });
     sys.renderer = Renderer("#graph_canvas");
 	
-	console.log('here is the system in full');
-	console.log(sys);
+	//console.log('here is the system in full');
+	//console.log(sys);
 
     sys.addNode(addnodePREFS['name'], addnodePREFS);
 
@@ -211,14 +211,14 @@ $(document).ready(function () {
         y: a.offsetY
     });
     
-    console.log(nearme);
+    //console.log(nearme);
     
 		//console.log(nearme.node.name);
 
         if (addnodemode) {
         	
 
-            console.log('called1');
+            //console.log('called1');
             var i = addnodePREFS;
 
             var data = jQuery.extend(true, {}, addnodePREFS);
@@ -232,7 +232,7 @@ $(document).ready(function () {
 			if(nearme != null){
 				sys.addNode(data['name'], addnodePREFS);
 				sys.addEdge(nearme.node.name, data['name']);
-				console.log(nearme.node.name + ' ' + data['name']);
+				//console.log(nearme.node.name + ' ' + data['name']);
 				//sys.stop();
 				
 						//alert the user
@@ -251,7 +251,7 @@ $(document).ready(function () {
 				
 					sys.addNode(data['name'], addnodePREFS);
 					
-					console.log('ahahahah');
+					//console.log('ahahahah');
 					
 							//alert the user
 							var op = new Object();
@@ -278,7 +278,7 @@ $(document).ready(function () {
 			
 			sys.eachNode(function (node, pt) {
 			    //console.log('node');
-			    console.log('inside count');
+			    //console.log('inside count');
 			    leng++;
 			});
 			
@@ -293,7 +293,7 @@ $(document).ready(function () {
 				    stiffness: 500
 				});
 		
-				console.log(sys.parameters());
+				//console.log(sys.parameters());
 			}
 	
 			
@@ -305,7 +305,7 @@ $(document).ready(function () {
         	
         	if((edgepath.length == 0) || (edgepath.length == 1)){
         		edgepath.push(nearme);
-        		console.log('added edge to edge path');
+        		//console.log('added edge to edge path');
         		//edgepath[0].node.name
         		
         		if(edgepath.length == 1){
@@ -317,7 +317,7 @@ $(document).ready(function () {
 			$('#edgedestination').text(edgepath[1].node.name);
 				//edge is full
 				//build and erase
-				console.log(edgepath);
+				//console.log(edgepath);
 				
 				$('#btn_addedge').removeClass('red').addClass('green');
 				$('#btn_addedge').val('Add Edge');
@@ -334,7 +334,7 @@ $(document).ready(function () {
         	//show the edit form
         	$('#form_editnode').show();
         	$('#edit_notice').hide();
-           console.log('edit tab is visible');
+           //console.log('edit tab is visible');
            displayEditNodePrefs(nearme);
            
            
@@ -576,7 +576,7 @@ $(document).ready(function () {
  		//get a node and draw it to the tab window
  		
  		        //validate form
- 		        console.log(n);
+ 		        //console.log(n);
  		
  		        $('#field_edit_node_name').val(n.node.data['name']);
  		        $('#field_edit_node_text').val(n.node.data['text']);
@@ -666,7 +666,7 @@ $(document).ready(function () {
     $('#sp_graphname').val('');
     $('#sp_graphdesc').val('');
     
-    console.log('namedesc: ' + name + ' ' +desc);
+    //console.log('namedesc: ' + name + ' ' +desc);
     if((name != '') && (desc != '')){
     	transportSaveState(getSaveState(sys, name, desc, 1));
     	
@@ -686,7 +686,7 @@ $(document).ready(function () {
     var name = $('#sp_graphname').val();
     var desc = $('#sp_graphdesc').val();
     
-    console.log('namedesc: ' + name + ' ' +desc);
+    //console.log('namedesc: ' + name + ' ' +desc);
     if((name != '') && (desc != '')){
     	transportSaveState(getSaveState(sys, name, desc, 0));
     	
@@ -831,7 +831,7 @@ $(document).ready(function () {
 	});
 	
 	$('#btn_editnode').click(function (evt){
-	console.log(editnodePREFS);
+	//console.log(editnodePREFS);
 	
 	//editnodePREFS['color'] = 'aliceblue';
 	
@@ -867,7 +867,7 @@ $(document).ready(function () {
     			        op.h = 70;
     			        op.title = "Adding node!";
     			        op.subtext = "click to place the node : ";
-    			        console.log('dhdhdhhdhdhdh');
+    			        //console.log('dhdhdhhdhdhdh');
     			        
     			        note('#contain_main', op);
     		}else{
