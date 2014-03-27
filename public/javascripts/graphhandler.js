@@ -696,11 +696,13 @@ $(document).ready(function () {
     });
 
     $('.edittab').click(function (evt) {
+    
+    var target = evt.target || evt.srcElement;
 
         $('.edittab').removeClass('active');
 
-        $(evt.srcElement).addClass('active');
-        $(evt.srcElement).addClass('purple');
+        $(target).addClass('active');
+        $(target).addClass('purple');
         //console.log(evt.srcElement.attributes[0].nodeValue);
 
         $('#tabs-1').hide();
@@ -709,9 +711,12 @@ $(document).ready(function () {
         $('#tabs-4').hide();
         $('#form_editnode').hide();
         
-       
+       	console.log('hshhshs');
+		console.log(evt);
+		console.log(target.getAttribute('tablink'));
+		$(target.getAttribute('tablink')).show();
 
-        $(evt.srcElement.attributes[0].nodeValue).show();
+        
     });
 
     $('#btn_export').click(function (e) {
