@@ -18,17 +18,23 @@ var passport = require('passport')
 
 // all environments
 
+
+
+app.configure(function() {
+
 app.set('port', process.env.PORT || DEPLOYPORT);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(express.cookieParser());
 app.use(express.bodyParser());
-app.use(passport.initialize());
-  app.use(passport.session());
-
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.cookieSession({
     secret: 'supersecret'
 }));
+
+app.use(passport.initialize());
+  app.use(passport.session());
+
 
 app.use(express.favicon());
 app.use(express.logger('dev'));
@@ -36,7 +42,9 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
+
+
+});
 
 var UserBase = new Object();
 
@@ -68,19 +76,22 @@ MongoClient.connect("mongodb://ammanvedi:poopoo12@ds057528.mongolab.com:57528/se
 });
 
 passport.use(new GoogleStrategy({
-    returnURL: 'http://54.201.24.162:8080/auth/google/return',
-    realm: 'http://54.201.24.162:8080/'
+    returnURL: 'http://localhost:8080/auth/google/return',
+    realm: 'http://localhost:8080/'
   },
   function(identifier, profile, done) {
   
-  if(UserBase[profile.id]){
+  console.log(identifier + ' is the id');
+  
+  if(UserBase[identifier]){
   	//user exists 
-  	done(0, UserBase[profile.id])
+  	done(0, UserBase[identifier])
   }else{
   	//user does not exist
   	//add
-  	UserBase[profile.id] = profile;
-  	done(0, UserBase[profile.id]);
+  	profile.id = identifier;
+  	UserBase[identifier] = profile;
+  	done(0, UserBase[identifier]);
   }
   
   
@@ -107,11 +118,12 @@ passport.use(new GoogleStrategy({
 ));
 
 passport.serializeUser(function(user, done) {
-console.log('serialize ' + user.id);
+console.log('serialize ' + JSON.stringify(user));
   done(0, user.id);
 });
 
 passport.deserializeUser(function(id, done) {
+console.log('DESERIALIZE');
 	if(UserBase[id]){
 		done(null, UserBase[id]);
 	}else{
@@ -180,10 +192,16 @@ app.get('/auth/google/return',
 
 app.get('/build', function (req, res) {
 
+if(req.user){
+console.log(JSON.stringify(req.user) + ' user found' );
+}else{
+console.log('no user logged in');
+}
+
 
     databaseconnection.createCollection('graphs', function (err, collection) {
 
-        console.log(collection);
+        //console.log(collection);
     });
 
     res.cookie('seederuser', JSON.stringify(defaultuser), {
