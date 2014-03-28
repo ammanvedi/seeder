@@ -38,6 +38,8 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
+var UserBase = new Object();
+
 
 
 //this is for development, when the user login has been impleented 
@@ -70,20 +72,34 @@ passport.use(new GoogleStrategy({
     realm: 'http://54.201.24.162:8080/'
   },
   function(identifier, profile, done) {
-  console.log(profile.displayname);
-    databaseconnection.createCollection('users', function (err, collection) {
-    
-                collection.update({openid: profile.id}, {openid: profile.id, data : profile}, {upsert: true
-                }, function (er, res) {
-                	if(er){
-                	done(err, false);
-                	}else{
-                	done(err, user);
-                	}
-                    console.log(res);
-                });
-    
-            });
+  
+  if(UserBase[profile.id]){
+  	//user exists 
+  	done(null, UserBase[profile.id])
+  }else{
+  	//user does not exist
+  	//add
+  	UserBase[profile.id] = profile;
+  	done(null, UserBase[profile.id]);
+  }
+  
+  
+//  console.log(profile.displayname);
+//    databaseconnection.createCollection('users', function (err, collection) {
+//    
+//                collection.update({openid: profile.id}, {openid: profile.id, data : profile}, {upsert: true
+//                }, function (er, res) {
+//                	if(er){
+//                	console.log('err');
+//                	done(err, false);
+//                	}else{
+//                	console.log('no err');
+//                	done(err, profile);
+//                	}
+//                    console.log(res);
+//                });
+//    
+//            });
     
       //done(err, user);
   
@@ -91,21 +107,16 @@ passport.use(new GoogleStrategy({
 ));
 
 passport.serializeUser(function(user, done) {
+console.log('serialize ' + user);
   done(null, user.id);
 });
 
 passport.deserializeUser(function(id, done) {
-
-  databaseconnection.createCollection('users', function (err, collection) {
-  
-  	gotuser = collection.findOne({openid:  id});
-  
-              if(gotuser){
-              	done(err, user);
-              }else{
-              	done(err, false);
-              }
-});
+	if(UserBase[id]){
+		done(null, UserBase[id]);
+	}else{
+		done("usr not found",false);
+	}
 
     
   });
