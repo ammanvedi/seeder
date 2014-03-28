@@ -39,9 +39,10 @@ passport.use(new GoogleStrategy({
     realm: 'http://54.201.24.162:8080/'
   },
   function(identifier, profile, done) {
-    User.findOrCreate({ openId: identifier }, function(err, user) {
-      done(err, user);
-    });
+  console.log(profile.displayname);
+//    User.findOrCreate({ openId: identifier }, function(err, user) {
+//      done(err, user);
+//    });
   }
 ));
 
