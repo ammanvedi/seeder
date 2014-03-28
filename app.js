@@ -75,12 +75,12 @@ passport.use(new GoogleStrategy({
   
   if(UserBase[profile.id]){
   	//user exists 
-  	done(null, UserBase[profile.id])
+  	done(0, UserBase[profile.id])
   }else{
   	//user does not exist
   	//add
   	UserBase[profile.id] = profile;
-  	done(null, UserBase[profile.id]);
+  	done(0, UserBase[profile.id]);
   }
   
   
@@ -107,15 +107,15 @@ passport.use(new GoogleStrategy({
 ));
 
 passport.serializeUser(function(user, done) {
-console.log('serialize ' + user);
-  done(null, user.id);
+console.log('serialize ' + user.id);
+  done(0, user.id);
 });
 
 passport.deserializeUser(function(id, done) {
 	if(UserBase[id]){
 		done(null, UserBase[id]);
 	}else{
-		done("usr not found",false);
+		done(1,false);
 	}
 
     
