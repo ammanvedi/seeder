@@ -13,6 +13,8 @@ var http = require('http').createServer(app);
 var path = require('path');
 var MongoClient = require('mongodb').MongoClient;
 var io = require('socket.io').listen(http);
+var passport = require('passport')
+  , GoogleStrategy = require('passport-google').Strategy;
 
 // all environments
 
@@ -31,6 +33,17 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
+
+passport.use(new GoogleStrategy({
+    returnURL: 'http://54.201.24.162:8080/auth/google/return',
+    realm: 'http://54.201.24.162:8080/'
+  },
+  function(identifier, profile, done) {
+    User.findOrCreate({ openId: identifier }, function(err, user) {
+      done(err, user);
+    });
+  }
+));
 
 //this is for development, when the user login has been impleented 
 //the cookie with this data will be replaced by a client specific
@@ -99,6 +112,18 @@ app.get('/help', function (req, res) {
 		});
 		
 });
+
+// Redirect the user to Google for authentication.  When complete, Google
+// will redirect the user back to the application at
+//     /auth/google/return
+app.get('/auth/google', passport.authenticate('google'));
+
+// Google will redirect the user to this URL after authentication.  Finish
+// the process by verifying the assertion.  If valid, the user will be
+// logged in.  Otherwise, authentication has failed.
+app.get('/auth/google/return', 
+  passport.authenticate('google', { successRedirect: '/',
+                                    failureRedirect: '/login' }));
 
 app.get('/build', function (req, res) {
 
