@@ -95,11 +95,7 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    
-  });
-  
-  
+
   databaseconnection.createCollection('users', function (err, collection) {
   
   	gotuser = collection.findOne({openid:  id});
@@ -110,6 +106,11 @@ passport.deserializeUser(function(id, done) {
               	done(err, false);
               }
 });
+
+    
+  });
+  
+  
 
 
 
