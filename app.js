@@ -34,17 +34,7 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
-passport.use(new GoogleStrategy({
-    returnURL: 'http://54.201.24.162:8080/auth/google/return',
-    realm: 'http://54.201.24.162:8080/'
-  },
-  function(identifier, profile, done) {
-  console.log(profile.displayname);
-//    User.findOrCreate({ openId: identifier }, function(err, user) {
-//      done(err, user);
-//    });
-  }
-));
+
 
 //this is for development, when the user login has been impleented 
 //the cookie with this data will be replaced by a client specific
@@ -70,6 +60,31 @@ MongoClient.connect("mongodb://ammanvedi:poopoo12@ds057528.mongolab.com:57528/se
         //db.createCollection('graphs', function (err, collection) {});
     }
 });
+
+passport.use(new GoogleStrategy({
+    returnURL: 'http://54.201.24.162:8080/auth/google/return',
+    realm: 'http://54.201.24.162:8080/'
+  },
+  function(identifier, profile, done) {
+  console.log(profile.displayname);
+    databaseconnection.createCollection('users', function (err, collection) {
+    
+                collection.update({openid: identifier}, {openid: identifier}, {upsert: true
+                }, function (er, res) {
+                	if(er){
+                	done(err, false);
+                	}else{
+                	done(err, user);
+                	}
+                    console.log(res);
+                });
+    
+            });
+    
+      //done(err, user);
+  
+  }
+));
 
 
 
