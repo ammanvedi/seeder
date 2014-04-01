@@ -74,8 +74,8 @@ MongoClient.connect("mongodb://ammanvedi:poopoo12@ds057528.mongolab.com:57528/se
 });
 
 passport.use(new GoogleStrategy({
-    returnURL: 'http://localhost:8080/auth/google/return',
-    realm: 'http://localhost:8080/'
+    returnURL: 'http://54.201.24.162:8080/auth/google/return',
+    realm: 'http://54.201.24.162:8080/'
   },
   function(identifier, profile, done) {
   
@@ -125,7 +125,7 @@ console.log('DESERIALIZE');
 	if(UserBase[id]){
 		done(null, UserBase[id]);
 	}else{
-		done(1,false);
+		done(null,false);
 	}
 
     
