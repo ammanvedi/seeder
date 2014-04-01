@@ -33,7 +33,6 @@ function getSaveState(particlesys, gname, gdesc, publishme){
 	particlesys.eachEdge(function (edge, pt1, pt2){
 		Edges.push(edge);
 	});
-	
 	var userdata = JSON.parse($.cookie('seederuser'));
 	var GraphMeta = new Object();
 	GraphMeta.datecreated = +new Date;
@@ -54,6 +53,8 @@ function getSaveState(particlesys, gname, gdesc, publishme){
 	Savestate.graph = Graph;
 	Savestate.graphmeta = GraphMeta;
 	
+	console.log(Savestate);
+	
 	return Savestate;
 
 };
@@ -61,7 +62,7 @@ function getSaveState(particlesys, gname, gdesc, publishme){
 
 $(document).ready(function () {
 
-    var DEPLOYIP = '192.168.0.3'; //localhost for dev, ip for prod
+    var DEPLOYIP = '192.168.1.96'; //localhost for dev, ip for prod
     var socket = io.connect(DEPLOYIP + ':8080');
     console.log( socket);
     var addnodemode = false;

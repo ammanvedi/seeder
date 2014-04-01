@@ -18,8 +18,6 @@ var passport = require('passport')
 
 // all environments
 
-
-
 app.configure(function() {
 
 app.set('port', process.env.PORT || DEPLOYPORT);
@@ -76,8 +74,8 @@ MongoClient.connect("mongodb://ammanvedi:poopoo12@ds057528.mongolab.com:57528/se
 });
 
 passport.use(new GoogleStrategy({
-    returnURL: 'http://54.201.24.162:8080/auth/google/return',
-    realm: 'http://54.201.24.162:8080/'
+    returnURL: 'http://localhost:8080/auth/google/return',
+    realm: 'http://localhost:8080/'
   },
   function(identifier, profile, done) {
   
@@ -192,11 +190,7 @@ app.get('/auth/google/return',
 
 app.get('/build', function (req, res) {
 
-if(req.user){
-console.log(JSON.stringify(req.user) + ' user found' );
-}else{
-console.log('no user logged in');
-}
+
 
 
     databaseconnection.createCollection('graphs', function (err, collection) {
@@ -204,15 +198,32 @@ console.log('no user logged in');
         //console.log(collection);
     });
 
-    res.cookie('seederuser', JSON.stringify(defaultuser), {
+
+    
+    if(req.user){
+    console.log(JSON.stringify(req.user) + ' user found' );
+    
+    var c = new Object();
+    
+    c.id = req.user.id;
+    
+    res.cookie('seederuser', JSON.stringify(c), {
         maxAge: 3600000,
         path: '/',
         secret: 'supersecret'
     });
-
+    //render with user details
     res.render('index', {
-        title: 'Seeder'
+        title: 'Seeder', username: req.user.name.givenName
     });
+    }else{
+    console.log('no user logged in');
+    res.render('index', {
+        title: 'Seeder',  username: 'Sign In'
+    });
+    }
+
+
 
 
     res.end(200);
@@ -257,6 +268,9 @@ io.sockets.on('connection', function (socket) {
     socket.on('USER_SAVEGRAPH', function (data) {
         //console.log('server : user with id' + data.payload.graphname + ' requested graph save');
         if (data.payload.publish) {
+        	console.log(JSON.stringify(UserBase));
+        	data.payload.authorname = UserBase[data.payload.author].displayName;
+        	console.log('user display name is ' + data.payload.authorname);
             var url = db_push_graph(data.payload, true);
             socket.emit('PUBLISH_SUCCESS', {
                 payload: url
