@@ -21,4 +21,4 @@
 		- new render scheme
 	if entry/exit clicked
 	abstract implementation so can be used with both edit and view interfaces
-	
+	 
