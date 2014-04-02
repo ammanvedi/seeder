@@ -95,20 +95,26 @@ $(document).ready(function () {
     var addnodePREFS = new Object();
     var editnodePREFS = new Object();
     var current_edit_focus;
+    
+    //track the state of the graph as a collection of layers
+    var GraphLayers = new Object();
+	var currentlayer = 'root';
+	addLayer('root', 0);
+     
 
 
     //def
     addnodePREFS['name'] = 'Start';
     addnodePREFS['text'] = 'lorem ipsum';
     addnodePREFS['link'] = 'http://www.google.com/';
-    addnodePREFS['TYPE'] = 'NORMAL';
+    addnodePREFS['TYPE'] = 'TEXT';
     addnodePREFS['size'] = 30;
     addnodePREFS['id'] = 0;
     addnodePREFS['color'] = '#564F8A';
     
     
 
-    sys = arbor.ParticleSystem(0, 0, 1.0) //repulsion/stiffness/friction
+    sys = arbor.ParticleSystem(0, 500, 1.0) //repulsion/stiffness/friction
     sys.parameters({
         gravity: true,
         friction: 1.0, 
@@ -119,7 +125,8 @@ $(document).ready(function () {
 	//console.log('here is the system in full');
 	//console.log(sys);
 
-    sys.addNode(addnodePREFS['name'], addnodePREFS);
+    //sys.addNode(addnodePREFS['name'], addnodePREFS);
+    createNode(addnodePREFS['name'], addnodePREFS, currentlayer);
 
 
     var nearestmouse;
@@ -231,8 +238,10 @@ $(document).ready(function () {
 			}else{
 			
 			if(nearme != null){
-				sys.addNode(data['name'], addnodePREFS);
-				sys.addEdge(nearme.node.name, data['name']);
+				//sys.addNode(data['name'], addnodePREFS);
+				createNode(data['name'], addnodePREFS, currentlayer);
+				createEdge(nearme.node.name, data['name'], currentlayer);
+				//sys.addEdge(nearme.node.name, data['name']);
 				//console.log(nearme.node.name + ' ' + data['name']);
 				//sys.stop();
 				
@@ -250,7 +259,8 @@ $(document).ready(function () {
 				ct++;
 				}else{
 				
-					sys.addNode(data['name'], addnodePREFS);
+					//sys.addNode(data['name'], addnodePREFS);
+					createNode(data['name'], addnodePREFS, currentlayer);
 					
 					//console.log('ahahahah');
 					
@@ -322,7 +332,8 @@ $(document).ready(function () {
 				
 				$('#btn_addedge').removeClass('red').addClass('green');
 				$('#btn_addedge').val('Add Edge');
-				sys.addEdge(edgepath[0].node.name, edgepath[1].node.name);
+				createEdge(edgepath[0].node.name, edgepath[1].node.name, currentlayer)
+				//sys.addEdge(edgepath[0].node.name, edgepath[1].node.name);
 				addedgemode = false;
 				edgepath = new Array();
 			}
@@ -330,6 +341,7 @@ $(document).ready(function () {
 			return;
         }
         
+        //if the edit node pallete is visible
         if ($('#tabs-3').is(":visible")) {
         	//user has the edit tab visible, and has clicked the graph view
         	//show the edit form
@@ -337,8 +349,33 @@ $(document).ready(function () {
         	$('#edit_notice').hide();
            //console.log('edit tab is visible');
            displayEditNodePrefs(nearme);
-           
-           
+           return;
+        }
+        
+        //console.log(nearme);
+        if(nearme.distance < 20)
+        {
+        	//console.log('direct click on a node');
+        	if(nearme.node.data['TYPE'] == 'LAYER')
+        	{
+        		console.log('TYPEISLAYER' );
+        		//if the layer node clicked corresponds to this layer
+        		//then exit the layer
+        		if(nearme.node.data['name'] == currentlayer)
+        		{
+        			loadLayer(GraphLayers[currentlayer].parentlayer);
+        			console.log('loading 1:: ' );
+        			console.log(GraphLayers[currentlayer].parentlayer);
+        		}else{
+        			//layer node clicked is pointing to a different layer
+        			//load it 
+        			loadLayer(nearme.node.data['name']);
+        			console.log('loading 2:: ' );
+        			console.log(GraphLayers[nearme.node.data['name']]);
+        		}
+        		
+        		
+        	}
         }
 
     });
@@ -474,17 +511,13 @@ $(document).ready(function () {
 
             if (nearme_) {
 
-                res = sys.addNode(ct + '', data_to_add);
-                sys.addEdge(nearme_.node.name, ct + '');
+                //res = sys.addNode(ct + '', data_to_add);
+                createNode(ct+'', data_to_add, currentlayer);
+                createEdge(nearme_.node.name, ct + '', currentlayer);
+                //sys.addEdge(nearme_.node.name, ct + '');
             } else {
-                res = sys.addNode(ct + '', data_to_add);
-            }
-
-            if (res) {
-                //console.log('returned something');
-                //console.log(res);
-            } else {
-                //console.log('returned nothing');
+                //res = sys.addNode(ct + '', data_to_add);
+                createNode(ct+'', data_to_add, currentlayer);
             }
 
 
@@ -568,6 +601,7 @@ $(document).ready(function () {
                                                                                                                                           
 */
 
+
  	function displayEditNodePrefs(n){
  	
  		//after the information is passed to the view to show the user may change the
@@ -647,10 +681,65 @@ $(document).ready(function () {
         //TO DO
         //add all nodes and edges back to the sigmajs instance
     }
+    
+    function loadLayer(layertoload){
+    
+    console.log('the layer to load  is ' + layertoload);
+    
+    if(GraphLayers[layertoload])
+    {
+    	sys.prune(function (a,b,c){
+    		return true;
+    	});
+    	
+    	GraphLayers[layertoload].nodes.forEach(function(val, idx, ar){
+    		sys.addNode(val.nodename, val.nodedata);
+    	});
+    	
+    	GraphLayers[layertoload].edges.forEach(function(val, idx, ar){
+    		sys.addEdge(val.fromnode, val.tonode);
+    	});
+    	
+    	currentlayer = layertoload;
+    }else{
+    	console.log('layer not found');
+    }
+    	
+    }
+    
+    function addLayer(layername, layerparent){
+    	GraphLayers[layername] = new Object();
+    	GraphLayers[layername].layername = layername;
+    	GraphLayers[layername].parentlayer = layerparent;
+    	GraphLayers[layername].nodes = new Array();
+    	GraphLayers[layername].edges = new Array();
+    	
+    	
+    }
 
     //add a node to the graph
-    function addNode(x, y, s, id, n, c, attr) {
-
+    function createNode(name, data, layer)
+    {
+    	if(data['TYPE'] == 'LAYER'){
+    		//create new layer
+    		addLayer(data['name'], currentlayer);
+    		data.parentlayer = currentlayer;
+    		GraphLayers[data['name']].nodes.push({nodename : name, nodedata : data});
+    	}
+    	//add node not particle system
+    	sys.addNode(name, data);
+    	//add node to layer
+    	GraphLayers[layer].nodes.push({nodename : name, nodedata : data});
+    	console.log(data);
+    	return;
+    }
+    
+    function createEdge(from, to, layer)
+    {
+    	//addedge to particle system
+    	sys.addEdge(from, to);
+    	//add edge to layer
+    	GraphLayers[layer].edges.push({fromnode : from, tonode : to});
     }
     
     $('#btn_publishgraph').click(function () {
@@ -788,6 +877,8 @@ $(document).ready(function () {
 	        var updated = new Object();
 	        
 	        //validate form
+	        
+	        console.log($('#select_node_type').val());
 	
 	        updated['name'] = $('#field_node_name').val();
 	        updated['text'] = $('#field_node_text').val();
@@ -795,7 +886,7 @@ $(document).ready(function () {
 	        updated['size'] = $('#field_node_size').val();
 	        updated['id'] = get_random_color();
 	        updated['color'] = $('#picker_edgecolor').val();
-	        updated['TYPE'] = 'TEXT';
+	        updated['TYPE'] = $('#select_node_type').val();
 	        
 	        
 	        if(updated['name'] == ""){

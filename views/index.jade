@@ -117,6 +117,11 @@ block content
 					input.tiny.ui.submit.green.button#btn_addedge(type='button' value='add edge')
 			#tabs-2.tabwindow
 				form#form_addnode
+					select#select_node_type
+						option(value="TEXT")
+							|Text Node
+						option(value="LAYER")
+							|Layer Node
 					input#field_node_name.ui.mini.input(type='text' name='node_name' placeholder='node name')
 					input#field_node_text.ui.mini.input(type='text' name='node_text' class='input_node_add' placeholder='add text')
 					input#field_node_link.ui.mini.input(type='text' name='node_link' placeholder='add a link')

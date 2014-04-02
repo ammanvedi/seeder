@@ -28,7 +28,7 @@ var Renderer = function (canvas) {
             // if the canvas is ever resized, screenSize should be called again with
             // the new dimensions
             particleSystem.screenSize(canvas.width, canvas.height);
-            particleSystem.screenPadding(80); // leave an extra 80px of whitespace per side
+            particleSystem.screenPadding(00); // leave an extra 80px of whitespace per side
 
             // set up some event handlers to allow for node-dragging
             that.initMouseHandling();
@@ -63,24 +63,15 @@ var Renderer = function (canvas) {
             });
 
             particleSystem.eachNode(function (node, pt) {
-            
-                // node: {mass:#, p:{x,y}, name:"", data:{}}
-                // pt:   {x:#, y:#}  node position in screen coords
 
                 // draw a rectangle centered at pt
                 var w = 10
                 var imagesize = 70;
                 var radius = imagesize / 2;
                 var radius_imageless = 10;
-                //ctx.fillStyle =  "orange";
-                //ctx.fillRect(pt.x-w/2, pt.y-w/2, w,w)
-
-                //
-
-				//console.log('eachnode');
 
 
-                if (node.data['TYPE'] != 'NORMAL') {
+                if (node.data['TYPE'] != 'TEXT') {
                     //draw a data rich node
                     //console.log('here');
                     //console.log(node);
@@ -132,30 +123,40 @@ var Renderer = function (canvas) {
                     }
 
 
-                } else {
-                    //draw a normal node 
-                    //console.log('normal node');
-
-                    //console.log(node);
-
-                    var radius = node.data['size'];
-
-                    ctx.beginPath();
-                    ctx.arc(pt.x, pt.y, radius, 0, 2 * Math.PI, false);
-                    ctx.fillStyle = node.data['color'];
-                    ctx.fill();
-                    ctx.lineWidth = 3;
-                    ctx.strokeStyle = '#003300';
-                    ctx.stroke();
-
-                    ctx.font = '12pt Arial';
-                    ctx.fillStyle = 'black';
-                    ctx.fillText(node.name, pt.x - 4, pt.y + 3);
-                }
-
-
-
-
+                } 
+                
+	            if(node.data['TYPE'] == 'TEXT')
+	            {
+	                var radius = node.data['size'];
+	
+	                ctx.beginPath();
+	                ctx.arc(pt.x, pt.y, radius, 0, 2 * Math.PI, false);
+	                ctx.fillStyle = node.data['color'];
+	                ctx.fill();
+	                ctx.lineWidth = 3;
+	                ctx.strokeStyle = '#003300';
+	                ctx.stroke();
+	
+	                ctx.font = '12pt Arial';
+	                ctx.fillStyle = 'black';
+	                ctx.fillText(node.name, pt.x - 4, pt.y + 3);
+	            }
+	            
+	            if(node.data['TYPE'] == 'LAYER')
+	            {
+	            	//console.log('layer');
+	                var radius = node.data['size'];
+	                ctx.beginPath();
+	                ctx.arc(pt.x, pt.y, radius, 0, 2 * Math.PI, false);
+	                ctx.fillStyle = node.data['color'];
+	                ctx.fill();
+	                ctx.lineWidth = 8;
+	                ctx.strokeStyle = '#564F8A';
+	                ctx.stroke();
+	                ctx.font = '12pt Arial';
+	                ctx.fillStyle = 'black';
+	                ctx.fillText(node.name, pt.x - 4, pt.y + 3);		
+	            }
             });
         },
 
