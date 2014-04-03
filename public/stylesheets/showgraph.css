@@ -1,0 +1,17 @@
+html{
+	height: 100%;
+}
+
+	body {
+ margin:0px;
+ padding:0px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+ height:100%;
+ max-width: 100%;
+ min-width: auto;
+ overflow: hidden;
+ overflow-y: scroll;
+ -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}

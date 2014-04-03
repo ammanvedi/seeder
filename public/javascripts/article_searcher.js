@@ -52,7 +52,7 @@ $(document).ready(function () {
                 DESCRIPTION: itm.snippet,
                 TITLE: itm.title,
                 IMAGE: itm.pagemap.cse_image[0].src,
-                TYPE: 'article',
+                TYPE: 'ARTICLE',
                 DOMAIN: itm.displayLink,
                 html: '<div class="result_title"><img class="rounded ui left floated image" src="' + itm.pagemap.cse_image[0].src + '"/>' + '<h1>' + itm.title + '</h1><h2>' + itm.displayLink + '</h2></div><div class="result_text">' + '<p>' + itm.snippet + '</p></div>'
 

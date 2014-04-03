@@ -1,0 +1,57 @@
+doctype html
+html(lang="en")
+	head
+		meta(name='viewport', content='width=device-width, maximum-scale=1.0')
+		title= title
+		link(href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700", rel="stylesheet", type="text/css")
+		link(rel='stylesheet', href='/javascripts/semantic/packaged/css/semantic.min.css')
+		link(rel='stylesheet', href='/stylesheets/showgraph.css')
+		script(src='http://code.jquery.com/jquery-1.8.2.js')
+		script(src='/javascripts/semantic/packaged/javascript/semantic.min.js')
+		script(src='/javascripts/arbor/arbor-tween.js')
+		script(src='/javascripts/arbor/arbor.js')
+		script(src='/javascripts/rendergraph.js')
+		script(src="/javascripts/showgraphhandler.js")
+	body
+		.fixed-home
+			.ui.menu.purple.inverted
+				ai#sidebar-toggle.item
+					i.reorder.icon
+				a.item.purple.active(href="/")
+					i.leaf.icon
+					img(src="/img/logo-small.png")
+				a.item(href="/explore")
+					i.map.icon
+					| Explore
+				a.item(href="/build")
+					i.wrench.icon
+					| Build
+				.ui.simple.dropdown.item
+					|More
+					i.dropdown.icon
+					.menu
+						a.item(href="/blog")
+							i.book.icon
+							|Blog
+						a.itema.item(href="/help")
+							i.help.icon
+							|Help
+				.right.compact.menu
+					.ui.simple.dropdown.item
+						i.user.icon
+						|Me
+						i.dropdown.icon
+						.menu
+							a.item
+								i.bolt.icon
+								|My Profile
+							a.item
+								i.lightbulb.icon
+								|My Graphs
+							a.item
+								i.settings.icon
+								|Settings
+							a.item
+								i.sign.out.icon
+								|Sign Out
+		canvas#view_canvas(width='900' height='500')

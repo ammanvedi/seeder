@@ -63,6 +63,9 @@ var Renderer = function (canvas) {
             });
 
             particleSystem.eachNode(function (node, pt) {
+            
+                // node: {mass:#, p:{x,y}, name:"", data:{}}
+                // pt:   {x:#, y:#}  node position in screen coords
 
                 // draw a rectangle centered at pt
                 var w = 10
@@ -71,11 +74,13 @@ var Renderer = function (canvas) {
                 var radius_imageless = 10;
 
 
-                if (node.data['TYPE'] != 'TEXT') {
+                if (node.data['TYPE'] == 'ARTICLE') {
                     //draw a data rich node
                     //console.log('here');
                     //console.log(node);
                     if (node.data['imagedata'] != undefined) {
+                    
+                    //console.log(node.data['imagedata']);
 
 
                         node.data['imagedata'].width = imagesize + 'px';
@@ -103,7 +108,7 @@ var Renderer = function (canvas) {
                         //draw the node title
                         ctx.font = '10pt Arial';
                         ctx.fillStyle = 'black';
-                        ctx.fillText(node.data[2].val, pt.x + (imagesize / 2) + 3, pt.y + 3);
+                        ctx.fillText(node.data['TITLE'], pt.x + (imagesize / 2) + 3, pt.y + 3);
 
                     } else {
 

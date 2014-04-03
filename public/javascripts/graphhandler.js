@@ -22,17 +22,9 @@ var waiting_publish_confirm = false;
 //this function will generate a state object of the entire graph
 // so it can be saved to the database
   
-function getSaveState(particlesys, gname, gdesc, publishme){
+function getSaveState(layercake, gname, gdesc, publishme){
 
-	var Edges = new Array();
-	var Nodes = new Array();
-
-	particlesys.eachNode(function (node, pt) {
-		Nodes.push(node);
-	});
-	particlesys.eachEdge(function (edge, pt1, pt2){
-		Edges.push(edge);
-	});
+	
 	var userdata = JSON.parse($.cookie('seederuser'));
 	var GraphMeta = new Object();
 	GraphMeta.datecreated = +new Date;
@@ -40,9 +32,14 @@ function getSaveState(particlesys, gname, gdesc, publishme){
 	GraphMeta.dislikes = 0;
 	GraphMeta.views = 0;
 
-	var Graph = new Object();
-	Graph.nodes = Nodes;
-	Graph.edges = Edges;
+	var Graph = jQuery.extend(true, {}, layercake);
+	
+	for(key in Graph){
+		Graph[key].nodes.forEach(function (x){
+			delete x.nodedata['imagedata'];
+			console.log(x);
+		});
+	}
 	
 	var Savestate = new Object();
 	Savestate.graphid = "abc2";
@@ -62,7 +59,7 @@ function getSaveState(particlesys, gname, gdesc, publishme){
 
 $(document).ready(function () {
 
-    var DEPLOYIP = 'localhost'; //localhost for dev, ip for prod
+    var DEPLOYIP = '192.168.0.6'; //localhost for dev, ip for prod
     var socket = io.connect(DEPLOYIP + ':8080');
     console.log( socket);
     var addnodemode = false;
@@ -99,7 +96,7 @@ $(document).ready(function () {
     //track the state of the graph as a collection of layers
     var GraphLayers = new Object();
 	var currentlayer = 'root';
-	addLayer('root', 0);
+	addLayer('root', '0');
      
 
 
@@ -167,14 +164,15 @@ $(document).ready(function () {
         nearestmouse = sys.nearest(mouse);
 
         if (nearestmouse) {
+        //console.log(nearestmouse);
 
-            if (nearestmouse.node.data.length > 0) {
-                nearestmouse.node.data[6].val = true;
-                $('#node-title').text(nearestmouse.node.data[2].val);
-                $('#node-domain').text(nearestmouse.node.data[5].val);
-                $('#node-description').text(nearestmouse.node.data[1].val);
-                $('#node-image').attr("src", nearestmouse.node.data[3].val);
-                $('#node-link').attr("href", nearestmouse.node.data[0].val);
+            if (nearestmouse.node.data['TYPE'] == 'ARTICLE') {
+                nearestmouse.node.data['NEAREST'] = true;
+                $('#node-title').text(nearestmouse.node.data['TITLE']);
+                $('#node-domain').text(nearestmouse.node.data['DOMAIN']);
+                $('#node-description').text(nearestmouse.node.data['DESCRIPTION']);
+                $('#node-image').attr("src", nearestmouse.node.data['IMAGE']);
+                $('#node-link').attr("href", nearestmouse.node.data['URL']);
                 //console.log(nearestmouse.node);
             } else {
                 //console.log('id is : ' + nearestmouse.node.name);
@@ -363,7 +361,8 @@ $(document).ready(function () {
         		//then exit the layer
         		if(nearme.node.data['name'] == currentlayer)
         		{
-        			loadLayer(GraphLayers[currentlayer].parentlayer);
+        			
+        			loadLayer(GraphLayers[currentlayer+'0'].parentlayer);
         			console.log('loading 1:: ' );
         			console.log(GraphLayers[currentlayer].parentlayer);
         		}else{
@@ -406,57 +405,35 @@ $(document).ready(function () {
             //console.log(evt);
 
             //build attributes to be passed to the node on creation
+            
+            var att = new Object();
 
             if ((evt.target.className == 'search_result')) {
+            
+            att['URL'] = evt.srcElement.attributes.URL.nodeValue;
+            att['DESCRIPTION'] = evt.srcElement.attributes.DESCRIPTION.nodeValue;
+            att['TITLE'] = evt.srcElement.attributes.TITLE.nodeValue;
+            att['IMAGE'] = evt.srcElement.attributes.IMAGE.nodeValue;
+            att['TYPE'] = evt.srcElement.attributes.TYPE.nodeValue;
+            att['DOMAIN'] = evt.srcElement.attributes.DOMAIN.nodeValue;
+            att['NEAREST'] = false;
 
 
-                attribs_article = [{
-                    name: 'URL',
-                    val: evt.srcElement.attributes.URL.nodeValue
-                }, {
-                    name: 'DESCRIPTION',
-                    val: evt.srcElement.attributes.DESCRIPTION.nodeValue
-                }, {
-                    name: 'TITLE',
-                    val: evt.srcElement.attributes.TITLE.nodeValue
-                }, {
-                    name: 'IMAGE',
-                    val: evt.srcElement.attributes.IMAGE.nodeValue
-                }, {
-                    name: 'TYPE',
-                    val: evt.srcElement.attributes.TYPE.nodeValue
-                }, {
-                    name: 'DOMAIN',
-                    val: evt.srcElement.attributes.DOMAIN.nodeValue
-                }, {
-                    name: 'NEAREST',
-                    val: false
-                }];
+
 
             } else {
+            
+            att['URL'] =  evt.srcElement.parentElement.attributes.URL.nodeValue;
+            att['DESCRIPTION'] = evt.srcElement.parentElement.attributes.DESCRIPTION.nodeValue;
+            att['TITLE'] = evt.srcElement.parentElement.attributes.TITLE.nodeValue;
+            att['IMAGE'] = evt.srcElement.parentElement.attributes.IMAGE.nodeValue;
+            att['TYPE'] = evt.srcElement.parentElement.attributes.TYPE.nodeValue;
+            att['DOMAIN'] = evt.srcElement.parentElement.attributes.DOMAIN.nodeValue;
+            att['NEAREST'] = false;
+            
+            
 
-                attribs_article = [{
-                    name: 'URL',
-                    val: evt.srcElement.parentElement.attributes.URL.nodeValue
-                }, {
-                    name: 'DESCRIPTION',
-                    val: evt.srcElement.parentElement.attributes.DESCRIPTION.nodeValue
-                }, {
-                    name: 'TITLE',
-                    val: evt.srcElement.parentElement.attributes.TITLE.nodeValue
-                }, {
-                    name: 'IMAGE',
-                    val: evt.srcElement.parentElement.attributes.IMAGE.nodeValue
-                }, {
-                    name: 'TYPE',
-                    val: evt.srcElement.parentElement.attributes.TYPE.nodeValue
-                }, {
-                    name: 'DOMAIN',
-                    val: evt.srcElement.parentElement.attributes.DOMAIN.nodeValue
-                }, {
-                    name: 'NEAREST',
-                    val: false
-                }];
+
 
             }
             //console.log(attribs_article);
@@ -474,7 +451,7 @@ $(document).ready(function () {
             note('#contain_main', op);
             
             
-            data_to_add = attribs_article;
+            data_to_add = att;
         }
     });
 
@@ -489,7 +466,8 @@ $(document).ready(function () {
             //preload the image 
 			 $('#search_results_holder').css('overflow-x', 'scroll');
             var prefetch = new Image();
-            prefetch.src = data_to_add[3].val;
+            prefetch.src = data_to_add['IMAGE'];
+            console.log(data_to_add['IMAGE']);
             data_to_add['imagedata'] = prefetch;
 
             adding = false;
@@ -607,7 +585,7 @@ $(document).ready(function () {
  		//after the information is passed to the view to show the user may change the
  		//node name, in order to edit the old node, save the name in a var
  		
- 		current_edit_focus = n.node.data['name'];
+ 		current_edit_focus = n.node.data;
  		//get a node and draw it to the tab window
  		
  		        //validate form
@@ -654,6 +632,15 @@ $(document).ready(function () {
 	
 	function transportSaveState(ss){
 	
+	var output = '';
+	for (property in ss.graph) {
+	  output += property + ': ' + ss.graph[property]+'; ';
+	}
+	console.log(output);
+	
+	console.log(ss);
+
+	
 			socket.emit('USER_SAVEGRAPH', {payload: ss});
 			
 			if(ss.publish){
@@ -666,26 +653,14 @@ $(document).ready(function () {
 
 		
 	}
-	
-    //when a user wants to get a graph, use the socket connection to
-    //send a message to the server indicating which graph to pull
-    function initiatePullGraph(gID) {
-        socket.emit('request_pullGraph', {
-            graphID: gID
-        });
-    }
 
-    //once a graph has been pulled from the server, it is neccacary to
-    //rebuild it into a valid sigma graph
-    function rebuildPullGraph(pulled) {
-        //TO DO
-        //add all nodes and edges back to the sigmajs instance
-    }
-    
+	//clear the current particle system and load a new layer
     function loadLayer(layertoload){
     
-    console.log('the layer to load  is ' + layertoload);
+    	currentlayer = layertoload;
     
+       layertoload = layertoload +'0'; 
+        
     if(GraphLayers[layertoload])
     {
     	sys.prune(function (a,b,c){
@@ -700,16 +675,17 @@ $(document).ready(function () {
     		sys.addEdge(val.fromnode, val.tonode);
     	});
     	
-    	currentlayer = layertoload;
+    	
     }else{
     	console.log('layer not found');
     }
     	
     }
     
-    function addLayer(layername, layerparent){
+    function addLayer(layername_, layerparent){
+    	layername = layername_ +'0';
     	GraphLayers[layername] = new Object();
-    	GraphLayers[layername].layername = layername;
+    	GraphLayers[layername].layername = layername_;
     	GraphLayers[layername].parentlayer = layerparent;
     	GraphLayers[layername].nodes = new Array();
     	GraphLayers[layername].edges = new Array();
@@ -720,11 +696,14 @@ $(document).ready(function () {
     //add a node to the graph
     function createNode(name, data, layer)
     {
+    
+    layer = layer+'0';
+    
     	if(data['TYPE'] == 'LAYER'){
     		//create new layer
     		addLayer(data['name'], currentlayer);
     		data.parentlayer = currentlayer;
-    		GraphLayers[data['name']].nodes.push({nodename : name, nodedata : data});
+    		GraphLayers[data['name']+'0'].nodes.push({nodename : name, nodedata : data});
     	}
     	//add node not particle system
     	sys.addNode(name, data);
@@ -736,6 +715,7 @@ $(document).ready(function () {
     
     function createEdge(from, to, layer)
     {
+    	layer = layer+'0';
     	//addedge to particle system
     	sys.addEdge(from, to);
     	//add edge to layer
@@ -758,7 +738,7 @@ $(document).ready(function () {
     
     //console.log('namedesc: ' + name + ' ' +desc);
     if((name != '') && (desc != '')){
-    	transportSaveState(getSaveState(sys, name, desc, 1));
+    	transportSaveState(getSaveState(GraphLayers, name, desc, 1));
     	
     	console.log('sent publish graph data');
     }
@@ -778,7 +758,7 @@ $(document).ready(function () {
     
     //console.log('namedesc: ' + name + ' ' +desc);
     if((name != '') && (desc != '')){
-    	transportSaveState(getSaveState(sys, name, desc, 0));
+    	transportSaveState(getSaveState(GraphLayers, name, desc, 0));
     	
     	console.log('sent graph data');
     }
@@ -858,7 +838,7 @@ $(document).ready(function () {
 	        updatededits['size'] = $('#field_edit_node_size').val();
 	        updatededits['id'] = get_random_color();
 	        updatededits['color'] = $('#picker_edit_edgecolor').val();
-	        updatededits['TYPE'] = 'TEXT';
+	        updatededits['TYPE'] = current_edit_focus['TYPE'];
 	        
 	        
 	        if(updatededits['name'] == ""){
@@ -932,7 +912,7 @@ $(document).ready(function () {
 	
 	//editnodePREFS['color'] = 'aliceblue';
 	
-		sys.tweenNode(current_edit_focus, 0.5, editnodePREFS);
+		sys.tweenNode(current_edit_focus['name'], 0.5, editnodePREFS);
 		$('#form_editnode').hide();
 		$('#edit_notice').show();
 		
