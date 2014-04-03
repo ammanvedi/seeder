@@ -5,6 +5,9 @@ html(lang="en")
 		title= title
 		link(href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700", rel="stylesheet", type="text/css")
 		link(rel='stylesheet', href='/javascripts/semantic/packaged/css/semantic.min.css')
+		script(src='/socket.io/socket.io.js')
+		script
+			var graphstring = !{JSON.stringify(gdata)}
 		link(rel='stylesheet', href='/stylesheets/showgraph.css')
 		script(src='http://code.jquery.com/jquery-1.8.2.js')
 		script(src='/javascripts/semantic/packaged/javascript/semantic.min.js')
@@ -12,6 +15,8 @@ html(lang="en")
 		script(src='/javascripts/arbor/arbor.js')
 		script(src='/javascripts/rendergraph.js')
 		script(src="/javascripts/showgraphhandler.js")
+		
+			
 	body
 		.fixed-home
 			.ui.menu.purple.inverted
@@ -39,7 +44,7 @@ html(lang="en")
 				.right.compact.menu
 					.ui.simple.dropdown.item
 						i.user.icon
-						|Me
+						| #{username}
 						i.dropdown.icon
 						.menu
 							a.item

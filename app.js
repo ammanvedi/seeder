@@ -74,8 +74,8 @@ MongoClient.connect("mongodb://ammanvedi:poopoo12@ds057528.mongolab.com:57528/se
 });
 
 passport.use(new GoogleStrategy({
-    returnURL: 'http://localhost:8080/auth/google/return',
-    realm: 'http://localhost:8080/'
+    returnURL: 'http://54.201.24.162:8080/auth/google/return',
+    realm: 'http://54.201.24.162:8080/'
   },
   function(identifier, profile, done) {
   
@@ -186,9 +186,45 @@ app.get('/auth/google/return',
                                     
 app.get('/graph', function (req, res) {
 
-	res.render('graph', {
-	    title: 'Seeder',  graphid : req.graphid
-	});
+databaseconnection.createCollection('publicgraphs', function (err, collection) {
+
+var g;
+
+            collection.findOne({graphid : req.query.graphid}, function (err, items) {
+					
+					g = items;
+					
+                
+               
+                
+                if(req.user)
+                {
+                
+                
+                		
+                
+                
+                		res.render('graph', {
+                		    title: 'Seeder',  graphid : req.graphid, username: req.user.name.givenName, gdata: g
+                		});
+                		
+                		
+                		
+                		
+                				
+                	}else 
+                	{
+                		res.render('graph', {
+                		    title: 'Seeder',  graphid : req.graphid, username: "Sign In", gdata: g
+                		});
+                }
+                
+               
+            });
+
+        });
+
+
 
 });                                    
 

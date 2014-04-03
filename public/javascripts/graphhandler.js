@@ -31,7 +31,8 @@ function getSaveState(layercake, gname, gdesc, publishme){
 	GraphMeta.likes = 0;
 	GraphMeta.dislikes = 0;
 	GraphMeta.views = 0;
-
+	
+	//deep copy the object
 	var Graph = jQuery.extend(true, {}, layercake);
 	
 	for(key in Graph){
@@ -42,7 +43,7 @@ function getSaveState(layercake, gname, gdesc, publishme){
 	}
 	
 	var Savestate = new Object();
-	Savestate.graphid = "abc2";
+	Savestate.graphid = "abc3";
 	Savestate.publish = publishme;
 	Savestate.author = userdata.id;
 	Savestate.graphname = gname;
@@ -59,7 +60,7 @@ function getSaveState(layercake, gname, gdesc, publishme){
 
 $(document).ready(function () {
 
-    var DEPLOYIP = '192.168.0.6'; //localhost for dev, ip for prod
+    var DEPLOYIP = '54.201.24.162'; //localhost for dev, ip for prod
     var socket = io.connect(DEPLOYIP + ':8080');
     console.log( socket);
     var addnodemode = false;
@@ -350,33 +351,44 @@ $(document).ready(function () {
            return;
         }
         
-        //console.log(nearme);
-        if(nearme.distance < 20)
-        {
-        	//console.log('direct click on a node');
-        	if(nearme.node.data['TYPE'] == 'LAYER')
-        	{
-        		console.log('TYPEISLAYER' );
-        		//if the layer node clicked corresponds to this layer
-        		//then exit the layer
-        		if(nearme.node.data['name'] == currentlayer)
-        		{
-        			
-        			loadLayer(GraphLayers[currentlayer+'0'].parentlayer);
-        			console.log('loading 1:: ' );
-        			console.log(GraphLayers[currentlayer].parentlayer);
-        		}else{
-        			//layer node clicked is pointing to a different layer
-        			//load it 
-        			loadLayer(nearme.node.data['name']);
-        			console.log('loading 2:: ' );
-        			console.log(GraphLayers[nearme.node.data['name']]);
-        		}
-        		
-        		
-        	}
-        }
 
+
+    });
+    
+    $('#graph_canvas').dblclick(function (a){
+    
+    var nearme = sys.nearest({
+        x: a.offsetX,
+        y: a.offsetY
+    });
+    
+    
+    	//console.log(nearme);
+    	if(nearme.distance < 20)
+    	{
+    		//console.log('direct click on a node');
+    		if(nearme.node.data['TYPE'] == 'LAYER')
+    		{
+    			console.log('TYPEISLAYER' );
+    			//if the layer node clicked corresponds to this layer
+    			//then exit the layer
+    			if(nearme.node.data['name'] == currentlayer)
+    			{
+    				
+    				loadLayer(GraphLayers[currentlayer+'0'].parentlayer);
+    				console.log('loading 1:: ' );
+    				console.log(GraphLayers[currentlayer].parentlayer);
+    			}else{
+    				//layer node clicked is pointing to a different layer
+    				//load it 
+    				loadLayer(nearme.node.data['name']);
+    				console.log('loading 2:: ' );
+    				console.log(GraphLayers[nearme.node.data['name']]);
+    			}
+    			
+    			
+    		}
+    	}
     });
     
     $('#editnode_tab_button').click(function (evt){
@@ -912,7 +924,9 @@ $(document).ready(function () {
 	
 	//editnodePREFS['color'] = 'aliceblue';
 	
-		sys.tweenNode(current_edit_focus['name'], 0.5, editnodePREFS);
+	
+		editnodePREFS['easing'] = 'cubic';
+		sys.tweenNode(current_edit_focus['name'], 3, editnodePREFS);
 		$('#form_editnode').hide();
 		$('#edit_notice').show();
 		
