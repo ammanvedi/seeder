@@ -13,9 +13,10 @@ there is a video of the poc [here](http://youtu.be/879IhcXFcpU)
 | URL                               	| Description                                                                                       	|
 |-----------------------------------	|---------------------------------------------------------------------------------------------------	|
 | http://54.201.24.162:8080/build   	| The main interface for users to create and edit graphs                                            	|
-| http://54.201.24.162:8080/explore 	| Displays most poplular graphs created by users and allows for searching of specific subject areas 	|
+| http://54.201.24.162:8080/explore 	| Displays graphs created by users and allows for searching of specific subject areas 	|
 | http://54.201.24.162:8080/help    	| Help docs about the builder and other aspects of the site                                         	|
 | http://54.201.24.162:8080/blog    	| The DevBlog, updated when changes are made to the site                                            	|
+
 
 ### Current Features 
 
@@ -23,12 +24,15 @@ The following feautures are currently implemented
 
  * Basic graph creation (node and edge addition)
  * Basic node editing
+ * Addition of layers to graph to create visual heirarchy
  * Saving of graph data to a MongoDB Server
  * Publishing of graph to MongoDB, viewable by all users
  * Addition of nodes to the graph via drag and drop from the article search
  * Login via Google account (PassportJS)
  * Viewing node attributes (Title, URL, Description, Image)
  * Export of graph data to a textual reference list (Harvard format)
+ * retrieval of graph data from MongoDB server
+ * viewing of graphs created by users (via /explore)
  ![adding article](http://i.imgur.com/KYkyu04.gif)
 
 *Adding an article to the map from a search*
@@ -41,10 +45,10 @@ More sources will be added over time, subject to requirement.
 
 The following will be added 
 
- * Add layering to graph, so that clicking of nodes reveals its embedded subnodes
- * Implement viewer interface, so graphs from explore can be viewed
  * add graph search
  * Use Mendeley API in search results [(module written)](https://github.com/ammanvedi/MendeleyJSAnonymous)
+ * Build minified + uglified scripts with grunt
+ * unit tests
 
 
  
