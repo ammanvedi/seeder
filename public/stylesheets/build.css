@@ -10,7 +10,7 @@ html{
  max-width: 100%;
  min-width: auto;
  overflow: hidden;
- overflow-y: scroll;
+ overflow-y: hidden;
  -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
@@ -19,6 +19,7 @@ html{
 
 .navindex{
 	z-index: 1000;
+	height: 80px;
 	
 }
 
@@ -106,8 +107,7 @@ height: 100px;
 
 #contain_main{
 	width: 100%;
-	height: 600px;
-
+	height: 95%;
 	overflow: hidden;
 }
 

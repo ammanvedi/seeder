@@ -22,6 +22,15 @@ html{
 }
 
 
+.circholder{
+	
+	width: auto;
+	height: 120px;
+	padding-top: 30px;
+	background-color: #89b2bc;
+	
+}
+
 #explore-sidebar{
 	background-color: #262E32;
 }
@@ -112,10 +121,10 @@ overflow: hidden;
 	background-color: #564F8A;
 	float: left;
 	margin-left:10px ;
-	-webkit-box-shadow: inset 0 0 104px rgba(0, 0, 0, 0.46);
-	-moz-box-shadow: inset 0 0 104px rgba(0, 0, 0, 0.46);
-	box-shadow: inset 0 0 104px rgba(0, 0, 0, 0.46);
-	border: 3px dashed #ffffff;
+	-webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.61), inset 0 0 104px rgba(0, 0, 0, 0.46);
+	-moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.61), inset 0 0 104px rgba(0, 0, 0, 0.46);
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.61), inset 0 0 104px rgba(0, 0, 0, 0.46);
+	border: 3px dashed #89b2bc;
 }
 
 .circletext{
@@ -135,10 +144,11 @@ overflow: hidden;
 	background-color: #564F8A;
 	float: right;
 	margin-right:10px ;
--webkit-box-shadow: inset 0 0 104px rgba(0, 0, 0, 0.46);
--moz-box-shadow: inset 0 0 104px rgba(0, 0, 0, 0.46);
-box-shadow: inset 0 0 104px rgba(0, 0, 0, 0.46);
-border: 3px dashed #ffffff;
+	-webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.61), inset 0 0 104px rgba(0, 0, 0, 0.46);
+	-moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.61), inset 0 0 104px rgba(0, 0, 0, 0.46);
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.61), inset 0 0 104px rgba(0, 0, 0, 0.46);
+
+border: 3px dashed #89b2bc;
 }
 
 #clearcirc{
@@ -147,6 +157,12 @@ border: 3px dashed #ffffff;
 	clear: both;
 }
 
+
+.name{
+	width: 100%;
+	padding-top: 10px;
+	
+}
 .smalltext{
 	font-size: 12px;
 }
@@ -162,16 +178,25 @@ border: 3px dashed #ffffff;
 
 .graphmeta{
 	
-	padding-top: 10px;
+	padding-top: 20px;
 }
 
+.graphitm{
+	
+	height: 100px;
+}
 
 .graphdesc{
 	padding-top: 10px;
 	max-height: 50px;
-	max-width: 90%;
+	max-width: 100%;
 	overflow: hidden;
 	
+}
+
+.description{
+	
+	width: 100%;
 }
 
 #graphs-view{

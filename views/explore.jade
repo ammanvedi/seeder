@@ -64,17 +64,18 @@ block content
 	#graphs-view.ui.stackable.four.items
 		-var ob = graphs
 		-for(var prop in ob)
-			.item
-				#circlefloatleft
-					h2.ui.inverted.small.header.circletext
-						| 22
-						.small.sub.header
-							| Nodes
-				#circlefloatright
-					h2.ui.inverted.small.header.circletext
-						| 22
-						.small.sub.header
-							| Edges
+			.item.graphitm
+				.circholder
+					#circlefloatleft
+						h2.ui.inverted.small.header.circletext
+							| 22
+							.small.sub.header
+								| Nodes
+					#circlefloatright
+						h2.ui.inverted.small.header.circletext
+							| 22
+							.small.sub.header
+								| Edges
 				#clearcirc
 				.content
 					.meta

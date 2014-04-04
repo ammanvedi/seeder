@@ -10,7 +10,7 @@ html{
  max-width: 100%;
  min-width: auto;
  overflow: hidden;
- overflow-y: scroll;
+ overflow-y: hidden;
  -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;

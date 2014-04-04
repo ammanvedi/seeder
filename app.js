@@ -140,6 +140,8 @@ function getPublic(filter, next) {
     var ItemList = new Array();
 
     if (filter == 'all') {
+    
+    	//this should be refactored so only graphmeta is served to the client.
 
         databaseconnection.createCollection('publicgraphs', function (err, collection) {
 

@@ -43,7 +43,7 @@ function getSaveState(layercake, gname, gdesc, publishme){
 	}
 	
 	var Savestate = new Object();
-	Savestate.graphid = "abc3";
+	Savestate.graphid = "newgraph";
 	Savestate.publish = publishme;
 	Savestate.author = userdata.id;
 	Savestate.graphname = gname;
@@ -60,7 +60,7 @@ function getSaveState(layercake, gname, gdesc, publishme){
 
 $(document).ready(function () {
 
-    var DEPLOYIP = '192.168.0.6'; //localhost for dev, ip for prod
+    var DEPLOYIP = '54.201.24.162'; //localhost for dev, ip for prod
     var socket = io.connect(DEPLOYIP + ':8080');
     console.log( socket);
     var addnodemode = false;
