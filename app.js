@@ -134,7 +134,11 @@ console.log('DESERIALIZE');
   
 
 
-
+/**
+ * Get an array of graph data from the public graphs database 
+ * @param      {String}   a string specifying which graphs to return (all, popular, new)
+ * @param      {Function} callback will be passed a single argument which contains all graph metadata
+ */
 function getPublic(filter, next) {
 
     var ItemList = new Array();
@@ -188,52 +192,32 @@ app.get('/auth/google/return',
                                     
 app.get('/graph', function (req, res) {
 
-databaseconnection.createCollection('publicgraphs', function (err, collection) {
-
-var g;
-
-            collection.findOne({graphid : req.query.graphid}, function (err, items) {
-					
-					g = items;
-					
-                
-               
-                
-                if(req.user)
-                {
-                
-                
-                		
-                
-                
-                		res.render('graph', {
-                		    title: 'Seeder',  graphid : req.graphid, username: req.user.name.givenName, gdata: g
-                		});
-                		
-                		
-                		
-                		
-                				
-                	}else 
-                	{
-                		res.render('graph', {
-                		    title: 'Seeder',  graphid : req.graphid, username: "Sign In", gdata: g
-                		});
-                }
-                
-               
-            });
-
-        });
+	databaseconnection.createCollection('publicgraphs', function (err, collection) {
+	
+		var g;
+		collection.findOne({graphid : req.query.graphid}, function (err, items) {
+				g = items;
+		        if(req.user)
+		        {
+			      		res.render('graph', {
+					    title: 'Seeder',  graphid : req.graphid, username: req.user.name.givenName, gdata: g
+		        		});	
+		        	}
+		        	else 
+		        	{
+		        		res.render('graph', {
+		        		title: 'Seeder',  graphid : req.graphid, username: "Sign In", gdata: g
+		        		});
+		        }
+		 });
+	
+	});
 
 
 
 });                                    
 
 app.get('/build', function (req, res) {
-
-
-
 
     databaseconnection.createCollection('graphs', function (err, collection) {
 
@@ -260,9 +244,11 @@ app.get('/build', function (req, res) {
     });
     }else{
     console.log('no user logged in');
-    res.render('index', {
-        title: 'Seeder',  username: 'Sign In'
-    });
+//    res.render('index', {
+//        title: 'Seeder',  username: 'Sign In'
+//    });
+
+	res.redirect('/auth/google');
     }
 
 
@@ -272,9 +258,13 @@ app.get('/build', function (req, res) {
 
 });
 
-app.post('/hook', function (req, res) {
-
+app.get('/logout', function(req, res){
+  req.logout();
+  res.clearCookie('seederuser', { path: '/' });
+  res.clearCookie('connect.sess', { path: '/' });
+  res.redirect('/');
 });
+
 
 app.get('/users', user.list);
 
@@ -340,8 +330,12 @@ io.sockets.on('connection', function (socket) {
 
 });
 
-
-
+/**
+ * Push graph data from the server to the database, called after graph data has been received from a socket connection
+ * @param      	{Object}  the graph object 
+ * @param      	{Boolean} true/false representing weather the graph should be pushed to the public database
+ * @return		{String} returns a uri to the resulting graph
+ */
 function db_push_graph(fullgraph, public) {
 
     var url = "http://seeder.default.url/";

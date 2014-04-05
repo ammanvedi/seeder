@@ -21,6 +21,14 @@ var waiting_publish_confirm = false;
 
 //this function will generate a state object of the entire graph
 // so it can be saved to the database
+
+/**
+ * generate a save state that can be transferred to the database as JSON
+ * @param      {Object}   a string specifying which graphs to return (all, popular, new)
+ * @param      {String} name of the published graph 
+ * @param      {String}	description of the published graph
+ * @param      {Boolean} weather the graph should be published to the public domain
+ */
   
 function getSaveState(layercake, gname, gdesc, publishme){
 
@@ -43,7 +51,7 @@ function getSaveState(layercake, gname, gdesc, publishme){
 	}
 	
 	var Savestate = new Object();
-	Savestate.graphid = "newgraph";
+	Savestate.graphid = "virtualreality";
 	Savestate.publish = publishme;
 	Savestate.author = userdata.id;
 	Savestate.graphname = gname;
@@ -591,6 +599,11 @@ $(document).ready(function () {
                                                                                                                                           
 */
 
+/**
+ * This function grabs editable data from a node and displays its current value in the edit panel
+ * @param      {Object} node to get data from
+ */
+
 
  	function displayEditNodePrefs(n){
  	
@@ -611,6 +624,10 @@ $(document).ready(function () {
  	}
 
     //for generating debug graphs, retrieve a random hex color code
+    /**
+     * generate a random hex color string (#123ABC)
+     * @return		{String} The randomly generated hex color reference
+     */
     function get_random_color() {
         var letters = '0123456789ABCDEF'.split('');
         var color = '#';
@@ -620,7 +637,7 @@ $(document).ready(function () {
         return color;
     }
 
-
+	
     function getMousePos(canvas, evt) {
         var rect = canvas.getBoundingClientRect();
         return {
@@ -641,16 +658,16 @@ $(document).ready(function () {
     
     }
 
-	
+	/**
+	 * Function to send a generated save state over Web-Socket, and initiate waiting for a server conformation
+	 * @param		{Object} save state object
+	 */
 	function transportSaveState(ss){
 	
 	var output = '';
 	for (property in ss.graph) {
 	  output += property + ': ' + ss.graph[property]+'; ';
 	}
-	console.log(output);
-	
-	console.log(ss);
 
 	
 			socket.emit('USER_SAVEGRAPH', {payload: ss});
@@ -666,7 +683,11 @@ $(document).ready(function () {
 		
 	}
 
-	//clear the current particle system and load a new layer
+
+	/**
+	 * Loads a layer from the layer-cake given its name, prunes all nodes from graph and iterates over new nodes to add 
+	 * @param		{String} The name of the layer to load in the layer-cake
+	 */
     function loadLayer(layertoload){
     
     	currentlayer = layertoload;
@@ -694,6 +715,11 @@ $(document).ready(function () {
     	
     }
     
+    /**
+     * add a layer to the layer-cake
+     * @param		{String} The name of the layer to add
+     * @param		{String} The name of the intended parent of this layer
+     */
     function addLayer(layername_, layerparent){
     	layername = layername_ +'0';
     	GraphLayers[layername] = new Object();
@@ -705,7 +731,12 @@ $(document).ready(function () {
     	
     }
 
-    //add a node to the graph
+    /**
+     * add a node to the current layer of the graph 
+     * @param		{String} The name of the node to add
+     * @param		{Object} Attributed data of the node to add
+     * @param		{String} Name of the layer, in the cake, to which the node will be added 
+     */
     function createNode(name, data, layer)
     {
     
@@ -725,6 +756,12 @@ $(document).ready(function () {
     	return;
     }
     
+    /**
+     * add a edge to the current layer of the graph 
+     * @param		{String} name of the source node
+     * @param		{String} name of the destination node 
+     * @param		{String} Name of the layer, in the cake, to which the edge will be added 
+     */
     function createEdge(from, to, layer)
     {
     	layer = layer+'0';
@@ -735,46 +772,44 @@ $(document).ready(function () {
     }
     
     $('#btn_publishgraph').click(function () {
-    
-    //open up the save console
-    $('#search_results_holder').height(0);
-    $('#savepanel').css("height","150px");
-    $('#savepanel').css("background-color","#564F8A");
-    
-    
-    var name = $('#sp_graphname').val();
-    var desc = $('#sp_graphdesc').val();
-    
-    $('#sp_graphname').val('');
-    $('#sp_graphdesc').val('');
-    
-    //console.log('namedesc: ' + name + ' ' +desc);
-    if((name != '') && (desc != '')){
-    	transportSaveState(getSaveState(GraphLayers, name, desc, 1));
-    	
-    	console.log('sent publish graph data');
-    }
-    		//transportSaveState(getSaveState(sys));
+			    
+			    //open up the save console
+			    $('#search_results_holder').height(0);
+			    $('#savepanel').css("height","150px");
+			    $('#savepanel').css("background-color","#564F8A");
+			    
+			    
+			    var name = $('#sp_graphname').val();
+			    var desc = $('#sp_graphdesc').val();
+			    
+			    $('#sp_graphname').val('');
+			    $('#sp_graphdesc').val('');
+			    
+			    //console.log('namedesc: ' + name + ' ' +desc);
+			    if((name != '') && (desc != '')){
+			    	transportSaveState(getSaveState(GraphLayers, name, desc, 1));
+			    	
+			    	console.log('sent publish graph data');
+			    }
+			    		//transportSaveState(getSaveState(sys));
     });
 
     $('#btn_savegraph').click(function () {
-    
-    //open up the save console
-    $('#search_results_holder').height(0);
-    $('#savepanel').css("height","100px");
-    $('#savepanel').css("background-color","#564F8A");
-    flipSaveButton();
-    
-    var name = $('#sp_graphname').val();
-    var desc = $('#sp_graphdesc').val();
-    
-    //console.log('namedesc: ' + name + ' ' +desc);
-    if((name != '') && (desc != '')){
-    	transportSaveState(getSaveState(GraphLayers, name, desc, 0));
-    	
-    	console.log('sent graph data');
-    }
-  		//transportSaveState(getSaveState(sys));
+	    
+	    //open up the save console
+	    $('#search_results_holder').height(0);
+	    $('#savepanel').css("height","100px");
+	    $('#savepanel').css("background-color","#564F8A");
+	    flipSaveButton();
+	    
+	    var name = $('#sp_graphname').val();
+	    var desc = $('#sp_graphdesc').val();
+	   	
+	   	if((name != '') && (desc != '')){
+	    	transportSaveState(getSaveState(GraphLayers, name, desc, 0));
+	    	
+	    	console.log('sent graph data');
+	    }
     });
 
     $('.edittab').click(function (evt) {
@@ -838,6 +873,10 @@ $(document).ready(function () {
 
     });
     
+    /**
+     * generates a node data attribute object from the values entered into the edit node panel
+     * @return		{Object} the attribute object, or -1 if data entered is invalid
+     */
 	function updateEditNodePrefs(){
 	
 	        var updatededits = new Object();
@@ -863,7 +902,10 @@ $(document).ready(function () {
 	
 
 	}
-
+	/**
+	 * generates an attribute object from the data entered into the add node pallete
+	 * @return {Object} the attribute object or -1 if data entered is invalid
+	 */
 	function updateAddNodePrefs(){
 	
 	        var updated = new Object();

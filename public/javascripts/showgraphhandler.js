@@ -8,11 +8,9 @@ var socket = io.connect(DEPLOYIP + ':8080');
 
     var testgraphdata = graphstring;
 
-    sys = arbor.ParticleSystem(1000, 1000, 0.5) //repulsion/stiffness/friction
+    sys = arbor.ParticleSystem(20, 100, 0.5) //repulsion/stiffness/friction
     sys.parameters({
-        gravity: true,
-        friction: 1.0,
-        repulsion: 0
+        gravity: false
     });
     sys.renderer = Renderer("#view_canvas");
 
@@ -82,9 +80,6 @@ var socket = io.connect(DEPLOYIP + ':8080');
                 sys.addEdge(val.fromnode, val.tonode);
             });
             
-
-
-
         } else {
             console.log('layer not found');
         }

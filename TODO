@@ -1,24 +1,12 @@
-*explore
-****	mendeley
-***		viewgraph interface
-			GET seede.r/graph?gid=xxx
-			pass back node data
-			generate the graph from mondodb graph rep (encapsulate this func) (!)
-**layers
-	maintain a datastructure alongside particlesystem
-		- particlesystem becomes reflection of datastructure as opposed
-		- (!) above
-		- js object['layername'] = graph : {nodes:[], edges[]}
-		- store parent layer name in each layer
-		- add dropdown to addnode pallete with option of layernode
-		- every new layer node adds a layer to graph object initialised with a layer exit
-			(and parent layer name)
-		- node added to current layer node set, layerobj[entrynode.name] will be used for entry node clicks
-		- layerobj[exitnode.parentlayername] to get graph data of parent layer
-		- parents only stored in exit nodes
-			to generating a structure from the system
-	new layer entry / layer exit node types
-		- new render scheme
-	if entry/exit clicked
-	abstract implementation so can be used with both edit and view interfaces
-	 
+--> Front page with product features
+--> SDK/collaboration opportunities for further development
+--> video of final product
+--> requirements background
+--> development plan, iterations and forks in prototypes
+--> architectural diagrams
+--> technical achievements, implementation details, use of design patterns
+--> management of the project including work packages completed between the team members
+--> referenced materials cited and examples/trials made
+--> testing and evaluation of the product solution
+--> system manual and user manual
+--> community forum
