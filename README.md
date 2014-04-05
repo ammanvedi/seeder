@@ -10,6 +10,8 @@ there is a video of the poc [here](http://youtu.be/879IhcXFcpU)
 
 ### Live Site 
 
+the domain is not up yet, so you can access the site via ip, or via the git url : http://ammanvedi.github.io/seederio/
+
 | URL                               	| Description                                                                                       	|
 |-----------------------------------	|---------------------------------------------------------------------------------------------------	|
 | http://54.201.24.162:8080/build   	| The main interface for users to create and edit graphs                                            	|
