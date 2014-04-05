@@ -1,10 +1,5 @@
 $(document).ready(function () {
 
-console.log('dagraph');
-console.log(graphstring);
-
-var DEPLOYIP = '192.168.0.6'; //localhost for dev, ip for prod
-var socket = io.connect(DEPLOYIP + ':8080');
 
     var testgraphdata = graphstring;
 

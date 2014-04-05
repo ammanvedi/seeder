@@ -1,12 +1,4 @@
-/*http://api.embed.ly/1/extract?
-						key=:key
-						&url=:url
-						&maxwidth=:maxwidth
-						&maxheight=:maxheight
-						&format=:format
-						&callback=:callback
 
-*/
 $(document).ready(function () {
 
     //variable to store the current index for use with the Google Custom Search API calls 

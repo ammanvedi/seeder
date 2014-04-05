@@ -9,4 +9,7 @@
 --> referenced materials cited and examples/trials made
 --> testing and evaluation of the product solution
 --> system manual and user manual
+	- system manual has been generated with doxx 
+		RUN  : doxx -t SeederDocs -i arbor,jquery-ui,semantic,mendeley --source public/javascripts --target public/docs -e html
 --> community forum
+

@@ -1,18 +1,6 @@
 
 
-/*
-                               /$$             /$$    
-                              |__/            | $$    
-  /$$$$$$$  /$$$$$$$  /$$$$$$  /$$  /$$$$$$  /$$$$$$  
- /$$_____/ /$$_____/ /$$__  $$| $$ /$$__  $$|_  $$_/  
-|  $$$$$$ | $$      | $$  \__/| $$| $$  \ $$  | $$    
- \____  $$| $$      | $$      | $$| $$  | $$  | $$ /$$
- /$$$$$$$/|  $$$$$$$| $$      | $$| $$$$$$$/  |  $$$$/
-|_______/  \_______/|__/      |__/| $$____/    \___/  
-                                  | $$                
-                                  | $$                
-                                  |__/                
-  */
+
   
 var sys;
 
@@ -64,6 +52,10 @@ function getSaveState(layercake, gname, gdesc, publishme){
 	return Savestate;
 
 };
+
+/*!
+*
+*/
 
 
 $(document).ready(function () {
@@ -151,17 +143,7 @@ $(document).ready(function () {
     
     note('#contain_main', op);
 
-/*
-                                          /$$             
-                                         | $$             
-  /$$$$$$  /$$    /$$/$$$$$$  /$$$$$$$  /$$$$$$   /$$$$$$$
- /$$__  $$|  $$  /$$/$$__  $$| $$__  $$|_  $$_/  /$$_____/
-| $$$$$$$$ \  $$/$$/ $$$$$$$$| $$  \ $$  | $$   |  $$$$$$ 
-| $$_____/  \  $$$/| $$_____/| $$  | $$  | $$ /$$\____  $$
-|  $$$$$$$   \  $/ |  $$$$$$$| $$  | $$  |  $$$$//$$$$$$$/
- \_______/    \_/   \_______/|__/  |__/   \___/ |_______/ 
-                                                          
-*/
+
 
     $('body').mousemove(function (e) {
     
@@ -587,17 +569,7 @@ $(document).ready(function () {
         
     });
 
-    /*
-                               /$$                   /$$             
-                              | $$                  | $$             
-  /$$$$$$$  /$$$$$$   /$$$$$$$| $$   /$$  /$$$$$$  /$$$$$$   /$$$$$$$
- /$$_____/ /$$__  $$ /$$_____/| $$  /$$/ /$$__  $$|_  $$_/  /$$_____/
-|  $$$$$$ | $$  \ $$| $$      | $$$$$$/ | $$$$$$$$  | $$   |  $$$$$$ 
- \____  $$| $$  | $$| $$      | $$_  $$ | $$_____/  | $$ /$$\____  $$
- /$$$$$$$/|  $$$$$$/|  $$$$$$$| $$ \  $$|  $$$$$$$  |  $$$$//$$$$$$$/
-|_______/  \______/  \_______/|__/  \__/ \_______/   \___/ |_______/ 
-                                                                                                                                          
-*/
+
 
 /**
  * This function grabs editable data from a node and displays its current value in the edit panel
@@ -636,7 +608,9 @@ $(document).ready(function () {
         }
         return color;
     }
-
+	/*!
+	*
+	*/
 	
     function getMousePos(canvas, evt) {
         var rect = canvas.getBoundingClientRect();
@@ -682,6 +656,9 @@ $(document).ready(function () {
 
 		
 	}
+	/*!
+	*
+	*/
 
 
 	/**
@@ -770,6 +747,9 @@ $(document).ready(function () {
     	//add edge to layer
     	GraphLayers[layer].edges.push({fromnode : from, tonode : to});
     }
+    /*!
+    *
+    */
     
     $('#btn_publishgraph').click(function () {
 			    
@@ -933,6 +913,9 @@ $(document).ready(function () {
 	
 
 	}
+	/*!
+	*
+	*/
 	
 	$('input').on('input',function (e){
 	

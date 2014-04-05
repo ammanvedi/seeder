@@ -1,16 +1,7 @@
-/*! FileSaver.js
- *  A saveAs() FileSaver implementation.
- *  2014-01-24
- *
- *  By Eli Grey, http://eligrey.com
- *  License: X11/MIT
- *    See LICENSE.md
+/**
+ * FilesaverJS (https://github.com/eligrey/FileSaver.js/)
+ * 
  */
-
-/*global self */
-/*jslint bitwise: true, indent: 4, laxbreak: true, laxcomma: true, smarttabs: true, plusplus: true */
-
-/*! @source http://purl.eligrey.com/github/FileSaver.js/blob/master/FileSaver.js */
 
 var saveAs = saveAs
   // IE 10+ (native saveAs)

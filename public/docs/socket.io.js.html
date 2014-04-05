@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width" charset="utf-8">
+    <title>SeederDocs</title>
+    <link rel="stylesheet" href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="http://getbootstrap.com/2.3.2/assets/css/bootstrap-responsive.css">
+    <link rel="stylesheet" href="http://getbootstrap.com/2.3.2/assets/css/docs.css">
+    <style>
+      body > .navbar .brand {
+        float:left;
+        text-shadow: rgba(255, 255, 255, 0.0980392) 0px 1px 0px, rgba(255, 255, 255, 0.4) 0px 0px 30px;
+        color: white;
+        margin-left:0px;
+        font-weight:normal;
+      }
+      
+      .bs-docs-sidenav i{
+        width: 8px;
+        height: 8px;
+        padding: 0px;
+        margin: 0px;
+        display: inline-block;
+        margin-right:0.5em;
+      }
+      
+      .bs-docs-sidenav > li:first-child > a {
+        border-top-right-radius: 6px;
+        border-top-left-radius: 6px;
+      }
+      
+      code[class*="language-"],pre[class*="language-"]{color:black;text-shadow:0 1px white;font-family:Consolas,Monaco,'Andale Mono',monospace;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*="language-"]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*="language-"],pre[class*="language-"]{background:#f5f2f0}:not(pre)>code[class*="language-"]{padding:.1em;border-radius:.3em}.token.comment,.token.prolog,.token.doctype,.token.cdata{color:slategray}.token.punctuation{color:#999}.namespace{opacity:.7}.token.property,.token.tag,.token.boolean,.token.number{color:#905}.token.selector,.token.attr-name,.token.string{color:#690}.token.operator,.token.entity,.token.url,.language-css .token.string,.style .token.string{color:#a67f59;background:hsla(0,0%,100%,.5)}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.regex,.token.important{color:#e90}.token.important{font-weight:bold}.token.entity{cursor:help}
+      div.description {margin: 14px 0; padding-top: 14px; border-bottom:1px solid #eee; }
+      .tags {}
+      .ctx-type {
+        display:inline-block;
+        margin-right:0.5em;
+        //- float:right; margin-top:8px
+      }
+      
+      footer iframe{vertical-align:middle;}
+      
+    </style>
+  </head>
+  <body data-spy="scroll" data-target=".scrollspy">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container"><a class="brand">Doxx</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav pull-right sponsored"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <header id="overview" class="jumbotron subhead">
+      <div class="container">
+        <h1>SeederDocs</h1>
+        <p class="lead"></p>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row">
+        <div class="span3 bs-docs-sidebar">
+          <ul class="nav nav-list bs-docs-sidenav affix-top">
+            <li><a href="index.html">Main</a></li>
+            <li><a href="FileSaver.js.html">FileSaver.js</a></li>
+            <li><a href="article_searcher.js.html">article_searcher.js</a></li>
+            <li><a href="bloghandler.js.html">bloghandler.js</a></li>
+            <li><a href="buildtabs.js.html">buildtabs.js</a></li>
+            <li><a href="explorehandler.js.html">explorehandler.js</a></li>
+            <li><a href="graphhandler.js.html">graphhandler.js</a></li>
+            <li><a href="help.js.html">help.js</a></li>
+            <li><a href="home.js.html">home.js</a></li>
+            <li><a href="note.js.html">note.js</a></li>
+            <li><a href="rendergraph.js.html">rendergraph.js</a></li>
+            <li><a href="showgraphhandler.js.html">showgraphhandler.js</a></li>
+            <li class="active"><a href="socket.io.js.html">socket.io.js</a></li>
+          </ul>
+          <div class="scrollspy">
+            <ul class="nav nav-list bs-docs-sidenav affix-top">
+              <li><a href="#http"><i class="alert alert-success"></i>
+                  <http></http></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="span9">
+          <section id="http">
+            <h1>http</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">declaration</div><span>http</span>
+            </p>
+          </section>
+          <div class="description"> </div>
+          <pre><code class="language-javascript">var http = require('http').Server;
+var io = require('..');
+var ioc = require('socket.io-client');
+var request = require('supertest');
+var expect = require('expect.js');
+
+// creates a socket.io client for the given server
+function client(srv, nsp, opts){
+  if ('object' == typeof nsp) {
+    opts = nsp;
+    nsp = null;
+  }
+  var addr = srv.address();
+  if (!addr) addr = srv.listen().address();
+  var url = 'ws://' + addr.address + ':' + addr.port + (nsp || '');
+  return ioc(url, opts);
+}
+
+describe('socket.io', function(){
+  describe('server attachment', function(){
+    describe('http.Server', function(){
+      it('should serve static files', function(done){
+        var srv = http();
+        io(srv);
+        request(srv)
+        .get('/socket.io/socket.io.js')
+        .buffer(true)
+        .end(function(err, res){
+          if (err) return done(err);
+          var ctype = res.headers['content-type'];
+          expect(ctype).to.be('application/javascript');
+          expect(res.text).to.match(/engine\.io/);
+          expect(res.status).to.be(200);
+          done();
+        });
+      });
+
+      it('should not serve static files', function(done){
+        var srv = http();
+        io(srv, { static: false });
+        request(srv)
+        .get('/socket.io/socket.io.js')
+        .expect(400, done);
+      });
+
+      it('should work with #attach', function(done){
+        var srv = http(function(req, res){
+          res.writeHead(404);
+          res.end();
+        });
+        var sockets = io();
+        sockets.attach(srv);
+        request(srv)
+        .get('/socket.io/socket.io.js')
+        .end(function(err, res){
+          if (err) return done(err);
+          expect(res.status).to.be(200);
+          done();
+        });
+      });
+    });
+
+    describe('port', function(done){
+      it('should be bound', function(done){
+        var sockets = io(54010);
+        request('http://localhost:54010')
+        .get('/socket.io/socket.io.js')
+        .expect(200, done);
+      });
+    });
+  });
+
+  describe('namespaces', function(){
+    var Socket = require('../lib/socket');
+    var Namespace = require('../lib/namespace');
+
+    describe('default', function(){
+      it('should be accessible through .sockets', function(){
+        var sio = io();
+        expect(sio.sockets).to.be.a(Namespace);
+      });
+
+      it('should be aliased', function(){
+        var sio = io();
+        expect(sio.use).to.be.a('function');
+        expect(sio.to).to.be.a('function');
+        expect(sio.in).to.be.a('function');
+        expect(sio.emit).to.be.a('function');
+        expect(sio.send).to.be.a('function');
+        expect(sio.write).to.be.a('function');
+      });
+
+      it('should automatically connect', function(done){
+        var srv = http();
+        var sio = io(srv);
+        srv.listen(function(){
+          var socket = client(srv);
+          socket.on('connect', function(){
+            done();
+          });
+        });
+      });
+
+      it('should fire a `connection` event', function(done){
+        var srv = http();
+        var sio = io(srv);
+        srv.listen(function(){
+          var socket = client(srv);
+          sio.on('connection', function(socket){
+            expect(socket).to.be.a(Socket);
+            done();
+          });
+        });
+      });
+
+      it('should fire a `connect` event', function(done){
+        var srv = http();
+        var sio = io(srv);
+        srv.listen(function(){
+          var socket = client(srv);
+          sio.on('connect', function(socket){
+            expect(socket).to.be.a(Socket);
+            done();
+          });
+        });
+      });
+
+      it('should work with many sockets', function(done){
+        var srv = http();
+        var sio = io(srv);
+        srv.listen(function(){
+          var chat = client(srv, '/chat');
+          var news = client(srv, '/news');
+          var total = 2;
+          chat.on('connect', function(){
+            --total || done();
+          });
+          news.on('connect', function(){
+            --total || done();
+          });
+        });
+      });
+
+      it('should work with `of` and many sockets', function(done){
+        var srv = http();
+        var sio = io(srv);
+        srv.listen(function(){
+          var chat = client(srv, '/chat');
+          var news = client(srv, '/news');
+          var total = 2;
+          sio.of('/news').on('connection', function(socket){
+            expect(socket).to.be.a(Socket);
+            --total || done();
+          });
+          sio.of('/news').on('connection', function(socket){
+            expect(socket).to.be.a(Socket);
+            --total || done();
+          });
+        });
+      });
+
+      it('should work with `of` second param', function(done){
+        var srv = http();
+        var sio = io(srv);
+        srv.listen(function(){
+          var chat = client(srv, '/chat');
+          var news = client(srv, '/news');
+          var total = 2;
+          sio.of('/news', function(socket){
+            expect(socket).to.be.a(Socket);
+            --total || done();
+          });
+          sio.of('/news', function(socket){
+            expect(socket).to.be.a(Socket);
+            --total || done();
+          });
+        });
+      });
+
+      it('should disconnect upon transport disconnection', function(done){
+        var srv = http();
+        var sio = io(srv);
+        srv.listen(function(){
+          var chat = client(srv, '/chat');
+          var news = client(srv, '/news');
+          var total = 2;
+          var totald = 2;
+          var s;
+          sio.of('/news', function(socket){
+            socket.on('disconnect', function(reason){
+              --totald || done();
+            });
+            --total || close();
+          });
+          sio.of('/chat', function(socket){
+            s = socket;
+            socket.on('disconnect', function(reason){
+              --totald || done();
+            });
+            --total || close();
+          });
+          function close(){
+            s.disconnect(true);
+          }
+        });
+      });
+    });
+  });
+
+  describe('socket', function(){
+    it('should receive events', function(done){
+      var srv = http();
+      var sio = io(srv);
+      srv.listen(function(){
+        var socket = client(srv);
+        sio.on('connection', function(s){
+          s.on('random', function(a, b, c){
+            expect(a).to.be(1);
+            expect(b).to.be('2');
+            expect(c).to.eql([3]);
+            done();
+          });
+          socket.emit('random', 1, '2', [3]);
+        });
+      });
+    });
+
+    it('should receive message events through `send`', function(done){
+      var srv = http();
+      var sio = io(srv);
+      srv.listen(function(){
+        var socket = client(srv);
+        sio.on('connection', function(s){
+          s.on('message', function(a){
+            expect(a).to.be(1337);
+            done();
+          });
+          socket.send(1337);
+        });
+      });
+    });
+
+    it('should emit events', function(done){
+      var srv = http();
+      var sio = io(srv);
+      srv.listen(function(){
+        var socket = client(srv);
+        socket.on('woot', function(a){
+          expect(a).to.be('tobi');
+          done();
+        });
+        sio.on('connection', function(s){
+          s.emit('woot', 'tobi');
+        });
+      });
+    });
+
+    it('should emit message events through `send`', function(done){
+      var srv = http();
+      var sio = io(srv);
+      srv.listen(function(){
+        var socket = client(srv);
+        socket.on('message', function(a){
+          expect(a).to.be('a');
+          done();
+        });
+        sio.on('connection', function(s){
+          s.send('a');
+        });
+      });
+    });
+
+    it('should receive event with callbacks', function(done){
+      var srv = http();
+      var sio = io(srv);
+      srv.listen(function(){
+        var socket = client(srv);
+        sio.on('connection', function(s){
+          s.on('woot', function(fn){
+            fn(1, 2);
+          });
+          socket.emit('woot', function(a, b){
+            expect(a).to.be(1);
+            expect(b).to.be(2);
+            done();
+          });
+        });
+      });
+    });
+
+    it('should emit events with callbacks', function(done){
+      var srv = http();
+      var sio = io(srv);
+      srv.listen(function(){
+        var socket = client(srv);
+        sio.on('connection', function(s){
+          socket.on('hi', function(fn){
+            fn();
+          });
+          s.emit('hi', function(){
+            done();
+          });
+        });
+      });
+    });
+
+    it('should receive events with args and callback', function(done){
+      var srv = http();
+      var sio = io(srv);
+      srv.listen(function(){
+        var socket = client(srv);
+        sio.on('connection', function(s){
+          s.on('woot', function(a, b, fn){
+            expect(a).to.be(1);
+            expect(b).to.be(2);
+            fn();
+          });
+          socket.emit('woot', 1, 2, function(){
+            done();
+          });
+        });
+      });
+    });
+
+    it('should emit events with args and callback', function(done){
+      var srv = http();
+      var sio = io(srv);
+      srv.listen(function(){
+        var socket = client(srv);
+        sio.on('connection', function(s){
+          socket.on('hi', function(a, b, fn){
+            expect(a).to.be(1);
+            expect(b).to.be(2);
+            fn();
+          });
+          s.emit('hi', 1, 2, function(){
+            done();
+          });
+        });
+      });
+    });
+  });
+
+  describe('messaging many', function(){
+    it('emits to a namespace', function(done){
+      var srv = http();
+      var sio = io(srv);
+      var total = 2;
+
+      srv.listen(function(){
+        var socket1 = client(srv, { multiplex: false });
+        var socket2 = client(srv, { multiplex: false });
+        var socket3 = client(srv, '/test');
+        socket1.on('a', function(a){
+          expect(a).to.be('b');
+          --total || done();
+        });
+        socket2.on('a', function(a){
+          expect(a).to.be('b');
+          --total || done();
+        });
+        socket3.on('a', function(){ done(new Error('not')); });
+
+        var sockets = 3;
+        sio.on('connection', function(socket){
+          --sockets || emit();
+        });
+        sio.of('/test', function(socket){
+          --sockets || emit();
+        });
+
+        function emit(){
+          sio.emit('a', 'b');
+        }
+      });
+    });
+
+    it('emits to the rest', function(done){
+      var srv = http();
+      var sio = io(srv);
+      var total = 2;
+
+      srv.listen(function(){
+        var socket1 = client(srv, { multiplex: false });
+        var socket2 = client(srv, { multiplex: false });
+        var socket3 = client(srv, '/test');
+        socket1.on('a', function(a){
+          expect(a).to.be('b');
+          socket1.emit('finish');
+        });
+        socket2.emit('broadcast');
+        socket2.on('a', function(){ done(new Error('done')); });
+        socket3.on('a', function(){ done(new Error('not')); });
+
+        var sockets = 2;
+        sio.on('connection', function(socket){
+          socket.on('broadcast', function(){
+            socket.broadcast.emit('a', 'b');
+          });
+          socket.on('finish', function(){
+            done();
+          });
+        });
+      });
+    });
+
+    it('emits to rooms', function(done){
+      var srv = http();
+      var sio = io(srv);
+      var total = 2;
+
+      srv.listen(function(){
+        var socket1 = client(srv, { multiplex: false });
+        var socket2 = client(srv, { multiplex: false });
+
+        socket2.on('a', function(){
+          done(new Error('not'));
+        });
+        socket1.on('a', function(){
+          done();
+        });
+        socket1.emit('join', 'woot', function(){
+          socket1.emit('emit', 'woot');
+        });
+
+        sio.on('connection', function(socket){
+          socket.on('join', function(room, fn){
+            socket.join(room, fn);
+          });
+
+          socket.on('emit', function(room){
+            sio.in(room).emit('a');
+          });
+        });
+      });
+    });
+
+    it('emits to rooms avoiding dupes', function(done){
+      var srv = http();
+      var sio = io(srv);
+      var total = 2;
+
+      srv.listen(function(){
+        var socket1 = client(srv, { multiplex: false });
+        var socket2 = client(srv, { multiplex: false });
+
+        socket2.on('a', function(){
+          done(new Error('not'));
+        });
+        socket1.on('a', function(){
+          --total || done();
+        });
+        socket2.on('b', function(){
+          --total || done();
+        });
+
+        socket1.emit('join', 'woot');
+        socket1.emit('join', 'test');
+        socket2.emit('join', 'third', function(){
+          socket2.emit('emit');
+        });
+
+        sio.on('connection', function(socket){
+          socket.on('join', function(room, fn){
+            socket.join(room, fn);
+          });
+
+          socket.on('emit', function(room){
+            sio.in('woot').in('test').emit('a');
+            sio.in('third').emit('b');
+          });
+        });
+      });
+    });
+
+    it('broadcasts to rooms', function(done){
+      var srv = http();
+      var sio = io(srv);
+      var total = 2;
+
+      srv.listen(function(){
+        var socket1 = client(srv, { multiplex: false });
+        var socket2 = client(srv, { multiplex: false });
+        var socket3 = client(srv, { multiplex: false });
+
+        socket1.emit('join', 'woot');
+        socket2.emit('join', 'test');
+        socket3.emit('join', 'test', function(){
+          socket3.emit('broadcast');
+        });
+
+        socket1.on('a', function(){
+          done(new Error('not'));
+        });
+        socket2.on('a', function(){
+          --total || done();
+        });
+        socket3.on('a', function(){
+          done(new Error('not'));
+        });
+        socket3.on('b', function(){
+          --total || done();
+        });
+
+        sio.on('connection', function(socket){
+          socket.on('join', function(room, fn){
+            socket.join(room, fn);
+          });
+
+          socket.on('broadcast', function(){
+            socket.broadcast.to('test').emit('a');
+            socket.emit('b');
+          });
+        });
+      });
+    });
+
+    it('keeps track of rooms', function(done){
+      var srv = http();
+      var sio = io(srv);
+
+      srv.listen(function(){
+        var socket = client(srv);
+        sio.on('connection', function(s){
+          s.join('a', function(){
+            expect(s.rooms).to.eql([s.id, 'a']);
+            s.join('b', function(){
+              expect(s.rooms).to.eql([s.id, 'a', 'b']);
+              s.leave('b', function(){
+                expect(s.rooms).to.eql([s.id, 'a']);
+                done();
+              });
+            });
+          });
+        });
+      });
+    });
+  });
+
+  describe('middleware', function(done){
+    var Socket = require('../lib/socket');
+
+    it('should call functions', function(done){
+      var srv = http();
+      var sio = io(srv);
+      var run = 0;
+      sio.use(function(socket, next){
+        expect(socket).to.be.a(Socket);
+        run++;
+        next();
+      });
+      sio.use(function(socket, next){
+        expect(socket).to.be.a(Socket);
+        run++;
+        next();
+      });
+      srv.listen(function(){
+        var socket = client(srv);
+        socket.on('connect', function(){
+          expect(run).to.be(2);
+          done();
+        });
+      });
+    });
+
+    it('should pass errors', function(done){
+      var srv = http();
+      var sio = io(srv);
+      var run = 0;
+      sio.use(function(socket, next){
+        next(new Error('Authentication error'));
+      });
+      sio.use(function(socket, next){
+        done(new Error('nope'));
+      });
+      srv.listen(function(){
+        var socket = client(srv);
+        socket.on('connect', function(){
+          done(new Error('nope'));
+        });
+        socket.on('error', function(err){
+          expect(err).to.be('Authentication error');
+          done();
+        });
+      });
+    });
+
+    it('should pass `data` of error object', function(done){
+      var srv = http();
+      var sio = io(srv);
+      var run = 0;
+      sio.use(function(socket, next){
+        var err = new Error('Authentication error');
+        err.data = { a: 'b', c: 3 };
+        next(err);
+      });
+      srv.listen(function(){
+        var socket = client(srv);
+        socket.on('connect', function(){
+          done(new Error('nope'));
+        });
+        socket.on('error', function(err){
+          expect(err).to.eql({ a: 'b', c: 3 });
+          done();
+        });
+      });
+    });
+
+    it('should only call connection after fns', function(done){
+      var srv = http();
+      var sio = io(srv);
+      sio.use(function(socket, next){
+        socket.name = 'guillermo';
+        next();
+      });
+      srv.listen(function(){
+        var socket = client(srv);
+        sio.on('connection', function(socket){
+          expect(socket.name).to.be('guillermo');
+          done();
+        });
+      });
+    });
+
+    it('should be ignored if socket gets closed', function(done){
+      var srv = http();
+      var sio = io(srv);
+      var socket;
+      sio.use(function(s, next){
+        socket.io.engine.on('open', function(){
+          socket.io.engine.close();
+          s.client.conn.on('close', function(){
+            process.nextTick(next);
+            setTimeout(function(){
+              done();
+            }, 50);
+          });
+        });
+      });
+      srv.listen(function(){
+        socket = client(srv);
+        sio.on('connection', function(socket){
+          done(new Error('should not fire'));
+        });
+      });
+    });
+  });
+});</code></pre>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <p>Documentation generated with <a href="https://github.com/FGRibreau/doxx">Doxx </a>created by <a href="https://twitter.com/FGRibreau" data-show-count="false" class="twitter-follow-button">Francois-Guillaume Ribreau</a></p>
+        <p>Doxx is sponsored by <a href="http://bringr.net/?btt" title="Outil d'analyse des réseaux sociaux" class="bringr">Bringr </a>and <a href="https://redsmin.com/?btt" title="Full Redis GUI" class="redsmin">Redsmin</a></p>
+        <p>Theme borrowed from Twitter Bootstrap</p>
+      </div>
+    </footer>
+    <script src="http://platform.twitter.com/widgets.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <script src="http://leaverou.github.com/prefixfree/prefixfree.js"></script>
+    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-transition.js"></script>
+    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-dropdown.js"></script>
+    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-collapse.js"></script>
+    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-affix.js"></script>
+    <script>
+      /**
+       * Prism: Lightweight, robust, elegant syntax highlighting
+       * MIT license http://www.opensource.org/licenses/mit-license.php/
+       * @author Lea Verou http://lea.verou.me
+       */(function(){var e=/\blang(?:uage)?-(?!\*)(\w+)\b/i,t=self.Prism={util:{type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},clone:function(e){var n=t.util.type(e);switch(n){case"Object":var r={};for(var i in e)e.hasOwnProperty(i)&&(r[i]=t.util.clone(e[i]));return r;case"Array":return e.slice()}return e}},languages:{extend:function(e,n){var r=t.util.clone(t.languages[e]);for(var i in n)r[i]=n[i];return r},insertBefore:function(e,n,r,i){i=i||t.languages;var s=i[e],o={};for(var u in s)if(s.hasOwnProperty(u)){if(u==n)for(var a in r)r.hasOwnProperty(a)&&(o[a]=r[a]);o[u]=s[u]}return i[e]=o},DFS:function(e,n){for(var r in e){n.call(e,r,e[r]);t.util.type(e)==="Object"&&t.languages.DFS(e[r],n)}}},highlightAll:function(e,n){var r=document.querySelectorAll('code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code');for(var i=0,s;s=r[i++];)t.highlightElement(s,e===!0,n)},highlightElement:function(r,i,s){var o,u,a=r;while(a&&!e.test(a.className))a=a.parentNode;if(a){o=(a.className.match(e)||[,""])[1];u=t.languages[o]}if(!u)return;r.className=r.className.replace(e,"").replace(/\s+/g," ")+" language-"+o;a=r.parentNode;/pre/i.test(a.nodeName)&&(a.className=a.className.replace(e,"").replace(/\s+/g," ")+" language-"+o);var f=r.textContent;if(!f)return;f=f.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/\u00a0/g," ");var l={element:r,language:o,grammar:u,code:f};t.hooks.run("before-highlight",l);if(i&&self.Worker){var c=new Worker(t.filename);c.onmessage=function(e){l.highlightedCode=n.stringify(JSON.parse(e.data));l.element.innerHTML=l.highlightedCode;s&&s.call(l.element);t.hooks.run("after-highlight",l)};c.postMessage(JSON.stringify({language:l.language,code:l.code}))}else{l.highlightedCode=t.highlight(l.code,l.grammar);l.element.innerHTML=l.highlightedCode;s&&s.call(r);t.hooks.run("after-highlight",l)}},highlight:function(e,r){return n.stringify(t.tokenize(e,r))},tokenize:function(e,n){var r=t.Token,i=[e],s=n.rest;if(s){for(var o in s)n[o]=s[o];delete n.rest}e:for(var o in n){if(!n.hasOwnProperty(o)||!n[o])continue;var u=n[o],a=u.inside,f=!!u.lookbehind||0;u=u.pattern||u;for(var l=0;l<i.length;l++){var c=i[l];if(i.length>e.length)break e;if(c instanceof r)continue;u.lastIndex=0;var h=u.exec(c);if(h){f&&(f=h[1].length);var p=h.index-1+f,h=h[0].slice(f),d=h.length,v=p+d,m=c.slice(0,p+1),g=c.slice(v+1),y=[l,1];m&&y.push(m);var b=new r(o,a?t.tokenize(h,a):h);y.push(b);g&&y.push(g);Array.prototype.splice.apply(i,y)}}}return i},hooks:{all:{},add:function(e,n){var r=t.hooks.all;r[e]=r[e]||[];r[e].push(n)},run:function(e,n){var r=t.hooks.all[e];if(!r||!r.length)return;for(var i=0,s;s=r[i++];)s(n)}}},n=t.Token=function(e,t){this.type=e;this.content=t};n.stringify=function(e){if(typeof e=="string")return e;if(Object.prototype.toString.call(e)=="[object Array]"){for(var r=0;r<e.length;r++)e[r]=n.stringify(e[r]);return e.join("")}var i={type:e.type,content:n.stringify(e.content),tag:"span",classes:["token",e.type],attributes:{}};i.type=="comment"&&(i.attributes.spellcheck="true");t.hooks.run("wrap",i);var s="";for(var o in i.attributes)s+=o+'="'+(i.attributes[o]||"")+'"';return"<"+i.tag+' class="'+i.classes.join(" ")+'" '+s+">"+i.content+"</"+i.tag+">"};if(!self.document){self.addEventListener("message",function(e){var n=JSON.parse(e.data),r=n.language,i=n.code;self.postMessage(JSON.stringify(t.tokenize(i,t.languages[r])));self.close()},!1);return}var r=document.getElementsByTagName("script");r=r[r.length-1];if(r){t.filename=r.src;document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",t.highlightAll)}})();;
+      Prism.languages.markup={comment:/&lt;!--[\w\W]*?--(&gt;|&gt;)/g,prolog:/&lt;\?.+?\?&gt;/,doctype:/&lt;!DOCTYPE.+?&gt;/,cdata:/&lt;!\[CDATA\[[\w\W]+?]]&gt;/i,tag:{pattern:/&lt;\/?[\w:-]+\s*(?:\s+[\w:-]+(?:=(?:("|')(\\?[\w\W])*?\1|\w+))?\s*)*\/?&gt;/gi,inside:{tag:{pattern:/^&lt;\/?[\w:-]+/i,inside:{punctuation:/^&lt;\/?/,namespace:/^[\w-]+?:/}},"attr-value":{pattern:/=(?:('|")[\w\W]*?(\1)|[^\s>]+)/gi,inside:{punctuation:/=|&gt;|"/g}},punctuation:/\/?&gt;/g,"attr-name":{pattern:/[\w:-]+/g,inside:{namespace:/^[\w-]+?:/}}}},entity:/&amp;#?[\da-z]{1,8};/gi};Prism.hooks.add("wrap",function(e){e.type==="entity"&&(e.attributes.title=e.content.replace(/&amp;/,"&"))});;
+      Prism.languages.css={comment:/\/\*[\w\W]*?\*\//g,atrule:/@[\w-]+?(\s+[^;{]+)?(?=\s*{|\s*;)/gi,url:/url\((["']?).*?\1\)/gi,selector:/[^\{\}\s][^\{\}]*(?=\s*\{)/g,property:/(\b|\B)[a-z-]+(?=\s*:)/ig,string:/("|')(\\?.)*?\1/g,important:/\B!important\b/gi,ignore:/&(lt|gt|amp);/gi,punctuation:/[\{\};:]/g};Prism.languages.markup&&Prism.languages.insertBefore("markup","tag",{style:{pattern:/(&lt;|<)style[\w\W]*?(>|&gt;)[\w\W]*?(&lt;|<)\/style(>|&gt;)/ig,inside:{tag:{pattern:/(&lt;|<)style[\w\W]*?(>|&gt;)|(&lt;|<)\/style(>|&gt;)/ig,inside:Prism.languages.markup.tag.inside},rest:Prism.languages.css}}});;
+      Prism.languages.clike={comment:{pattern:/(^|[^\\])(\/\*[\w\W]*?\*\/|\/\/.*?(\r?\n|$))/g,lookbehind:!0},string:/("|')(\\?.)*?\1/g,keyword:/\b(if|else|while|do|for|return|in|instanceof|function|new|try|catch|finally|null|break|continue)\b/g,"boolean":/\b(true|false)\b/g,number:/\b-?(0x)?\d*\.?[\da-f]+\b/g,operator:/[-+]{1,2}|!|=?&lt;|=?&gt;|={1,2}|(&amp;){1,2}|\|?\||\?|\*|\//g,ignore:/&(lt|gt|amp);/gi,punctuation:/[{}[\];(),.:]/g};;
+      Prism.languages.javascript=Prism.languages.extend("clike",{keyword:/\b(var|let|if|else|while|do|for|return|in|instanceof|function|new|with|typeof|try|catch|finally|null|break|continue)\b/g,number:/\b(-?(0x)?\d*\.?[\da-f]+|NaN|-?Infinity)\b/g});Prism.languages.insertBefore("javascript","keyword",{regex:{pattern:/(^|[^/])\/(?!\/)(\[.+?]|\\.|[^/\r\n])+\/[gim]{0,3}(?=\s*($|[\r\n,.;})]))/g,lookbehind:!0}});Prism.languages.markup&&Prism.languages.insertBefore("markup","tag",{script:{pattern:/(&lt;|<)script[\w\W]*?(>|&gt;)[\w\W]*?(&lt;|<)\/script(>|&gt;)/ig,inside:{tag:{pattern:/(&lt;|<)script[\w\W]*?(>|&gt;)|(&lt;|<)\/script(>|&gt;)/ig,inside:Prism.languages.markup.tag.inside},rest:Prism.languages.javascript}}});;
+      
+    </script>
+    <!-- App js-->
+    <script>
+      $(function(){
+        var $window = $(window);
+        $('.scrollspy .nav').affix({
+          offset: {
+            top: function () { return $window.width() <= 980 ? 480 : 400 }
+          , bottom: 50
+          }
+        });
+      })
+    </script>
+  </body>
+</html>
