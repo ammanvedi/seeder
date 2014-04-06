@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width" charset="utf-8">
     <title>SeederDocs</title>
     <link rel="stylesheet" href="/stylesheets/doc_bs/full_bs.css">
+    <link rel="stylesheet" href="/javascripts/semantic/packaged/css/semantic.min.css">
     <style>
       body > .navbar .brand {
         float:left;
@@ -11,6 +12,21 @@
         color: white;
         margin-left:0px;
         font-weight:normal;
+      }
+      
+      html{
+          height: 100%;
+      }
+      
+      body {
+       margin:0px;
+       padding:0px;
+        font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+       height:100%;
+       max-width: 100%;
+       min-width: auto;
+       overflow: hidden;
+       overflow-y: scroll;
       }
       
       .bs-docs-sidenav i{
@@ -41,12 +57,14 @@
     </style>
   </head>
   <body data-spy="scroll" data-target=".scrollspy">
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container"><a class="brand">Doxx</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav pull-right sponsored"></ul>
-          </div>
+    <div class="ui menu purple inverted">
+      <ai id="sidebar-toggle" class="item"><i class="reorder icon"></i></ai><a href="/" class="item purple active"><i class="leaf icon"></i><img src="/img/logo-small.png"></a><a href="/explore" class="item"><i class="map icon"></i>Explore</a><a href="/build" class="item"><i class="wrench icon"></i>Build</a>
+      <div class="ui simple dropdown item">More<i class="dropdown icon"></i>
+        <div class="menu"><a href="/blog" class="item"><i class="book icon"></i>Blog</a><a href="/help" class="itema item"><i class="help icon"></i>Help</a></div>
+      </div>
+      <div class="right compact menu">
+        <div class="ui simple dropdown item"><i class="user icon"></i>Me<i class="dropdown icon"></i>
+          <div class="menu"><a class="item"><i class="bolt icon"></i>My Profile</a><a class="item"><i class="lightbulb icon"></i>My Graphs</a><a class="item"><i class="settings icon"></i>Settings</a><a href="/auth/google" class="item"><i class="sign in icon"></i>Sign In</a></div>
         </div>
       </div>
     </div>
