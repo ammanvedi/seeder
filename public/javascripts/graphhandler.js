@@ -11,11 +11,10 @@ var waiting_publish_confirm = false;
 // so it can be saved to the database
 
 /**
- * generate a save state that can be transferred to the database as JSON
- * @param      {Object}   a string specifying which graphs to return (all, popular, new)
- * @param      {String} name of the published graph 
- * @param      {String}	description of the published graph
- * @param      {Boolean} weather the graph should be published to the public domain
+ * Create an array of all the right files in the source dir
+ * @param  {String}   source source path
+ * @param  {Object}   options option object
+ * @return {null}
  */
   
 function getSaveState(layercake, gname, gdesc, publishme){
