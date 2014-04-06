@@ -24,10 +24,11 @@ MainSidebarhelp.sidebar('attach events','#sidebar-toggle' , 'toggle');
     
     $('body').mousemove(function (e) {
         
-        var mouse = {
-            x: e.pageX,
-            y: e.pageY
-        };
+var mouse = {
+    x: e.pageX - 270,
+    y: e.pageY - 50
+};
+
     
             nearestmouse = sys.nearest(mouse);
     

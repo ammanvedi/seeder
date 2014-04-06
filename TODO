@@ -13,3 +13,13 @@
 		RUN  : doxx -t SeederDocs -i arbor,jquery-ui,semantic,mendeley --source public/javascripts --target public/docs -e html
 --> community forum
 
+--> create more example graphs 
+
+New Additions / Changelog 6 APR 2014
+
+- added full code documentation to /docs
+- added graph view interface
+- styled the explore page
+- added google account authorisation 
+- added architectural diagrams to docs/github readme
+- created a temporary domain that redirects to the webserver (http://ammanvedi.github.io/seederio)
