@@ -1,4 +1,8 @@
 $(document).ready(function () {
+$('#info_title').attr("target", "_blank");
+var  MainSidebarhelp = $('.ui.sidebar');
+MainSidebarhelp.sidebar('toggle');
+MainSidebarhelp.sidebar('attach events','#sidebar-toggle' , 'toggle');
 
 
     var testgraphdata = graphstring;
@@ -17,6 +21,34 @@ $(document).ready(function () {
 
 
     loadLayer('root');
+    
+    $('body').mousemove(function (e) {
+        
+        var mouse = {
+            x: e.pageX,
+            y: e.pageY
+        };
+    
+            nearestmouse = sys.nearest(mouse);
+    
+            if (nearestmouse) {
+            //console.log(nearestmouse);
+    
+                if (nearestmouse.node.data['TYPE'] == 'ARTICLE') {
+                    nearestmouse.node.data['NEAREST'] = true;
+                    $('#info_title').text(nearestmouse.node.data['TITLE']);
+                    $('#info_domain').text(nearestmouse.node.data['DOMAIN']);
+                    $('#info_description').text(nearestmouse.node.data['DESCRIPTION']);
+                    $('#info_image').attr("src", nearestmouse.node.data['IMAGE']);
+                    $('#info_title').attr("href", nearestmouse.node.data['URL']);
+                    //console.log(nearestmouse.node);
+                } else {
+                    //console.log('id is : ' + nearestmouse.node.name);
+    
+                }
+    
+            }
+         });
 
     $('#view_canvas').dblclick(function (a) {
 

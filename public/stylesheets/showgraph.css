@@ -15,3 +15,79 @@ html{
   -moz-user-select: none;
   user-select: none;
 }
+
+#info_display_panel{
+	
+	position: absolute;
+	top: 6px;
+	left: 6px;
+	float: left;
+	width: 95%;
+	border-radius: 5px;
+	height: auto;
+	background-color: rgba(85, 79, 137, 0.90);
+	-moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.66);
+	box-shadow: 0 0 4px rgba(0, 0, 0, 0.66);
+}
+
+#info_display_image_holder{	
+	width: 100%;
+	height: auto;
+	
+}
+
+#info_image_circle{
+	width: 120px;
+	height: 120px;
+	border-radius: 75px;
+	border: 8px solid #ffffff;
+	margin:  20px auto;
+	-moz-box-shadow: inset 0 0 3rem rgba(0, 0, 0, 0.74), 0 0 9px rgba(0, 0, 0, 0.62);
+	box-shadow: inset 0 0 3rem rgba(0, 0, 0, 0.74), 0 0 9px rgba(0, 0, 0, 0.62);
+	overflow: hidden;
+}
+
+#info_data{
+	
+	width: 90%;
+	height: auto;
+	padding-left: 20px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+#explore-sidebar{
+	background-color: #262E32;
+}
+
+#info_data a{
+color: white;
+font-size: 20px;
+margin: 0px;
+	
+	
+}
+
+#info_data h2{
+	margin: 0px;
+	font-size: 13px;
+	color: #fff;
+	opacity: 0.8;
+}
+
+#info_data p{
+width: 100%;
+min-height: 100px;
+max-height: 200px;
+overflow-y: scroll;
+overflow-x: hidden;
+color: #fff;
+}
+
+
+#view_canvas{
+	
+	
+}
+
+
