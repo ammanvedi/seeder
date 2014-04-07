@@ -16,11 +16,11 @@ MainSidebarhelp.sidebar('attach events','#sidebar-toggle' , 'toggle');
     console.log(testgraphdata);
 
     var GraphLayers = testgraphdata.graph;
-    var currentlayer = 'root';
+    var currentlayer = '-1';
 
 
 
-    loadLayer('root');
+    loadLayer('-1');
     
     $('body').mousemove(function (e) {
         
@@ -66,13 +66,13 @@ var mouse = {
             if (nearme.node.data['TYPE'] == 'LAYER') {
                 //if the layer node clicked corresponds to this layer
                 //then exit the layer
-                if (nearme.node.data['name'] == currentlayer) {
+                if (nearme.node.data['nodeid'] == currentlayer) {
 
-                    loadLayer(GraphLayers[currentlayer + '0'].parentlayer);
+                    loadLayer(GraphLayers[currentlayer + 'z'].parentlayer);
                 } else {
                     //layer node clicked is pointing to a different layer
                     //load it 
-                    loadLayer(nearme.node.data['name']);
+                    loadLayer(nearme.node.data['nodeid']);
                 }
 
 
@@ -85,7 +85,7 @@ var mouse = {
     function loadLayer(layertoload) {
 
         currentlayer = layertoload;
-        layertoload = layertoload + '0';
+        layertoload = layertoload + 'z';
 
         if (GraphLayers[layertoload]) {
             sys.prune(function (a, b, c) {

@@ -40,7 +40,7 @@ function getSaveState(layercake, gname, gdesc, publishme){
 	}
 	
 	var Savestate = new Object();
-	Savestate.graphid = "virtualreality";
+	Savestate.graphid = "test";
 	Savestate.publish = publishme;
 	Savestate.author = userdata.id;
 	Savestate.graphname = gname;
@@ -61,7 +61,7 @@ function getSaveState(layercake, gname, gdesc, publishme){
 
 $(document).ready(function () {
 
-    var DEPLOYIP = '54.201.24.162'; //localhost for dev, ip for prod
+    var DEPLOYIP = '192.168.0.6'; //localhost for dev, ip for prod
     var socket = io.connect(DEPLOYIP + ':8080');
     console.log( socket);
     var addnodemode = false;
@@ -97,8 +97,8 @@ $(document).ready(function () {
     
     //track the state of the graph as a collection of layers
     var GraphLayers = new Object();
-	var currentlayer = 'root';
-	addLayer('root', '0');
+	var currentlayer = '-1';
+	addLayer('-1', '0');
      
 
 
@@ -108,7 +108,7 @@ $(document).ready(function () {
     addnodePREFS['link'] = 'http://www.google.com/';
     addnodePREFS['TYPE'] = 'TEXT';
     addnodePREFS['size'] = 30;
-    addnodePREFS['id'] = 0;
+    addnodePREFS['nodeid'] = -1;
     addnodePREFS['color'] = '#564F8A';
     
     
@@ -123,9 +123,13 @@ $(document).ready(function () {
 	
 	//console.log('here is the system in full');
 	//console.log(sys);
+	
+	
 
     //sys.addNode(addnodePREFS['name'], addnodePREFS);
-    createNode(addnodePREFS['name'], addnodePREFS, currentlayer);
+    createNode(-1+'', addnodePREFS, currentlayer);
+    
+    console.log(GraphLayers);
 
 
     var nearestmouse;
@@ -214,14 +218,26 @@ $(document).ready(function () {
 		//console.log(nearme.node.name);
 
         if (addnodemode) {
+        
+        
         	
 
             //console.log('called1');
             var i = addnodePREFS;
 
             var data = jQuery.extend(true, {}, addnodePREFS);
+            data.nodeid = ++ct + '';
+            
+            var conflict = false;
+            
+            sys.eachNode(function (n,pt){
+            
+            	if(n.data.name == addnodePREFS['name']){
+            	conflict = true;
+            	}
+            });
 			
-			if(sys.getNode(addnodePREFS['name']) != undefined){
+			if(conflict){
 				//a node was found that matched the id, dont add the node
 				//issue a notification to the user
 				alert('node name already exists, you can edit nodes by clicking "edit nodes"');
@@ -229,10 +245,10 @@ $(document).ready(function () {
 			
 			if(nearme != null){
 				//sys.addNode(data['name'], addnodePREFS);
-				createNode(data['name'], addnodePREFS, currentlayer);
-				createEdge(nearme.node.name, data['name'], currentlayer);
+				createNode(data['nodeid'], data, currentlayer);
+				createEdge(nearme.node.data.nodeid, data['nodeid'], currentlayer);
 				//sys.addEdge(nearme.node.name, data['name']);
-				//console.log(nearme.node.name + ' ' + data['name']);
+				console.log(nearme.node.name + ' ' + data['name']);
 				//sys.stop();
 				
 						//alert the user
@@ -248,11 +264,12 @@ $(document).ready(function () {
 						
 				ct++;
 				}else{
-				
-					//sys.addNode(data['name'], addnodePREFS);
-					createNode(data['name'], addnodePREFS, currentlayer);
+					console.log('ahahahah');
 					
-					//console.log('ahahahah');
+					//sys.addNode(data['name'], addnodePREFS);
+					createNode(data['nodeid'], data, currentlayer);
+					
+					console.log('ahahahah');
 					
 							//alert the user
 							var op = new Object();
@@ -310,19 +327,19 @@ $(document).ready(function () {
         		//edgepath[0].node.name
         		
         		if(edgepath.length == 1){
-        			$('#edgesource').text(edgepath[0].node.name);
+        			$('#edgesource').text(edgepath[0].node.data.name);
         		}
 			}
 			
 			if(edgepath.length == 2){
-			$('#edgedestination').text(edgepath[1].node.name);
+			$('#edgedestination').text(edgepath[1].node.data.name);
 				//edge is full
 				//build and erase
 				//console.log(edgepath);
 				
 				$('#btn_addedge').removeClass('red').addClass('green');
 				$('#btn_addedge').val('Add Edge');
-				createEdge(edgepath[0].node.name, edgepath[1].node.name, currentlayer)
+				createEdge(edgepath[0].node.data.nodeid, edgepath[1].node.data.nodeid, currentlayer)
 				//sys.addEdge(edgepath[0].node.name, edgepath[1].node.name);
 				addedgemode = false;
 				edgepath = new Array();
@@ -363,18 +380,18 @@ $(document).ready(function () {
     			console.log('TYPEISLAYER' );
     			//if the layer node clicked corresponds to this layer
     			//then exit the layer
-    			if(nearme.node.data['name'] == currentlayer)
+    			if(nearme.node.data['nodeid'] == currentlayer)
     			{
     				
-    				loadLayer(GraphLayers[currentlayer+'0'].parentlayer);
+    				loadLayer(GraphLayers[currentlayer+'z'].parentlayer);
     				console.log('loading 1:: ' );
-    				console.log(GraphLayers[currentlayer].parentlayer);
+    				console.log(GraphLayers[currentlayer+'z'].parentlayer);
     			}else{
     				//layer node clicked is pointing to a different layer
     				//load it 
-    				loadLayer(nearme.node.data['name']);
+    				loadLayer(nearme.node.data['nodeid']);
     				console.log('loading 2:: ' );
-    				console.log(GraphLayers[nearme.node.data['name']]);
+    				console.log(GraphLayers[nearme.node.data['nodeid']]);
     			}
     			
     			
@@ -493,8 +510,9 @@ $(document).ready(function () {
             if (nearme_) {
 
                 //res = sys.addNode(ct + '', data_to_add);
+                data_to_add.nodeid = ct+'';
                 createNode(ct+'', data_to_add, currentlayer);
-                createEdge(nearme_.node.name, ct + '', currentlayer);
+                createEdge(nearme_.node.data.nodeid, ct + '', currentlayer);
                 //sys.addEdge(nearme_.node.name, ct + '');
             } else {
                 //res = sys.addNode(ct + '', data_to_add);
@@ -515,7 +533,7 @@ $(document).ready(function () {
             op.w = 300;
             op.h = 70;
             op.title = "Added Article!";
-            op.subtext = "Article bound to node " + nearme_.node.name;
+            op.subtext = "Article bound to node " + nearme_.node.data.name;
             
             
             note('#contain_main', op);
@@ -670,10 +688,12 @@ $(document).ready(function () {
     
     	currentlayer = layertoload;
     
-       layertoload = layertoload +'0'; 
+       layertoload = layertoload +'z'; 
         
     if(GraphLayers[layertoload])
     {
+    console.log('lyr');
+    console.log(GraphLayers[layertoload]);
     	sys.prune(function (a,b,c){
     		return true;
     	});
@@ -699,12 +719,29 @@ $(document).ready(function () {
      * @param {String} layerparent The name of the intended parent of this layer
      */
     function addLayer(layername_, layerparent){
-    	layername = layername_ +'0';
+    	layername = layername_ +'z';
     	GraphLayers[layername] = new Object();
     	GraphLayers[layername].layername = layername_;
     	GraphLayers[layername].parentlayer = layerparent;
     	GraphLayers[layername].nodes = new Array();
     	GraphLayers[layername].edges = new Array();
+    	
+    	
+    }
+    
+    function editNode (name, newprefs, layern){
+    	layern = layern+'z';
+    	
+    	GraphLayers[layern].nodes.forEach( function (x, ct) {
+    		if(x.nodename == name){
+    			GraphLayers[layern].nodes[ct].nodedata = newprefs;
+    			
+    			console.log(ct);
+    			console.log(GraphLayers);
+    			return false;
+    		}
+    	
+    	});
     	
     	
     }
@@ -718,18 +755,19 @@ $(document).ready(function () {
     function createNode(name, data, layer)
     {
     
-    layer = layer+'0';
+    layer = layer+'z';
+    
     
     	if(data['TYPE'] == 'LAYER'){
     		//create new layer
-    		addLayer(data['name'], currentlayer);
+    		addLayer(data['nodeid'], currentlayer);
     		data.parentlayer = currentlayer;
-    		GraphLayers[data['name']+'0'].nodes.push({nodename : name, nodedata : data});
+    		GraphLayers[data['nodeid']+'z'].nodes.push({nodename : data.nodeid, nodedata : data});
     	}
     	//add node not particle system
-    	sys.addNode(name, data);
+    	sys.addNode(data.nodeid, data);
     	//add node to layer
-    	GraphLayers[layer].nodes.push({nodename : name, nodedata : data});
+    	GraphLayers[layer].nodes.push({nodename : data.nodeid, nodedata : data});
     	console.log(data);
     	return;
     }
@@ -742,7 +780,7 @@ $(document).ready(function () {
      */
     function createEdge(from, to, layer)
     {
-    	layer = layer+'0';
+    	layer = layer+'z';
     	//addedge to particle system
     	sys.addEdge(from, to);
     	//add edge to layer
@@ -894,7 +932,7 @@ $(document).ready(function () {
 	        //validate form
 	        
 	        console.log($('#select_node_type').val());
-	
+			
 	        updated['name'] = $('#field_node_name').val();
 	        updated['text'] = $('#field_node_text').val();
 	        updated['link'] = $('#field_node_link').val();
@@ -952,7 +990,13 @@ $(document).ready(function () {
 	
 	
 		editnodePREFS['easing'] = 'cubic';
-		sys.tweenNode(current_edit_focus['name'], 3, editnodePREFS);
+		sys.tweenNode(current_edit_focus['nodeid'], 0.5, editnodePREFS);
+		
+		editNode(current_edit_focus['nodeid'], editnodePREFS, currentlayer);
+		console.log('fcs');
+		console.log(current_edit_focus);
+		console.log('edits');
+		console.log(editnodePREFS);
 		$('#form_editnode').hide();
 		$('#edit_notice').show();
 		

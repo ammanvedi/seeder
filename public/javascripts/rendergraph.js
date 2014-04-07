@@ -85,6 +85,8 @@ var Renderer = function (canvas) {
 
             particleSystem.eachNode(function (node, pt) {
             
+            //console.log(node['name']);
+            
                 // node: {mass:#, p:{x,y}, name:"", data:{}}
                 // pt:   {x:#, y:#}  node position in screen coords
 
@@ -144,7 +146,7 @@ var Renderer = function (canvas) {
 
                         ctx.font = '12pt Arial';
                         ctx.fillStyle = 'black';
-                        ctx.fillText(node.data['name'], pt.x - 4, pt.y + 3);
+                        ctx.fillText(node.data.name, pt.x - 4, pt.y + 3);
 
                     }
 
@@ -154,6 +156,7 @@ var Renderer = function (canvas) {
 	            if(node.data['TYPE'] == 'TEXT')
 	            {
 	                var radius = node.data['size'];
+	               
 	
 	                ctx.beginPath();
 	                ctx.arc(pt.x, pt.y, radius, 0, 2 * Math.PI, false);
@@ -165,7 +168,7 @@ var Renderer = function (canvas) {
 	
 	                ctx.font = '12pt Arial';
 	                ctx.fillStyle = 'black';
-	                ctx.fillText(node.name, pt.x - 4, pt.y + 3);
+	                ctx.fillText(node.data.name, pt.x - 4, pt.y + 3);
 	            }
 	            
 	            if(node.data['TYPE'] == 'LAYER')
@@ -181,7 +184,7 @@ var Renderer = function (canvas) {
 	                ctx.stroke();
 	                ctx.font = '12pt Arial';
 	                ctx.fillStyle = 'black';
-	                ctx.fillText(node.name, pt.x - 4, pt.y + 3);		
+	                ctx.fillText(node.data.name, pt.x - 4, pt.y + 3);		
 	            }
             });
         },
