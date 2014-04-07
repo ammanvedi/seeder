@@ -18,6 +18,7 @@ the domain is not up yet, so you can access the site via ip, or via the git url 
 | http://54.201.24.162:8080/explore 	| Displays graphs created by users and allows for searching of specific subject areas 	|
 | http://54.201.24.162:8080/help    	| Help docs about the builder and other aspects of the site                                         	|
 | http://54.201.24.162:8080/blog    	| The DevBlog, updated when changes are made to the site                                            	|
+| http://54.201.24.162:8080/docs/    	| documentation for the main functions of the codebase are available here                                             	|
 
 
 ### Current Features 
