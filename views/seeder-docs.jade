@@ -10,7 +10,10 @@ html
     meta(name='viewport', content='width=device-width', charset='utf-8')
     title= title
     link(rel="stylesheet", href="/stylesheets/doc_bs/full_bs.css")
+    link(rel="stylesheet", href="/stylesheets/docs.css")
     link(rel='stylesheet', href='/javascripts/semantic/packaged/css/semantic.min.css')
+    script(src='http://code.jquery.com/jquery-1.8.2.js')
+    script(src="/javascripts/docs.js" type="text/javascript")
     style.
       body > .navbar .brand {
         float:left;
@@ -62,8 +65,6 @@ html
 
   body(data-spy="scroll", data-target=".scrollspy")
     .ui.menu.purple.inverted
-        ai#sidebar-toggle.item
-            i.reorder.icon
         a.item.purple.active(href="/")
             i.leaf.icon
             img(src="/img/logo-small.png")
@@ -103,10 +104,13 @@ html
                         |Sign In
 
 
-    header.jumbotron.subhead#overview
-      div.container
-        h1= title
-        p.lead
+    .banner-docs
+      h1 code | <a href="https://github.com/ammanvedi/seeder" target="_blank">git/seeder</a>
+      h2#commitheader
+      p#commitmessage
+      a#commitlink(href="")
+        i.white.big.circle.right.icon
+      #clearme
 
     .container
       .row
@@ -176,13 +180,7 @@ html
       div.container
         p Documentation generated with 
           a(href="https://github.com/FGRibreau/doxx") Doxx 
-          | created by 
-          a.twitter-follow-button(href='https://twitter.com/FGRibreau',data-show-count='false') Francois-Guillaume Ribreau
-        p Doxx is sponsored by 
-          a.bringr(href='http://bringr.net/?btt', title="Outil d'analyse des réseaux sociaux") Bringr 
-          | and 
-          a.redsmin(href='https://redsmin.com/?btt', title="Full Redis GUI") Redsmin
-        p Theme borrowed from Twitter Bootstrap
+          | created by Francois-Guillaume Ribreau
 
     script(src="http://platform.twitter.com/widgets.js")
     script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js")

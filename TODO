@@ -39,3 +39,6 @@ CHANGELOGS
 	- created a temporary domain that redirects to the webserver (http://ammanvedi.github.io/seederio)
 	- implemented layering of graphs
 	- got early access to mendeley API, working with their devs to allow access from our webapp
+	- fixed edit node, improved renderer
+	- improved graph data storage logic
+		- each node maintains an id for its lifetime, uses data.name property for drawing and node.name/node.data.nodeid for reference 

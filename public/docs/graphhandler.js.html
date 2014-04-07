@@ -4,7 +4,10 @@
     <meta name="viewport" content="width=device-width" charset="utf-8">
     <title>SeederDocs</title>
     <link rel="stylesheet" href="/stylesheets/doc_bs/full_bs.css">
+    <link rel="stylesheet" href="/stylesheets/docs.css">
     <link rel="stylesheet" href="/javascripts/semantic/packaged/css/semantic.min.css">
+    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script src="/javascripts/docs.js" type="text/javascript"></script>
     <style>
       body > .navbar .brand {
         float:left;
@@ -57,8 +60,7 @@
     </style>
   </head>
   <body data-spy="scroll" data-target=".scrollspy">
-    <div class="ui menu purple inverted">
-      <ai id="sidebar-toggle" class="item"><i class="reorder icon"></i></ai><a href="/" class="item purple active"><i class="leaf icon"></i><img src="/img/logo-small.png"></a><a href="/explore" class="item"><i class="map icon"></i>Explore</a><a href="/build" class="item"><i class="wrench icon"></i>Build</a>
+    <div class="ui menu purple inverted"><a href="/" class="item purple active"><i class="leaf icon"></i><img src="/img/logo-small.png"></a><a href="/explore" class="item"><i class="map icon"></i>Explore</a><a href="/build" class="item"><i class="wrench icon"></i>Build</a>
       <div class="ui simple dropdown item">More<i class="dropdown icon"></i>
         <div class="menu"><a href="/blog" class="item"><i class="book icon"></i>Blog</a><a href="/help" class="itema item"><i class="help icon"></i>Help</a></div>
       </div>
@@ -68,12 +70,12 @@
         </div>
       </div>
     </div>
-    <header id="overview" class="jumbotron subhead">
-      <div class="container">
-        <h1>SeederDocs</h1>
-        <p class="lead"></p>
-      </div>
-    </header>
+    <div class="banner-docs">
+      <h1>code | <a href="https://github.com/ammanvedi/seeder" target="_blank">git/seeder</a></h1>
+      <h2 id="commitheader"></h2>
+      <p id="commitmessage"></p><a id="commitlink" href=""><i class="white big circle right icon"></i></a>
+      <div id="clearme"></div>
+    </div>
     <div class="container">
       <div class="row">
         <div class="span3 bs-docs-sidebar">
@@ -81,6 +83,7 @@
             <li><a href="index.html">Main</a></li>
             <li><a href="article_searcher.js.html">article_searcher.js</a></li>
             <li><a href="blogparser.js.html">blogparser.js</a></li>
+            <li><a href="docs.js.html">docs.js</a></li>
             <li class="active"><a href="graphhandler.js.html">graphhandler.js</a></li>
             <li><a href="note.js.html">note.js</a></li>
             <li><a href="rendergraph.js.html">rendergraph.js</a></li>
@@ -172,7 +175,7 @@
 	}
 	
 	var Savestate = new Object();
-	Savestate.graphid = &quot;virtualreality&quot;;
+	Savestate.graphid = &quot;test&quot;;
 	Savestate.publish = publishme;
 	Savestate.author = userdata.id;
 	Savestate.graphname = gname;
@@ -316,10 +319,12 @@
     
     	currentlayer = layertoload;
     
-       layertoload = layertoload +'0'; 
+       layertoload = layertoload +'z'; 
         
     if(GraphLayers[layertoload])
     {
+    console.log('lyr');
+    console.log(GraphLayers[layertoload]);
     	sys.prune(function (a,b,c){
     		return true;
     	});
@@ -368,12 +373,29 @@
           </table>
           <div class="description"><p>add a layer to the layer-cake</p> </div>
           <pre><code class="language-javascript">function addLayer(layername_, layerparent){
-    	layername = layername_ +'0';
+    	layername = layername_ +'z';
     	GraphLayers[layername] = new Object();
     	GraphLayers[layername].layername = layername_;
     	GraphLayers[layername].parentlayer = layerparent;
     	GraphLayers[layername].nodes = new Array();
     	GraphLayers[layername].edges = new Array();
+    	
+    	
+    }
+    
+    function editNode (name, newprefs, layern){
+    	layern = layern+'z';
+    	
+    	GraphLayers[layern].nodes.forEach( function (x, ct) {
+    		if(x.nodename == name){
+    			GraphLayers[layern].nodes[ct].nodedata = newprefs;
+    			
+    			console.log(ct);
+    			console.log(GraphLayers);
+    			return false;
+    		}
+    	
+    	});
     	
     	
     }</code></pre>
@@ -414,18 +436,19 @@
           <pre><code class="language-javascript">function createNode(name, data, layer)
     {
     
-    layer = layer+'0';
+    layer = layer+'z';
+    
     
     	if(data['TYPE'] == 'LAYER'){
     		//create new layer
-    		addLayer(data['name'], currentlayer);
+    		addLayer(data['nodeid'], currentlayer);
     		data.parentlayer = currentlayer;
-    		GraphLayers[data['name']+'0'].nodes.push({nodename : name, nodedata : data});
+    		GraphLayers[data['nodeid']+'z'].nodes.push({nodename : data.nodeid, nodedata : data});
     	}
     	//add node not particle system
-    	sys.addNode(name, data);
+    	sys.addNode(data.nodeid, data);
     	//add node to layer
-    	GraphLayers[layer].nodes.push({nodename : name, nodedata : data});
+    	GraphLayers[layer].nodes.push({nodename : data.nodeid, nodedata : data});
     	console.log(data);
     	return;
     }</code></pre>
@@ -465,7 +488,7 @@
           <div class="description"><p>add a edge to the current layer of the graph </p> </div>
           <pre><code class="language-javascript">function createEdge(from, to, layer)
     {
-    	layer = layer+'0';
+    	layer = layer+'z';
     	//addedge to particle system
     	sys.addEdge(from, to);
     	//add edge to layer
@@ -519,7 +542,7 @@
 	        //validate form
 	        
 	        console.log($('#select_node_type').val());
-	
+			
 	        updated['name'] = $('#field_node_name').val();
 	        updated['text'] = $('#field_node_text').val();
 	        updated['link'] = $('#field_node_link').val();
@@ -544,9 +567,7 @@
     </div>
     <footer class="footer">
       <div class="container">
-        <p>Documentation generated with <a href="https://github.com/FGRibreau/doxx">Doxx </a>created by <a href="https://twitter.com/FGRibreau" data-show-count="false" class="twitter-follow-button">Francois-Guillaume Ribreau</a></p>
-        <p>Doxx is sponsored by <a href="http://bringr.net/?btt" title="Outil d'analyse des réseaux sociaux" class="bringr">Bringr </a>and <a href="https://redsmin.com/?btt" title="Full Redis GUI" class="redsmin">Redsmin</a></p>
-        <p>Theme borrowed from Twitter Bootstrap</p>
+        <p>Documentation generated with <a href="https://github.com/FGRibreau/doxx">Doxx </a>created by Francois-Guillaume Ribreau</p>
       </div>
     </footer>
     <script src="http://platform.twitter.com/widgets.js"></script>

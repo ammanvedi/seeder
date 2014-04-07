@@ -4,7 +4,10 @@
     <meta name="viewport" content="width=device-width" charset="utf-8">
     <title>SeederDocs</title>
     <link rel="stylesheet" href="/stylesheets/doc_bs/full_bs.css">
+    <link rel="stylesheet" href="/stylesheets/docs.css">
     <link rel="stylesheet" href="/javascripts/semantic/packaged/css/semantic.min.css">
+    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script src="/javascripts/docs.js" type="text/javascript"></script>
     <style>
       body > .navbar .brand {
         float:left;
@@ -57,8 +60,7 @@
     </style>
   </head>
   <body data-spy="scroll" data-target=".scrollspy">
-    <div class="ui menu purple inverted">
-      <ai id="sidebar-toggle" class="item"><i class="reorder icon"></i></ai><a href="/" class="item purple active"><i class="leaf icon"></i><img src="/img/logo-small.png"></a><a href="/explore" class="item"><i class="map icon"></i>Explore</a><a href="/build" class="item"><i class="wrench icon"></i>Build</a>
+    <div class="ui menu purple inverted"><a href="/" class="item purple active"><i class="leaf icon"></i><img src="/img/logo-small.png"></a><a href="/explore" class="item"><i class="map icon"></i>Explore</a><a href="/build" class="item"><i class="wrench icon"></i>Build</a>
       <div class="ui simple dropdown item">More<i class="dropdown icon"></i>
         <div class="menu"><a href="/blog" class="item"><i class="book icon"></i>Blog</a><a href="/help" class="itema item"><i class="help icon"></i>Help</a></div>
       </div>
@@ -68,12 +70,12 @@
         </div>
       </div>
     </div>
-    <header id="overview" class="jumbotron subhead">
-      <div class="container">
-        <h1>SeederDocs</h1>
-        <p class="lead"></p>
-      </div>
-    </header>
+    <div class="banner-docs">
+      <h1>code | <a href="https://github.com/ammanvedi/seeder" target="_blank">git/seeder</a></h1>
+      <h2 id="commitheader"></h2>
+      <p id="commitmessage"></p><a id="commitlink" href=""><i class="white big circle right icon"></i></a>
+      <div id="clearme"></div>
+    </div>
     <div class="container">
       <div class="row">
         <div class="span3 bs-docs-sidebar">
@@ -81,6 +83,7 @@
             <li class="active"><a href="index.html">Main</a></li>
             <li><a href="article_searcher.js.html">article_searcher.js</a></li>
             <li><a href="blogparser.js.html">blogparser.js</a></li>
+            <li><a href="docs.js.html">docs.js</a></li>
             <li><a href="graphhandler.js.html">graphhandler.js</a></li>
             <li><a href="note.js.html">note.js</a></li>
             <li><a href="rendergraph.js.html">rendergraph.js</a></li>
@@ -184,9 +187,7 @@ $ node app</code></pre>
     </div>
     <footer class="footer">
       <div class="container">
-        <p>Documentation generated with <a href="https://github.com/FGRibreau/doxx">Doxx </a>created by <a href="https://twitter.com/FGRibreau" data-show-count="false" class="twitter-follow-button">Francois-Guillaume Ribreau</a></p>
-        <p>Doxx is sponsored by <a href="http://bringr.net/?btt" title="Outil d'analyse des réseaux sociaux" class="bringr">Bringr </a>and <a href="https://redsmin.com/?btt" title="Full Redis GUI" class="redsmin">Redsmin</a></p>
-        <p>Theme borrowed from Twitter Bootstrap</p>
+        <p>Documentation generated with <a href="https://github.com/FGRibreau/doxx">Doxx </a>created by Francois-Guillaume Ribreau</p>
       </div>
     </footer>
     <script src="http://platform.twitter.com/widgets.js"></script>

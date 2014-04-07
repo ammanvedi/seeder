@@ -83,308 +83,41 @@
             <li><a href="index.html">Main</a></li>
             <li><a href="article_searcher.js.html">article_searcher.js</a></li>
             <li><a href="blogparser.js.html">blogparser.js</a></li>
-            <li><a href="docs.js.html">docs.js</a></li>
+            <li class="active"><a href="docs.js.html">docs.js</a></li>
             <li><a href="graphhandler.js.html">graphhandler.js</a></li>
             <li><a href="note.js.html">note.js</a></li>
-            <li class="active"><a href="rendergraph.js.html">rendergraph.js</a></li>
+            <li><a href="rendergraph.js.html">rendergraph.js</a></li>
             <li><a href="showgraphhandler.js.html">showgraphhandler.js</a></li>
           </ul>
           <div class="scrollspy">
             <ul class="nav nav-list bs-docs-sidenav affix-top">
-              <li><a href="#shadeColor"><i class="alert alert-info"></i>shadeColor</a>
-              </li>
-              <li><a href="#Renderer"><i class="alert alert-info"></i>Renderer</a>
-              </li>
             </ul>
           </div>
         </div>
         <div class="span9">
-          <section id="shadeColor">
-            <h1>shadeColor</h1>
-            <h5 class="subheader"></h5>
-            <p>
-              <div class="label label-info radius ctx-type">function</div><span>shadeColor()</span>
-            </p>
-          </section>
-          <table class="table table-bordered table-striped">
-            <thead>
-              <tr>
-                <th style="width:20%">Option name</th>
-                <th style="width:20%">Type</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>color</td>
-                <td>String</td>
-                <td>The initial color to start with </td>
-              </tr>
-              <tr>
-                <td>percent</td>
-                <td>int</td>
-                <td>the percent to brighten or darken by</td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="description"><p>generate a object containing graph data as well as metadata needed for saving</p> </div>
-          <pre><code class="language-javascript">function shadeColor(color, percent) {
+          <div class="description"> </div>
+          <pre><code class="language-javascript">$(document).ready( function() {
 
-    var R = parseInt(color.substring(1,3),16);
-    var G = parseInt(color.substring(3,5),16);
-    var B = parseInt(color.substring(5,7),16);
-
-    R = parseInt(R * (100 + percent) / 100);
-    G = parseInt(G * (100 + percent) / 100);
-    B = parseInt(B * (100 + percent) / 100);
-
-    R = (R&lt;255)?R:255;  
-    G = (G&lt;255)?G:255;  
-    B = (B&lt;255)?B:255;  
-
-    var RR = ((R.toString(16).length==1)?&quot;0&quot;+R.toString(16):R.toString(16));
-    var GG = ((G.toString(16).length==1)?&quot;0&quot;+G.toString(16):G.toString(16));
-    var BB = ((B.toString(16).length==1)?&quot;0&quot;+B.toString(16):B.toString(16));
-
-    return &quot;#&quot;+RR+GG+BB;
-}</code></pre>
-          <section id="Renderer">
-            <h1>Renderer</h1>
-            <h5 class="subheader"></h5>
-            <p>
-              <div class="label label-info radius ctx-type">function</div><span>Renderer()</span>
-            </p>
-          </section>
-          <table class="table table-bordered table-striped">
-            <thead>
-              <tr>
-                <th style="width:20%">Option name</th>
-                <th style="width:20%">Type</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Canvas</td>
-                <td>DOM</td>
-                <td>Object} canvas The canvas object inside the page DOM that the renderer should draw to</td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="description"><p>The main renderer for the graph drawing system </p> </div>
-          <pre><code class="language-javascript">var Renderer = function (canvas) {
-    var canvas = $(canvas).get(0);
-    var ctx = canvas.getContext(&quot;2d&quot;);
-    var particleSystem;
-
-    var that = {
-        init: function (system) {
-            //
-            // the particle system will call the init function once, right before the
-            // first frame is to be drawn. it's a good place to set up the canvas and
-            // to pass the canvas size to the particle system
-            //
-            // save a reference to the particle system for use in the .redraw() loop
-            particleSystem = system;
-
-            // inform the system of the screen dimensions so it can map coords for us.
-            // if the canvas is ever resized, screenSize should be called again with
-            // the new dimensions
-            particleSystem.screenSize(canvas.width, canvas.height);
-            particleSystem.screenPadding(00); // leave an extra 80px of whitespace per side
-
-            // set up some event handlers to allow for node-dragging
-            that.initMouseHandling();
-        },
-
-        redraw: function () {
-            // 
-            // redraw will be called repeatedly during the run whenever the node positions
-            // change. the new positions for the nodes can be accessed by looking at the
-            // .p attribute of a given node. however the p.x &amp; p.y values are in the coordinates
-            // of the particle system rather than the screen. you can either map them to
-            // the screen yourself, or use the convenience iterators .eachNode (and .eachEdge)
-            // which allow you to step through the actual node objects but also pass an
-            // x,y point in the screen's coordinate system
-            // 
-            //console.log('renderer running ');
-            ctx.fillStyle = &quot;white&quot;;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            particleSystem.eachEdge(function (edge, pt1, pt2) {
-                // edge: {source:Node, target:Node, length:#, data:{}}
-                // pt1:  {x:#, y:#}  source position in screen coords
-                // pt2:  {x:#, y:#}  target position in screen coords
-
-                // draw a line from pt1 to pt2
-                ctx.strokeStyle = &quot;rgba(0,0,0, .333)&quot;;
-                ctx.lineWidth = 3;
-                ctx.beginPath();
-                ctx.moveTo(pt1.x, pt1.y);
-                ctx.lineTo(pt2.x, pt2.y);
-                ctx.stroke();
-            });
-
-            particleSystem.eachNode(function (node, pt) {
-            
-            //console.log(node['name']);
-            
-                // node: {mass:#, p:{x,y}, name:&quot;&quot;, data:{}}
-                // pt:   {x:#, y:#}  node position in screen coords
-
-                // draw a rectangle centered at pt
-                var w = 10
-                var imagesize = 70;
-                var radius = imagesize / 2;
-                var radius_imageless = 10;
-
-
-                if (node.data['TYPE'] == 'ARTICLE') {
-                    //draw a data rich node
-                    //console.log('here');
-                    //console.log(node);
-                    if (node.data['imagedata'] != undefined) {
-                    
-                    //console.log(node.data['imagedata']);
-
-
-                        node.data['imagedata'].width = imagesize + 'px';
-                        node.data['imagedata'].height = imagesize + 'px';
-
-                        //draw the image clip arc
-                        ctx.beginPath();
-                        ctx.save();
-                        ctx.beginPath();
-                        ctx.arc(pt.x, pt.y, radius, 0, 2 * Math.PI, false);
-                        ctx.lineWidth = 5;
-                        ctx.strokeStyle = '#003300';
-                        ctx.stroke();
-
-
-                        //clip the arc and draw the image, restore canvas state after
-                        ctx.clip();
-                        try {
-                            ctx.drawImage(node.data['imagedata'], pt.x - (imagesize / 2), pt.y - (imagesize / 2), imagesize, imagesize);
-                        } catch (InvalidStateError) {
-                            //console.log('ssssssss');
-                        }
-                        ctx.restore();
-
-                        //draw the node title
-                        ctx.font = '10pt Arial';
-                        ctx.fillStyle = 'black';
-                        ctx.fillText(node.data['TITLE'], pt.x + (imagesize / 2) + 3, pt.y + 3);
-
-                    } else {
-
-
-                        ctx.beginPath();
-                        ctx.arc(pt.x, pt.y, node.data['size'], 0, 2 * Math.PI, false);
-                        ctx.fillStyle = node.data['color'];
-                        ctx.fill();
-                        ctx.lineWidth = 3;
-                        ctx.strokeStyle = shadeColor(node.data['color'], -20);
-                        ctx.stroke();
-
-                        ctx.font = '12pt Arial';
-                        ctx.fillStyle = 'black';
-                        ctx.fillText(node.data.name, pt.x - 4, pt.y + 3);
-
-                    }
-
-
-                } 
-                
-	            if(node.data['TYPE'] == 'TEXT')
-	            {
-	                var radius = node.data['size'];
-	               
+	$.getJSON(&quot;https://api.github.com/repos/ammanvedi/seeder/commits&quot;, function (commits){
+		console.log(commits[0]);
+		//.commit.author.name
+		//.commit.author.date
+		//.commit.message
+		//.commit.url
+		//repo.open_issues
+		//
+		var d = new Date(Date.parse(commits[0].commit.author.date));
+		console.log('last commit on ' + d.toDateString() + '&lt;br/&gt; by ' + commits[0].commit.author.name);
+		
 	
-	                ctx.beginPath();
-	                ctx.arc(pt.x, pt.y, radius, 0, 2 * Math.PI, false);
-	                ctx.fillStyle = node.data['color'];
-	                ctx.fill();
-	                ctx.lineWidth = 3;
-	                ctx.strokeStyle = shadeColor(node.data['color'], -20);
-	                ctx.stroke();
-	
-	                ctx.font = '12pt Arial';
-	                ctx.fillStyle = 'black';
-	                ctx.fillText(node.data.name, pt.x - 4, pt.y + 3);
-	            }
-	            
-	            if(node.data['TYPE'] == 'LAYER')
-	            {
-	            	//console.log('layer');
-	                var radius = node.data['size'];
-	                ctx.beginPath();
-	                ctx.arc(pt.x, pt.y, radius, 0, 2 * Math.PI, false);
-	                ctx.fillStyle = node.data['color'];
-	                ctx.fill();
-	                ctx.lineWidth = 8;
-	                ctx.strokeStyle = shadeColor(node.data['color'], -20);
-	                ctx.stroke();
-	                ctx.font = '12pt Arial';
-	                ctx.fillStyle = 'black';
-	                ctx.fillText(node.data.name, pt.x - 4, pt.y + 3);		
-	            }
-            });
-        },
-
-        initMouseHandling: function () {
-            // no-nonsense drag and drop (thanks springy.js)
-            var dragged = null;
-
-            // set up a handler object that will initially listen for mousedowns then
-            // for moves and mouseups while dragging
-            var handler = {
-                clicked: function (e) {
-                    var pos = $(canvas).offset();
-                    _mouseP = arbor.Point(e.pageX - pos.left, e.pageY - pos.top);
-                    dragged = particleSystem.nearest(_mouseP);
-
-                    if (dragged &amp;&amp; dragged.node !== null) {
-                        // while we're dragging, don't let physics move the node
-                        dragged.node.fixed = true;
-                    }
-
-                    $(canvas).bind('mousemove', handler.dragged);
-                    $(window).bind('mouseup', handler.dropped);
-
-                    return false
-                },
-                dragged: function (e) {
-                    var pos = $(canvas).offset();
-                    var s = arbor.Point(e.pageX - pos.left, e.pageY - pos.top);
-
-                    if (dragged &amp;&amp; dragged.node !== null) {
-                        var p = particleSystem.fromScreen(s);
-                        dragged.node.p = p;
-                    }
-
-                    return false;
-                },
-
-                dropped: function (e) {
-                    if (dragged === null || dragged.node === undefined) return;
-                    if (dragged.node !== null) dragged.node.fixed = false;
-                    dragged.node.tempMass = 1000;
-                    dragged = null;
-                    $(canvas).unbind('mousemove', handler.dragged);
-                    $(window).unbind('mouseup', handler.dropped);
-                    _mouseP = null;
-                    return false;
-                }
-            }
-
-            // start listening
-            $(canvas).mousedown(handler.clicked);
-
-        },
-
-    }
-    return that;
-}</code></pre>
+		console.log(commits[0].commit.message);
+		
+		$('#commitheader').text('last commit on ' + d.toDateString() + ' by ' + commits[0].commit.author.name);
+		$('#commitmessage').text('&quot;'+commits[0].commit.message+'&quot;');
+		$('#commitlink').attr('target', '_blank');
+		$('#commitlink').attr('href', commits[0].commit.url);
+	});
+});</code></pre>
         </div>
       </div>
     </div>

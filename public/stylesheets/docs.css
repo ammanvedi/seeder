@@ -1,0 +1,65 @@
+.banner-docs{
+	width: 100%;
+	height: 300px;
+	margin-top: -16px;
+	background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 27%, rgba(0, 0, 0, 0.55) 100%), url(/img/space-banner.jpg);
+	background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 27%, rgba(0, 0, 0, 0.55) 100%), url(/img/space-banner.jpg);
+	background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 27%, rgba(0, 0, 0, 0.55) 100%), url(/img/space-banner.jpg);
+	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 27%, rgba(0, 0, 0, 0.55) 100%), url(/img/space-banner.jpg);
+}
+
+.banner-docs h1{
+	padding-top: 100px;
+	padding-left: 200px;
+	font-size: 80px;
+	color: white;
+	opacity: 0.90;
+
+}
+
+#clearme{
+	
+	width: 100%;
+	height: 10px;
+	clear: both;
+}
+
+
+.banner-docs h2{
+font-weight: lighter;
+margin-top: 40px;
+padding-left: 220px;
+	font-size: 15px;
+	width: 266px;
+	line-height: 20px;
+	color: white;
+	opacity: 0.90;
+
+}
+
+.banner-docs p{
+padding-left: 220px;
+	font-size: 13px;
+	color: white;
+	opacity: 0.90;
+	font-style: italic;
+	width: 200px;
+	margin: 0px;
+	float: left;
+	text-overflow:ellipsis;
+}
+
+#commitlink{
+	width: 100px;
+	height: 40px;
+	float: left;
+	text-decoration: none;
+	opacity: 0.8;
+	color: white;
+}
+
+#commitlink:hover{
+	
+	opacity: 1.0;
+}
+
