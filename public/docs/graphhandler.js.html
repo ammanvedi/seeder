@@ -79,18 +79,12 @@
         <div class="span3 bs-docs-sidebar">
           <ul class="nav nav-list bs-docs-sidenav affix-top">
             <li><a href="index.html">Main</a></li>
-            <li><a href="FileSaver.js.html">FileSaver.js</a></li>
             <li><a href="article_searcher.js.html">article_searcher.js</a></li>
-            <li><a href="bloghandler.js.html">bloghandler.js</a></li>
-            <li><a href="buildtabs.js.html">buildtabs.js</a></li>
-            <li><a href="explorehandler.js.html">explorehandler.js</a></li>
+            <li><a href="blogparser.js.html">blogparser.js</a></li>
             <li class="active"><a href="graphhandler.js.html">graphhandler.js</a></li>
-            <li><a href="help.js.html">help.js</a></li>
-            <li><a href="home.js.html">home.js</a></li>
             <li><a href="note.js.html">note.js</a></li>
             <li><a href="rendergraph.js.html">rendergraph.js</a></li>
             <li><a href="showgraphhandler.js.html">showgraphhandler.js</a></li>
-            <li><a href="socket.io.js.html">socket.io.js</a></li>
           </ul>
           <div class="scrollspy">
             <ul class="nav nav-list bs-docs-sidenav affix-top">
@@ -122,7 +116,7 @@
             <h1>getSaveState</h1>
             <h5 class="subheader"></h5>
             <p>
-              <div class="label label-info radius ctx-type">function</div><span>getSaveState()</span> -><span>null</span>
+              <div class="label label-info radius ctx-type">function</div><span>getSaveState()</span> -><span>Object</span>
             </p>
           </section>
           <table class="table table-bordered table-striped">
@@ -135,18 +129,28 @@
             </thead>
             <tbody>
               <tr>
-                <td>source</td>
-                <td>String</td>
-                <td>source path</td>
+                <td>layercake</td>
+                <td>Object</td>
+                <td>object containing data about each layer</td>
               </tr>
               <tr>
-                <td>options</td>
-                <td>Object</td>
-                <td>option object</td>
+                <td>graphname</td>
+                <td>String</td>
+                <td>desired name of the graph (passed from interface)</td>
+              </tr>
+              <tr>
+                <td>graphdesc</td>
+                <td>String</td>
+                <td>desired description of graph</td>
+              </tr>
+              <tr>
+                <td>publishme</td>
+                <td>boolean</td>
+                <td>represents weather the graph should be published or saved</td>
               </tr>
             </tbody>
           </table>
-          <div class="description"><p>Create an array of all the right files in the source dir</p> </div>
+          <div class="description"><p>generate a object containing graph data as well as metadata needed for saving</p> </div>
           <pre><code class="language-javascript">function getSaveState(layercake, gname, gdesc, publishme){
 
 	
@@ -200,7 +204,7 @@
               <tr>
                 <td>node</td>
                 <td>Object</td>
-                <td>to get data from</td>
+                <td>node to get data from</td>
               </tr>
             </tbody>
           </table>
@@ -228,7 +232,7 @@
             <h1>get_random_color</h1>
             <h5 class="subheader"></h5>
             <p>
-              <div class="label label-info radius ctx-type">function</div><span>get_random_color()</span>
+              <div class="label label-info radius ctx-type">function</div><span>get_random_color()</span> -><span>String</span>
             </p>
           </section>
           <div class="description"><p>generate a random hex color string (#123ABC)</p> </div>
@@ -247,6 +251,22 @@
               <div class="label label-info radius ctx-type">function</div><span>transportSaveState()</span>
             </p>
           </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>savestate</td>
+                <td>Object</td>
+                <td>save state object</td>
+              </tr>
+            </tbody>
+          </table>
           <div class="description"><p>Function to send a generated save state over Web-Socket, and initiate waiting for a server conformation</p> </div>
           <pre><code class="language-javascript">function transportSaveState(ss){
 	
@@ -275,6 +295,22 @@
               <div class="label label-info radius ctx-type">function</div><span>loadLayer()</span>
             </p>
           </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>layertoload</td>
+                <td>String</td>
+                <td>The name of the layer to load in the layer-cake</td>
+              </tr>
+            </tbody>
+          </table>
           <div class="description"><p>Loads a layer from the layer-cake given its name, prunes all nodes from graph and iterates over new nodes to add </p> </div>
           <pre><code class="language-javascript">function loadLayer(layertoload){
     
@@ -309,6 +345,27 @@
               <div class="label label-info radius ctx-type">function</div><span>addLayer()</span>
             </p>
           </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>layername</td>
+                <td>String</td>
+                <td>The name of the layer to add</td>
+              </tr>
+              <tr>
+                <td>layerparent</td>
+                <td>String</td>
+                <td>The name of the intended parent of this layer</td>
+              </tr>
+            </tbody>
+          </table>
           <div class="description"><p>add a layer to the layer-cake</p> </div>
           <pre><code class="language-javascript">function addLayer(layername_, layerparent){
     	layername = layername_ +'0';
@@ -327,6 +384,32 @@
               <div class="label label-info radius ctx-type">function</div><span>createNode()</span>
             </p>
           </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Name</td>
+                <td>String</td>
+                <td>The name of the node to add</td>
+              </tr>
+              <tr>
+                <td>Data</td>
+                <td>Object</td>
+                <td>Attributed data of the node to add</td>
+              </tr>
+              <tr>
+                <td>Layer</td>
+                <td>String</td>
+                <td>Name of the layer, in the cake, to which the node will be added</td>
+              </tr>
+            </tbody>
+          </table>
           <div class="description"><p>add a node to the current layer of the graph </p> </div>
           <pre><code class="language-javascript">function createNode(name, data, layer)
     {
@@ -353,6 +436,32 @@
               <div class="label label-info radius ctx-type">function</div><span>createEdge()</span>
             </p>
           </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>from</td>
+                <td>String</td>
+                <td>name of the source node</td>
+              </tr>
+              <tr>
+                <td>to</td>
+                <td>String</td>
+                <td>name of the destination node </td>
+              </tr>
+              <tr>
+                <td>layer</td>
+                <td>String</td>
+                <td>Name of the layer, in the cake, to which the edge will be added</td>
+              </tr>
+            </tbody>
+          </table>
           <div class="description"><p>add a edge to the current layer of the graph </p> </div>
           <pre><code class="language-javascript">function createEdge(from, to, layer)
     {
@@ -366,7 +475,7 @@
             <h1>updateEditNodePrefs</h1>
             <h5 class="subheader"></h5>
             <p>
-              <div class="label label-info radius ctx-type">function</div><span>updateEditNodePrefs()</span>
+              <div class="label label-info radius ctx-type">function</div><span>updateEditNodePrefs()</span> -><span>Object</span>
             </p>
           </section>
           <div class="description"><p>generates a node data attribute object from the values entered into the edit node panel</p> </div>

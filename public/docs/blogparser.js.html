@@ -80,8 +80,7 @@
           <ul class="nav nav-list bs-docs-sidenav affix-top">
             <li><a href="index.html">Main</a></li>
             <li><a href="article_searcher.js.html">article_searcher.js</a></li>
-            <li><a href="blogparser.js.html">blogparser.js</a></li>
-            <li class="active"><a href="explorehandler.js.html">explorehandler.js</a></li>
+            <li class="active"><a href="blogparser.js.html">blogparser.js</a></li>
             <li><a href="graphhandler.js.html">graphhandler.js</a></li>
             <li><a href="note.js.html">note.js</a></li>
             <li><a href="rendergraph.js.html">rendergraph.js</a></li>
@@ -89,21 +88,70 @@
           </ul>
           <div class="scrollspy">
             <ul class="nav nav-list bs-docs-sidenav affix-top">
+              <li><a href="#generateBlogPosts"><i class="alert alert-info"></i>generateBlogPosts</a>
+              </li>
             </ul>
           </div>
         </div>
         <div class="span9">
+          <section id="generateBlogPosts">
+            <h1>generateBlogPosts</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">function</div><span>generateBlogPosts()</span>
+            </p>
+          </section>
           <div class="description"> </div>
-          <pre><code class="language-javascript">$(document).ready(function() {
+          <pre><code class="language-javascript">function generateBlogPosts(posts){
+	// passed a javascript object of posts
+		//posts[x]
+			//post[x]
+				//type
+				//data
+			//title
+			//date 
+			//author
+	var container = $('.postcontainer');
+	
+	console.log('running');
+	
+	posts.forEach(function (postdataarray){
+	
+	
+	var postouter = $('&lt;div class=&quot;ui piled purple segment&quot;&gt;&lt;/div&gt;');
+	var postdata = $('&lt;div class=&quot;postdata&quot;&gt;&lt;/div&gt;');
+	
+	postdata.append('&lt;h2 &gt;' + postdataarray.title +'&lt;/h2&gt;');
+	postdata.append('&lt;img class=&quot;ui mini right floated image&quot; src=&quot;https://0.gravatar.com/avatar/4a373cf3edb4c83ae97249e6e5ef19d4?d=https%3A%2F%2Fidenticons.github.com%2F7ec612f35a07b9a83f2f7086d152decb.png&amp;r=x&amp;s=460&quot;&gt;&lt;/img&gt;');
+	postdata.append('&lt;div id=&quot;clear&quot;&gt;&lt;/div&gt;');
+	postdata.append('&lt;h3&gt;by ' + postdataarray.author + ' on ' + postdataarray.date + '&lt;/h3&gt;');
+	
+	
+		console.log('new el');
+		postdataarray.post.forEach(function (partialpost){
+			if(partialpost.type == 'text'){
+			console.log('textpost');
+			postdata.append('&lt;p&gt;' + partialpost.data +'&lt;/p&gt;');
+			}
+			if(partialpost.type == 'image'){
+			console.log('imgpost');
+			var postimg = $('&lt;div class=&quot;postimage&quot;&gt;&lt;/div&gt;')
+			postimg.append('&lt;img src=&quot;'+ partialpost.data +'&quot;&gt;&lt;/img&gt;&lt;p&gt;' + partialpost.subtitle + '&lt;/p&gt;');
+			postdata.append(postimg)
+			}
+		});
+
+	postouter.append(postdata);
+	postouter.append('&lt;div class=&quot;btn_readmore ui fluid basic button&quot;&gt;&lt;i class=&quot;icon add&quot;&gt;&lt;/i&gt;Read More &lt;/div&gt;');
+	
+	
+	container.append(postouter);
+	
+	});
 
 
 
-var  MainSidebarExplore = $('.ui.sidebar');
-
-//MainSidebarExplore.sidebar('toggle');
-MainSidebarExplore.sidebar('attach events','#sidebar-toggle' , 'toggle');
-
-});</code></pre>
+}</code></pre>
         </div>
       </div>
     </div>

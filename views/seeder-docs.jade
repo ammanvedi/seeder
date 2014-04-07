@@ -1,11 +1,17 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width" charset="utf-8">
-    <title>SeederDocs</title>
-    <link rel="stylesheet" href="/stylesheets/doc_bs/full_bs.css">
-    <link rel="stylesheet" href="/javascripts/semantic/packaged/css/semantic.min.css">
-    <style>
+mixin iForSymbolType(symbol)
+  i(class=["alert", "alert-"+(symbol.type === "function" || symbol.type === "method" ? "info":"success")])
+
+mixin labelForSymbolType(symbol)
+  div(class=["label", "label-"+(symbol.gtype === "function" || symbol.gtype === "method" ? "info":"success"), "radius", "ctx-type"])= symbol.ctx.type
+
+doctype html
+html
+  head
+    meta(name='viewport', content='width=device-width', charset='utf-8')
+    title= title
+    link(rel="stylesheet", href="/stylesheets/doc_bs/full_bs.css")
+    link(rel='stylesheet', href='/javascripts/semantic/packaged/css/semantic.min.css')
+    style.
       body > .navbar .brand {
         float:left;
         text-shadow: rgba(255, 255, 255, 0.0980392) 0px 1px 0px, rgba(255, 255, 255, 0.4) 0px 0px 30px;
@@ -28,7 +34,7 @@
        overflow: hidden;
        overflow-y: scroll;
       }
-      
+
       .bs-docs-sidenav i{
         width: 8px;
         height: 8px;
@@ -37,12 +43,12 @@
         display: inline-block;
         margin-right:0.5em;
       }
-      
+
       .bs-docs-sidenav > li:first-child > a {
         border-top-right-radius: 6px;
         border-top-left-radius: 6px;
       }
-      
+
       code[class*="language-"],pre[class*="language-"]{color:black;text-shadow:0 1px white;font-family:Consolas,Monaco,'Andale Mono',monospace;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*="language-"]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*="language-"],pre[class*="language-"]{background:#f5f2f0}:not(pre)>code[class*="language-"]{padding:.1em;border-radius:.3em}.token.comment,.token.prolog,.token.doctype,.token.cdata{color:slategray}.token.punctuation{color:#999}.namespace{opacity:.7}.token.property,.token.tag,.token.boolean,.token.number{color:#905}.token.selector,.token.attr-name,.token.string{color:#690}.token.operator,.token.entity,.token.url,.language-css .token.string,.style .token.string{color:#a67f59;background:hsla(0,0%,100%,.5)}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.regex,.token.important{color:#e90}.token.important{font-weight:bold}.token.entity{cursor:help}
       div.description {margin: 14px 0; padding-top: 14px; border-bottom:1px solid #eee; }
       .tags {}
@@ -51,78 +57,143 @@
         margin-right:0.5em;
         //- float:right; margin-top:8px
       }
-      
+
       footer iframe{vertical-align:middle;}
-      
-    </style>
-  </head>
-  <body data-spy="scroll" data-target=".scrollspy">
-    <div class="ui menu purple inverted">
-      <ai id="sidebar-toggle" class="item"><i class="reorder icon"></i></ai><a href="/" class="item purple active"><i class="leaf icon"></i><img src="/img/logo-small.png"></a><a href="/explore" class="item"><i class="map icon"></i>Explore</a><a href="/build" class="item"><i class="wrench icon"></i>Build</a>
-      <div class="ui simple dropdown item">More<i class="dropdown icon"></i>
-        <div class="menu"><a href="/blog" class="item"><i class="book icon"></i>Blog</a><a href="/help" class="itema item"><i class="help icon"></i>Help</a></div>
-      </div>
-      <div class="right compact menu">
-        <div class="ui simple dropdown item"><i class="user icon"></i>Me<i class="dropdown icon"></i>
-          <div class="menu"><a class="item"><i class="bolt icon"></i>My Profile</a><a class="item"><i class="lightbulb icon"></i>My Graphs</a><a class="item"><i class="settings icon"></i>Settings</a><a href="/auth/google" class="item"><i class="sign in icon"></i>Sign In</a></div>
-        </div>
-      </div>
-    </div>
-    <header id="overview" class="jumbotron subhead">
-      <div class="container">
-        <h1>SeederDocs</h1>
-        <p class="lead"></p>
-      </div>
-    </header>
-    <div class="container">
-      <div class="row">
-        <div class="span3 bs-docs-sidebar">
-          <ul class="nav nav-list bs-docs-sidenav affix-top">
-            <li><a href="index.html">Main</a></li>
-            <li><a href="article_searcher.js.html">article_searcher.js</a></li>
-            <li><a href="blogparser.js.html">blogparser.js</a></li>
-            <li class="active"><a href="explorehandler.js.html">explorehandler.js</a></li>
-            <li><a href="graphhandler.js.html">graphhandler.js</a></li>
-            <li><a href="note.js.html">note.js</a></li>
-            <li><a href="rendergraph.js.html">rendergraph.js</a></li>
-            <li><a href="showgraphhandler.js.html">showgraphhandler.js</a></li>
-          </ul>
-          <div class="scrollspy">
-            <ul class="nav nav-list bs-docs-sidenav affix-top">
-            </ul>
-          </div>
-        </div>
-        <div class="span9">
-          <div class="description"> </div>
-          <pre><code class="language-javascript">$(document).ready(function() {
+
+  body(data-spy="scroll", data-target=".scrollspy")
+    .ui.menu.purple.inverted
+        ai#sidebar-toggle.item
+            i.reorder.icon
+        a.item.purple.active(href="/")
+            i.leaf.icon
+            img(src="/img/logo-small.png")
+        a.item(href="/explore")
+            i.map.icon
+            | Explore
+        a.item(href="/build")
+            i.wrench.icon
+            | Build
+        .ui.simple.dropdown.item
+            |More
+            i.dropdown.icon
+            .menu
+                a.item(href="/blog")
+                    i.book.icon
+                    |Blog
+                a.itema.item(href="/help")
+                    i.help.icon
+                    |Help
+        .right.compact.menu
+            .ui.simple.dropdown.item
+                i.user.icon
+                |Me
+                i.dropdown.icon
+                .menu
+                    a.item
+                        i.bolt.icon
+                        |My Profile
+                    a.item
+                        i.lightbulb.icon
+                        |My Graphs
+                    a.item
+                        i.settings.icon
+                        |Settings
+                    a.item(href="/auth/google")
+                        i.sign.in.icon
+                        |Sign In
 
 
+    header.jumbotron.subhead#overview
+      div.container
+        h1= title
+        p.lead
 
-var  MainSidebarExplore = $('.ui.sidebar');
+    .container
+      .row
+        .span3.bs-docs-sidebar
+          ul.nav.nav-list.bs-docs-sidenav.affix-top
+            each file in files
+              li(class=(file.name !== currentName ? "":"active"))
+                a(href=file.relName) #{file.name}
 
-//MainSidebarExplore.sidebar('toggle');
-MainSidebarExplore.sidebar('attach events','#sidebar-toggle' , 'toggle');
+          .scrollspy
+            ul.nav.nav-list.bs-docs-sidenav.affix-top
+              each symbol in symbols
+                li
+                  if name === currentName
+                    a(href='#'+symbol.name)
+                      mixin iForSymbolType(symbol) | #{symbol.name}
+                  else
+                    a(href=symbol.targetFile+'#'+symbol.name)
+                      mixin iForSymbolType(symbol) | #{symbol.name}
 
-});</code></pre>
-        </div>
-      </div>
-    </div>
-    <footer class="footer">
-      <div class="container">
-        <p>Documentation generated with <a href="https://github.com/FGRibreau/doxx">Doxx </a>created by <a href="https://twitter.com/FGRibreau" data-show-count="false" class="twitter-follow-button">Francois-Guillaume Ribreau</a></p>
-        <p>Doxx is sponsored by <a href="http://bringr.net/?btt" title="Outil d'analyse des réseaux sociaux" class="bringr">Bringr </a>and <a href="https://redsmin.com/?btt" title="Full Redis GUI" class="redsmin">Redsmin</a></p>
-        <p>Theme borrowed from Twitter Bootstrap</p>
-      </div>
-    </footer>
-    <script src="http://platform.twitter.com/widgets.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
-    <script src="http://leaverou.github.com/prefixfree/prefixfree.js"></script>
-    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-transition.js"></script>
-    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-scrollspy.js"></script>
-    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-dropdown.js"></script>
-    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-collapse.js"></script>
-    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-affix.js"></script>
-    <script>
+        .span9
+          if locals.readme
+            section(id=name) !{readme}
+          each symbol in dox
+            if symbol.ctx.name
+              section(id=symbol.ctx.name)
+                  h1= symbol.ctx.name
+                  h5.subheader
+                  if !symbol.gtype && symbol.type
+                    p
+                      div(class=["label", "label-inverse", "radius", "ctx-type"])= symbol.type
+                  else
+                    p
+                      mixin labelForSymbolType(symbol)
+                      if symbol.ctx.string
+                        span= symbol.ctx.string
+                      if symbol.return
+                        |  ->
+                        span= symbol.return
+
+            if symbol.hasParams
+              table.table.table-bordered.table-striped
+                thead
+                  tr
+                    th(style="width:20%") Option name
+                    th(style="width:20%") Type
+                    th Description
+                tbody
+                  each tag in symbol.tags
+                    if tag.type == 'param'
+                      tr
+                        td= tag.name
+                        td= tag.types
+                        td= tag.description
+
+            .description !{symbol.description.full} !{symbol.description.extra}
+            if symbol.code
+              pre
+                code.language-javascript
+                  = symbol.code
+            if symbol.jsfiddle
+              h5 jsFiddle
+              p
+                iframe(width="100%", height="300", src=symbol.jsfiddle , allowfullscreen="allowfullscreen", frameborder="0")
+
+    footer.footer
+      div.container
+        p Documentation generated with 
+          a(href="https://github.com/FGRibreau/doxx") Doxx 
+          | created by 
+          a.twitter-follow-button(href='https://twitter.com/FGRibreau',data-show-count='false') Francois-Guillaume Ribreau
+        p Doxx is sponsored by 
+          a.bringr(href='http://bringr.net/?btt', title="Outil d'analyse des réseaux sociaux") Bringr 
+          | and 
+          a.redsmin(href='https://redsmin.com/?btt', title="Full Redis GUI") Redsmin
+        p Theme borrowed from Twitter Bootstrap
+
+    script(src="http://platform.twitter.com/widgets.js")
+    script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js")
+    script(src="http://leaverou.github.com/prefixfree/prefixfree.js")
+    script(src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-transition.js")
+    script(src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-scrollspy.js")
+    script(src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-dropdown.js")
+    script(src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-collapse.js")
+    script(src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-affix.js")
+
+    script.
       /**
        * Prism: Lightweight, robust, elegant syntax highlighting
        * MIT license http://www.opensource.org/licenses/mit-license.php/
@@ -132,10 +203,9 @@ MainSidebarExplore.sidebar('attach events','#sidebar-toggle' , 'toggle');
       Prism.languages.css={comment:/\/\*[\w\W]*?\*\//g,atrule:/@[\w-]+?(\s+[^;{]+)?(?=\s*{|\s*;)/gi,url:/url\((["']?).*?\1\)/gi,selector:/[^\{\}\s][^\{\}]*(?=\s*\{)/g,property:/(\b|\B)[a-z-]+(?=\s*:)/ig,string:/("|')(\\?.)*?\1/g,important:/\B!important\b/gi,ignore:/&(lt|gt|amp);/gi,punctuation:/[\{\};:]/g};Prism.languages.markup&&Prism.languages.insertBefore("markup","tag",{style:{pattern:/(&lt;|<)style[\w\W]*?(>|&gt;)[\w\W]*?(&lt;|<)\/style(>|&gt;)/ig,inside:{tag:{pattern:/(&lt;|<)style[\w\W]*?(>|&gt;)|(&lt;|<)\/style(>|&gt;)/ig,inside:Prism.languages.markup.tag.inside},rest:Prism.languages.css}}});;
       Prism.languages.clike={comment:{pattern:/(^|[^\\])(\/\*[\w\W]*?\*\/|\/\/.*?(\r?\n|$))/g,lookbehind:!0},string:/("|')(\\?.)*?\1/g,keyword:/\b(if|else|while|do|for|return|in|instanceof|function|new|try|catch|finally|null|break|continue)\b/g,"boolean":/\b(true|false)\b/g,number:/\b-?(0x)?\d*\.?[\da-f]+\b/g,operator:/[-+]{1,2}|!|=?&lt;|=?&gt;|={1,2}|(&amp;){1,2}|\|?\||\?|\*|\//g,ignore:/&(lt|gt|amp);/gi,punctuation:/[{}[\];(),.:]/g};;
       Prism.languages.javascript=Prism.languages.extend("clike",{keyword:/\b(var|let|if|else|while|do|for|return|in|instanceof|function|new|with|typeof|try|catch|finally|null|break|continue)\b/g,number:/\b(-?(0x)?\d*\.?[\da-f]+|NaN|-?Infinity)\b/g});Prism.languages.insertBefore("javascript","keyword",{regex:{pattern:/(^|[^/])\/(?!\/)(\[.+?]|\\.|[^/\r\n])+\/[gim]{0,3}(?=\s*($|[\r\n,.;})]))/g,lookbehind:!0}});Prism.languages.markup&&Prism.languages.insertBefore("markup","tag",{script:{pattern:/(&lt;|<)script[\w\W]*?(>|&gt;)[\w\W]*?(&lt;|<)\/script(>|&gt;)/ig,inside:{tag:{pattern:/(&lt;|<)script[\w\W]*?(>|&gt;)|(&lt;|<)\/script(>|&gt;)/ig,inside:Prism.languages.markup.tag.inside},rest:Prism.languages.javascript}}});;
-      
-    </script>
-    <!-- App js-->
-    <script>
+
+    // App js
+    script.
       $(function(){
         var $window = $(window);
         $('.scrollspy .nav').affix({
@@ -145,6 +215,3 @@ MainSidebarExplore.sidebar('attach events','#sidebar-toggle' , 'toggle');
           }
         });
       })
-    </script>
-  </body>
-</html>

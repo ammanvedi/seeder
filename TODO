@@ -1,3 +1,5 @@
+COURSE REQ 
+
 --> Front page with product features
 --> SDK/collaboration opportunities for further development
 --> video of final product
@@ -10,16 +12,30 @@
 --> testing and evaluation of the product solution
 --> system manual and user manual
 	- system manual has been generated with doxx 
-		RUN  : doxx -t SeederDocs -i arbor,jquery-ui,semantic,mendeley --source public/javascripts --target public/docs -e html
+		RUN  : doxx -t SeederDocs -i arbor,jquery-ui,semantic,mendeley,help.js,socket.io.js,FileSaver.js,buildtabs.js,bloghandler.js,home.js --source public/javascripts --target public/docs -e html
 --> community forum
 
+PROJECT REQ
+
 --> create more example graphs 
+--> edit node requires some bug fixes
+--> add login to all pages 
+--> add updating of views and liking mechanism to view page
+--> allow users to create their own version of a graph accessed through explore/view 
+--> finalise homepage 
+	- add sign up sign in
 
-New Additions / Changelog 6 APR 2014
+CHANGELOGS
 
-- added full code documentation to /docs
-- added graph view interface
-- styled the explore page
-- added google account authorisation 
-- added architectural diagrams to docs/github readme
-- created a temporary domain that redirects to the webserver (http://ammanvedi.github.io/seederio)
+
+	6 APR 2014
+
+	- added full code documentation to /docs
+	- added graph view interface linked to explore
+		- view a graph by clicking its name in explore 
+	- styled the explore page
+	- added google account authorisation 
+	- added architectural diagrams to docs/github readme
+	- created a temporary domain that redirects to the webserver (http://ammanvedi.github.io/seederio)
+	- implemented layering of graphs
+	- got early access to mendeley API, working with their devs to allow access from our webapp

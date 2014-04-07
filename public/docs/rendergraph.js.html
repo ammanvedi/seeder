@@ -79,22 +79,18 @@
         <div class="span3 bs-docs-sidebar">
           <ul class="nav nav-list bs-docs-sidenav affix-top">
             <li><a href="index.html">Main</a></li>
-            <li><a href="FileSaver.js.html">FileSaver.js</a></li>
             <li><a href="article_searcher.js.html">article_searcher.js</a></li>
-            <li><a href="bloghandler.js.html">bloghandler.js</a></li>
-            <li><a href="buildtabs.js.html">buildtabs.js</a></li>
-            <li><a href="explorehandler.js.html">explorehandler.js</a></li>
+            <li><a href="blogparser.js.html">blogparser.js</a></li>
             <li><a href="graphhandler.js.html">graphhandler.js</a></li>
-            <li><a href="help.js.html">help.js</a></li>
-            <li><a href="home.js.html">home.js</a></li>
             <li><a href="note.js.html">note.js</a></li>
             <li class="active"><a href="rendergraph.js.html">rendergraph.js</a></li>
             <li><a href="showgraphhandler.js.html">showgraphhandler.js</a></li>
-            <li><a href="socket.io.js.html">socket.io.js</a></li>
           </ul>
           <div class="scrollspy">
             <ul class="nav nav-list bs-docs-sidenav affix-top">
               <li><a href="#shadeColor"><i class="alert alert-info"></i>shadeColor</a>
+              </li>
+              <li><a href="#Renderer"><i class="alert alert-info"></i>Renderer</a>
               </li>
             </ul>
           </div>
@@ -107,7 +103,28 @@
               <div class="label label-info radius ctx-type">function</div><span>shadeColor()</span>
             </p>
           </section>
-          <div class="description"> </div>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>color</td>
+                <td>String</td>
+                <td>The initial color to start with </td>
+              </tr>
+              <tr>
+                <td>percent</td>
+                <td>int</td>
+                <td>the percent to brighten or darken by</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>generate a object containing graph data as well as metadata needed for saving</p> </div>
           <pre><code class="language-javascript">function shadeColor(color, percent) {
 
     var R = parseInt(color.substring(1,3),16);
@@ -127,10 +144,32 @@
     var BB = ((B.toString(16).length==1)?&quot;0&quot;+B.toString(16):B.toString(16));
 
     return &quot;#&quot;+RR+GG+BB;
-}
-
-
-var Renderer = function (canvas) {
+}</code></pre>
+          <section id="Renderer">
+            <h1>Renderer</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">function</div><span>Renderer()</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Canvas</td>
+                <td>DOM</td>
+                <td>Object} canvas The canvas object inside the page DOM that the renderer should draw to</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>The main renderer for the graph drawing system </p> </div>
+          <pre><code class="language-javascript">var Renderer = function (canvas) {
     var canvas = $(canvas).get(0);
     var ctx = canvas.getContext(&quot;2d&quot;);
     var particleSystem;

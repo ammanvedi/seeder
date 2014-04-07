@@ -1,3 +1,9 @@
+/**
+ * Note is a module written to handle the display of simple notifications to the user while they are using the seeder build interface
+ * @param {String} domcontext the class name or id of the div to add the note to (eg "#container")
+ * @param {Object} options {w: int, h: int, title: string, subtext: string} 
+ */
+
 function note(domcontext, opts){
 	console.log(domcontext);
 	clearnotes();
@@ -23,6 +29,10 @@ function note(domcontext, opts){
 		clearnotes();
 	});
 }
+
+/**
+ * Clear (fadeout) the note that is being displayed currently, to make way for a new note
+ */
 
 function clearnotes(){
 	//remove all notes from the dom tree

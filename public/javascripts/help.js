@@ -1,3 +1,7 @@
+/*!
+*
+*/
+
 
 $(document).ready(function() {
 var  MainSidebarhelp = $('.ui.sidebar');

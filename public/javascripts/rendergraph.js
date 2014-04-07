@@ -1,3 +1,9 @@
+/**
+ * generate a object containing graph data as well as metadata needed for saving
+ * @param {String} color The initial color to start with 
+ * @param {int} percent the percent to brighten or darken by
+ */
+
 function shadeColor(color, percent) {
 
     var R = parseInt(color.substring(1,3),16);
@@ -19,6 +25,10 @@ function shadeColor(color, percent) {
     return "#"+RR+GG+BB;
 }
 
+/**
+ * The main renderer for the graph drawing system 
+ * @param {DOM Canvas Object} canvas The canvas object inside the page DOM that the renderer should draw to
+ */
 
 var Renderer = function (canvas) {
     var canvas = $(canvas).get(0);

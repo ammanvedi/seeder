@@ -79,22 +79,18 @@
         <div class="span3 bs-docs-sidebar">
           <ul class="nav nav-list bs-docs-sidenav affix-top">
             <li><a href="index.html">Main</a></li>
-            <li><a href="FileSaver.js.html">FileSaver.js</a></li>
             <li><a href="article_searcher.js.html">article_searcher.js</a></li>
-            <li><a href="bloghandler.js.html">bloghandler.js</a></li>
-            <li><a href="buildtabs.js.html">buildtabs.js</a></li>
-            <li><a href="explorehandler.js.html">explorehandler.js</a></li>
+            <li><a href="blogparser.js.html">blogparser.js</a></li>
             <li><a href="graphhandler.js.html">graphhandler.js</a></li>
-            <li><a href="help.js.html">help.js</a></li>
-            <li><a href="home.js.html">home.js</a></li>
             <li class="active"><a href="note.js.html">note.js</a></li>
             <li><a href="rendergraph.js.html">rendergraph.js</a></li>
             <li><a href="showgraphhandler.js.html">showgraphhandler.js</a></li>
-            <li><a href="socket.io.js.html">socket.io.js</a></li>
           </ul>
           <div class="scrollspy">
             <ul class="nav nav-list bs-docs-sidenav affix-top">
               <li><a href="#note"><i class="alert alert-info"></i>note</a>
+              </li>
+              <li><a href="#clearnotes"><i class="alert alert-info"></i>clearnotes</a>
               </li>
             </ul>
           </div>
@@ -107,7 +103,28 @@
               <div class="label label-info radius ctx-type">function</div><span>note()</span>
             </p>
           </section>
-          <div class="description"> </div>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>domcontext</td>
+                <td>String</td>
+                <td>the class name or id of the div to add the note to (eg &quot;#container&quot;)</td>
+              </tr>
+              <tr>
+                <td>options</td>
+                <td>Object</td>
+                <td>{w: int, h: int, title: string, subtext: string}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Note is a module written to handle the display of simple notifications to the user while they are using the seeder build interface</p> </div>
           <pre><code class="language-javascript">function note(domcontext, opts){
 	console.log(domcontext);
 	clearnotes();
@@ -132,9 +149,16 @@
 	$('#hidenote').click(function (a){
 		clearnotes();
 	});
-}
-
-function clearnotes(){
+}</code></pre>
+          <section id="clearnotes">
+            <h1>clearnotes</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">function</div><span>clearnotes()</span>
+            </p>
+          </section>
+          <div class="description"><p>Clear (fadeout) the note that is being displayed currently, to make way for a new note</p> </div>
+          <pre><code class="language-javascript">function clearnotes(){
 	//remove all notes from the dom tree
 	$('.note').fadeOut( 1500 , function (){
 			this.remove();

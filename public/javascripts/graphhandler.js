@@ -11,10 +11,12 @@ var waiting_publish_confirm = false;
 // so it can be saved to the database
 
 /**
- * Create an array of all the right files in the source dir
- * @param  {String}   source source path
- * @param  {Object}   options option object
- * @return {null}
+ * generate a object containing graph data as well as metadata needed for saving
+ * @param {Object} layercake object containing data about each layer
+ * @param {String} graphname desired name of the graph (passed from interface)
+ * @param {String} graphdesc desired description of graph
+ * @param {boolean} publishme represents weather the graph should be published or saved
+ * @return {Object} savestate returns the save state object ready for passing to database
  */
   
 function getSaveState(layercake, gname, gdesc, publishme){
@@ -572,7 +574,7 @@ $(document).ready(function () {
 
 /**
  * This function grabs editable data from a node and displays its current value in the edit panel
- * @param      {Object} node to get data from
+ * @param {Object} node node to get data from
  */
 
 
@@ -597,7 +599,7 @@ $(document).ready(function () {
     //for generating debug graphs, retrieve a random hex color code
     /**
      * generate a random hex color string (#123ABC)
-     * @return		{String} The randomly generated hex color reference
+     * @return {String} The randomly generated hex color reference
      */
     function get_random_color() {
         var letters = '0123456789ABCDEF'.split('');
@@ -633,7 +635,7 @@ $(document).ready(function () {
 
 	/**
 	 * Function to send a generated save state over Web-Socket, and initiate waiting for a server conformation
-	 * @param		{Object} save state object
+	 * @param {Object} savestate save state object
 	 */
 	function transportSaveState(ss){
 	
@@ -662,7 +664,7 @@ $(document).ready(function () {
 
 	/**
 	 * Loads a layer from the layer-cake given its name, prunes all nodes from graph and iterates over new nodes to add 
-	 * @param		{String} The name of the layer to load in the layer-cake
+	 * @param {String} layertoload The name of the layer to load in the layer-cake
 	 */
     function loadLayer(layertoload){
     
@@ -693,8 +695,8 @@ $(document).ready(function () {
     
     /**
      * add a layer to the layer-cake
-     * @param		{String} The name of the layer to add
-     * @param		{String} The name of the intended parent of this layer
+     * @param {String} layername The name of the layer to add
+     * @param {String} layerparent The name of the intended parent of this layer
      */
     function addLayer(layername_, layerparent){
     	layername = layername_ +'0';
@@ -709,9 +711,9 @@ $(document).ready(function () {
 
     /**
      * add a node to the current layer of the graph 
-     * @param		{String} The name of the node to add
-     * @param		{Object} Attributed data of the node to add
-     * @param		{String} Name of the layer, in the cake, to which the node will be added 
+     * @param {String} Name The name of the node to add
+     * @param {Object} Data Attributed data of the node to add
+     * @param {String} Layer Name of the layer, in the cake, to which the node will be added 
      */
     function createNode(name, data, layer)
     {
@@ -734,9 +736,9 @@ $(document).ready(function () {
     
     /**
      * add a edge to the current layer of the graph 
-     * @param		{String} name of the source node
-     * @param		{String} name of the destination node 
-     * @param		{String} Name of the layer, in the cake, to which the edge will be added 
+     * @param {String} from name of the source node
+     * @param {String} to name of the destination node 
+     * @param {String} layer Name of the layer, in the cake, to which the edge will be added 
      */
     function createEdge(from, to, layer)
     {
@@ -854,7 +856,7 @@ $(document).ready(function () {
     
     /**
      * generates a node data attribute object from the values entered into the edit node panel
-     * @return		{Object} the attribute object, or -1 if data entered is invalid
+     * @return {Object} the attribute object, or -1 if data entered is invalid
      */
 	function updateEditNodePrefs(){
 	

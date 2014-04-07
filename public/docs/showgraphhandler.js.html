@@ -79,18 +79,12 @@
         <div class="span3 bs-docs-sidebar">
           <ul class="nav nav-list bs-docs-sidenav affix-top">
             <li><a href="index.html">Main</a></li>
-            <li><a href="FileSaver.js.html">FileSaver.js</a></li>
             <li><a href="article_searcher.js.html">article_searcher.js</a></li>
-            <li><a href="bloghandler.js.html">bloghandler.js</a></li>
-            <li><a href="buildtabs.js.html">buildtabs.js</a></li>
-            <li><a href="explorehandler.js.html">explorehandler.js</a></li>
+            <li><a href="blogparser.js.html">blogparser.js</a></li>
             <li><a href="graphhandler.js.html">graphhandler.js</a></li>
-            <li><a href="help.js.html">help.js</a></li>
-            <li><a href="home.js.html">home.js</a></li>
             <li><a href="note.js.html">note.js</a></li>
             <li><a href="rendergraph.js.html">rendergraph.js</a></li>
             <li class="active"><a href="showgraphhandler.js.html">showgraphhandler.js</a></li>
-            <li><a href="socket.io.js.html">socket.io.js</a></li>
           </ul>
           <div class="scrollspy">
             <ul class="nav nav-list bs-docs-sidenav affix-top">
@@ -100,6 +94,10 @@
         <div class="span9">
           <div class="description"> </div>
           <pre><code class="language-javascript">$(document).ready(function () {
+$('#info_title').attr(&quot;target&quot;, &quot;_blank&quot;);
+var  MainSidebarhelp = $('.ui.sidebar');
+MainSidebarhelp.sidebar('toggle');
+MainSidebarhelp.sidebar('attach events','#sidebar-toggle' , 'toggle');
 
 
     var testgraphdata = graphstring;
@@ -118,6 +116,35 @@
 
 
     loadLayer('root');
+    
+    $('body').mousemove(function (e) {
+        
+var mouse = {
+    x: e.pageX - 270,
+    y: e.pageY - 50
+};
+
+    
+            nearestmouse = sys.nearest(mouse);
+    
+            if (nearestmouse) {
+            //console.log(nearestmouse);
+    
+                if (nearestmouse.node.data['TYPE'] == 'ARTICLE') {
+                    nearestmouse.node.data['NEAREST'] = true;
+                    $('#info_title').text(nearestmouse.node.data['TITLE']);
+                    $('#info_domain').text(nearestmouse.node.data['DOMAIN']);
+                    $('#info_description').text(nearestmouse.node.data['DESCRIPTION']);
+                    $('#info_image').attr(&quot;src&quot;, nearestmouse.node.data['IMAGE']);
+                    $('#info_title').attr(&quot;href&quot;, nearestmouse.node.data['URL']);
+                    //console.log(nearestmouse.node);
+                } else {
+                    //console.log('id is : ' + nearestmouse.node.name);
+    
+                }
+    
+            }
+         });
 
     $('#view_canvas').dblclick(function (a) {
 
