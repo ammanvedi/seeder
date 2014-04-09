@@ -46,7 +46,9 @@ padding-left: 220px;
 	width: 200px;
 	margin: 0px;
 	float: left;
-	text-overflow:ellipsis;
+	text-overflow:clip ellipsis;
+	overflow: hidden;
+	max-height: 50px;
 }
 
 #commitlink{
@@ -57,6 +59,8 @@ padding-left: 220px;
 	opacity: 0.8;
 	color: white;
 }
+
+
 
 #commitlink:hover{
 	

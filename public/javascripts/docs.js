@@ -15,7 +15,13 @@ $(document).ready( function() {
 		console.log(commits[0]);
 		
 		$('#commitheader').text('last commit on ' + d.toDateString() + ' by ' + commits[0].commit.author.name);
+		if(commits[0].commit.message.length < 70){
 		$('#commitmessage').text('"'+commits[0].commit.message+'"');
+		}
+		else if(commits[0].commit.message.length > 70){
+		$('#commitmessage').text('"'+commits[0].commit.message.substring(0,70)+'..."');
+		}
+				
 		$('#commitlink').attr('target', '_blank');
 		$('#commitlink').attr('href', commits[0].html_url);
 	});
