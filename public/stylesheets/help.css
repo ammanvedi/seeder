@@ -25,6 +25,24 @@
 	height: 200px;
 }
 
+#sourcebutton{
+	
+
+width: 170px;
+margin-top: 15px;
+margin-left: 50px;
+
+}
+
+.help-menu-header img{
+	
+	opacity: 0.9;
+	width: 170px;
+	display: block;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+
 .listheader{
 	
 	width: 100%;
@@ -38,10 +56,8 @@
 	margin-top: 20px;;
 }
 
-
-
 .listitem{
-	width: 100%;
+	width: 200px;
 	height: auto;
 	font-size: 13px;
 	text-align: left;
@@ -55,7 +71,12 @@
 	opacity: 0.8;
 	transition:0.25s;
 	border-left: 3px solid #262E32;
+	margin-right: 100px;
+	display: inline-block;
 }
+
+
+
 #docs h2{
 	
 	opacity: 0.8;

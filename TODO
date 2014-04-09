@@ -42,3 +42,14 @@ CHANGELOGS
 	- fixed edit node, improved renderer
 	- improved graph data storage logic
 		- each node maintains an id for its lifetime, uses data.name property for drawing and node.name/node.data.nodeid for reference 
+
+	9 APR 2014
+	
+	- added grunt build config to site (halved size of data transfer of build page)
+		- added code quality checks
+		- added css minification
+		- added javascript minification
+	- enabled gzip compression of items 
+	- fixed ui error on blog
+	- linked help pages to documentation
+	- tested google auth on account other than my own

@@ -55,6 +55,10 @@ html(lang="en")
 							
 				#help-sidebar.ui.styled.floating.sidebar
 					.help-menu-header
+						img(src="/img/open-source.png" width="200")
+						a.ui.small.teal.button#sourcebutton(href="/docs")
+							i.code.icon
+							|view source!
 					.ui.inverted.divider
 					.listheader
 						|Getting Started
@@ -67,15 +71,15 @@ html(lang="en")
 					.ui.inverted.divider
 					.listheader
 						|Graph Builder
-					.listitem(href="#addingnodes")
+					a.listitem(href="#addingnodes")
 						|Adding Nodes
-					.listitem(href="#addingedges")
+					a.listitem(href="#addingedges")
 						|Adding Edges
 					.listitem
 						|Deleting Objects
 					.listitem
 						|Article Search
-					.listitem(href="#addingarticles")
+					a.listitem(href="#addingarticles")
 						|Adding Articles
 					.listitem
 						|Publishing
@@ -84,6 +88,10 @@ html(lang="en")
 					.listitem
 						|Exporting 
 					.ui.inverted.divider
+					.listheader
+						|Developer
+					a.listitem(href="/docs")
+						|Source Code
 					.listheader
 						|API
 					.listitem
