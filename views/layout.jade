@@ -3,7 +3,7 @@ html(lang="en")
   head
     title= title
     link(rel='stylesheet', href='/javascripts/semantic/packaged/css/semantic.min.css')
-    link(rel='stylesheet', href='/stylesheets/build.css')
+    link(rel='stylesheet', href='/build/css/build.min.css')
     link(rel='stylesheet', href='/stylesheets/note.css')
     script(src='http://code.jquery.com/jquery-1.8.2.js')
     script(src='https://rawgithub.com/carhartl/jquery-cookie/master/jquery.cookie.js')
@@ -14,9 +14,9 @@ html(lang="en")
     script(src='/socket.io/socket.io.js')
     script(src='/javascripts/mendeley/mendeleyjs.js')
     script(src='/javascripts/FileSaver.js')
-    script(src='/javascripts/article_searcher.js')
-    script(src='/javascripts/rendergraph.js')
-    script(src='/javascripts/note.js')
-    script(src='/javascripts/graphhandler.js')
+    script(src='/build/js/article_searcher.min.js')
+    script(src='/build/js/rendergraph.min.js')
+    script(src='/build/js/note.min.js')
+    script(src='/build/js/graphhandler.min.js')
   body
     block content
