@@ -24,9 +24,11 @@ app.set('port', process.env.PORT || DEPLOYPORT);
 app.set('views', path.join(__dirname, 'views'));
 app.set('docs', path.join(__dirname, 'docs'));
 app.set('view engine', 'jade');
+app.use(express.compress());
 app.use(express.cookieParser());
 app.use(express.bodyParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.use(express.cookieSession({
     secret: 'supersecret'
@@ -256,7 +258,7 @@ app.get('/build', function (req, res) {
 
 
 
-    res.end(200);
+    //res.end(200);
 
 });
 

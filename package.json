@@ -15,6 +15,7 @@
   }
   ,"devDependencies": {
     "grunt": "~0.4.4",
+    "grunt-cli": "latest",
     "grunt-contrib-jshint": "latest",
     "jshint-stylish": "latest",
     "grunt-contrib-uglify": "latest",
