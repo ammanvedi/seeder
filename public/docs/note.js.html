@@ -60,75 +60,78 @@
     </style>
   </head>
   <body data-spy="scroll" data-target=".scrollspy">
-    <div class="ui menu purple inverted"><a href="/" class="item purple active"><i class="leaf icon"></i><img src="/img/logo-small.png"></a><a href="/explore" class="item"><i class="map icon"></i>Explore</a><a href="/build" class="item"><i class="wrench icon"></i>Build</a>
-      <div class="ui simple dropdown item">More<i class="dropdown icon"></i>
-        <div class="menu"><a href="/blog" class="item"><i class="book icon"></i>Blog</a><a href="/help" class="itema item"><i class="help icon"></i>Help</a></div>
-      </div>
-      <div class="right compact menu">
-        <div class="ui simple dropdown item"><i class="user icon"></i>Me<i class="dropdown icon"></i>
-          <div class="menu"><a class="item"><i class="bolt icon"></i>My Profile</a><a class="item"><i class="lightbulb icon"></i>My Graphs</a><a class="item"><i class="settings icon"></i>Settings</a><a href="/auth/google" class="item"><i class="sign in icon"></i>Sign In</a></div>
+    <div class="fixed">
+      <div class="ui menu purple inverted"><a href="/" class="item purple active"><i class="leaf icon"></i><img src="/img/logo-small.png"></a><a href="/explore" class="item"><i class="map icon"></i>Explore</a><a href="/build" class="item"><i class="wrench icon"></i>Build</a>
+        <div class="ui simple dropdown item">More<i class="dropdown icon"></i>
+          <div class="menu"><a href="/blog" class="item"><i class="book icon"></i>Blog</a><a href="/help" class="itema item"><i class="help icon"></i>Help</a></div>
         </div>
-      </div>
-    </div>
-    <div class="banner-docs">
-      <h1>code | <a href="https://github.com/ammanvedi/seeder" target="_blank">git/seeder</a></h1>
-      <h2 id="commitheader"></h2>
-      <p id="commitmessage"></p><a id="commitlink" href=""><i class="white big circle right icon"></i></a>
-      <div id="clearme"></div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="span3 bs-docs-sidebar">
-          <ul class="nav nav-list bs-docs-sidenav affix-top">
-            <li><a href="index.html">Main</a></li>
-            <li><a href="article_searcher.js.html">article_searcher.js</a></li>
-            <li><a href="blogparser.js.html">blogparser.js</a></li>
-            <li><a href="docs.js.html">docs.js</a></li>
-            <li><a href="graphhandler.js.html">graphhandler.js</a></li>
-            <li class="active"><a href="note.js.html">note.js</a></li>
-            <li><a href="rendergraph.js.html">rendergraph.js</a></li>
-            <li><a href="showgraphhandler.js.html">showgraphhandler.js</a></li>
-          </ul>
-          <div class="scrollspy">
-            <ul class="nav nav-list bs-docs-sidenav affix-top">
-              <li><a href="#note"><i class="alert alert-info"></i>note</a>
-              </li>
-              <li><a href="#clearnotes"><i class="alert alert-info"></i>clearnotes</a>
-              </li>
-            </ul>
+        <div class="right compact menu">
+          <div class="ui simple dropdown item"><i class="user icon"></i>Me<i class="dropdown icon"></i>
+            <div class="menu"><a class="item"><i class="bolt icon"></i>My Profile</a><a class="item"><i class="lightbulb icon"></i>My Graphs</a><a class="item"><i class="settings icon"></i>Settings</a><a href="/auth/google" class="item"><i class="sign in icon"></i>Sign In</a></div>
           </div>
         </div>
-        <div class="span9">
-          <section id="note">
-            <h1>note</h1>
-            <h5 class="subheader"></h5>
-            <p>
-              <div class="label label-info radius ctx-type">function</div><span>note()</span>
-            </p>
-          </section>
-          <table class="table table-bordered table-striped">
-            <thead>
-              <tr>
-                <th style="width:20%">Option name</th>
-                <th style="width:20%">Type</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>domcontext</td>
-                <td>String</td>
-                <td>the class name or id of the div to add the note to (eg &quot;#container&quot;)</td>
-              </tr>
-              <tr>
-                <td>options</td>
-                <td>Object</td>
-                <td>{w: int, h: int, title: string, subtext: string}</td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="description"><p>Note is a module written to handle the display of simple notifications to the user while they are using the seeder build interface</p> </div>
-          <pre><code class="language-javascript">function note(domcontext, opts){
+      </div>
+    </div>
+  </body>
+  <div class="banner-docs">
+    <h1>code | <a href="https://github.com/ammanvedi/seeder" target="_blank">git/seeder</a></h1>
+    <h2 id="commitheader"></h2>
+    <p id="commitmessage"></p><a id="commitlink" href=""><i class="white big circle right icon"></i></a>
+    <div id="clearme"></div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="span3 bs-docs-sidebar">
+        <ul class="nav nav-list bs-docs-sidenav affix-top">
+          <li><a href="index.html">Main</a></li>
+          <li><a href="article_searcher.js.html">article_searcher.js</a></li>
+          <li><a href="blogparser.js.html">blogparser.js</a></li>
+          <li><a href="docs.js.html">docs.js</a></li>
+          <li><a href="graphhandler.js.html">graphhandler.js</a></li>
+          <li class="active"><a href="note.js.html">note.js</a></li>
+          <li><a href="rendergraph.js.html">rendergraph.js</a></li>
+          <li><a href="showgraphhandler.js.html">showgraphhandler.js</a></li>
+        </ul>
+        <div class="scrollspy">
+          <ul class="nav nav-list bs-docs-sidenav affix-top">
+            <li><a href="#note"><i class="alert alert-info"></i>note</a>
+            </li>
+            <li><a href="#clearnotes"><i class="alert alert-info"></i>clearnotes</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="span9">
+        <section id="note">
+          <h1>note</h1>
+          <h5 class="subheader"></h5>
+          <p>
+            <div class="label label-info radius ctx-type">function</div><span>note()</span>
+          </p>
+        </section>
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th style="width:20%">Option name</th>
+              <th style="width:20%">Type</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>domcontext</td>
+              <td>String</td>
+              <td>the class name or id of the div to add the note to (eg &quot;#container&quot;)</td>
+            </tr>
+            <tr>
+              <td>options</td>
+              <td>Object</td>
+              <td>{w: int, h: int, title: string, subtext: string}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="description"><p>Note is a module written to handle the display of simple notifications to the user while they are using the seeder build interface</p> </div>
+        <pre><code class="language-javascript">function note(domcontext, opts){
 	console.log(domcontext);
 	clearnotes();
 	
@@ -153,30 +156,30 @@
 		clearnotes();
 	});
 }</code></pre>
-          <section id="clearnotes">
-            <h1>clearnotes</h1>
-            <h5 class="subheader"></h5>
-            <p>
-              <div class="label label-info radius ctx-type">function</div><span>clearnotes()</span>
-            </p>
-          </section>
-          <div class="description"><p>Clear (fadeout) the note that is being displayed currently, to make way for a new note</p> </div>
-          <pre><code class="language-javascript">function clearnotes(){
+        <section id="clearnotes">
+          <h1>clearnotes</h1>
+          <h5 class="subheader"></h5>
+          <p>
+            <div class="label label-info radius ctx-type">function</div><span>clearnotes()</span>
+          </p>
+        </section>
+        <div class="description"><p>Clear (fadeout) the note that is being displayed currently, to make way for a new note</p> </div>
+        <pre><code class="language-javascript">function clearnotes(){
 	//remove all notes from the dom tree
 	$('.note').fadeOut( 1500 , function (){
 			this.remove();
 			//console.log('ehehehehe');
 	});
 }</code></pre>
-        </div>
       </div>
     </div>
-    <footer class="footer">
-      <div class="container">
-        <p>Documentation generated with <a href="https://github.com/FGRibreau/doxx">Doxx </a>created by Francois-Guillaume Ribreau</p>
-      </div>
-    </footer>
-    <script src="http://platform.twitter.com/widgets.js"></script>
+  </div>
+  <footer class="footer">
+    <div class="container">
+      <p>Documentation generated with <a href="https://github.com/FGRibreau/doxx">Doxx </a>created by Francois-Guillaume Ribreau</p>
+    </div>
+  </footer>
+  <script src="http://platform.twitter.com/widgets.js">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
     <script src="http://leaverou.github.com/prefixfree/prefixfree.js"></script>
     <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-transition.js"></script>
@@ -208,5 +211,5 @@
         });
       })
     </script>
-  </body>
+  </script>
 </html>

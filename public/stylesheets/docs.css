@@ -1,7 +1,11 @@
+
+
+
 .banner-docs{
 	width: 100%;
 	height: 300px;
-	margin-top: -16px;
+	margin-top: 40px;
+	
 	background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 27%, rgba(0, 0, 0, 0.55) 100%) repeat-y, url(/img/space-banner.jpg) repeat-x;
 	background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 27%, rgba(0, 0, 0, 0.55) 100%) repeat-y, url(/img/space-banner.jpg) repeat-x;
 	background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 27%, rgba(0, 0, 0, 0.55) 100%) repeat-y, url(/img/space-banner.jpg) repeat-x;
@@ -22,6 +26,16 @@
 	width: 100%;
 	height: 10px;
 	clear: both;
+}
+
+.fixed{
+	position: fixed;
+width: 100%;
+min-width: 70%;
+	height: ;
+	z-index: 1000;
+	top: 00px;
+	
 }
 
 

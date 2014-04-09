@@ -2,47 +2,48 @@ extends bloglayout
 script(src="/javascripts/bloghandler.js")
 
 block content
-	.ui.menu.purple.inverted.navindex
-		ai#sidebar-toggle.item
-			i.reorder.icon
-		a.item(href="/")
-			i.leaf.icon
-			img(src="/img/logo-small.png")
-		a.item(href="/explore")
-			i.map.icon
-			| Explore
-		a.item.purple.active(href="/build")
-			i.wrench.icon
-			| Build
-		.ui.simple.dropdown.item
-			|More
-			i.dropdown.icon
-			.menu
-				a.item(href="/blog")
-					i.book.icon
-					|Blog
-				a.itema.item(href="/help")
-					i.help.icon
-					|Help
-		.right.compact.menu
+	.fixed
+		.ui.menu.purple.inverted.navindex
+			ai#sidebar-toggle.item
+				i.reorder.icon
+			a.item(href="/")
+				i.leaf.icon
+				img(src="/img/logo-small.png")
+			a.item(href="/explore")
+				i.map.icon
+				| Explore
+			a.item.purple.active(href="/build")
+				i.wrench.icon
+				| Build
 			.ui.simple.dropdown.item
-				i.user.icon
-				|Me
+				|More
 				i.dropdown.icon
 				.menu
-					a.item
-						i.bolt.icon
-						|My Profile
-					a.item
-						i.lightbulb.icon
-						|My Graphs
-					a.item
-						i.settings.icon
-						|Settings
-					a.item
-						i.sign.out.icon
-						|Sign Out
-						
+					a.item(href="/blog")
+						i.book.icon
+						|Blog
+					a.itema.item(href="/help")
+						i.help.icon
+						|Help
+			.right.compact.menu
+				.ui.simple.dropdown.item
+					i.user.icon
+					|Me
+					i.dropdown.icon
+					.menu
+						a.item
+							i.bolt.icon
+							|My Profile
+						a.item
+							i.lightbulb.icon
+							|My Graphs
+						a.item
+							i.settings.icon
+							|Settings
+						a.item
+							i.sign.out.icon
+							|Sign Out
+							
 	#blogbanner
 	
 	.postcontainer

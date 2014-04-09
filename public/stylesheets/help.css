@@ -75,7 +75,15 @@ margin-left: 50px;
 	display: inline-block;
 }
 
-
+.fixed{
+	position: fixed;
+width: 100%;
+min-width: 70%;
+	height: ;
+	z-index: 1;
+	top: 00px;
+	
+}
 
 #docs h2{
 	
@@ -88,6 +96,11 @@ margin-left: 50px;
 	display: block;
 	border: 2px dashed rgba(85, 79, 137, 0.18);
 
+}
+
+#docsholder{
+	
+	margin-top: 40px;
 }
 
 #docsholder li{
