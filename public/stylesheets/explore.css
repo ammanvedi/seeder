@@ -20,6 +20,9 @@ html{
 	height: auto;
 	z-index: 10;
 	margin-top: 16px;
+	-moz-box-shadow: 0 0 8px black;
+	box-shadow: 0 0 8px black;
+	background-color: #564F8A;
 }
 
 

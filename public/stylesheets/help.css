@@ -82,6 +82,9 @@ min-width: 70%;
 	height: ;
 	z-index: 1;
 	top: 00px;
+	-moz-box-shadow: 0 0 8px black;
+	box-shadow: 0 0 8px black;
+	background-color: #564F8A;
 	
 }
 

@@ -51,71 +51,76 @@ block content
 				|a new way to <div class="ui text small shape shapetext"><div class="sides"><div class="active ui header side">mindmap</div><div class="ui header side">learn</div><div class="ui header side">reference</div></div></div>
 			#home-banner-img-c
 				#home-banner-image
-	.home-feature.fgreen.vign.macbook-feature
-		#home-desc1.floatleft
-			.featuretext
-				h1 create and explore 
-			.featuredesc
-				p.tealborder Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. 
-			.ui.orange.button
+	.gridcontain
+		.explore-block
+			.giticon
+				i.big.inverted.map.icon
+			.headertext
+				| Explore
+			br
+			desc
+				p.desctext
+					span
+						|View and share graphs created by other users. Search for graphs related to a subject area. 
+			a.ui.small.purple.button.googlesignin(href="/auth/google")
 				i.search.icon
 				| Start Searching
-		.clear
-	.home-feature.fpink.vign.opensource
-		#home-desc1.floatright
-			.featuretext
-				h1 open source
-			.featuredesc
-				p.greenborder Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. 
-			.ui.orange.github.button
-				i.github.icon
-				| View Source on Github
-		.clear
-	.home-feature.fblack.vign
-		.ui.stackable.grid
-			.four.wide.column
-				.minifeature
-					.ui.teal.ribbon.label
-						|DEVELOP
-					p Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
-					.ui.purple.button
-						i.code.icon
-						| Learn More
-			.four.wide.column
-				.minifeature
-					.ui.teal.ribbon.label
-						|SHARE
-					p Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
-					.ui.purple.button
-						i.share.icon
-						| Learn More
-			.four.wide.column
-				.minifeature
-					.ui.teal.ribbon.label
-						|EXPORT
-					p Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
-					.ui.purple.button
-						i.unhide.icon
-						| Learn More
-			.four.wide.column
-				.minifeature
-					.ui.teal.ribbon.label
-						|COLLABORATE
-					p Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
-					.ui.purple.button
-						i.users.icon
-						| Learn More
-	.home-feature.fpinks.vign
-		#home-desc1.floatmiddle
-			.featuretext.center
-					h1 Join In.
-				.featuredesc
-					#explore-searchbar
-						.ui.fluid.action.input
-							input(type="text" placeholder="some.one@example.com")
-							.ui.teal.right.labeled.button
-								|notify me
-			.clear
+		.build-block
+			.giticon
+				i.big.inverted.lightbulb.icon
+			.headertext
+				| Build
+			br
+			desc
+				p.minidesctext
+					span
+						|Get started with the
+						a#homelink(href="/help")
+							| User Docs 
+						|or jump straight into the 
+						a#homelink(href="/build")
+							| Builder
+				a.ui.small.google.plus.button.googlesignin(href="/auth/google")
+					i.google.plus.icon
+					| Sign in with google
+		.code-block
+			.giticon
+				i.big.inverted.code.icon
+			.headertext
+				| Docs + Code
+			br
+			desc
+				p.minidesctext
+					span
+						|Seeder is open source! Read the 
+						a#homelink_code(href="/docs")
+							| Docs 
+						| or fork it on 
+						a#homelink_code(href="https://github.com/ammanvedi/seeder")
+							| Github
+						
+		.blog-block
+			.giticon
+				i.big.inverted.book.icon
+			.headertext
+				| Dev Blog
+			br
+			desc
+				p.minidesctext
+					span
+						|Updates about the development of the site and new features
+				a.ui.small.green.button.googlesignin(href="/blog")
+					i.read.terminal.icon
+					| read the blog
+			.latestpost
+				#latestimage
+					img(src="/img/home-banner.png")
+				h1 Last Post
+				h2 22/4/2014
+				.ui.mini.inverted.basic.button#readbutton
+					|Read
+		
+	.clear
 			
 		
 			
