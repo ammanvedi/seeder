@@ -8,9 +8,12 @@ MainSidebarhelp.sidebar('attach events','#sidebar-toggle' , 'toggle');
     var testgraphdata = graphstring;
 
     sys = arbor.ParticleSystem(20, 100, 0.5) //repulsion/stiffness/friction
-    sys.parameters({
-        gravity: false
-    });
+sys.parameters({
+    gravity: true,
+    friction: 0.1, 
+    repulsion : 00,
+    stiffness: 500
+});
     sys.renderer = Renderer("#view_canvas");
 
     console.log(testgraphdata);
@@ -53,12 +56,13 @@ var mouse = {
 
     $('#view_canvas').dblclick(function (a) {
 
-        sys.start();
+        //
 
         var nearme = sys.nearest({
             x: a.offsetX,
             y: a.offsetY
         });
+        
 
         //console.log(nearme);
         if (nearme.distance < 20) {
@@ -67,8 +71,9 @@ var mouse = {
                 //if the layer node clicked corresponds to this layer
                 //then exit the layer
                 if (nearme.node.data['nodeid'] == currentlayer) {
-
+					//console.log('da layer is ' + currentlayer);
                     loadLayer(GraphLayers[currentlayer + 'z'].parentlayer);
+                    
                 } else {
                     //layer node clicked is pointing to a different layer
                     //load it 
@@ -83,6 +88,10 @@ var mouse = {
 
     //clear the current particle system and load a new layer
     function loadLayer(layertoload) {
+    
+    console.log(GraphLayers);
+    
+    
 
         currentlayer = layertoload;
         layertoload = layertoload + 'z';
@@ -91,15 +100,18 @@ var mouse = {
             sys.prune(function (a, b, c) {
                 return true;
             });
-
+            
+            
             GraphLayers[layertoload].nodes.forEach(function (val, idx, ar) {
+			console.log(val);
 
-
-                if (val.nodedata['TYPE'] == 'ARTICLE') {
+                if (val.nodedata['TYPE'] == 'ARTICLE')
+                {
                     var prefetch = new Image();
                     prefetch.src = val.nodedata['IMAGE'];
                     val.nodedata['imagedata'] = prefetch;
                 }
+                
                 sys.addNode(val.nodename, val.nodedata);
                
             });

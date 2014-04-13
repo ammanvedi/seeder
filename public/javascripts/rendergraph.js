@@ -85,7 +85,7 @@ var Renderer = function (canvas) {
 
             particleSystem.eachNode(function (node, pt) {
             
-            //console.log(node['name']);
+            //console.log('ll');
             
                 // node: {mass:#, p:{x,y}, name:"", data:{}}
                 // pt:   {x:#, y:#}  node position in screen coords

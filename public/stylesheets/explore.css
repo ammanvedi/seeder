@@ -11,6 +11,7 @@ html{
  min-width: auto;
  overflow: hidden;
  overflow-y: scroll;
+
 }
 
 .fixed{
@@ -212,6 +213,7 @@ min-width: 400px;
 margin-left: auto;
 margin-right: auto;
 padding: 30px;
+
 
 
 	

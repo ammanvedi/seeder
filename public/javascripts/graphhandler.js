@@ -7,6 +7,13 @@ var sys;
 var waiting_save_confirm = false;
 var waiting_publish_confirm = false;
 
+function ID() {
+  // Math.random should be unique because of its seeding algorithm.
+  // Convert it to base 36 (numbers + letters), and grab the first 9 characters
+  // after the decimal.
+  return '_' + Math.random().toString(36).substr(2, 9);
+};
+
 //this function will generate a state object of the entire graph
 // so it can be saved to the database
 
@@ -40,7 +47,7 @@ function getSaveState(layercake, gname, gdesc, publishme){
 	}
 	
 	var Savestate = new Object();
-	Savestate.graphid = "test";
+	Savestate.graphid = ID();
 	Savestate.publish = publishme;
 	Savestate.author = userdata.id;
 	Savestate.graphname = gname;
@@ -61,7 +68,7 @@ function getSaveState(layercake, gname, gdesc, publishme){
 
 $(document).ready(function () {
 
-    var DEPLOYIP = '54.201.24.162'; //localhost for dev, ip for prod
+    var DEPLOYIP = '192.168.0.6'; //localhost for dev, ip for prod
     var socket = io.connect(DEPLOYIP + ':8080');
     console.log( socket);
     var addnodemode = false;
@@ -506,6 +513,8 @@ $(document).ready(function () {
             });
 
             var res;
+            
+            console.log(nearme_);
 
             if (nearme_) {
 
@@ -990,6 +999,7 @@ $(document).ready(function () {
 	
 	
 		editnodePREFS['easing'] = 'cubic';
+		editnodePREFS['nodeid'] = current_edit_focus['nodeid'];
 		sys.tweenNode(current_edit_focus['nodeid'], 0.5, editnodePREFS);
 		
 		editNode(current_edit_focus['nodeid'], editnodePREFS, currentlayer);
