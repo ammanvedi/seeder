@@ -7,6 +7,9 @@ var sys;
 var waiting_save_confirm = false;
 var waiting_publish_confirm = false;
 
+var nodelength = 0;
+var edgelength = 0;
+
 function ID() {
   // Math.random should be unique because of its seeding algorithm.
   // Convert it to base 36 (numbers + letters), and grab the first 9 characters
@@ -35,6 +38,8 @@ function getSaveState(layercake, gname, gdesc, publishme){
 	GraphMeta.likes = 0;
 	GraphMeta.dislikes = 0;
 	GraphMeta.views = 0;
+	GraphMeta.nsize = nodelength;
+	GraphMeta.esize = edgelength;
 	
 	//deep copy the object
 	var Graph = jQuery.extend(true, {}, layercake);
@@ -68,7 +73,7 @@ function getSaveState(layercake, gname, gdesc, publishme){
 
 $(document).ready(function () {
 
-    var DEPLOYIP = '192.168.0.6'; //localhost for dev, ip for prod
+    var DEPLOYIP = '54.201.24.162'; //localhost for dev, ip for prod
     var socket = io.connect(DEPLOYIP + ':8080');
     console.log( socket);
     var addnodemode = false;
@@ -763,7 +768,7 @@ $(document).ready(function () {
      */
     function createNode(name, data, layer)
     {
-    
+    nodelength +=1;
     layer = layer+'z';
     
     
@@ -789,6 +794,7 @@ $(document).ready(function () {
      */
     function createEdge(from, to, layer)
     {
+    	edgelength +=1;
     	layer = layer+'z';
     	//addedge to particle system
     	sys.addEdge(from, to);

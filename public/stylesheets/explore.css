@@ -32,7 +32,8 @@ html{
 	width: auto;
 	height: 120px;
 	padding-top: 30px;
-	background-color: #89b2bc;
+	background-color: rgba(137, 178, 187, 0);
+	transition:1s;
 	
 }
 
