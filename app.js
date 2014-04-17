@@ -1,7 +1,7 @@
 /**
  * Module dependencies.
  */
-var DEPLOYPORT = 8080; //3000
+var DEPLOYPORT = 80; //3000
 
 
 var express = require('express');
@@ -78,8 +78,8 @@ MongoClient.connect("mongodb://ammanvedi:poopoo12@ds057528.mongolab.com:57528/se
 });
 
 passport.use(new GoogleStrategy({
-    returnURL: 'http://54.201.24.162:8080/auth/google/return',
-    realm: 'http://54.201.24.162:8080/'
+    returnURL: 'http://54.201.24.162/auth/google/return',
+    realm: 'http://54.201.24.162/'
   },
   function(identifier, profile, done) {
   
@@ -135,6 +135,8 @@ console.log('DESERIALIZE');
     
   });
   
+
+  
   
 
 
@@ -144,6 +146,9 @@ console.log('DESERIALIZE');
  * @param      {Function} callback will be passed a single argument which contains all graph metadata
  */
 function getPublic(filter, next) {
+
+	var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+	var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
     var ItemList = new Array();
 
@@ -155,6 +160,9 @@ function getPublic(filter, next) {
 
             collection.find().toArray(function (err, items) {
                 items.forEach(function (obj) {
+                	 var pdate = new Date(obj.graphmeta.datecreated);
+                	 
+                	 obj.graphmeta.datecreated= days[pdate.getDay()] + ' ' + months[pdate.getMonth()] +  ' ' + pdate.getDate();
                     ItemList.push(obj);
 
 

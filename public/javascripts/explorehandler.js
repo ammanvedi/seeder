@@ -26,9 +26,21 @@ var  MainSidebarExplore = $('.ui.sidebar');
 //MainSidebarExplore.sidebar('toggle');
 MainSidebarExplore.sidebar('attach events','#sidebar-toggle' , 'toggle');
 
+
+var t = new Trianglify({
+    x_gradient: colorbrewer.YlGnBu[9], 
+    y_gradient: colorbrewer.RdPu[9],
+    noiseIntensity: 0.1, 
+    cellpadding: Math.random()*10, 
+    cellsize: Math.random()*150});
+
 $('.circholder').each(function (){
 
-$(this).css('background-color',hexToRgb(get_random_color()));
+
+	
+	var pattern = t.generate($(this).outerWidth(), $(this).outerHeight());
+	//document.body.setAttribute('style', 'background-image: '+pattern.dataUrl);
+	$(this).css('background-image',pattern.dataUrl);
 });
 
 

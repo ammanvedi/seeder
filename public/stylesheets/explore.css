@@ -34,6 +34,7 @@ html{
 	padding-top: 30px;
 	background-color: rgba(137, 178, 187, 0);
 	transition:1s;
+	background-size: cover;
 	
 }
 
@@ -74,6 +75,11 @@ html{
 -moz-box-shadow: inset 0px 0px 104px 0px rgba(0,0,0,0.75);
 box-shadow: inset 0px 0px 104px 0px rgba(0,0,0,0.75);
 	
+}
+
+.content{
+	
+	height: 100%;
 }
 
 #explore-banner:after{
@@ -127,13 +133,14 @@ overflow: hidden;
 	width: 90px;
 	height: 90px;
 	border-radius: 45px;
-	background-color: #564F8A;
+	background-color: rgba(85, 79, 137, 0.7);
 	float: left;
 	margin-left:10px ;
 	-webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.61), inset 0 0 104px rgba(0, 0, 0, 0.46);
 	-moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.61), inset 0 0 104px rgba(0, 0, 0, 0.46);
 	box-shadow: 0 0 15px rgba(0, 0, 0, 0.61), inset 0 0 104px rgba(0, 0, 0, 0.46);
 	border: 3px dashed #89b2bc;
+
 }
 
 .circletext{
@@ -150,7 +157,7 @@ overflow: hidden;
 	width: 90px;
 	height: 90px;
 	border-radius: 45px;
-	background-color: #564F8A;
+	background-color: rgba(85, 79, 137, 0.7);
 	float: right;
 	margin-right:10px ;
 	-webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.61), inset 0 0 104px rgba(0, 0, 0, 0.46);
@@ -174,13 +181,14 @@ border: 3px dashed #89b2bc;
 }
 .smalltext{
 	font-size: 12px;
+	line-height: 14px;
+	height: 30px;
 }
 
 .smalltext p{
 	
 	padding: 0px;
 	margin: 0px;
-	max-height: 70px;
 	margin-bottom: 10px;
 	margin-left: 5px;
 }
@@ -188,6 +196,8 @@ border: 3px dashed #89b2bc;
 .graphmeta{
 	
 	padding-top: 20px;
+	position: absolute;
+	bottom: 10px;
 }
 
 .graphitm{
@@ -195,22 +205,21 @@ border: 3px dashed #89b2bc;
 	height: 100px;
 }
 
-.graphdesc{
+
+
+p.graphdesc{
 	padding-top: 10px;
-	max-height: 50px;
+	height: 50px;
 	max-width: 100%;
 	overflow: hidden;
 	
 }
 
-.description{
-	
-	width: 100%;
-}
+ 
 
 #graphs-view{
 max-width: 1000px;
-min-width: 400px;
+min-width: 1000px;
 margin-left: auto;
 margin-right: auto;
 padding: 30px;

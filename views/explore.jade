@@ -78,12 +78,10 @@ block content
 								| Edges
 				#clearcirc
 				.content
-					.meta
-						|5 days ago
 					a.name(href="/graph?graphid=#{ob[prop].graphid}")
 						|#{ob[prop].graphname}
 					p.description.smalltext
-						| by #{ob[prop].authorname}
+						| by #{ob[prop].authorname} <br> #{ob[prop].graphmeta.datecreated}
 					p.description.graphdesc
 						| #{ob[prop].graphdesc}
 					.graphmeta

@@ -17,13 +17,15 @@ COURSE REQ
 
 PROJECT REQ
 
---> create more example graphs 
---> edit node requires some bug fixes
+--> create more example graphs
 --> add login to all pages 
+--> add user page where personal saved/published graphs can be viewed
 --> add updating of views and liking mechanism to view page
---> allow users to create their own version of a graph accessed through explore/view 
+--> allow users to create their own version of a graph accessed through explore/view (/edit)
 --> finalise homepage 
 	- add sign up sign in
+--> optimise images
+--> concat scripts?
 
 CHANGELOGS
 
@@ -49,7 +51,18 @@ CHANGELOGS
 		- added code quality checks
 		- added css minification
 		- added javascript minification
-	- enabled gzip compression of items 
+	- enabled gzip compression of items (problems under safari)
 	- fixed ui error on blog
 	- linked help pages to documentation
 	- tested google auth on account other than my own
+	
+	16 APR 2014
+	
+	- added node and edge count to graph data structure
+		- /explore shows these statistics
+	- major homepage updates
+	- added nice dynamic backgrounds to each graph item
+	
+	
+	
+	
