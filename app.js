@@ -1,7 +1,7 @@
 /**
  * Module dependencies.
  */
-var DEPLOYPORT = 80; //3000
+var DEPLOYPORT = 8080; //3000
 
 
 var express = require('express');
