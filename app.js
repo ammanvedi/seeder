@@ -27,7 +27,9 @@ app.set('view engine', 'jade');
 //app.use(express.compress());
 app.use(express.cookieParser());
 app.use(express.bodyParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public') , { maxAge: 31557600000 }));
+
+
 
 
 app.use(express.cookieSession({
@@ -96,25 +98,6 @@ passport.use(new GoogleStrategy({
   	done(0, UserBase[identifier]);
   }
   
-  
-//  console.log(profile.displayname);
-//    databaseconnection.createCollection('users', function (err, collection) {
-//    
-//                collection.update({openid: profile.id}, {openid: profile.id, data : profile}, {upsert: true
-//                }, function (er, res) {
-//                	if(er){
-//                	console.log('err');
-//                	done(err, false);
-//                	}else{
-//                	console.log('no err');
-//                	done(err, profile);
-//                	}
-//                    console.log(res);
-//                });
-//    
-//            });
-    
-      //done(err, user);
   
   }
 ));
@@ -187,10 +170,13 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 
 app.get('/help', function (req, res) {
-		
-		res.render('help', {
-		    title: 'Seeder - Help'
-		});
+
+if(req.user){
+	res.render('help', {logintext : req.user.name.givenName, signouttext: "Sign Out", title: 'seeder.co - help', signlink:'/logout'});
+}else{
+	  res.render('help', {logintext : "Sign In", signouttext: "Sign In", title: 'seeder.co - help', signlink: '/auth/google'});
+}
+
 		
 });
 
@@ -212,13 +198,13 @@ app.get('/graph', function (req, res) {
 		        if(req.user)
 		        {
 			      		res.render('graph', {
-					    title: 'Seeder',  graphid : req.graphid, username: req.user.name.givenName, gdata: g
+					    title: 'Seeder',  graphid : req.graphid, username: req.user.name.givenName, signouttext : "Sign Out", gdata: g, signlink: '/logout'
 		        		});	
 		        	}
 		        	else 
 		        	{
 		        		res.render('graph', {
-		        		title: 'Seeder',  graphid : req.graphid, username: "Sign In", gdata: g
+		        		title: 'Seeder',  graphid : req.graphid, username: "Sign In", signouttext:"Sign In", gdata: g, signlink : '/auth/google'
 		        		});
 		        }
 		 });
@@ -252,7 +238,7 @@ app.get('/build', function (req, res) {
     });
     //render with user details
     res.render('index', {
-        title: 'Seeder', username: req.user.name.givenName
+        title: 'Seeder', username: req.user.name.givenName, signlink: '/logout', signouttext: 'Sign Out'
     });
     }else{
     console.log('no user logged in');
@@ -278,24 +264,57 @@ app.get('/logout', function(req, res){
 });
 
 
-app.get('/users', user.list);
+//app.get('/users', user.list);
 
 app.get('/blog', function (req, res) {
-    res.render('blog', {});
+
+if(req.user){
+	res.render('blog', {logintext : req.user.name.givenName, signouttext: "Sign Out", signlink: '/logout'});
+}else{
+	  res.render('blog', {logintext : "Sign In", signouttext: "Sign In", signlink: '/auth/google'});
+}
+
+  
 });
 
 app.get('/explore', function (req, res) {
 
 
+
+
     var exploredata = getPublic('all', function (dta) {
         //socket.emit('EXPLORE_SERVE_RESPONSE', {payload: dta});
         //console.log('got ' + dta);
-        res.render('explore', {
-            title: 'Explore',
-            graphs: dta,
-            len: dta.length
+        
+        
+        if(req.user){
+        	res.render('explore', {
+        	    title: 'Explore',
+        	    graphs: dta,
+        	    len: dta.length,
+        	    logintext: req.user.name.givenName,
+        	    signouttext: "Sign Out",
+        	    signlink: 'logout'
+        	    
+        	});
+        	
+        }else{
+        	
+        }
+        
+            res.render('explore', {
+                title: 'Explore',
+                graphs: dta,
+                len: dta.length,
+                logintext: "Sign In",
+                signouttext: "Sign In",
+                signlink: '/auth/google'
+            });
+            
         });
-    });
+        
+
+
 
 
 

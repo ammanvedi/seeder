@@ -37,7 +37,7 @@ html(lang="en")
 				.right.compact.menu
 					.ui.simple.dropdown.item
 						i.user.icon
-						|Me
+						|#{logintext}
 						i.dropdown.icon
 						.menu
 							a.item
@@ -49,7 +49,7 @@ html(lang="en")
 							a.item
 								i.settings.icon
 								|Settings
-							a.item
+							a.item(href="#{signlink}")
 								i.sign.out.icon
 								|Sign Out
 							

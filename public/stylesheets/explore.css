@@ -61,12 +61,12 @@ html{
 	z-index: 999;
 	height: 450px;
 	background-color: #000;
-	background-image: -webkit-linear-gradient(top, rgba(54, 34, 69, 0.86) 0%, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 84.1%), url(/img/space-banner.jpg);
-	background-image: -moz-linear-gradient(top, rgba(54, 34, 69, 0.86) 0%, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 84.1%), url(/img/space-banner.jpg);
-	background-image: -ms-linear-gradient(top, rgba(54, 34, 69, 0.86) 0%, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 84.1%), url(/img/space-banner.jpg);
-	background-image: linear-gradient(to bottom, rgba(54, 34, 69, 0.86) 0%, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 84.1%), url(/img/space-banner.jpg);
-	background-size: cover;
 	background-position: center;
+	background-size: cover;
+	background-image: -webkit-linear-gradient(top, rgba(54, 34, 69, 0.86) 0%, rgb(20, 20, 20) 0%, rgba(0, 0, 0, 0) 84.1%), url(/img/space-banner.jpg);
+	background-image: -moz-linear-gradient(top, rgba(54, 34, 69, 0.86) 0%, rgb(20, 20, 20) 0%, rgba(0, 0, 0, 0) 84.1%), url(/img/space-banner.jpg);
+	background-image: -ms-linear-gradient(top, rgba(54, 34, 69, 0.86) 0%, rgb(20, 20, 20) 0%, rgba(0, 0, 0, 0) 84.1%), url(/img/space-banner.jpg);
+	background-image: linear-gradient(to bottom, rgba(54, 34, 69, 0.86) 0%, rgb(20, 20, 20) 0%, rgba(0, 0, 0, 0) 84.1%), url(/img/space-banner.jpg);
 	opacity: 1;
 	/*transition:0.5s;*/
 	 padding-top: 14px;
@@ -74,6 +74,8 @@ html{
 -webkit-box-shadow: inset 0px 0px 104px 0px rgba(0,0,0,0.75);
 -moz-box-shadow: inset 0px 0px 104px 0px rgba(0,0,0,0.75);
 box-shadow: inset 0px 0px 104px 0px rgba(0,0,0,0.75);
+
+transition:1s;
 	
 }
 

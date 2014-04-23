@@ -16,6 +16,46 @@ function get_random_color() {
 *
 */
 
+var bgcount = 0;
+
+var bgArr = ["img/slide/air.jpg", "img/slide/desk.jpg", "img/slide/tree.png"]; //and so on...
+var loaded = new Array();
+
+function load_ss(urls){
+
+var i;
+
+
+
+	for(i = 0 ; i < urls.length; i++){
+		var im = new Image();
+		im.src = urls[i];
+		loaded.push(im);
+	}
+	
+	
+}
+
+
+function backgroundSlide(i) {
+if ((i == bgArr.length) || (i  < 0)){
+	return true;
+	}
+	console.log(loaded[i].src);
+    $("#explore-banner").css("background-image", 'url('+loaded[i].src+')');
+
+}
+
+load_ss(bgArr);
+
+setInterval(movebg, 3000);
+
+function movebg(){
+	if(backgroundSlide(bgcount++)){
+		bgcount = 0;
+	};
+}
+
 function hexToRgb(hex) {
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     return 'rgba('+parseInt(result[1], 16)+', '+parseInt(result[2], 16)+', '+parseInt(result[3], 16)+', 0.3)';
