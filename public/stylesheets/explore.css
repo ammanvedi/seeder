@@ -49,6 +49,9 @@ html{
 	overflow: hidden;
 	margin-top: -17px;
 	background-color: #000;
+	-moz-box-shadow: 0 1px 5px black;
+	box-shadow: 0 1px 5px black;
+	border-bottom: 7px solid #564F8A;
 }
 
 .hideme{
@@ -225,10 +228,7 @@ min-width: 1000px;
 margin-left: auto;
 margin-right: auto;
 padding: 30px;
-
-
-
-	
+	background-image: url(img/subway.png);
 }
 
 #graphs-view .item{

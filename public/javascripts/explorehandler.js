@@ -18,7 +18,7 @@ function get_random_color() {
 
 var bgcount = 0;
 
-var bgArr = ["img/slide/air.jpg", "img/slide/desk.jpg", "img/slide/tree.png"]; //and so on...
+var bgArr = ["img/slide/air.jpg", "img/slide/desk.jpg", "img/slide/bush.png"]; //and so on...
 var loaded = new Array();
 
 function load_ss(urls){
