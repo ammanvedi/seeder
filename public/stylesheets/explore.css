@@ -62,7 +62,7 @@ html{
 	height: 450px;
 	background-color: #000;
 	background-position: center;
-	background-size: cover;
+	background-size: 100%;
 	background-image: -webkit-linear-gradient(top, rgba(54, 34, 69, 0.86) 0%, rgb(20, 20, 20) 0%, rgba(0, 0, 0, 0) 84.1%), url(/img/space-banner.jpg);
 	background-image: -moz-linear-gradient(top, rgba(54, 34, 69, 0.86) 0%, rgb(20, 20, 20) 0%, rgba(0, 0, 0, 0) 84.1%), url(/img/space-banner.jpg);
 	background-image: -ms-linear-gradient(top, rgba(54, 34, 69, 0.86) 0%, rgb(20, 20, 20) 0%, rgba(0, 0, 0, 0) 84.1%), url(/img/space-banner.jpg);

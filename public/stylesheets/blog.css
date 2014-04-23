@@ -21,7 +21,7 @@ html{
 
 .fixed{
 	position: fixed;
-	height: ;
+	width: 100%;
 	z-index: 1;
 	top: 00px;
 	-moz-box-shadow: 0 0 8px black;
