@@ -80,8 +80,8 @@ MongoClient.connect("mongodb://ammanvedi:poopoo12@ds057528.mongolab.com:57528/se
 });
 
 passport.use(new GoogleStrategy({
-    returnURL: 'http://seeder.co/auth/google/return',
-    realm: 'http://seeder.co/'
+    returnURL: 'http://localhost:8080/auth/google/return',
+    realm: 'http://localhost:8080/'
   },
   function(identifier, profile, done) {
   
