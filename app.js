@@ -54,7 +54,7 @@ var UserBase = new Object();
 
 
 
-//this is for development, when the user login has been impleented 
+//this is for development, when the user login has been implemented 
 //the cookie with this data will be replaced by a client specific
 //dataset passed through login
 var defaultuser = new Object();
@@ -110,8 +110,10 @@ console.log('serialize ' + JSON.stringify(user));
 passport.deserializeUser(function(id, done) {
 console.log('DESERIALIZE');
 	if(UserBase[id]){
+		console.log('DESERIALIZE success');
 		done(null, UserBase[id]);
 	}else{
+	console.log('DESERIALIZE fail');
 		done(null,false);
 	}
 
@@ -212,7 +214,6 @@ app.get('/graph', function (req, res) {
 	});
 
 
-
 });                                    
 
 app.get('/build', function (req, res) {
@@ -257,6 +258,9 @@ app.get('/build', function (req, res) {
 });
 
 app.get('/logout', function(req, res){
+console.log(JSON.stringify(UserBase[req.user.id]) +'is usr logged out');
+
+req.session = null;
   req.logout();
   res.clearCookie('seederuser', { path: '/' });
   res.clearCookie('connect.sess', { path: '/' });

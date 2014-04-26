@@ -55,7 +55,45 @@ module.exports = function(grunt) {
 	          'public/build/css/build.min.css': 'public/stylesheets/build.css'
 	        }
 	      }
-	    }
+	    },
+	    
+	    imagemin: {
+	        png: {
+	          options: {
+	            optimizationLevel: 7,
+	            pngquant: true
+	          },
+	          files: [
+	            {
+	              // Set to true to enable the following options…
+	              expand: true,
+	              // cwd is 'current working directory'
+	              cwd: 'public/img/',
+	              src: ['**/*.png'],
+	              // Could also match cwd line above. i.e. project-directory/img/
+	              dest: 'public/build/img/',
+	              ext: '.png'
+	            }
+	          ]
+	        },
+	        jpg: {
+	          options: {
+	            progressive: true
+	          },
+	          files: [
+	            {
+	              // Set to true to enable the following options…
+	              expand: true,
+	              // cwd is 'current working directory'
+	              cwd: 'public/img/',
+	              src: ['**/*.jpg'],
+	              // Could also match cwd. i.e. project-directory/img/
+	              dest: 'public/build/img/',
+	              ext: '.jpg'
+	            }
+	          ]
+	        }
+	      }
 
   });
 
@@ -64,8 +102,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-imagemin');
 
   grunt.registerTask('default', ['uglify', 'cssmin','jshint']);
+  grunt.registerTask('image', ['imagemin']);
+  
   
 
 };
