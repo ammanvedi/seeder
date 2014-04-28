@@ -4,7 +4,7 @@ This branch holds a version of seeder that uses arbor to render graphs instead o
 
 Seeder is an under-development web application that will provide a platform for the creation and sharing of mind maps / knowledge graphs. The ultimate goal of seeder is to allow for any data (web or locally based) to become part of the knowledge map.
 
-![Seeder proof of concept screenshot](http://i.imgur.com/KnE5wZk.png)
+![Seeder proof of concept screenshot](http://i.imgur.com/PUxpAoJ.gif)
 
 there is a video of the poc [here](http://youtu.be/879IhcXFcpU)
 
