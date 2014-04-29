@@ -9,7 +9,7 @@ function generateBlogPosts(posts){
 			//author
 	var container = $('.postcontainer');
 	
-	console.log('running');
+	//console.log('running');
 	
 	posts.forEach(function (postdataarray){
 	
@@ -23,14 +23,14 @@ function generateBlogPosts(posts){
 	postdata.append('<h3>by ' + postdataarray.author + ' on ' + postdataarray.date + '</h3>');
 	
 	
-		console.log('new el');
+		//console.log('new el');
 		postdataarray.post.forEach(function (partialpost){
 			if(partialpost.type == 'text'){
-			console.log('textpost');
+			//console.log('textpost');
 			postdata.append('<p>' + partialpost.data +'</p>');
 			}
 			if(partialpost.type == 'image'){
-			console.log('imgpost');
+			//console.log('imgpost');
 			var postimg = $('<div class="postimage"></div>')
 			postimg.append('<img src="'+ partialpost.data +'"></img><p>' + partialpost.subtitle + '</p>');
 			postdata.append(postimg)

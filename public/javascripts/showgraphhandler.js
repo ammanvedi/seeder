@@ -16,7 +16,7 @@ sys.parameters({
 });
     sys.renderer = Renderer("#view_canvas");
 
-    console.log(testgraphdata);
+    //console.log(testgraphdata);
 
     var GraphLayers = testgraphdata.graph;
     var currentlayer = '-1';
@@ -89,7 +89,7 @@ var mouse = {
     //clear the current particle system and load a new layer
     function loadLayer(layertoload) {
     
-    console.log(GraphLayers);
+    //console.log(GraphLayers);
     
     
 
@@ -103,7 +103,7 @@ var mouse = {
             
             
             GraphLayers[layertoload].nodes.forEach(function (val, idx, ar) {
-			console.log(val);
+			//console.log(val);
 
                 if (val.nodedata['TYPE'] == 'ARTICLE')
                 {
@@ -121,7 +121,7 @@ var mouse = {
             });
             
         } else {
-            console.log('layer not found');
+            //console.log('layer not found');
         }
 
     }

@@ -5,7 +5,6 @@
  */
 
 function note(domcontext, opts){
-	console.log(domcontext);
 	clearnotes();
 	
 	var w = opts.w;

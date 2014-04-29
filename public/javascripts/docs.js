@@ -1,7 +1,7 @@
 $(document).ready( function() {
 
 	$.getJSON("https://api.github.com/repos/ammanvedi/seeder/commits", function (commits){
-		console.log(commits[0]);
+		//console.log(commits[0]);
 		//.commit.author.name
 		//.commit.author.date
 		//.commit.message
@@ -9,10 +9,10 @@ $(document).ready( function() {
 		//repo.open_issues
 		//
 		var d = new Date(Date.parse(commits[0].commit.author.date));
-		console.log('last commit on ' + d.toDateString() + '<br/> by ' + commits[0].commit.author.name);
+		//console.log('last commit on ' + d.toDateString() + '<br/> by ' + commits[0].commit.author.name);
 		
 	
-		console.log(commits[0]);
+		//console.log(commits[0]);
 		
 		$('#commitheader').text('last commit on ' + d.toDateString() + ' by ' + commits[0].commit.author.name);
 		if(commits[0].commit.message.length < 70){

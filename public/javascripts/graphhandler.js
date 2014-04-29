@@ -47,7 +47,7 @@ function getSaveState(layercake, gname, gdesc, publishme){
 	for(key in Graph){
 		Graph[key].nodes.forEach(function (x){
 			delete x.nodedata['imagedata'];
-			console.log(x);
+			//console.log(x);
 		});
 	}
 	
@@ -75,7 +75,7 @@ $(document).ready(function () {
 
     var DEPLOYIP = '54.201.24.162'; //localhost for dev, ip for prod
     var socket = io.connect(DEPLOYIP + ':80');
-    console.log( socket);
+    //console.log( socket);
     var addnodemode = false;
     var addedgemode = false;
     var edgepath = new Array();
@@ -141,7 +141,7 @@ $(document).ready(function () {
     //sys.addNode(addnodePREFS['name'], addnodePREFS);
     createNode(-1+'', addnodePREFS, currentlayer);
     
-    console.log(GraphLayers);
+    //console.log(GraphLayers);
 
 
     var nearestmouse;
@@ -260,7 +260,7 @@ $(document).ready(function () {
 				createNode(data['nodeid'], data, currentlayer);
 				createEdge(nearme.node.data.nodeid, data['nodeid'], currentlayer);
 				//sys.addEdge(nearme.node.name, data['name']);
-				console.log(nearme.node.name + ' ' + data['name']);
+				//console.log(nearme.node.name + ' ' + data['name']);
 				//sys.stop();
 				
 						//alert the user
@@ -276,12 +276,12 @@ $(document).ready(function () {
 						
 				ct++;
 				}else{
-					console.log('ahahahah');
+					//console.log('ahahahah');
 					
 					//sys.addNode(data['name'], addnodePREFS);
 					createNode(data['nodeid'], data, currentlayer);
 					
-					console.log('ahahahah');
+					//console.log('ahahahah');
 					
 							//alert the user
 							var op = new Object();
@@ -389,21 +389,21 @@ $(document).ready(function () {
     		//console.log('direct click on a node');
     		if(nearme.node.data['TYPE'] == 'LAYER')
     		{
-    			console.log('TYPEISLAYER' );
+    			//console.log('TYPEISLAYER' );
     			//if the layer node clicked corresponds to this layer
     			//then exit the layer
     			if(nearme.node.data['nodeid'] == currentlayer)
     			{
     				
     				loadLayer(GraphLayers[currentlayer+'z'].parentlayer);
-    				console.log('loading 1:: ' );
-    				console.log(GraphLayers[currentlayer+'z'].parentlayer);
+    				//console.log('loading 1:: ' );
+    				//console.log(GraphLayers[currentlayer+'z'].parentlayer);
     			}else{
     				//layer node clicked is pointing to a different layer
     				//load it 
     				loadLayer(nearme.node.data['nodeid']);
-    				console.log('loading 2:: ' );
-    				console.log(GraphLayers[nearme.node.data['nodeid']]);
+    				//console.log('loading 2:: ' );
+    				//console.log(GraphLayers[nearme.node.data['nodeid']]);
     			}
     			
     			
@@ -499,7 +499,7 @@ $(document).ready(function () {
 			 $('#search_results_holder').css('overflow-x', 'scroll');
             var prefetch = new Image();
             prefetch.src = data_to_add['IMAGE'];
-            console.log(data_to_add['IMAGE']);
+            //console.log(data_to_add['IMAGE']);
             data_to_add['imagedata'] = prefetch;
 
             adding = false;
@@ -519,7 +519,7 @@ $(document).ready(function () {
 
             var res;
             
-            console.log(nearme_);
+            //console.log(nearme_);
 
             if (nearme_) {
 
@@ -574,9 +574,9 @@ $(document).ready(function () {
         socket.on('SAVE_SUCCESS', function (data){
         
         if(waiting_save_confirm){
-        	console.log('got save confirm');
+        	//console.log('got save confirm');
         	waiting_save_confirm = false;
-        	console.log($('#updatelabel').height() +"px");
+        	//console.log($('#updatelabel').height() +"px");
         	$('#savepanel').css("height",$('#updatelabel').height() +10 +"px");
         	$('#updatelabel').show();
         }
@@ -587,7 +587,7 @@ $(document).ready(function () {
         socket.on('PUBLISH_SUCCESS', function (data){
         
         if(waiting_publish_confirm){
-        console.log('got publish confirm');
+        //console.log('got publish confirm');
         	waiting_publish_confirm = false;
         	
         	 $('#savepanel').css("height",$('#updatelabel').height() +10 +"px");
@@ -681,10 +681,10 @@ $(document).ready(function () {
 			
 			if(ss.publish){
 				waiting_publish_confirm = true;
-				console.log('waiting publish confirm');
+				//console.log('waiting publish confirm');
 			}else{
 				waiting_save_confirm = true;
-				console.log('waiting save confirm');
+				//console.log('waiting save confirm');
 			}
 
 		
@@ -706,8 +706,8 @@ $(document).ready(function () {
         
     if(GraphLayers[layertoload])
     {
-    console.log('lyr');
-    console.log(GraphLayers[layertoload]);
+    //console.log('lyr');
+    //console.log(GraphLayers[layertoload]);
     	sys.prune(function (a,b,c){
     		return true;
     	});
@@ -722,7 +722,7 @@ $(document).ready(function () {
     	
     	
     }else{
-    	console.log('layer not found');
+    	//console.log('layer not found');
     }
     	
     }
@@ -750,8 +750,8 @@ $(document).ready(function () {
     		if(x.nodename == name){
     			GraphLayers[layern].nodes[ct].nodedata = newprefs;
     			
-    			console.log(ct);
-    			console.log(GraphLayers);
+    			//console.log(ct);
+    			//console.log(GraphLayers);
     			return false;
     		}
     	
@@ -782,7 +782,7 @@ $(document).ready(function () {
     	sys.addNode(data.nodeid, data);
     	//add node to layer
     	GraphLayers[layer].nodes.push({nodename : data.nodeid, nodedata : data});
-    	console.log(data);
+    	//console.log(data);
     	return;
     }
     
@@ -823,7 +823,7 @@ $(document).ready(function () {
 			    if((name != '') && (desc != '')){
 			    	transportSaveState(getSaveState(GraphLayers, name, desc, 1));
 			    	
-			    	console.log('sent publish graph data');
+			    	//console.log('sent publish graph data');
 			    }
 			    		//transportSaveState(getSaveState(sys));
     });
@@ -842,7 +842,7 @@ $(document).ready(function () {
 	   	if((name != '') && (desc != '')){
 	    	transportSaveState(getSaveState(GraphLayers, name, desc, 0));
 	    	
-	    	console.log('sent graph data');
+	    	//console.log('sent graph data');
 	    }
     });
 
@@ -862,9 +862,9 @@ $(document).ready(function () {
         $('#tabs-4').hide();
         $('#form_editnode').hide();
         
-       	console.log('hshhshs');
-		console.log(evt);
-		console.log(target.getAttribute('tablink'));
+       	//console.log('hshhshs');
+		//console.log(evt);
+		//console.log(target.getAttribute('tablink'));
 		$(target.getAttribute('tablink')).show();
 
         
@@ -946,7 +946,7 @@ $(document).ready(function () {
 	        
 	        //validate form
 	        
-	        console.log($('#select_node_type').val());
+	        //console.log($('#select_node_type').val());
 			
 	        updated['name'] = $('#field_node_name').val();
 	        updated['text'] = $('#field_node_text').val();
@@ -1009,10 +1009,10 @@ $(document).ready(function () {
 		sys.tweenNode(current_edit_focus['nodeid'], 0.5, editnodePREFS);
 		
 		editNode(current_edit_focus['nodeid'], editnodePREFS, currentlayer);
-		console.log('fcs');
-		console.log(current_edit_focus);
-		console.log('edits');
-		console.log(editnodePREFS);
+		//console.log('fcs');
+		//console.log(current_edit_focus);
+		//console.log('edits');
+		//console.log(editnodePREFS);
 		$('#form_editnode').hide();
 		$('#edit_notice').show();
 		

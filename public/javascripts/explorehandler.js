@@ -41,7 +41,7 @@ function backgroundSlide(i) {
 if ((i == bgArr.length) || (i  < 0)){
 	return true;
 	}
-	console.log(loaded[i].src);
+	//console.log(loaded[i].src);
     $("#explore-banner").css("background-image", 'url('+loaded[i].src+')');
 
 }

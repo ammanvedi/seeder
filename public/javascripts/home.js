@@ -30,14 +30,14 @@ function updatetext(){
 	    }});
 	count++;
 	
-	console.log($('.shape').shape('flip down'));
+	//console.log($('.shape').shape('flip down'));
 
 }
 
 setInterval(function(){updatetext();},5000);
 
 
-console.log('loloool');
+
 
 
 

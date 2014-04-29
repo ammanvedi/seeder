@@ -50,9 +50,6 @@ $.getJSON( "/blog/posts.json", function( data ) {
 	
   });
 
-console.log('lol');
-
-
 
 
  
