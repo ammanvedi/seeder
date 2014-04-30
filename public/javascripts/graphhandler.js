@@ -580,6 +580,7 @@ $(document).ready(function () {
         	$('#savepanel').css("height",$('#updatelabel').height() +10 +"px");
         	var date = new Date();
         	$('#lastsave').text(" " + date);
+        	$('#lastlink').hide(); 
         	$('#updatelabel').show();
         }
     
@@ -595,8 +596,11 @@ $(document).ready(function () {
         	 $('#savepanel').css("height",$('#updatelabel').height() +10 +"px");
         	 $('#savepanel').css("background-color",'#ffffff');
         	 var date = new Date();
-        	 $('#lastsave').text(" " + date);
+        	 $('#lastsave').text(" " + date.toDateString());
+        	 $('#lastlink').attr('href',data.payload); 
+        	 $('#lastlink').attr('target','_blank'); 
         	 $('#updatelabel').show();
+        	 
         }
         	
         });

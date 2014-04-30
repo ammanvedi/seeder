@@ -98,6 +98,11 @@ height: 100px;
 	padding: 10px;
 	overflow: hidden;
 }
+
+#lastsave{
+	
+	padding-bottom: 10px;
+}
  
 #savepanel ul{
 	width: 250px;

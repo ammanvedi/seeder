@@ -373,7 +373,7 @@ io.sockets.on('connection', function (socket) {
  */
 function db_push_graph(fullgraph, public) {
 
-    var url = "http://seeder.default.url/";
+    var url = "http://seeder.co/graph?graphid=" + fullgraph.graphid;
 
     if (public) {
 
