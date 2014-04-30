@@ -116,6 +116,10 @@ var Renderer = function (canvas) {
                         ctx.arc(pt.x, pt.y, radius, 0, 2 * Math.PI, false);
                         ctx.lineWidth = 5;
                         ctx.strokeStyle = '#003300';
+                        ctx.shadowColor = '#000';
+                        ctx.shadowBlur = 16;
+                        ctx.shadowOffsetX = 0;
+                        ctx.shadowOffsetY = 0;
                         ctx.stroke();
 
 
@@ -139,6 +143,10 @@ var Renderer = function (canvas) {
                         ctx.beginPath();
                         ctx.arc(pt.x, pt.y, node.data['size'], 0, 2 * Math.PI, false);
                         ctx.fillStyle = node.data['color'];
+						ctx.shadowColor = '#000';
+						ctx.shadowBlur = 16;
+						ctx.shadowOffsetX = 0;
+						ctx.shadowOffsetY = 0;
                         ctx.fill();
                         ctx.lineWidth = 3;
                         ctx.strokeStyle = shadeColor(node.data['color'], -20);
@@ -157,17 +165,24 @@ var Renderer = function (canvas) {
 	            {
 	                var radius = node.data['size'];
 	               
-	
+					
 	                ctx.beginPath();
 	                ctx.arc(pt.x, pt.y, radius, 0, 2 * Math.PI, false);
 	                ctx.fillStyle = node.data['color'];
+					ctx.shadowColor = "rgba(0, 0, 0, 0.5)";
+					ctx.shadowBlur = 10;
+					ctx.shadowOffsetX = 0;
+					ctx.shadowOffsetY = 0;
 	                ctx.fill();
 	                ctx.lineWidth = 3;
 	                ctx.strokeStyle = shadeColor(node.data['color'], -20);
 	                ctx.stroke();
+	                
+	                ctx.fillStyle = "rgba(0, 0, 0, 0.3)";
+	                ctx.fillRect(pt.x - 8,pt.y + 10,ctx.measureText(node.data.name).width + 35,-25);
 	
 	                ctx.font = '12pt Arial';
-	                ctx.fillStyle = 'black';
+	                ctx.fillStyle = 'white';
 	                ctx.fillText(node.data.name, pt.x - 4, pt.y + 3);
 	            }
 	            
@@ -182,8 +197,12 @@ var Renderer = function (canvas) {
 	                ctx.lineWidth = 8;
 	                ctx.strokeStyle = shadeColor(node.data['color'], -20);
 	                ctx.stroke();
+	                
+	                ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+	                ctx.fillRect(pt.x - 8,pt.y + 10,ctx.measureText(node.data.name).width + 35,-25);
+	                
 	                ctx.font = '12pt Arial';
-	                ctx.fillStyle = 'black';
+	                ctx.fillStyle = 'white';
 	                ctx.fillText(node.data.name, pt.x - 4, pt.y + 3);		
 	            }
             });
