@@ -23,6 +23,11 @@ html{
 	
 }
 
+#btn_export{
+	
+	width: 150px;
+}
+
 #explore-sidebar{
 	background-color: #262E32;
 }
@@ -93,10 +98,13 @@ height: 100px;
 	padding: 10px;
 	overflow: hidden;
 }
-
+ 
 #savepanel ul{
-	
-	padding-top: 20px;
+	width: 250px;
+	padding-top: 15px;
+	padding-left: 20px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #updatelabel{

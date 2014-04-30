@@ -1,4 +1,11 @@
 $(document).ready(function () {
+
+function generateText(graphlayers){
+console.log('export');
+	
+
+}
+
 $('#info_title').attr("target", "_blank");
 var  MainSidebarhelp = $('.ui.sidebar');
 MainSidebarhelp.sidebar('toggle');
@@ -25,6 +32,8 @@ sys.parameters({
 
     loadLayer('-1');
     
+    generateText(GraphLayers);
+    
     $('body').mousemove(function (e) {
         
 var mouse = {
@@ -36,8 +45,6 @@ var mouse = {
             nearestmouse = sys.nearest(mouse);
     
             if (nearestmouse) {
-            //console.log(nearestmouse);
-    
                 if (nearestmouse.node.data['TYPE'] == 'ARTICLE') {
                     nearestmouse.node.data['NEAREST'] = true;
                     $('#info_title').text(nearestmouse.node.data['TITLE']);
@@ -45,14 +52,14 @@ var mouse = {
                     $('#info_description').text(nearestmouse.node.data['DESCRIPTION']);
                     $('#info_image').attr("src", nearestmouse.node.data['IMAGE']);
                     $('#info_title').attr("href", nearestmouse.node.data['URL']);
-                    //console.log(nearestmouse.node);
                 } else {
-                    //console.log('id is : ' + nearestmouse.node.name);
-    
+
                 }
     
             }
          });
+         
+         
 
     $('#view_canvas').dblclick(function (a) {
 

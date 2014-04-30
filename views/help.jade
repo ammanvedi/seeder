@@ -75,39 +75,21 @@ html(lang="en")
 						|Adding Nodes
 					a.listitem(href="#addingedges")
 						|Adding Edges
-					.listitem
-						|Deleting Objects
-					.listitem
+					a.listitem(href="#layers")
+						|Layers
+					a.listitem(href="#search")
 						|Article Search
 					a.listitem(href="#addingarticles")
 						|Adding Articles
-					.listitem
-						|Publishing
-					.listitem
-						|Saving
-					.listitem
+					a.listitem(href="#PublishSave")
+						|Publishing & Saving
+					a.listitem(href="#export")
 						|Exporting 
 					.ui.inverted.divider
 					.listheader
 						|Developer
 					a.listitem(href="/docs")
 						|Source Code
-					.listheader
-						|API
-					.listitem
-						|Architecture
-					.listitem
-						|Public Methods
-					.listitem
-						|Authentication
-					.listitem
-						|User-Specific Methods
-					.ui.inverted.divider
-					.listheader
-						|FAQ
-					.ui.inverted.divider
-					.listheader
-						|Contact
 					.ui.inverted.divider
 		#docs
 			#docsholder.ui.stacked.segment
@@ -147,12 +129,49 @@ html(lang="en")
 				p.docp Edges can be added between any two nodes, the edge tools can be found in the palette under the <b>Add Edge</b> palette.
 				p.docp To add an edge, first click <b>"Add Edge"</b>, then use the mouse to select the two nodes to connect. The edge will be added when the second (destination) node is selected. The operation can be cancelled at any time by using the <b>"Cancel"</b> button on the palette.
 				br
+				h1#layers.doch2
+					| Layers
+				img(src="/img/gif/heirarch.gif" width="70%")
+				p.docp layers give hierarchy to graphs. A layer node contains a subgraph, in turn this sub-graph may contain its own layer nodes, and so on...
+				p.docp You can recognise layers when viewing a graph as they have a thick border. the graph within the node can be expanded by double clicking it. And can be collapsed the same way.
+				img(src="/img/gif/layernode.gif" width="40%")
+				p.docp when <a href="#addingnodes">adding a node</a> use the dropdown to select "layer node". You can then continue to add and place the node normally.
+				br
+				h1#search.doch2
+					| Article Search
+				img#leftimg(src="/img/gif/search.gif" width="20%")
+				br
+				br
+				p.docp Search is found in the Graph Tools section of the sidebar. It returns a selection of articles based on your query, our search is improving all the time with plans to incorporate Mendeley's massive research paper database soon!
+				br
+				p.docp Intuitively, just type your query into the text and hit the search icon
+				.clear
+				br
 				h1#addingarticles.doch2
 					| Adding Articles
 				p.docp Articles are nodes in the graph that have rich metadata attached to them (images, URL's, descriptions, publication dates etc). They are added from the built in search (under <b>Graph Tools</b>
 				img(src="/img/gif/addart.gif" width="80%")
 				p.docp After performing a search, articles can be added by dragging and dropping from the <i class=" large add purple icon"></i> icon that is present on each search result item. Much like adding a standard node the article will attach itself to the nearest node. 
-				br                                            
+				br    
+				h1#PublishSave.doch2
+					|Publish & Save
+				img#twoleftimg(src="/img/gif/save.gif" width="20%")
+				img#leftimg(src="/img/gif/publish.gif" width="20%")
+				.clear
+				p.docp These two functions are located together in the sidebar, below the article search.
+				br
+				p.docp <b>Saving</b> :: Saving your graph will make it available to you privately.
+				br
+				p.docp <b>Publishing</b> :: Other users will be able to access your graph through <a href="/explore">Explore</a>  
+				br  
+				h1#export.doch2
+					|Export
+				img#leftimg(src="/img/gif/export.gif" width="40%")
+				br
+				p.docp Seeder allows you to export the graph you have created to a Harvard formatted list, just select "Export" from within the relavant pane in the Palette.
+				p.docp We will be adding more options for export soon!
+				.clear
+				br                                     
 				
 				
 				

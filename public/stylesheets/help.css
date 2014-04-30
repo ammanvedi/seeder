@@ -12,6 +12,13 @@
   user-select: none;
 }
 
+.clear{
+	
+	clear: both;
+	width: 100%;
+	height: 1px;
+}
+
 #help-sidebar{
 	
 	background-color: #262E32;
@@ -23,6 +30,19 @@
 	
 	width: 100%;
 	height: 200px;
+}
+
+#leftimg{
+	padding-left: 50px;
+	padding-right: 30px;
+	float: left;
+	
+}
+
+#twoleftimg{
+	padding-left: 200px;
+	padding-right: 30px;
+	float: left;
 }
 
 #sourcebutton{
@@ -97,7 +117,7 @@ min-width: 70%;
 
 	margin: 30px auto;
 	display: block;
-	border: 2px dashed rgba(85, 79, 137, 0.18);
+	/*border: 2px dashed rgba(85, 79, 137, 0.18);*/
 
 }
 

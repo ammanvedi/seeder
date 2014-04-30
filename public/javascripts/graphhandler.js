@@ -578,6 +578,8 @@ $(document).ready(function () {
         	waiting_save_confirm = false;
         	//console.log($('#updatelabel').height() +"px");
         	$('#savepanel').css("height",$('#updatelabel').height() +10 +"px");
+        	var date = new Date();
+        	$('#lastsave').text(" " + date);
         	$('#updatelabel').show();
         }
     
@@ -873,7 +875,8 @@ $(document).ready(function () {
     $('#btn_export').click(function (e) {
 
         var xport_string = "";
-
+		
+		//traverse graph 
 
         sys.eachNode(function (node, pt) {
             //console.log(node);
@@ -913,6 +916,7 @@ $(document).ready(function () {
      */
 	function updateEditNodePrefs(){
 	
+	if(current_edit_focus != null || current_edit_focus != undefined ){
 	        var updatededits = new Object();
 	        
 	        //validate form
@@ -923,6 +927,7 @@ $(document).ready(function () {
 	        updatededits['size'] = $('#field_edit_node_size').val();
 	        updatededits['id'] = get_random_color();
 	        updatededits['color'] = $('#picker_edit_edgecolor').val();
+	        
 	        updatededits['TYPE'] = current_edit_focus['TYPE'];
 	        
 	        
@@ -933,6 +938,9 @@ $(document).ready(function () {
 	        	$('#field_edit_node_name').removeClass('errorform');
 	        	return updatededits;
 	        }
+	}
+	return;
+
 	
 
 	}

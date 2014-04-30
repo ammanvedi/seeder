@@ -84,12 +84,12 @@ block content
 				ul
 					li
 						.ui.labeled.input
-							input#sp_graphname.text(placeholder="Graph Name")
+							input#sp_graphname.text(placeholder="Name")
 							.ui.corner.label
 								i.asterisk.icon
 					li
 						.ui.labeled.input
-							input#sp_graphdesc.text(placeholder="Graph Name")
+							input#sp_graphdesc.text(placeholder="Description")
 							.ui.corner.label
 								i.asterisk.icon
 	#contain_main(class='push')
@@ -144,11 +144,13 @@ block content
 					br
 					input#picker_edit_edgecolor.ui.mini.input(type='color' placeholder='#ffffff')
 					br
-					input.tiny.ui.submit.green.button#btn_editnode(type='button' value='edit node')
+					input.tiny.ui.submit.purple.button#btn_editnode(type='button' value='edit node')
 			#tabs-4.tabwindow
-				p export
-				input#btn_export(type='button' value='export')
-
+				.ui.icon.header
+					i.edit.circular.icon
+					.sub.header
+						|Export To Reference List
+				input.tiny.ui.submit.green.button#btn_export(type='button' value='export')
 		#display_code
 			#graph_tab
 				canvas#graph_canvas(width='1200px' height='600px')
