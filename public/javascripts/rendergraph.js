@@ -178,10 +178,12 @@ var Renderer = function (canvas) {
 	                ctx.strokeStyle = shadeColor(node.data['color'], -20);
 	                ctx.stroke();
 	                
-	                ctx.fillStyle = "rgba(0, 0, 0, 0.3)";
-	                ctx.fillRect(pt.x - 8,pt.y + 10,ctx.measureText(node.data.name).width + 35,-25);
-	
 	                ctx.font = '12pt Arial';
+	                
+	                ctx.fillStyle = "rgba(0, 0, 0, 0.6)";
+	                ctx.fillRect(pt.x - 10,pt.y + 10,ctx.measureText(node.data.name).width +10,-25);
+	
+	                
 	                ctx.fillStyle = 'white';
 	                ctx.fillText(node.data.name, pt.x - 4, pt.y + 3);
 	            }
@@ -198,10 +200,12 @@ var Renderer = function (canvas) {
 	                ctx.strokeStyle = shadeColor(node.data['color'], -20);
 	                ctx.stroke();
 	                
-	                ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
-	                ctx.fillRect(pt.x - 8,pt.y + 10,ctx.measureText(node.data.name).width + 35,-25);
-	                
 	                ctx.font = '12pt Arial';
+	                
+	                ctx.fillStyle = "rgba(0, 0, 0, 0.6)";
+	                ctx.fillRect(pt.x - 10,pt.y + 10,ctx.measureText(node.data.name).width+10,-25);
+	                
+	                
 	                ctx.fillStyle = 'white';
 	                ctx.fillText(node.data.name, pt.x - 4, pt.y + 3);		
 	            }
