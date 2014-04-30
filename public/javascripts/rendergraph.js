@@ -75,8 +75,8 @@ var Renderer = function (canvas) {
                 // pt2:  {x:#, y:#}  target position in screen coords
 
                 // draw a line from pt1 to pt2
-                ctx.strokeStyle = "rgba(0,0,0, .333)";
-                ctx.lineWidth = 3;
+                ctx.strokeStyle = "rgba(0,0,0, 1.0)";
+                ctx.lineWidth = 2;
                 ctx.beginPath();
                 ctx.moveTo(pt1.x, pt1.y);
                 ctx.lineTo(pt2.x, pt2.y);
