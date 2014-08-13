@@ -14,7 +14,10 @@ html{
  -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
-}
+  	background-image: url('/img/graphy.png');
+
+	}
+
 
 
 .navindex{
@@ -130,7 +133,7 @@ height: 100px;
 	height: 175px;
 	padding: 10px;
 	position: absolute;
-	z-index: 1000;
+	z-index: 2000;
 box-shadow: 0 0 5px #5a5a5a;
 	opacity: 0.9;
 	background-color: #ffffff;
@@ -173,13 +176,28 @@ box-shadow: 0 0 5px #5a5a5a;
 	width:150px;
 }
 
+
+#BGlayer{
+	
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: -60px;
+	left: 250px;
+	z-index: -1;
+	pointer-events: none;
+	opacity: 0.9;
+}
+
 #graph_canvas{
 
 	margin-left: auto;
 	margin-right: auto;
-	outline: 4px solid #fff;
 	overflow-x: hidden;
-	/*box-shadow: 0 5px 30px #000;*/
+	vertical-align: bottom;
+	z-index: 1000;
+	position: absolute;
+
 
 }
 
@@ -380,6 +398,10 @@ text-align: center;
 	position: absolute;
 	opacity: 0.5;
 	box-shadow: 0 0 5px #5a5a5a;
+}
+
+#display_code{
+
 }
 
 

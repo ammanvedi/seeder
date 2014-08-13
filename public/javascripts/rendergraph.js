@@ -25,6 +25,8 @@ function shadeColor(color, percent) {
     return "#"+RR+GG+BB;
 }
 
+
+
 /**
  * The main renderer for the graph drawing system 
  * @param {DOM Canvas Object} canvas The canvas object inside the page DOM that the renderer should draw to
@@ -66,7 +68,9 @@ var Renderer = function (canvas) {
             // x,y point in the screen's coordinate system
             // 
             //console.log('renderer running ');
-            ctx.fillStyle = "white";
+        	//transparent
+        	ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "rgba(255, 255, 255, 0.0)";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             particleSystem.eachEdge(function (edge, pt1, pt2) {
@@ -134,8 +138,12 @@ var Renderer = function (canvas) {
 
                         //draw the node title
                         ctx.font = '10pt Arial';
-                        ctx.fillStyle = 'black';
-                        ctx.fillText(node.data['TITLE'], pt.x + (imagesize / 2) + 3, pt.y + 3);
+                        ctx.fillStyle = "rgba(0, 0, 0, 0.6)";
+                        ctx.fillRect(pt.x - imagesize - 2,pt.y + 10,ctx.measureText(node.data['TITLE'].substring(0,30)).width +10,-25);
+                        
+                        
+                        ctx.fillStyle = 'white';
+                        ctx.fillText(node.data['TITLE'].substring(0,30), pt.x - (imagesize) + 3, pt.y + 3);
 
                     } else {
 

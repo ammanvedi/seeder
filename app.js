@@ -15,6 +15,8 @@ var MongoClient = require('mongodb').MongoClient;
 var io = require('socket.io').listen(http);
 var passport = require('passport')
   , GoogleStrategy = require('passport-google').Strategy;
+var Mendeley = require('mendeleyjs');
+var seedling = require('seedling');
 
 // all environments
 
@@ -52,6 +54,22 @@ app.use(app.router);
 
 var UserBase = new Object();
 
+console.log
+
+Mendeley.auth('670', '9N5Q9XupUZEpxuOI', function(msg){
+
+
+
+console.log(msg)
+
+		Mendeley.search("science", function(data){
+		
+		console.log(data);
+		
+		});
+});
+
+
 
 
 //this is for development, when the user login has been implemented 
@@ -76,12 +94,13 @@ MongoClient.connect("mongodb://ammanvedi:poopoo12@ds057528.mongolab.com:57528/se
         //console.log("database : connected to MongoDB");
         databaseconnection = db;
         //db.createCollection('graphs', function (err, collection) {});
+        seedling.init(databaseconnection);
     }
 });
 
 passport.use(new GoogleStrategy({
-    returnURL: 'http://seeder.co/auth/google/return',
-    realm: 'http://seeder.co/'
+    returnURL: 'http://localhost:8080/auth/google/return',
+    realm: 'http://localhost:8080/'
   },
   function(identifier, profile, done) {
   

@@ -10,6 +10,8 @@ var waiting_publish_confirm = false;
 var nodelength = 0;
 var edgelength = 0;
 
+
+
 function ID() {
   // Math.random should be unique because of its seeding algorithm.
   // Convert it to base 36 (numbers + letters), and grab the first 9 characters
@@ -73,8 +75,8 @@ function getSaveState(layercake, gname, gdesc, publishme){
 
 $(document).ready(function () {
 
-    var DEPLOYIP = '54.201.24.162'; //localhost for dev, ip for prod
-    var socket = io.connect(DEPLOYIP + ':80');
+    var DEPLOYIP = '127.0.0.1'; //localhost for dev, ip for prod
+    var socket = io.connect(DEPLOYIP + ':8080');
     //console.log( socket);
     var addnodemode = false;
     var addedgemode = false;
@@ -111,7 +113,8 @@ $(document).ready(function () {
     var GraphLayers = new Object();
 	var currentlayer = '-1';
 	addLayer('-1', '0');
-     
+	
+
 
 
     //def
@@ -136,10 +139,57 @@ $(document).ready(function () {
 	//console.log('here is the system in full');
 	//console.log(sys);
 	
+	//sys.addNode(addnodePREFS['name'], addnodePREFS);
+	createNode(-1+'', addnodePREFS, currentlayer);
+	
+	var mousenow;
+	//set up background rendering 
+	
+	 var container = document.getElementById('BGlayer');
+	    var renderer = new FSS.CanvasRenderer();
+	    var scene = new FSS.Scene();
+	    var light = new FSS.Light('#555555', '#2D2D2D');
+	    var geometry = new FSS.Plane(1200,800, 12, 12);
+	    var material = new FSS.Material('#C066FF', '#FFFFFF');
+	    var mesh = new FSS.Mesh(geometry, material);
+	    var now, start = Date.now();
+	
+	    function initialise() {
+	      scene.add(mesh);
+	      scene.add(light);
+	      container.appendChild(renderer.element);
+	      window.addEventListener('resize', resize);
+	    }
+	
+	    function resize() {
+	      renderer.setSize(1200,800);
+	    }
+	 
+	    function animate() {
+	      now = Date.now() - start;
+	      //light.setPosition(300*Math.sin(now*0.001), 200*Math.cos(now*0.0005), 60);
+	      
+	      if(mousenow != undefined){
+	      //light.setPosition(nearestmouse.screenPoint.x, nearestmouse.screenPoint.y, 60);
+	      light.setPosition(mousenow.x-590, -mousenow.y+300, 10);
+	      
+	      //console.log(nearestmouse);
+	      }else {
+	      	light.setPosition(300*Math.sin(now*0.001), 200*Math.cos(now*0.0005), 60);
+	      }
+	      
+	      
+	      renderer.render(scene);
+	      requestAnimationFrame(animate);
+	    }
+	
+	    initialise();
+	    resize();
+	    animate();
+	 
+	
 	
 
-    //sys.addNode(addnodePREFS['name'], addnodePREFS);
-    createNode(-1+'', addnodePREFS, currentlayer);
     
     //console.log(GraphLayers);
 
@@ -168,7 +218,7 @@ $(document).ready(function () {
         x: e.pageX - 270,
         y: e.pageY - 50
     };
-
+				mousenow = mouse;
         nearestmouse = sys.nearest(mouse);
 
         if (nearestmouse) {

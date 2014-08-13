@@ -1,128 +1,73 @@
 extends homelayout
 
 block content
-	.fixed-home
-		.ui.menu.purple.inverted
-			ai#sidebar-toggle.item
-				i.reorder.icon
-			a.item.purple.active(href="/")
-				i.leaf.icon
-				img(src="/img/logo-small.png")
-			a.item(href="/explore")
-				i.map.icon
-				| Explore
-			a.item(href="/build")
-				i.wrench.icon
-				| Build
+	.ui.fixed.menu#mainnav
+		ai#sidebar-toggle.item
+			i.reorder.icon
+		a.item.purple.active(href="/")
+			img(src="/img/logo-small.png")
+		a.item(href="/explore")
+			i.map.icon
+			| Explore
+		a.item#buildtab(href="/build")
+			i.wrench.icon
+			| Build
+		.ui.simple.dropdown.item#moretab
+			|More
+			i.dropdown.icon
+			.menu
+				a.item(href="/blog")
+					i.book.icon
+					|Blog
+				a.itema.item(href="/help")
+					i.help.icon
+					|Help
+		.right.compact.menu#logintab
 			.ui.simple.dropdown.item
-				|More
+				i.user.icon
+				|#{logintext}
 				i.dropdown.icon
 				.menu
-					a.item(href="/blog")
-						i.book.icon
-						|Blog
-					a.itema.item(href="/help")
-						i.help.icon
-						|Help
-			.right.compact.menu
-				.ui.simple.dropdown.item
-					i.user.icon
-					|#{logintext}
-					i.dropdown.icon
-					.menu
-						a.item
-							i.bolt.icon
-							|My Profile
-						a.item
-							i.lightbulb.icon
-							|My Graphs
-						a.item
-							i.settings.icon
-							|Settings
-						a.item(href="#{signlink}")
-							i.sign.in.icon
-							|#{signouttext}
+					a.item
+						i.bolt.icon
+						|My Profile
+					a.item
+						i.lightbulb.icon
+						|My Graphs
+					a.item
+						i.settings.icon
+						|Settings
+					a.item(href="#{signlink}")
+						i.sign.in.icon
+						|#{signouttext}
 						
 	#explore-sidebar.ui.floating.sidebar.inverted
 	
-	#home-main-banner
-		.home-banner-overlay
-			#hometext
-				|a new way to <div class="ui text small shape shapetext"><div class="sides"><div class="active ui header side">mindmap</div><div class="ui header side">learn</div><div class="ui header side">reference</div></div></div>
-			#home-banner-img-c
-				#home-banner-image
-	.gridcontain
-		.explore-block
-			.giticon
-				i.big.inverted.map.icon
-			.headertext
-				| Explore
-			br
-			desc
-				p.desctext
-					span
-						|View and share graphs created by other users. Search for graphs related to a subject area. 
-			a.ui.small.purple.button.googlesignin(href="/explore")
-				i.search.icon
-				| Start Searching
-		.build-block
-			.giticon
-				i.big.inverted.lightbulb.icon
-			.headertext
-				| Build
-			br
-			desc
-				p.minidesctext
-					span
-						|Get started with the
-						a#homelink(href="/help")
-							| User Docs 
-						|or jump straight into the 
-						a#homelink(href="/build")
-							| Builder
-				a.ui.small.google.plus.button.googlesignin(href="/auth/google")
-					i.google.plus.icon
-					| Sign in with google
-		.code-block
-			.giticon
-				i.big.inverted.code.icon
-			.headertext
-				| Docs + Code
-			br
-			desc
-				p.minidesctext
-					span
-						|Seeder is open source! Read the 
-						a#homelink_code(href="/docs")
-							| Docs 
-						| or fork it on 
-						a#homelink_code(href="https://github.com/ammanvedi/seeder")
-							| Github
-						
-		.blog-block
-			.giticon
-				i.big.inverted.book.icon
-			.headertext
-				| Dev Blog
-			br
-			desc
-				p.minidesctext
-					span
-						|Updates about the development of the site and new features
-				a.ui.small.green.button.googlesignin(href="/blog")
-					i.read.terminal.icon
-					| read the blog
-			.latestpost
-				#latestimage
-					img(src="http://i.imgur.com/cv1aoOe.png")
-				h1 Last Post
-				h2 22/3/2014
-				a.ui.mini.inverted.basic.button#readbutton(href="/blog")
-					|Read
-		
-	.clear
-			
-		
+	#content
+		#header
+			#headercopy
+				h1
+					|Deeper <br/> <span id="underlined">Referencing.</span>
+				.divider
+				p
+					|Seeder is a new way to reference, mindmap and learn
+				.button
+					h2 Start Building
+		.about
+			h1 about. 
+			br 
+			p Seeder is the lovechild of mindmapping and the content rich web. Create truly connected maps from your own research, or tap into resources like <a href="http://www.mendeley.com/">Mendeley</a> <br/><br/> <span id="aboutleadout">See what others have created, go <a href="http://www.seeder.co/explore/">Exploring</a></span>
+			.aboutimg
+		.signup
+			#signupcopy
+				h1 See it <br/> Our way.
+				.signupdivider
+				p Sign up to start creating + curating
+				br
+				.button
+					h2 Sign Up
+				.button
+					h2 Learn More
 			
 
 	

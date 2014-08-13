@@ -14,6 +14,7 @@ html{
  -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
+    	background-image: url('/img/graphy.png');
 }
 
 #info_display_panel{
