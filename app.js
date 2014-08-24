@@ -204,6 +204,25 @@ if(req.user){
 
 app.get('/auth/google', passport.authenticate('google'));
 
+app.post('/register', function (req, res){
+console.log(req.query);
+
+
+	seedling.registerUser(req.query.uname, req.query.fname, req.query.sname, req.query.pass, req.query.email, function(result){
+	
+	if(result){
+		console.log(result);
+	}else{
+		console.log('added successfully');
+		res.send(200);
+	};
+	
+	});
+	
+
+
+});
+
 
 app.get('/auth/google/return', 
   passport.authenticate('google', { successRedirect: '/build',
