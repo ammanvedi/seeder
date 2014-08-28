@@ -38,6 +38,7 @@ $(document).ready(function () {
 
 		function parsesuccess(jqxhr, HTTPRes){
 			console.log('SUCCESSFUL LOGIN');
+			window.location.replace("/");
 		}
 		
 		function parseresponse(jqxhr, HTTPResult){

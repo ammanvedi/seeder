@@ -3,7 +3,6 @@
  */
 var DEPLOYPORT = 8080; //3000
 
-
 var express = require('express');
 var app = express();
 var routes = require('./routes');
@@ -13,8 +12,6 @@ var http = require('http').createServer(app);
 var path = require('path');
 var MongoClient = require('mongodb').MongoClient;
 var io = require('socket.io').listen(http);
-var passport = require('passport'),
-    GoogleStrategy = require('passport-google').Strategy;
 var Mendeley = require('mendeleyjs');
 var seedling = require('seedling');
 
@@ -26,49 +23,29 @@ app.configure(function() {
     app.set('views', path.join(__dirname, 'views'));
     app.set('docs', path.join(__dirname, 'docs'));
     app.set('view engine', 'jade');
-    //app.use(express.compress());
     app.use(express.cookieParser());
     app.use(express.bodyParser());
     app.use(express.static(path.join(__dirname, 'public'), {
         maxAge: 31557600000
     }));
-
-
-
-
     app.use(express.cookieSession({
     		key: 'seeder.sess',
         secret: 'supersecret'
     }));
-
-    app.use(passport.initialize());
-    app.use(passport.session());
-
-
     app.use(express.favicon());
     app.use(express.logger('dev'));
     app.use(express.json());
     app.use(express.urlencoded());
     app.use(express.methodOverride());
     app.use(app.router);
-
-
 });
 
-var UserBase = new Object();
-
-console.log
+//testing mendeley js functionality
 
 Mendeley.auth('670', '9N5Q9XupUZEpxuOI', function(msg) {
-
-
-
     console.log(msg)
-
     Mendeley.search("science", function(data) {
-
         console.log(data);
-
     });
 });
 
@@ -92,43 +69,6 @@ MongoClient.connect("mongodb://ammanvedi:poopoo12@ds057528.mongolab.com:57528/se
 
 
 
-
-/**
- * Get an array of graph data from the public graphs database
- * @param      {String}   a string specifying which graphs to return (all, popular, new)
- * @param      {Function} callback will be passed a single argument which contains all graph metadata
- */
-function getPublic(filter, next) {
-
-    var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-    var ItemList = new Array();
-
-    if (filter == 'all') {
-
-        //this should be refactored so only graphmeta is served to the client.
-
-        databaseconnection.createCollection('publicgraphs', function(err, collection) {
-
-            collection.find().toArray(function(err, items) {
-                items.forEach(function(obj) {
-                    var pdate = new Date(obj.graphmeta.datecreated);
-
-                    obj.graphmeta.datecreated = days[pdate.getDay()] + ' ' + months[pdate.getMonth()] + ' ' + pdate.getDate();
-                    ItemList.push(obj);
-
-
-                });
-                console.log(ItemList);
-                next(ItemList);
-                //return JSON.stringify(ItemList);
-            });
-
-        });
-    }
-
-}
 
 
 
@@ -163,14 +103,14 @@ app.get('/help', function(req, res) {
 });
 
 
-app.get('/auth/google', passport.authenticate('google'));
-
-
-
-
 app.get('/login', function(req,res){
 
-	res.render('login');
+	res.render('login', {
+	    logintext: "Sign In",
+	    signouttext: "Sign In",
+	    title: 'Login',
+	    signlink: '/login'
+	});
 
 });
 
@@ -196,10 +136,9 @@ app.post('/login', function(req, res) {
             res.send(200);
             
         } else {
-            //failure
+            //failure, respond accordingly
             res.send(400);
         }
-        //res.send(200);
     });
 });
 
@@ -208,7 +147,12 @@ app.get('/signup', function(req,res){
 	if(req.session.loggedin){
 		console.log('USER LOGGED IN ALREADY');
 	}
-	res.render('signup');
+	res.render('signup', {
+	    logintext: "Sign In",
+	    signouttext: "Sign In",
+	    title: 'seeder.co - Sign Up',
+	    signlink: '/login'
+	});
 
 });
 
@@ -230,11 +174,6 @@ app.post('/signup', function(req, res) {
 });
 
 
-app.get('/auth/google/return',
-    passport.authenticate('google', {
-        successRedirect: '/build',
-        failureRedirect: '/'
-    }));
 
 app.get('/graph', function(req, res) {
 
@@ -273,10 +212,7 @@ app.get('/graph', function(req, res) {
 
 app.get('/build', function(req, res) {
 
-    databaseconnection.createCollection('graphs', function(err, collection) {
 
-        //console.log(collection);
-    });
 
 
 
@@ -301,10 +237,6 @@ app.get('/build', function(req, res) {
         });
     } else {
         console.log('no user logged in');
-        //    res.render('index', {
-        //        title: 'Seeder',  username: 'Sign In'
-        //    });
-
         res.redirect('/login');
     }
 
@@ -316,7 +248,7 @@ app.get('/build', function(req, res) {
 app.get('/logout', function(req, res) {
 
     req.session = null;
-    req.logout();
+    //req.logout();
     res.clearCookie('seederuser', {
         path: '/'
     });
@@ -353,7 +285,7 @@ app.get('/explore', function(req, res) {
 
 
 
-    var exploredata = getPublic('all', function(dta) {
+    var exploredata = seedling.getPublic('all', function(dta) {
         //socket.emit('EXPLORE_SERVE_RESPONSE', {payload: dta});
         //console.log('got ' + dta);
 
@@ -403,7 +335,7 @@ io.sockets.on('connection', function(socket) {
             //console.log(JSON.stringify(UserBase));
             data.payload.authorname = UserBase[data.payload.author].displayName;
             console.log('user display name is ' + data.payload.authorname);
-            var url = db_push_graph(data.payload, true);
+            var url = seedling.db_push_graph(data.payload, true);
             socket.emit('PUBLISH_SUCCESS', {
                 payload: url
             });
@@ -412,7 +344,7 @@ io.sockets.on('connection', function(socket) {
         } else {
             //db_push_graph(data.payload, false);
             socket.emit('SAVE_SUCCESS', {
-                payload: db_push_graph(data.payload, false)
+                payload: seedling.db_push_graph(data.payload, false)
             });
         }
     });
@@ -430,50 +362,3 @@ io.sockets.on('connection', function(socket) {
 
 });
 
-/**
- * Push graph data from the server to the database, called after graph data has been received from a socket connection
- * @param      	{Object}  the graph object
- * @param      	{Boolean} true/false representing weather the graph should be pushed to the public database
- * @return		{String} returns a uri to the resulting graph
- */
-function db_push_graph(fullgraph, public) {
-
-    var url = "http://seeder.co/graph?graphid=" + fullgraph.graphid;
-
-    if (public) {
-
-        //console.log("database : connected to MongoDB");
-        databaseconnection.createCollection('publicgraphs', function(err, collection) {
-
-            //console.log('insert with id ' + fullgraph.graphid);
-            collection.update({
-                graphid: fullgraph.graphid
-            }, fullgraph, {
-                upsert: true
-            }, function(er, res) {
-                console.log(res);
-            });
-
-        });
-
-    } else {
-
-        //console.log("database : connected to MongoDB");
-        databaseconnection.createCollection('usergraphs', function(err, collection) {
-
-            //console.log('insert with id ' + fullgraph.graphid);
-            collection.update({
-                graphid: fullgraph.graphid
-            }, fullgraph, {
-                upsert: true
-            }, function(er, res) {
-                console.log(res);
-            });
-
-        });
-
-    }
-
-    return url;
-
-}
