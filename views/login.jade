@@ -1,0 +1,77 @@
+doctype html
+html(lang="en")
+	head
+		meta(name='viewport', content='width=device-width, maximum-scale=1.0')
+		title= title
+		link(href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700", rel="stylesheet", type="text/css")
+		link(rel='stylesheet', href='/javascripts/semantic/packaged/css/semantic.min.css')
+		script(src='/socket.io/socket.io.js')
+		script.
+			var graphstring = !{JSON.stringify(gdata)}
+		link(rel='stylesheet', href='/stylesheets/login.css')
+		script(src='http://code.jquery.com/jquery-1.8.2.js')
+		script(src='/javascripts/semantic/packaged/javascript/semantic.min.js')
+		script(src="/javascripts/loginhandler.js")
+		
+			
+	body
+		.ui.fixed.menu#mainnav
+			ai#sidebar-toggle.item
+				i.reorder.icon
+			a.item.purple.active(href="/")
+				img(src="/img/logo-small.png")
+			a.item(href="/explore")
+				i.map.icon
+				| Explore
+			a.item#buildtab(href="/build")
+				i.wrench.icon
+				| Build
+			.ui.simple.dropdown.item#moretab
+				|More
+				i.dropdown.icon
+				.menu
+					a.item(href="/blog")
+						i.book.icon
+						|Blog
+					a.itema.item(href="/help")
+						i.help.icon
+						|Help
+			.right.compact.menu#logintab
+				.ui.simple.dropdown.item
+					i.user.icon
+					|#{logintext}
+					i.dropdown.icon
+					.menu
+						a.item
+							i.bolt.icon
+							|My Profile
+						a.item
+							i.lightbulb.icon
+							|My Graphs
+						a.item
+							i.settings.icon
+							|Settings
+						a.item(href="#{signlink}")
+							i.sign.in.icon
+							|#{signouttext}
+							
+		#explore-sidebar.ui.floating.sidebar.inverted
+		.ui.form.segment
+		
+			.field
+				label
+					|Username
+				.ui.left.labeled.icon.input
+					input(type="text" placeholder="Username" name="uname")
+					i.user.icon
+			
+			.field
+				label
+					|Password
+				.ui.left.labeled.icon.input
+					input(type="text" placeholder="Password" name="pass")
+					i.mail.icon
+
+			.ui.green.submit.button
+				|Sign In
+		

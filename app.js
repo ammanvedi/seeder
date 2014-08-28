@@ -37,6 +37,7 @@ app.configure(function() {
 
 
     app.use(express.cookieSession({
+    		key: 'seeder.sess',
         secret: 'supersecret'
     }));
 
@@ -73,17 +74,6 @@ Mendeley.auth('670', '9N5Q9XupUZEpxuOI', function(msg) {
 
 
 
-
-//this is for development, when the user login has been implemented 
-//the cookie with this data will be replaced by a client specific
-//dataset passed through login
-var defaultuser = new Object();
-defaultuser.username = "admin-amman";
-defaultuser.id = "0407av94";
-defaultuser.email = "amman.vedi@gmail.com";
-defaultuser.profilepage = "http://www.google.com";
-
-
 http.listen(DEPLOYPORT);
 console.log('listening on port ' + app.get('port'))
 
@@ -98,47 +88,6 @@ MongoClient.connect("mongodb://ammanvedi:poopoo12@ds057528.mongolab.com:57528/se
         //db.createCollection('graphs', function (err, collection) {});
         seedling.init(databaseconnection);
     }
-});
-
-passport.use(new GoogleStrategy({
-        returnURL: 'http://localhost:8080/auth/google/return',
-        realm: 'http://localhost:8080/'
-    },
-    function(identifier, profile, done) {
-
-        console.log(identifier + ' is the id');
-
-        if (UserBase[identifier]) {
-            //user exists 
-            done(0, UserBase[identifier])
-        } else {
-            //user does not exist
-            //add
-            profile.id = identifier;
-            UserBase[identifier] = profile;
-            done(0, UserBase[identifier]);
-        }
-
-
-    }
-));
-
-passport.serializeUser(function(user, done) {
-    console.log('serialize ' + JSON.stringify(user));
-    done(0, user.id);
-});
-
-passport.deserializeUser(function(id, done) {
-    console.log('DESERIALIZE');
-    if (UserBase[id]) {
-        console.log('DESERIALIZE success');
-        done(null, UserBase[id]);
-    } else {
-        console.log('DESERIALIZE fail');
-        done(null, false);
-    }
-
-
 });
 
 
@@ -190,11 +139,13 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 
+
+
 app.get('/help', function(req, res) {
 
-    if (req.user) {
+    if (req.session.user) {
         res.render('help', {
-            logintext: req.user.name.givenName,
+            logintext: req.session.user.name.givenName,
             signouttext: "Sign Out",
             title: 'seeder.co - help',
             signlink: '/logout'
@@ -204,7 +155,7 @@ app.get('/help', function(req, res) {
             logintext: "Sign In",
             signouttext: "Sign In",
             title: 'seeder.co - help',
-            signlink: '/auth/google'
+            signlink: '/login'
         });
     }
 
@@ -216,32 +167,60 @@ app.get('/auth/google', passport.authenticate('google'));
 
 
 
+
+app.get('/login', function(req,res){
+
+	res.render('login');
+
+});
+
+
 app.post('/login', function(req, res) {
 
-    seedling.verifyAuthPair(req.query.uname, req.query.pass, function(result, code) {
+    seedling.verifyAuthPair(req.body.uname, req.body.pass, function(result, code) {
 
         console.log(result);
 
         if (code) {
             //success
+            req.session.loggedin = true;
+            
+            var userobj = new Object();
+            userobj.name = new Object();
+            
+            userobj.id = result.id;
+            userobj.name.givenName = result.firstname;
+            
+            req.session.user = userobj;
+            
+            res.send(200);
+            
         } else {
             //failure
+            res.send(400);
         }
-
-        res.send(200);
+        //res.send(200);
     });
+});
+
+app.get('/signup', function(req,res){
+	
+	if(req.session.loggedin){
+		console.log('USER LOGGED IN ALREADY');
+	}
+	res.render('signup');
 
 });
 
-app.post('/register', function(req, res) {
+app.post('/signup', function(req, res) {
     //console.log(req.query);
+//console.log(req.body);
 
-
-    seedling.registerUser(req.query.uname, req.query.fname, req.query.sname, req.query.pass, req.query.email, function(result) {
+    seedling.registerUser(req.body.uname, req.body.fname, req.body.sname, req.body.pass, req.body.email, function(result) {
 
         if (result) {
             console.log(result);
-            res.send(200);
+            res.send(409);
         } else {
             console.log('added successfully');
             res.send(200);
@@ -266,11 +245,11 @@ app.get('/graph', function(req, res) {
             graphid: req.query.graphid
         }, function(err, items) {
             g = items;
-            if (req.user) {
+            if (req.session.user) {
                 res.render('graph', {
                     title: 'Seeder',
                     graphid: req.graphid,
-                    username: req.user.name.givenName,
+                    username: req.session.user.name.givenName,
                     signouttext: "Sign Out",
                     gdata: g,
                     signlink: '/logout'
@@ -282,7 +261,7 @@ app.get('/graph', function(req, res) {
                     username: "Sign In",
                     signouttext: "Sign In",
                     gdata: g,
-                    signlink: '/auth/google'
+                    signlink: '/login'
                 });
             }
         });
@@ -301,12 +280,12 @@ app.get('/build', function(req, res) {
 
 
 
-    if (req.user) {
-        console.log(JSON.stringify(req.user) + ' user found');
+    if (req.session.user) {
+        console.log(JSON.stringify(req.session.user) + ' user found');
 
         var c = new Object();
 
-        c.id = req.user.id;
+        c.id = req.session.user.id;
 
         res.cookie('seederuser', JSON.stringify(c), {
             maxAge: 3600000,
@@ -316,7 +295,7 @@ app.get('/build', function(req, res) {
         //render with user details
         res.render('index', {
             title: 'Seeder',
-            username: req.user.name.givenName,
+            username: req.session.user.name.givenName,
             signlink: '/logout',
             signouttext: 'Sign Out'
         });
@@ -326,7 +305,7 @@ app.get('/build', function(req, res) {
         //        title: 'Seeder',  username: 'Sign In'
         //    });
 
-        res.redirect('/auth/google');
+        res.redirect('/login');
     }
 
 
@@ -335,14 +314,13 @@ app.get('/build', function(req, res) {
 });
 
 app.get('/logout', function(req, res) {
-    console.log(JSON.stringify(UserBase[req.user.id]) + 'is usr logged out');
 
     req.session = null;
     req.logout();
     res.clearCookie('seederuser', {
         path: '/'
     });
-    res.clearCookie('connect.sess', {
+    res.clearCookie('seeder.sess', {
         path: '/'
     });
     res.redirect('/');
@@ -353,9 +331,9 @@ app.get('/logout', function(req, res) {
 
 app.get('/blog', function(req, res) {
 
-    if (req.user) {
+    if (req.session.user) {
         res.render('blog', {
-            logintext: req.user.name.givenName,
+            logintext: req.session.user.name.givenName,
             signouttext: "Sign Out",
             signlink: '/logout'
         });
@@ -363,7 +341,7 @@ app.get('/blog', function(req, res) {
         res.render('blog', {
             logintext: "Sign In",
             signouttext: "Sign In",
-            signlink: '/auth/google'
+            signlink: '/login'
         });
     }
 
@@ -380,12 +358,12 @@ app.get('/explore', function(req, res) {
         //console.log('got ' + dta);
 
 
-        if (req.user) {
+        if (req.session.user) {
             res.render('explore', {
                 title: 'Explore',
                 graphs: dta,
                 len: dta.length,
-                logintext: req.user.name.givenName,
+                logintext: req.session.user.name.givenName,
                 signouttext: "Sign Out",
                 signlink: 'logout'
 
@@ -401,7 +379,7 @@ app.get('/explore', function(req, res) {
             len: dta.length,
             logintext: "Sign In",
             signouttext: "Sign In",
-            signlink: '/auth/google'
+            signlink: '/login'
         });
 
     });
@@ -422,7 +400,7 @@ io.sockets.on('connection', function(socket) {
     socket.on('USER_SAVEGRAPH', function(data) {
         //console.log('server : user with id' + data.payload.graphname + ' requested graph save');
         if (data.payload.publish) {
-            console.log(JSON.stringify(UserBase));
+            //console.log(JSON.stringify(UserBase));
             data.payload.authorname = UserBase[data.payload.author].displayName;
             console.log('user display name is ' + data.payload.authorname);
             var url = db_push_graph(data.payload, true);

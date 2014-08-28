@@ -34,7 +34,7 @@ function ID() {
 function getSaveState(layercake, gname, gdesc, publishme){
 
 	
-	var userdata = JSON.parse($.cookie('seederuser'));
+	var userdata = JSON.parse($.cookie('seeder.sess'));
 	var GraphMeta = new Object();
 	GraphMeta.datecreated = +new Date;
 	GraphMeta.likes = 0;
@@ -143,55 +143,6 @@ $(document).ready(function () {
 	createNode(-1+'', addnodePREFS, currentlayer);
 	
 	var mousenow;
-	//set up background rendering 
-	
-	 var container = document.getElementById('BGlayer');
-	    var renderer = new FSS.CanvasRenderer();
-	    var scene = new FSS.Scene();
-	    var light = new FSS.Light('#555555', '#2D2D2D');
-	    var geometry = new FSS.Plane(1200,800, 12, 12);
-	    var material = new FSS.Material('#C066FF', '#FFFFFF');
-	    var mesh = new FSS.Mesh(geometry, material);
-	    var now, start = Date.now();
-	
-	    function initialise() {
-	      scene.add(mesh);
-	      scene.add(light);
-	      container.appendChild(renderer.element);
-	      window.addEventListener('resize', resize);
-	    }
-	
-	    function resize() {
-	      renderer.setSize(1200,800);
-	    }
-	 
-	    function animate() {
-	      now = Date.now() - start;
-	      //light.setPosition(300*Math.sin(now*0.001), 200*Math.cos(now*0.0005), 60);
-	      
-	      if(mousenow != undefined){
-	      //light.setPosition(nearestmouse.screenPoint.x, nearestmouse.screenPoint.y, 60);
-	      light.setPosition(mousenow.x-590, -mousenow.y+300, 10);
-	      
-	      //console.log(nearestmouse);
-	      }else {
-	      	light.setPosition(300*Math.sin(now*0.001), 200*Math.cos(now*0.0005), 60);
-	      }
-	      
-	      
-	      renderer.render(scene);
-	      requestAnimationFrame(animate);
-	    }
-	
-	    initialise();
-	    resize();
-	    animate();
-	 
-	
-	
-
-    
-    //console.log(GraphLayers);
 
 
     var nearestmouse;
