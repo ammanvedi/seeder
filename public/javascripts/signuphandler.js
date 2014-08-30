@@ -64,7 +64,7 @@ $(document).ready(function () {
 	          fname: getFieldValue('fname'),
 	          sname: getFieldValue('sname'),
 	          email: getFieldValue('email'),
-	          pass: getFieldValue('pass'),
+	          pass: getFieldValue('pass')
 	      };
 	      
 	      console.log(formData);

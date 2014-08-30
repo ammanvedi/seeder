@@ -130,8 +130,11 @@ app.post('/login', function(req, res) {
             
             userobj.id = result.id;
             userobj.name.givenName = result.firstname;
+            userobj.name.displayName = result.firstname + ' ' + result.lastname;
             
             req.session.user = userobj;
+            
+            console.log('usr :' + userobj);
             
             res.send(200);
             
@@ -180,6 +183,7 @@ app.get('/graph', function(req, res) {
     databaseconnection.createCollection('publicgraphs', function(err, collection) {
 
         var g;
+        
         collection.findOne({
             graphid: req.query.graphid
         }, function(err, items) {
@@ -212,20 +216,18 @@ app.get('/graph', function(req, res) {
 
 app.get('/build', function(req, res) {
 
-
-
-
-
     if (req.session.user) {
-        console.log(JSON.stringify(req.session.user) + ' user found');
+        console.log(JSON.stringify(req.session) + ' user found');
 
         var c = new Object();
 
         c.id = req.session.user.id;
+        c.displayName = req.session.user.name.displayName;
+        
 
-        res.cookie('seederuser', JSON.stringify(c), {
+        res.cookie('seederuserID', JSON.stringify(c), {
             maxAge: 3600000,
-            path: '/',
+            path: '/build',
             secret: 'supersecret'
         });
         //render with user details
@@ -333,8 +335,8 @@ io.sockets.on('connection', function(socket) {
         //console.log('server : user with id' + data.payload.graphname + ' requested graph save');
         if (data.payload.publish) {
             //console.log(JSON.stringify(UserBase));
-            data.payload.authorname = UserBase[data.payload.author].displayName;
-            console.log('user display name is ' + data.payload.authorname);
+            //data.payload.authorname = UserBase[data.payload.author].displayName;
+            console.log('user display name is ' + JSON.stringify(data));
             var url = seedling.db_push_graph(data.payload, true);
             socket.emit('PUBLISH_SUCCESS', {
                 payload: url

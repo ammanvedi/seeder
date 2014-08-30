@@ -56,43 +56,44 @@ html(lang="en")
 							|#{signouttext}
 							
 		#explore-sidebar.ui.floating.sidebar.inverted
-		.ui.form.segment
-			.field
-				label
-					|Username
-				.ui.left.labeled.icon.input
-					input(type="text" placeholder="Username" name="uname")
-					i.user.icon
-					
-			.two.fields
-			
+		#sign-up-container
+			.ui.form.segment
 				.field
 					label
-						|First Name
+						|Username
 					.ui.left.labeled.icon.input
-						input(type="text" placeholder="First Name" name="fname")
+						input(type="text" placeholder="Username" name="uname")
 						i.user.icon
 						
+				.two.fields
+				
+					.field
+						label
+							|First Name
+						.ui.left.labeled.icon.input
+							input(type="text" placeholder="First Name" name="fname")
+							i.user.icon
+							
+					.field
+						label
+							|Surname
+						.ui.left.labeled.icon.input
+							input(type="text" placeholder="Surname" name="sname")
+							i.user.icon
+				
 				.field
 					label
-						|Surname
+						|Email
 					.ui.left.labeled.icon.input
-						input(type="text" placeholder="Surname" name="sname")
-						i.user.icon
+						input(type="text" placeholder="Example@somewhere.com" name="email")
+						i.mail.icon
+										
+				.field
+					label
+						|Password
+					.ui.left.labeled.icon.input
+						input(type="text" placeholder="Password" name="pass")
+						i.lock.icon
+				.ui.green.submit.button
+					|Sign Up
 			
-			.field
-				label
-					|Email
-				.ui.left.labeled.icon.input
-					input(type="text" placeholder="Example@somewhere.com" name="email")
-					i.mail.icon
-									
-			.field
-				label
-					|Password
-				.ui.left.labeled.icon.input
-					input(type="text" placeholder="Password" name="pass")
-					i.lock.icon
-			.ui.green.submit.button
-				|Sign Up
-		

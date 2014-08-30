@@ -16,3 +16,12 @@ html{
   user-select: none;
 
 }
+
+#login-container{
+	width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	padding-top: 100px;
+}
+

@@ -56,22 +56,27 @@ html(lang="en")
 							|#{signouttext}
 							
 		#explore-sidebar.ui.floating.sidebar.inverted
-		.ui.form.segment
-		
-			.field
-				label
-					|Username
-				.ui.left.labeled.icon.input
-					input(type="text" placeholder="Username" name="uname")
-					i.user.icon
+		#login-container
+			.ui.form.segment
+				.ui.error.message
+					.header
+						|No Luck!
+					p Incorrect username or password
 			
-			.field
-				label
-					|Password
-				.ui.left.labeled.icon.input
-					input(type="text" placeholder="Password" name="pass")
-					i.mail.icon
-
-			.ui.green.submit.button
-				|Sign In
+				.field
+					label
+						|Username
+					.ui.left.labeled.icon.input
+						input(type="text" placeholder="Username" name="uname")
+						i.user.icon
+				
+				.field
+					label
+						|Password
+					.ui.left.labeled.icon.input
+						input(type="text" placeholder="Password" name="pass")
+						i.mail.icon
+	
+				.ui.green.submit.button
+					|Sign In
 		

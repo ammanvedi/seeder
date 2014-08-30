@@ -16,3 +16,11 @@ html{
   user-select: none;
 
 }
+#sign-up-container{
+	
+	width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	padding-top: 100px;
+}

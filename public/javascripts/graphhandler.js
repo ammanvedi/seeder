@@ -10,8 +10,6 @@ var waiting_publish_confirm = false;
 var nodelength = 0;
 var edgelength = 0;
 
-
-
 function ID() {
   // Math.random should be unique because of its seeding algorithm.
   // Convert it to base 36 (numbers + letters), and grab the first 9 characters
@@ -34,7 +32,8 @@ function ID() {
 function getSaveState(layercake, gname, gdesc, publishme){
 
 	
-	var userdata = JSON.parse($.cookie('seeder.sess'));
+	var userdata = JSON.parse($.cookie('seederuserID'));
+	//console.log(userdata);
 	var GraphMeta = new Object();
 	GraphMeta.datecreated = +new Date;
 	GraphMeta.likes = 0;
@@ -57,6 +56,7 @@ function getSaveState(layercake, gname, gdesc, publishme){
 	Savestate.graphid = ID();
 	Savestate.publish = publishme;
 	Savestate.author = userdata.id;
+	Savestate.authorname = userdata.displayName;
 	Savestate.graphname = gname;
 	Savestate.graphdesc = gdesc;
 	Savestate.graph = Graph;
@@ -95,8 +95,6 @@ $(document).ready(function () {
     $('#tabs-4').hide();
     $('#updatelabel').hide();
     
-    
-
     var MainSidebarBuild = $('.ui.sidebar');
     MainSidebarBuild.sidebar('toggle');
     MainSidebarBuild.sidebar('attach events', '#sidebar-toggle', 'toggle');
