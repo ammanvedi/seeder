@@ -1,0 +1,10 @@
+.profile-pic-small{
+	width: 35px;
+	height: 35px;
+	border: 1px solid rgba(255, 255, 255, 0.81);
+	background-color: #c270ee;
+	float: left;
+	background-image: url('http://lorempixel.com/50/50/');
+	border-radius: 2px;
+}
+

@@ -1,48 +1,46 @@
 extends default_layout
 
 block content
-	.fixed
-		.ui.menu.purple.inverted
-			ai#sidebar-toggle.item
-				i.reorder.icon
-			a.item(href="/")
-				i.leaf.icon
-				img(src="/img/logo-small.png")
-			a.item.purple.active(href="/explore")
-				i.map.icon
-				| Explore
-			a.item(href="/build")
-				i.wrench.icon
-				| Build
+	.ui.menu.fixed#mainnav
+		ai#sidebar-toggle.item
+			i.reorder.icon
+		a.item.purple.active(href="/")
+			img(src="/img/logo-small.png")
+		a.item(href="/explore")
+			i.map.icon
+			| Explore
+		a.item#buildtab(href="/build")
+			i.wrench.icon
+			| Build
+		.ui.simple.dropdown.item#moretab
+			|More
+			i.dropdown.icon
+			.menu
+				a.item(href="/blog")
+					i.book.icon
+					|Blog
+				a.itema.item(href="/help")
+					i.help.icon
+					|Help
+		.right.compact.menu#logintab
 			.ui.simple.dropdown.item
-				|More
+				i.user.icon
+				|#{logintext}
 				i.dropdown.icon
 				.menu
-					a.item(href="/blog")
-						i.book.icon
-						|Blog
-					a.itema.item(href="/help")
-						i.help.icon
-						|Help
-			.right.compact.menu
-				.ui.simple.dropdown.item
-					i.user.icon
-					|#{logintext}
-					i.dropdown.icon
-					.menu
-						a.item
-							i.bolt.icon
-							|My Profile
-						a.item
-							i.lightbulb.icon
-							|My Graphs
-						a.item
-							i.settings.icon
-							|Settings
-						a.item(href="#{signlink}")
-							i.sign.out.icon
-							|#{signouttext}
-						
+					a.item
+						i.bolt.icon
+						|My Profile
+					a.item
+						i.lightbulb.icon
+						|My Graphs
+					a.item
+						i.settings.icon
+						|Settings
+					a.item(href="#{signlink}")
+						i.sign.in.icon
+						|#{signouttext}
+												
 	#explore-sidebar.ui.floating.sidebar.inverted
 	
 	#explore-banner-contain
@@ -61,37 +59,35 @@ block content
 						|Search
 
 	
-	#graphs-view.ui.stackable.four.items
+	#graphs-view.ui.four.items
 		-var ob = graphs
 		-for(var prop in ob)
 			.item.graphitm
-				.circholder
-					#circlefloatleft
-						h2.ui.inverted.small.header.circletext
-							| #{ob[prop].graphmeta.nsize}
-							.small.sub.header
-								| Nodes
-					#circlefloatright
-						h2.ui.inverted.small.header.circletext
-							| #{ob[prop].graphmeta.esize}
-							.small.sub.header
-								| Edges
-				#clearcirc
 				.content
-					a.name(href="/graph?graphid=#{ob[prop].graphid}")
-						|#{ob[prop].graphname}
-					p.description.smalltext
-						| by #{ob[prop].authorname} <br> #{ob[prop].graphmeta.datecreated}
-					p.description.graphdesc
-						| #{ob[prop].graphdesc}
-					.graphmeta
-						.ui.label.purple
-							| Views
-							a.detail
-								|#{ob[prop].graphmeta.views}
-						.ui.label.green
-							| Likes
-							a.detail
-								| #{ob[prop].graphmeta.likes}
+					.circholder
+						.imagebox
+						.linkbox
+							i.big.triangle.right.icon
+						.infoholder
+							.user-details
+								.profile-pic-small
+								.user-details-text
+									h3 #{ob[prop].authorname}
+									h4 #{ob[prop].graphmeta.datecreated}
+							a.name(href="/graph?graphid=#{ob[prop].graphid}")
+								|#{ob[prop].graphname}
+						
+					#clearcirc
+						p.graphdesc
+							| #{ob[prop].graphdesc}
+						.graphmeta
+							.ui.label.purple
+								| Views
+								a.detail
+									|#{ob[prop].graphmeta.views}
+							.ui.label.green
+								| Likes
+								a.detail
+									| #{ob[prop].graphmeta.likes}
 			
 		

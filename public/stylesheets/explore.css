@@ -20,22 +20,98 @@ html{
 	width: 100%;
 	height: auto;
 	z-index: 10;
-	margin-top: 16px;
+	margin-top: 17px !important;
 	-moz-box-shadow: 0 0 8px black;
 	box-shadow: 0 0 8px black;
 	background-color: #564F8A;
+}
+
+.imagebox{
+	
+	width: 240px;
+	height: 150px;
+	position: absolute;
+	-moz-box-shadow: inset 0 -50px 150px black;
+	box-shadow: inset 0 -50px 150px black;
+	background-image: url('http://lorempixel.com/240/150/');
+}
+
+.linkbox{
+	
+	height: 150px;
+	width: 50px;
+	background-color: #000;
+	opacity: 0.4;
+	position: absolute;
+	right: 0px;
+	transition:1s;
+}
+
+.linkbox:hover{
+	
+	opacity: 1.0;
+}
+
+.linkbox .icon{
+	
+color: white;
+top: 42%;
+left: -5px;
+	display: block;
+	position: relative;
+	z-index: 1000;
+}
+
+.user-details{
+	
+	width: 100%;
+	height: 50px;
+	padding: 10px;
+	
+}
+
+.user-details-text{
+	
+	float: left;
+	width: 100px;
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	font-size: 10px;
+	color: white;
+	line-height: 0px;
+	margin-left: 5px;
+	font-weight: 100;
+	
+}
+//username display on item
+.user-details-text h3{
+	font-size: 5px !important;
+	color: white;
+	//override UAS h3 
+	font-weight: lighter !important;
+}
+
+//date display on item
+
+.user-details-text h4{
+	text-transform: uppercase;
+	
 }
 
 
 .circholder{
 	
 	width: auto;
-	height: 120px;
-	padding-top: 30px;
-	background-color: rgba(137, 178, 187, 0);
+	height: 150px;
+	overflow: hidden;
+	background-color: rgb(137, 178, 187);
 	transition:1s;
 	background-size: cover;
 	
+}
+
+.circholder a {
+	
+	text-decoration: none;
 }
 
 #explore-sidebar{
@@ -83,9 +159,12 @@ transition:0.5s;
 }
 
 .content{
-	
-	height: 100%;
+	padding: 0px !important;
+	height: 270px
+
 }
+
+
 
 #explore-banner:after{
 	
@@ -179,9 +258,23 @@ border: 3px dashed #89b2bc;
 }
 
 
-.name{
+.infoholder{
+	
 	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.name{
+width: 200px;
 	padding-top: 10px;
+	font-family: Georgia, serif;
+	text-decoration: none;
+	color: white;
+	font-size: 23px;
+	display: inline-block;
+	padding-top: 20px;
+	padding-left: 10px;
 	
 }
 .smalltext{
@@ -201,24 +294,37 @@ border: 3px dashed #89b2bc;
 .graphmeta{
 	
 	padding-top: 20px;
-	position: absolute;
-	bottom: 10px;
+
 }
 
 .graphitm{
-	
-	height: 100px;
+	padding: 0px !important;
+
 }
 
 
 
+.ui.items > .item{
+	
+	min-height: 100px !important;
+}
+
 p.graphdesc{
-	padding-top: 10px;
+	
+	padding-top: 0px;
+	margin-top: 10px;
 	height: 50px;
 	max-width: 100%;
 	overflow: hidden;
+	font-family: Georgia, serif;
+	color: black;
+	opacity: 1.0 ;
+	max-width: 200px;
+	margin-left: auto;
+	margin-right: auto;
 	
 }
+
 
  
 
@@ -230,7 +336,4 @@ margin-right: auto;
 padding: 30px;
 }
 
-#graphs-view .item{
-	
-	height: 30px;
-}
+
