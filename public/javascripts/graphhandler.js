@@ -564,12 +564,6 @@ $(document).ready(function () {
             //console.log('client : recieved id ' + socket.id + ' from server');
         });
     
-        socket.on('request_pullGraph_success', function (data) {
-            //console.log('client : pullGraph request successful, result:');
-            //console.log(data.data);
-            rebuildPullGraph(data.data);
-        });
-        
         socket.on('SAVE_SUCCESS', function (data){
         
         if(waiting_save_confirm){
@@ -674,15 +668,8 @@ $(document).ready(function () {
 	 * Function to send a generated save state over Web-Socket, and initiate waiting for a server conformation
 	 * @param {Object} savestate save state object
 	 */
-	function transportSaveState(ss){
-	
-	var output = '';
-	for (property in ss.graph) {
-	  output += property + ': ' + ss.graph[property]+'; ';
-	}
-
-	
-			socket.emit('USER_SAVEGRAPH', {payload: ss});
+	function transportSaveState(ss){	
+		socket.emit('USER_SAVEGRAPH', {payload: ss});
 			
 			if(ss.publish){
 				waiting_publish_confirm = true;

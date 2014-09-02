@@ -43,51 +43,61 @@ block content
 												
 	#explore-sidebar.ui.floating.sidebar.inverted
 	
-	#explore-banner-contain
-		.hideme
-			#explore-banner
-		#banner-overlay
-			#search-header
-				.ui.white.icon.huge.header
-					i.map.massive.icon
-					|Explore
-			#explore-searchbar
-				.ui.fluid.action.input
-					input(type="text" placeholder="find something interesting!")
-					.ui.teal.right.labeled.icon.button
-						i.search.icon
-						|Search
-
+	#explore-content
+		#explore-banner-contain
+			.hideme
+				#explore-banner
+			#banner-overlay
+				#search-header
+					.ui.white.icon.huge.header
+						i.map.massive.icon
+						|Explore
+				#explore-searchbar
+					.ui.fluid.action.input
+						input(type="text" placeholder="find something interesting!")
+						.ui.teal.right.labeled.icon.button
+							i.search.icon
+							|Search
 	
-	#graphs-view.ui.four.items
-		-var ob = graphs
-		-for(var prop in ob)
-			.item.graphitm
-				.content
-					.circholder
-						.imagebox
-						.linkbox
-							i.big.triangle.right.icon
-						.infoholder
-							.user-details
-								.profile-pic-small
-								.user-details-text
-									h3 #{ob[prop].authorname}
-									h4 #{ob[prop].graphmeta.datecreated}
-							a.name(href="/graph?graphid=#{ob[prop].graphid}")
-								|#{ob[prop].graphname}
-						
-					#clearcirc
-						p.graphdesc
-							| #{ob[prop].graphdesc}
-						.graphmeta
-							.ui.label.purple
-								| Views
-								a.detail
-									|#{ob[prop].graphmeta.views}
-							.ui.label.green
-								| Likes
-								a.detail
-									| #{ob[prop].graphmeta.likes}
-			
 		
+		#graphs-view.ui.four.items
+			-var ob = graphs
+			-for(var prop in ob)
+				.item.graphitm
+					.content
+						.circholder
+							.imagebox
+								img(src="#{ob[prop].coverimage}" width="240" height="150")
+							.linkbox
+								i.big.triangle.right.icon
+							.infoholder
+								.user-details
+									.profile-pic-small
+										img(src="#{ob[prop].avatarurl}" width="35" height="35")
+									.user-details-text
+										h3 #{ob[prop].username}
+										h4 #{ob[prop].created}
+								a.name(href="/graph?graphid=#{ob[prop].graphid}")
+									span #{ob[prop].graphname}
+							
+						#clearcirc
+							p.graphdesc
+								| #{ob[prop].description}
+							.meta-block
+								.meta-item
+									.meta-value
+										| #{ob[prop].views}
+									.meta-heading
+										| Views
+								.meta-item
+									.meta-value
+										| #{ob[prop].likes}
+									.meta-heading
+										|Likes
+								.meta-item
+									.meta-value
+										| #{ob[prop].nodecount}
+									.meta-heading
+										|Nodes
+				
+			

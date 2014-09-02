@@ -210,6 +210,8 @@ app.get('/graph', function(req, res) {
         });
 
     });
+    
+    seedling.updateGraphViews(req.query.graphid);
 
 
 });
@@ -284,10 +286,7 @@ app.get('/blog', function(req, res) {
 
 app.get('/explore', function(req, res) {
 
-
-
-
-    var exploredata = seedling.getPublic('all', function(dta) {
+var exploredata = seedling.getPublic('all', function(dta) {
         //socket.emit('EXPLORE_SERVE_RESPONSE', {payload: dta});
         //console.log('got ' + dta);
 
@@ -302,11 +301,10 @@ app.get('/explore', function(req, res) {
                 signlink: 'logout'
 
             });
+            
 
         } else {
-
-        }
-
+        
         res.render('explore', {
             title: 'Explore',
             graphs: dta,
@@ -315,6 +313,10 @@ app.get('/explore', function(req, res) {
             signouttext: "Sign In",
             signlink: '/login'
         });
+
+        }
+
+
 
     });
 
