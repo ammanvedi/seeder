@@ -1,24 +1,13 @@
-# Seeder (with arbor)
+
+![Seeder](http://i.imgur.com/N2ADOo2.png)
+
+#(with arbor)
 
 This branch holds a version of seeder that uses arbor to render graphs instead of sigmajs.
 
-Seeder is an under-development web application that will provide a platform for the creation and sharing of mind maps / knowledge graphs. The ultimate goal of seeder is to allow for any data (web or locally based) to become part of the knowledge map.
+Seeder web application that will provide a platform for the creation and sharing of mind maps / knowledge graphs. The ultimate goal of seeder is to allow for any data (web or locally based) to become part of the knowledge map.
 
-![Seeder proof of concept screenshot](http://i.imgur.com/PUxpAoJ.gif)
-
-there is a video of the poc [here](http://youtu.be/879IhcXFcpU)
-
-### Live Site 
-
-the domain is not up yet, so you can access the site via ip, or via the git url : http://ammanvedi.github.io/seederio/
-
-| URL                               	| Description                                                                                       	|
-|-----------------------------------	|---------------------------------------------------------------------------------------------------	|
-| http://54.201.24.162:8080/build   	| The main interface for users to create and edit graphs                                            	|
-| http://54.201.24.162:8080/explore 	| Displays graphs created by users and allows for searching of specific subject areas 	|
-| http://54.201.24.162:8080/help    	| Help docs about the builder and other aspects of the site                                         	|
-| http://54.201.24.162:8080/blog    	| The DevBlog, updated when changes are made to the site                                            	|
-| http://54.201.24.162:8080/docs/    	| documentation for the main functions of the codebase are available here                                             	|
+Seeder is currently under development version one can be found at [Seeder.co](http://www.seeder.co/)
 
 
 ### Current Features 
@@ -40,9 +29,6 @@ The following feautures are currently implemented
 
 *Adding an article to the map from a search*
 
-The search system currently returns results from the following sites : Wall Street Journal, Forbes, Vibe (Music/Entertainment), National Geographic, Harvard Business Review, JSTOR (Research Articles), Reuters, The Guardian (Tabloid), Financial Times, Time Magazine, New York Times, Wordpress, Blogger, Yahoo News, BBC News.
-
-More sources will be added over time, subject to requirement.
 
 ### Future Features 
 
@@ -57,11 +43,11 @@ The following will be added
  
 ### Architecture / Structure
 
-![overall architecture](http://i.imgur.com/EDjGZXG.png)
-
 The application uses a node.js (express) server (app.js), with Jade layouts. The graph drawing is done with [arbor](http://arborjs.org/)
 
-The core of the application logic is written in javascript and is largely contained in /public/javascripts/graphhandler.js
+The core of the client application logic is written in javascript and is largely contained in /public/javascripts/graphhandler.js
+
+The backend is a combination of MongoDB for the graph data storage, and MYSQL for everything else. This approach allows me to maintain the structure of the graph data so its intricacies can be queried (in future)
 
 ### Running the Code
 
@@ -78,12 +64,11 @@ and then navigate to http://localhost:3000/ in your web browser
 The following have been used in the development of Seeder
 
 * [arborjs](http://arborjs.org/)
-* [MendeleyJSAnonymous (homebrew)](https://github.com/ammanvedi/MendeleyJSAnonymous)
-* [Hooker (homebrew)](https://github.com/ammanvedi/hooker)
+* [MendeleyJS](https://github.com/ammanvedi/MendeleyJS)
+* [Hooker](https://github.com/ammanvedi/hooker)
 * [jQuery](https://github.com/jquery/jquery)
 * [Socket.IO](https://github.com/learnboost/socket.io)
 * [Google Custom Search API](https://developers.google.com/custom-search/)
-* [PassportJS (google auth)](http://passportjs.org/)
 * [NodeJS](http://nodejs.org/)
 * [ExpressJS](http://expressjs.com/)
 * [Semantic UI](http://semantic-ui.com/)
@@ -91,6 +76,4 @@ The following have been used in the development of Seeder
 
 ### Status
 
-The development has been carried out under Chrome 31+ and Safari 6.1+, firefox and opera, i have found MAJOR bugs when running in IE, these are not a priority until the product is feature complete.
-
-Bugs may appear in non-webkit browsers, open an issue.
+I am coding as fast as i can 

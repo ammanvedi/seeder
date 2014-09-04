@@ -130,7 +130,7 @@ seedling.getUser(req.params.username), function(udata){
 								    });
 								}
 						});
-			});
+			};
 
 });
 
