@@ -102,6 +102,38 @@ app.get('/help', function(req, res) {
 
 });
 
+app.get('/u/:username', function(req,res){
+
+//req.params.username --> requested username
+
+//check if user exists 
+
+seedling.getUser(req.params.username), function(udata){
+
+						seedling.getUserGraphs(req.params.username, function(graphdata){
+						
+								if (req.session.user) {
+								    res.render('user', {
+								        logintext: req.session.user.name.givenName,
+								        signouttext: "Sign Out",
+								        title: 'seeder.co - help',
+								        graphs:graphdata,
+								        signlink: '/logout'
+								    });
+								} else {
+								    res.render('user', {
+								        logintext: "Sign In",
+								        signouttext: "Sign In",
+								        title: 'seeder.co - help',
+								        graphs:graphdata,
+								        signlink: '/login'
+								    });
+								}
+						});
+			});
+
+});
+
 
 app.get('/login', function(req,res){
 

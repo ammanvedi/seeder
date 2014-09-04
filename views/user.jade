@@ -1,0 +1,95 @@
+doctype html
+html(lang="en")
+	head
+		meta(name='viewport', content='width=device-width, maximum-scale=1.0')
+		title= title
+		link(href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700", rel="stylesheet", type="text/css")
+		link(rel='stylesheet', href='/javascripts/semantic/packaged/css/semantic.min.css')
+		link(rel='stylesheet', href='/stylesheets/user.css')
+		link(rel='stylesheet', href='/stylesheets/explore.css')
+		link(rel='stylesheet', href='/stylesheets/seedercore.css')
+		script(src='http://code.jquery.com/jquery-1.8.2.js')
+		script(src='/javascripts/semantic/packaged/javascript/semantic.min.js')
+		script(src="/javascripts/userHandler.js")
+		
+			
+	body
+		.ui.fixed.menu#mainnav
+			ai#sidebar-toggle.item
+				i.reorder.icon
+			a.item.purple.active(href="/")
+				img(src="/img/logo-small.png")
+			a.item(href="/explore")
+				i.map.icon
+				| Explore
+			a.item#buildtab(href="/build")
+				i.wrench.icon
+				| Build
+			.ui.simple.dropdown.item#moretab
+				|More
+				i.dropdown.icon
+				.menu
+					a.item(href="/blog")
+						i.book.icon
+						|Blog
+					a.itema.item(href="/help")
+						i.help.icon
+						|Help
+			.right.compact.menu#logintab
+				.ui.simple.dropdown.item
+					i.user.icon
+					|#{logintext}
+					i.dropdown.icon
+					.menu
+						a.item
+							i.bolt.icon
+							|My Profile
+						a.item
+							i.lightbulb.icon
+							|My Graphs
+						a.item
+							i.settings.icon
+							|Settings
+						a.item(href="#{signlink}")
+							i.sign.in.icon
+							|#{signouttext}
+		#graphs-view.ui.four.items
+			-var ob = graphs
+			-for(var prop in ob)
+				.item.graphitm
+					.content
+						.circholder
+							.imagebox
+								img(src="#{ob[prop].coverimage}" width="240" height="150")
+							.linkbox
+								i.big.triangle.right.icon
+							.infoholder
+								.user-details
+									.profile-pic-small
+										img(src="#{ob[prop].avatarurl}" width="35" height="35")
+									.user-details-text
+										h3 #{ob[prop].username}
+										h4 #{ob[prop].created}
+								a.name(href="/graph?graphid=#{ob[prop].graphid}")
+									span #{ob[prop].graphname}
+							
+						#clearcirc
+							p.graphdesc
+								| #{ob[prop].description}
+							.meta-block
+								.meta-item
+									.meta-value
+										| #{ob[prop].views}
+									.meta-heading
+										| Views
+								.meta-item
+									.meta-value
+										| #{ob[prop].likes}
+									.meta-heading
+										|Likes
+								.meta-item
+									.meta-value
+										| #{ob[prop].nodecount}
+									.meta-heading
+										|Nodes
+		
