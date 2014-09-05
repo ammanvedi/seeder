@@ -43,9 +43,9 @@ app.configure(function() {
 //testing mendeley js functionality
 
 Mendeley.auth('670', '9N5Q9XupUZEpxuOI', function(msg) {
-    console.log(msg)
+    //console.log(msg)
     Mendeley.search("science", function(data) {
-        console.log(data);
+        //console.log(data);
     });
 });
 
@@ -108,7 +108,9 @@ app.get('/u/:username', function(req,res){
 
 //check if user exists 
 
-seedling.getUser(req.params.username), function(udata){
+seedling.getUser(req.params.username, function(udata){
+
+console.log(udata[0].bannerurl);
 
 						seedling.getUserGraphs(req.params.username, function(graphdata){
 						
@@ -118,7 +120,8 @@ seedling.getUser(req.params.username), function(udata){
 								        signouttext: "Sign Out",
 								        title: 'seeder.co - help',
 								        graphs:graphdata,
-								        signlink: '/logout'
+								        signlink: '/logout',
+								        bannerurl: udata[0].bannerurl
 								    });
 								} else {
 								    res.render('user', {
@@ -126,11 +129,12 @@ seedling.getUser(req.params.username), function(udata){
 								        signouttext: "Sign In",
 								        title: 'seeder.co - help',
 								        graphs:graphdata,
-								        signlink: '/login'
+								        signlink: '/login',
+								        bannerurl: udata[0].bannerurl
 								    });
 								}
 						});
-			};
+			});
 
 });
 

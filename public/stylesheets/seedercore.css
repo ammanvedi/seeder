@@ -7,6 +7,15 @@
 	border-radius: 2px;
 }
 
+.profile-pic-big{
+	width: 90px;
+	height: 90px;
+	border: 2px solid #fff;
+	float: left;
+	background-image: url('http://lorempixel.com/50/50/');
+	border-radius: 4px;
+}
+
 html{
 	height: 100%;
 }
