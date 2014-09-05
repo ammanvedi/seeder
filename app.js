@@ -102,6 +102,8 @@ app.get('/help', function(req, res) {
 
 });
 
+
+
 app.get('/u/:username', function(req,res){
 
 //req.params.username --> requested username
