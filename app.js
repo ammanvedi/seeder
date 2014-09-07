@@ -112,7 +112,9 @@ app.get('/u/:username', function(req,res){
 
 seedling.getUser(req.params.username, function(udata){
 
-console.log(udata[0].bannerurl);
+console.log(udata[0]);
+
+var uname_combine = udata[0].firstname + ' ' + udata[0].lastname;
 
 						seedling.getUserGraphs(req.params.username, function(graphdata){
 						
@@ -123,7 +125,11 @@ console.log(udata[0].bannerurl);
 								        title: 'seeder.co - help',
 								        graphs:graphdata,
 								        signlink: '/logout',
-								        bannerurl: udata[0].bannerurl
+								        bannerurl: udata[0].bannerurl,
+								        avatarurl: udata[0].avatarurl,
+								        uname: uname_combine,
+								        userbio: udata[0].bio,
+								        locationname: udata[0].locationname
 								    });
 								} else {
 								    res.render('user', {
@@ -132,7 +138,12 @@ console.log(udata[0].bannerurl);
 								        title: 'seeder.co - help',
 								        graphs:graphdata,
 								        signlink: '/login',
-								        bannerurl: udata[0].bannerurl
+								        bannerurl: udata[0].bannerurl,
+								        avatarurl: udata[0].avatarurl,
+								        uname: uname_combine,
+								        userbio: udata[0].bio,
+								        locationname: udata[0].locationname
+								        
 								    });
 								}
 						});
@@ -142,6 +153,8 @@ console.log(udata[0].bannerurl);
 
 
 app.get('/login', function(req,res){
+
+
 
 	res.render('login', {
 	    logintext: "Sign In",

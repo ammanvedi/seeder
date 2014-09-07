@@ -235,6 +235,8 @@ user page components
 
 */
 
+
+
 .profile-header-data{
 	
 	position: relative;
@@ -242,7 +244,45 @@ user page components
 	margin-left: auto;
 	margin-right: auto;
 	height: 100px;
-	top: -40%;
+	top: -55%;
+}
+
+.profile-header-data h1{
+	float: left;
+	color: white;
+	font-weight: lighter;
+	font-size: 14px;
+	margin-top: 65px;
+	margin-left: 10px;
+	display: block;
+	width: 100px;
+}
+
+.profile-header-location{
+	
+	width: 100px;
+	height: 30px;
+	margin-left: 105px;
+}
+
+.profile-header-location h2{
+
+width: 100px;
+height: 30px;
+	color: white;
+	font-weight: lighter;
+	font-size: 10px;
+margin: 0px;
+text-align: left;
+
+	
+}
+
+.profile-header-location i{
+	float: left;
+	color: white;
+	margin: 0px;
+	
 }
 
 .profile-header{
@@ -272,9 +312,11 @@ user page components
 .profile-shadow{
 
 	position: absolute;
-	z-index: 100;
-	-moz-box-shadow: inset 0 1px 2px black;
-	box-shadow: inset 0 1px 2px black;
+	top: 210px;
+	width: 100%;
+	height: 80px;
+	background-color: #000;
+	opacity: 0.6;
 }
 
 

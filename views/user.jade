@@ -55,11 +55,21 @@ html(lang="en")
 							
 		.profile-header
 			.profile-banner-img
-				img(src="#{bannerurl}")
+				img(src="#{bannerurl}" id="profilebanner" data-velocity=".8")
 			.profile-shadow
 			.profile-header-data
 				.profile-pic-big
-			
+					img(src="#{avatarurl}" width="90")
+					#follow-btn
+						i.white.add.sign.icon.small
+						p FOLLOW
+				h1 #{uname}
+				br
+				.profile-header-location
+					i.map.marker.icon
+					h2 #{locationname}
+					
+							
 		#graphs-view.ui.three.items
 			-var ob = graphs
 			-for(var prop in ob)
