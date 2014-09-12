@@ -423,7 +423,7 @@ $(document).ready(function () {
 
     $('body').mousedown(function (evt) {
         //console.log(evt);
-        if ((evt.target.className.indexOf('search_result') != -1) || (evt.target.parentElement.className.indexOf('search_result') != -1)) {
+        if ((evt.target.className.indexOf('sr') != -1) || (evt.target.parentElement.className.indexOf('sr') != -1)) {
 			
             adding = true;
             	
@@ -439,14 +439,18 @@ $(document).ready(function () {
             
             var att = new Object();
 
-            if ((evt.target.className == 'search_result')) {
+            if ((evt.target.className == 'sr')) {
             
-            att['URL'] = evt.srcElement.attributes.URL.nodeValue;
-            att['DESCRIPTION'] = evt.srcElement.attributes.DESCRIPTION.nodeValue;
-            att['TITLE'] = evt.srcElement.attributes.TITLE.nodeValue;
-            att['IMAGE'] = evt.srcElement.attributes.IMAGE.nodeValue;
-            att['TYPE'] = evt.srcElement.attributes.TYPE.nodeValue;
-            att['DOMAIN'] = evt.srcElement.attributes.DOMAIN.nodeValue;
+            //get nearest sr elem via jq closest
+            var jqel = $(evt.srcElement).closest('.sr')[0];
+            console.log(jqel);
+            
+            att['URL'] = jqel.attributes.URL.nodeValue;
+            att['DESCRIPTION'] = jqel.attributes.DESCRIPTION.nodeValue;
+            att['TITLE'] = jqel.attributes.TITLE.nodeValue;
+            att['IMAGE'] = jqel.attributes.IMAGE.nodeValue;
+            att['TYPE'] = jqel.attributes.TYPE.nodeValue;
+            att['DOMAIN'] = jqel.attributes.DOMAIN.nodeValue;
             att['NEAREST'] = false;
 
 
@@ -454,12 +458,15 @@ $(document).ready(function () {
 
             } else {
             
-            att['URL'] =  evt.srcElement.parentElement.attributes.URL.nodeValue;
-            att['DESCRIPTION'] = evt.srcElement.parentElement.attributes.DESCRIPTION.nodeValue;
-            att['TITLE'] = evt.srcElement.parentElement.attributes.TITLE.nodeValue;
-            att['IMAGE'] = evt.srcElement.parentElement.attributes.IMAGE.nodeValue;
-            att['TYPE'] = evt.srcElement.parentElement.attributes.TYPE.nodeValue;
-            att['DOMAIN'] = evt.srcElement.parentElement.attributes.DOMAIN.nodeValue;
+            var jqelpar = $(evt.srcElement.parentElement).closest('.sr')[0];
+            console.log(jqelpar);
+            
+            att['URL'] =  jqelpar.attributes.URL.nodeValue;
+            att['DESCRIPTION'] = jqelpar.attributes.DESCRIPTION.nodeValue;
+            att['TITLE'] = jqelpar.attributes.TITLE.nodeValue;
+            att['IMAGE'] = jqelpar.attributes.IMAGE.nodeValue;
+            att['TYPE'] = jqelpar.attributes.TYPE.nodeValue;
+            att['DOMAIN'] = jqelpar.attributes.DOMAIN.nodeValue;
             att['NEAREST'] = false;
             
             

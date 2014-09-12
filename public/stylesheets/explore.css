@@ -84,6 +84,12 @@ left: -5px;
 	font-weight: 100;
 	
 }
+
+.user-details-text a{
+	
+	color: white !important;
+}
+
 //username display on item
 .user-details-text h3{
 	font-size: 5px !important;

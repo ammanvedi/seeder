@@ -75,7 +75,8 @@ block content
 									.profile-pic-small
 										img(src="#{ob[prop].avatarurl}" width="35" height="35")
 									.user-details-text
-										h3 #{ob[prop].username}
+										a(href="/u/#{ob[prop].username}")
+											h3 #{ob[prop].username}
 										h4 #{ob[prop].created}
 								a.name(href="/graph?graphid=#{ob[prop].graphid}")
 									span #{ob[prop].graphname}

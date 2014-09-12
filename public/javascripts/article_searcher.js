@@ -6,8 +6,11 @@ $(document).ready(function () {
     var term;
     //hide the container of the search results
     //its not needed when no results are being shown
-    $('#search_results_holder').height(0);
+    $('#search_results_holder').height(200);
     //this function is passed the searchterm 
+    //search('mendeley');
+    
+    
     function search(trm) {
 
         term = trm;
@@ -16,7 +19,7 @@ $(document).ready(function () {
         //use the httpget function to grab the custom google search
         //JSON DATA
         //var json_dta = httpGet('https://www.googleapis.com/customsearch/v1?key=AIzaSyDM8_gZ-5DQVcBUt1y7qq_wAjUDbr4YSTA&cx=009521426283403904660:drg6vvs6o2a&q=' + trm);
-        add_results('https://www.googleapis.com/customsearch/v1?key=AIzaSyDM8_gZ-5DQVcBUt1y7qq_wAjUDbr4YSTA&cx=009521426283403904660:drg6vvs6o2a&q=' + trm);
+        add_results('/build/search/mendeley/' + trm);
     }
 
     function add_results(json_results_url) {
@@ -28,32 +31,70 @@ $(document).ready(function () {
 
         var json_dta = httpGet(json_results_url);
         //search results are stored in the 'items' array
-        var json_objects = jQuery.parseJSON(json_dta).items;
+        var json_objects = jQuery.parseJSON(json_dta);
         //console.log(jQuery.parseJSON( json_dta ));
         //console.log(jQuery.parseJSON( json_dta ).queries.nextPage[0].startIndex);
-        next_page_idx = jQuery.parseJSON(json_dta).queries.nextPage[0].startIndex;
+        //next_page_idx = jQuery.parseJSON(json_dta).queries.nextPage[0].startIndex;
         json_objects.forEach(function (itm) {
 
             //for each result, add a corresponding search result division to the search
             //results container
-            //console.log(itm);
+            console.log(itm);
 
             jQuery('<div/>', {
-                class: 'search_result rounded',
-                URL: itm.link,
-                DESCRIPTION: itm.snippet,
-                TITLE: itm.title,
-                IMAGE: itm.pagemap.cse_image[0].src,
+                class: 'sr',
+                URL: itm.URL,
+                DESCRIPTION: itm.DESCRIPTION,
+                TITLE: itm.TITLE,
+                IMAGE: itm.IMAGE,
                 TYPE: 'ARTICLE',
-                DOMAIN: itm.displayLink,
-                html: '<div class="result_title"><img class="rounded ui left floated image" src="' + itm.pagemap.cse_image[0].src + '"/>' + '<h1>' + itm.title + '</h1><h2>' + itm.displayLink + '</h2></div><div class="result_text">' + '<p>' + itm.snippet + '</p></div>'
-
-                + '<div class="result_link ui purple label"><a target="_blank" href=\'' + itm.link + '\'>view source</a></div><i class="result_adder add purple icon"></>'
+                DOMAIN: itm.DOMAIN,
+                html: '  <div class="sr-left-text">
+                      <h1>' + itm.TITLE + '</h1>
+                          <div class="sr-article-link"><a href=" ' + itm.URL + '"> ' + itm.DOMAIN + '</a><i class="hand right icon"></i></div>
+                          <p>' + itm.DESCRIPTION + '</p>
+                          </div>
+                          <div class="sr-right-image"><img src="' + itm.IMAGE + '"><div class="sr-image-overlay"></div>
+                          <i class="result_adder add icon"></i>
+                          </div>
+                      </div>
+                  </div>'
 
 
             }).appendTo('#search_results_holder');
+            
+              /*
+            
+            	          '  <div class="sr-left-text">
+            		            <h1>' + itm.title + '</h1>
+            			            <div class="sr-article-link"><a href=" ' + itm.link + '"> ' + itm.displayLink + '</a><i class="hand right icon"></i></div>
+            			            <p>' + itm.snippet + '</p>
+            			            </div>
+            			            <div class="sr-right-image"><img src="' + itm.pagemap.cse_image[0].src + '"><div class="sr-image-overlay"></div>
+            			            <i class="result_adder add icon"></i>
+            			            </div>
+            		            </div>
+            	            </div>'
+            
+            
+          
+            
+      
+	            <div class="sr-left-text">
+		            <h1>Article Heading Goes Here</h1>
+			            <div class="sr-article-link"><a href="http://www.google.com">www.nytimes.com</a><i class="hand right icon"></i></div>
+			            <p>A description of the article's contents will go here and should be truncated if too long</p>
+			            </div>
+			            <div class="sr-right-image"><img src="http://placehold.it/90x90.png"><div class="sr-image-overlay"></div>
+			            <i class="result_adder add icon"></i>
+			            </div>
+		            </div>
+	            </div>
+   
 
-
+					*/
+				
+				
         });
 
         jQuery('<div/>', {

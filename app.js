@@ -12,7 +12,7 @@ var http = require('http').createServer(app);
 var path = require('path');
 var MongoClient = require('mongodb').MongoClient;
 var io = require('socket.io').listen(http);
-var Mendeley = require('mendeleyjs');
+var SearchEngine = require('searchEngine');
 var seedling = require('seedling');
 
 // all environments
@@ -42,13 +42,8 @@ app.configure(function() {
 
 //testing mendeley js functionality
 
-Mendeley.auth('670', '9N5Q9XupUZEpxuOI', function(msg) {
-    //console.log(msg)
-    Mendeley.search("science", function(data) {
-        //console.log(data);
-    });
-});
 
+SearchEngine.init()
 
 
 http.listen(DEPLOYPORT);
@@ -264,6 +259,16 @@ app.get('/graph', function(req, res) {
     
     seedling.updateGraphViews(req.query.graphid);
 
+
+});
+
+app.get('/build/search/:searchtype/:query', function(req, res){
+	
+	SearchEngine.search(req.params.searchtype, req.params.query, function(results){
+	
+	res.send(results);
+	
+	});
 
 });
 
