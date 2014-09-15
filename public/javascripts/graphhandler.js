@@ -121,7 +121,7 @@ $(document).ready(function () {
     addnodePREFS['link'] = 'http://www.google.com/';
     addnodePREFS['TYPE'] = 'TEXT';
     addnodePREFS['size'] = 30;
-    addnodePREFS['nodeid'] = -1;
+    addnodePREFS['nodeid'] = "-1";
     addnodePREFS['color'] = '#564F8A';
     
     
@@ -216,6 +216,8 @@ $(document).ready(function () {
 
 
     $('#graph_canvas').click(function (a) {
+    
+    
     
     sys.start();
     
@@ -423,7 +425,7 @@ $(document).ready(function () {
 
     $('body').mousedown(function (evt) {
         //console.log(evt);
-        if ((evt.target.className.indexOf('sr') != -1) || (evt.target.parentElement.className.indexOf('sr') != -1)) {
+        if ((evt.target.className.indexOf('result_adder') != -1) || (evt.target.parentElement.className.indexOf('result_adder') != -1)) {
 			
             adding = true;
             	
@@ -758,6 +760,32 @@ $(document).ready(function () {
     	
     	
     }
+    
+    
+    /**
+     * remove a node in the current layer of the graph 
+     * @param {String} Name The name of the node to add
+     * @param {String} Layer Layer in which the node to be removed resides
+     */
+    function deleteNode(id, layer)
+    {
+		    //remove from view (particle system)
+		    sys.pruneNode(id);
+		    layer = layer+'z';
+				//remove from underlying structure
+		    var newnodes = $.grep(GraphLayers[layer].nodes, function ( node, index ){ return node.nodename != id; });
+		    //assign the new node list to the graph object
+		    GraphLayers[layer].nodes = newnodes;
+		    //reduce nodecount
+		    nodelength -=1;
+		    //remove any edges from the underlying node structure
+		    var newedges = $.grep(GraphLayers[layer].edges, function ( edge, index ){ return (edge.fromnode != id) && (edge.tonode != id); });
+		    //assign the new edge list to the graph object
+		    GraphLayers[layer].edges = newedges;
+    }
+    /*!
+    *
+    */
 
     /**
      * add a node to the current layer of the graph 
@@ -784,6 +812,9 @@ $(document).ready(function () {
     	//console.log(data);
     	return;
     }
+    /*!
+    *
+    */
     
     /**
      * add a edge to the current layer of the graph 
@@ -867,6 +898,17 @@ $(document).ready(function () {
 		$(target.getAttribute('tablink')).show();
 
         
+    });
+    
+    //delete click handler
+    $('body').click(function (e){
+    //the delete button has been clicked
+    if(e.srcElement.className == 'delete'){
+    	//console.log($('.delete').attr('node-data'));
+    	//remove node
+    	//sys.pruneNode($('.delete').attr('node-data'));
+    	deleteNode($('.delete').attr('node-data'), currentlayer);
+    }
     });
 
     $('#btn_export').click(function (e) {

@@ -492,3 +492,23 @@ font-size: 10px;
 	text-decoration: none;
 	font-style: italic;
 }
+
+
+/*
+EDIT - HUD UI ELEMENTS
+*/
+
+.delete{
+	
+	width: 30px;
+	height: 30px;
+	background-color: #000;
+	position: absolute;
+	border-radius: 15px;
+	border: 3px solid #ffffff;
+	color: white;
+	z-index: 2000;
+}
+
+
+

@@ -19,7 +19,7 @@ $(document).ready(function () {
         //use the httpget function to grab the custom google search
         //JSON DATA
         //var json_dta = httpGet('https://www.googleapis.com/customsearch/v1?key=AIzaSyDM8_gZ-5DQVcBUt1y7qq_wAjUDbr4YSTA&cx=009521426283403904660:drg6vvs6o2a&q=' + trm);
-        add_results('/build/search/mendeley/' + trm);
+        add_results('/build/search/google/' + trm);
     }
 
     function add_results(json_results_url) {
@@ -39,7 +39,7 @@ $(document).ready(function () {
 
             //for each result, add a corresponding search result division to the search
             //results container
-            console.log(itm);
+            //console.log(itm);
 
             jQuery('<div/>', {
                 class: 'sr',
@@ -51,7 +51,7 @@ $(document).ready(function () {
                 DOMAIN: itm.DOMAIN,
                 html: '  <div class="sr-left-text">
                       <h1>' + itm.TITLE + '</h1>
-                          <div class="sr-article-link"><a href=" ' + itm.URL + '"> ' + itm.DOMAIN + '</a><i class="hand right icon"></i></div>
+                          <div class="sr-article-link"><a target="_blank" href=" ' + itm.URL + '"> ' + itm.DOMAIN + '</a><i class="hand right icon"></i></div>
                           <p>' + itm.DESCRIPTION + '</p>
                           </div>
                           <div class="sr-right-image"><img src="' + itm.IMAGE + '"><div class="sr-image-overlay"></div>

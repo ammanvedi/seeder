@@ -26,6 +26,51 @@ function shadeColor(color, percent) {
 }
 
 
+function drawToolsHud(canvas_context, active_node) {
+	
+	
+//	canvas_context.fillStyle = "rgba(0, 0, 0, 0.6)";
+//	canvas_context.fillRect(active_node.screenPoint.x+200,active_node.screenPoint.y,20,20);
+//canvas_context.rect(active_node.screenPoint.x,active_node.screenPoint.y,150,100);
+//canvas_context.stroke();
+
+var drawatx = active_node.screenPoint.x;
+
+if($('#explore-sidebar').hasClass("active")){
+	//sidebar is active, push co x co ordinates
+	drawatx += $('#explore-sidebar').width();
+}
+
+if ($('.delete').length) {
+	//div found, move position
+	$('.delete').css("top", active_node.screenPoint.y + 'px').css("left", drawatx + "px");
+	
+}else{
+	//div not found, add and position
+	$('#contain_main').append('<div class="delete"></div>');
+	console.log(active_node);
+	$('.delete').css("top", active_node.screenPoint.y + 'px').css("left", drawatx + "px");
+}
+
+	$('.delete').attr('node-data', active_node.node.data.nodeid+'');
+	
+	
+}
+
+$(document).mousemove(function(e) {
+
+		var mousex = e.pageX;
+		
+		if($('#explore-sidebar').hasClass("active")){
+			//sidebar is active, push co x co ordinates
+			mousex -= $('#explore-sidebar').width();
+		}
+
+    window.x = mousex;
+    window.y = e.pageY;
+  
+});
+
 
 /**
  * The main renderer for the graph drawing system 
@@ -58,6 +103,8 @@ var Renderer = function (canvas) {
         },
 
         redraw: function () {
+        
+
             // 
             // redraw will be called repeatedly during the run whenever the node positions
             // change. the new positions for the nodes can be accessed by looking at the
@@ -151,10 +198,10 @@ var Renderer = function (canvas) {
                         ctx.beginPath();
                         ctx.arc(pt.x, pt.y, node.data['size'], 0, 2 * Math.PI, false);
                         ctx.fillStyle = node.data['color'];
-						ctx.shadowColor = '#000';
-						ctx.shadowBlur = 16;
-						ctx.shadowOffsetX = 0;
-						ctx.shadowOffsetY = 0;
+												ctx.shadowColor = '#000';
+												ctx.shadowBlur = 16;
+												ctx.shadowOffsetX = 0;
+												ctx.shadowOffsetY = 0;
                         ctx.fill();
                         ctx.lineWidth = 3;
                         ctx.strokeStyle = shadeColor(node.data['color'], -20);
@@ -218,6 +265,14 @@ var Renderer = function (canvas) {
 	                ctx.fillText(node.data.name, pt.x - 4, pt.y + 3);		
 	            }
             });
+            
+            
+            
+            drawToolsHud(ctx, particleSystem.nearest({
+            		x: window.x,
+            		y: window.y
+            })
+            );
         },
 
         initMouseHandling: function () {
