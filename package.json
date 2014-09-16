@@ -11,7 +11,10 @@
     "mongodb": "*",
     "passport": "*",
     "passport-google": "*",
-    "socket.io": "*"
+    "socket.io": "*",
+    "mendeleyjs": "*",
+    "request": "*",
+    "crypto": "*"
   },
   "devDependencies": {
     "grunt": "~0.4.4",
