@@ -56,15 +56,83 @@ block content
 					p#node-description
 					a#node-link.ui.purple.label(target="_blank")
 						|read full article
-			.header.item
-				|Graph Tools
+			.header.item.buildgraphsidebarheader
+				|Build Graph
 				i.purple.edit.icon
+			#pallete.item.buildgraphsidebarcontent
+				#pallete-menu
+					a.edittab(tablink='#tabs-1')
+						| Add Edge 
+						br
+						i.fork.code.icon
+					a.edittab(tablink='#tabs-2')
+						| Add Node
+						br
+						i.add.icon
+					a.edittab(tablink='#tabs-3' id='editnode_tab_button')
+						| Edit Node
+						br
+						i.edit.icon
+					a.edittab(tablink='#tabs-4')
+						|Export
+						br
+						i.indent.right.icon
+				#tabs-1.tabwindow
+					#edgebuilder
+						#edgesource
+						.ui.horizontal.icon.divider
+							i.circular.long.arrow.down.icon
+						#edgedestination
+					form
+						input.tiny.ui.submit.green.button#btn_addedge(type='button' value='add edge')
+				#tabs-2.tabwindow
+					form#form_addnode
+						select#select_node_type
+							option(value="TEXT")
+								|Text Node
+							option(value="LAYER")
+								|Layer Node
+						input#field_node_name.ui.mini.input(type='text' name='node_name' placeholder='node name')
+						input#field_node_text.ui.mini.input(type='text' name='node_text' class='input_node_add' placeholder='add text')
+						input#field_node_link.ui.mini.input(type='text' name='node_link' placeholder='add a link')
+						input#field_node_size.ui.mini.input(type='number' name='node_size' value='20')
+						br
+						input#picker_edgecolor.ui.mini.input(type='color' placeholder='#ffffff')
+						br
+						input.tiny.ui.submit.green.button#btn_addnode(type='button' value='add node')
+				#tabs-3.tabwindow
+					#edit_notice
+						.ui.icon.header
+							i.edit.circular.icon
+							.sub.header
+								|Click a node
+					form#form_editnode
+						input#field_edit_node_name.ui.mini.input(type='text' name='node_name' placeholder='node name')
+						input#field_edit_node_text.ui.mini.input(type='text' name='node_text' class='input_node_add' placeholder='add text')
+						input#field_edit_node_link.ui.mini.input(type='text' name='node_link' placeholder='add a link')
+						input#field_edit_node_size.ui.mini.input(type='number' name='node_size' value='20')
+						br
+						input#picker_edit_edgecolor.ui.mini.input(type='color' placeholder='#ffffff')
+						br
+						input.tiny.ui.submit.purple.button#btn_editnode(type='button' value='edit node')
+				#tabs-4.tabwindow
+					.ui.icon.header
+						i.edit.circular.icon
+						.sub.header
+							|Export To Reference List
+					input.tiny.ui.submit.green.button#btn_export(type='button' value='export')
+				
+			.header.item
+				|Search
+				i.purple.search.icon
 			#frm_searcharticles.item
 				.ui.icon.input
 					input#input_searcharticles(type='text' placeholder="enter a topic")
 					i#btn_searcharticles.search.link.icon
 				#search_results_holder
-				
+			.header.item
+				|Share
+				i.purple.save.icon
 			.item
 				.ui.buttons
 					#btn_savegraph.ui.button.small
@@ -91,64 +159,6 @@ block content
 							.ui.corner.label
 								i.asterisk.icon
 	#contain_main(class='push')
-		#pallete
-			#pallete-menu.ui.vertical.pointing.menu
-				a.item.active.purple.edittab(tablink='#tabs-1')
-					| Add Edge 
-					i.fork.code.icon
-				a.item.edittab(tablink='#tabs-2')
-					| Add Node
-					i.add.icon
-				a.item.edittab(tablink='#tabs-3' id='editnode_tab_button')
-					| Edit Node
-					i.edit.icon
-				a.item.edittab(tablink='#tabs-4')
-					|Export
-					i.indent.right.icon
-			#tabs-1.tabwindow
-				#edgebuilder
-					#edgesource
-					.ui.horizontal.icon.divider
-						i.circular.long.arrow.down.icon
-					#edgedestination
-				form
-					input.tiny.ui.submit.green.button#btn_addedge(type='button' value='add edge')
-			#tabs-2.tabwindow
-				form#form_addnode
-					select#select_node_type
-						option(value="TEXT")
-							|Text Node
-						option(value="LAYER")
-							|Layer Node
-					input#field_node_name.ui.mini.input(type='text' name='node_name' placeholder='node name')
-					input#field_node_text.ui.mini.input(type='text' name='node_text' class='input_node_add' placeholder='add text')
-					input#field_node_link.ui.mini.input(type='text' name='node_link' placeholder='add a link')
-					input#field_node_size.ui.mini.input(type='number' name='node_size' value='20')
-					br
-					input#picker_edgecolor.ui.mini.input(type='color' placeholder='#ffffff')
-					br
-					input.tiny.ui.submit.green.button#btn_addnode(type='button' value='add node')
-			#tabs-3.tabwindow
-				#edit_notice
-					.ui.icon.header
-						i.edit.circular.icon
-						.sub.header
-							|Click a node
-				form#form_editnode
-					input#field_edit_node_name.ui.mini.input(type='text' name='node_name' placeholder='node name')
-					input#field_edit_node_text.ui.mini.input(type='text' name='node_text' class='input_node_add' placeholder='add text')
-					input#field_edit_node_link.ui.mini.input(type='text' name='node_link' placeholder='add a link')
-					input#field_edit_node_size.ui.mini.input(type='number' name='node_size' value='20')
-					br
-					input#picker_edit_edgecolor.ui.mini.input(type='color' placeholder='#ffffff')
-					br
-					input.tiny.ui.submit.purple.button#btn_editnode(type='button' value='edit node')
-			#tabs-4.tabwindow
-				.ui.icon.header
-					i.edit.circular.icon
-					.sub.header
-						|Export To Reference List
-				input.tiny.ui.submit.green.button#btn_export(type='button' value='export')
 		#display_code
 			#graph_tab
 				canvas#graph_canvas(width='1200px' height='600px')

@@ -128,40 +128,7 @@ height: 100px;
 	overflow: hidden;
 }
 
-#pallete{
-	width: auto;
-	max-width: 700px;
-	height: 175px;
-	padding: 10px;
-	position: absolute;
-	z-index: 2000;
-box-shadow: 0 0 5px #5a5a5a;
-	opacity: 0.9;
-	background-color: #ffffff;
-}
 
-#pallete li{
-	
-	width: 20px;
-	height: 20px;
-	font-size: 9;
-}
-
-#pallete-menu {
-	width: 150px;
-	float: left;
-}
-
-
-
-.tabwindow{
-	
-	float: left;
-	max-width: 150px;
-	min-width: auto;
-	margin-left: 20px;
-	padding-right: 10px;
-}
 
 #btn_addedge{
 	margin-left: auto;
@@ -493,6 +460,24 @@ font-size: 10px;
 	font-style: italic;
 }
 
+/*
+adding article preview node
+*/
+
+.preview-node{
+	width: 70px;
+	height: 70px;
+	border-radius: 50px;
+	position: absolute;
+	background-color: #000;
+	overflow: hidden;
+	
+}
+.preview-node img{
+	
+	width: 70px;
+	height: 70px;
+}
 
 /*
 EDIT - HUD UI ELEMENTS
@@ -502,13 +487,82 @@ EDIT - HUD UI ELEMENTS
 	
 	width: 30px;
 	height: 30px;
-	background-color: #000;
+	background-color: #fff;
 	position: absolute;
-	border-radius: 15px;
-	border: 3px solid #ffffff;
+	border-radius: 20px;
+	-moz-box-shadow: 0 0 2px black;
+	box-shadow: 0 0 2px black;
 	color: white;
 	z-index: 2000;
 }
+
+.deleteinner{
+	
+	width: 24px;
+	height: 24px;
+	border-radius: 12px;
+	background-color: black;
+	display: block;
+	margin: 0 auto;
+	margin-top: 3px;
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	font-weight: bold;
+	text-align: center;
+	cursor: pointer;
+
+}
+
+/*
+PALLETE STYLING
+*/
+
+
+#pallete{
+	width:90%;
+	max-width: 700px;
+	height: 175px;
+	padding: 0px;
+	z-index: 2000;
+}
+
+#pallete li{
+	
+	width: 20px;
+	height: 20px;
+	font-size: 9;
+}
+
+
+#pallete-menu a{
+float: left;
+text-align: center;
+margin-left: 1px;
+	border: 1px solid #d5d5d5;
+}
+
+
+#pallete-menu {
+	width: 260px;
+	height: 100px;
+
+}
+
+.tabwindow{
+	
+
+	max-width: 150px;
+	min-width: auto;
+	margin-left: 20px;
+	padding-right: 10px;
+
+}
+
+
+
+
+
+
+
 
 
 

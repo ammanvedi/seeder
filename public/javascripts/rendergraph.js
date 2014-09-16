@@ -35,6 +35,9 @@ function drawToolsHud(canvas_context, active_node) {
 //canvas_context.stroke();
 
 var drawatx = active_node.screenPoint.x;
+var delete_html = '<div class="delete">
+									<div class="deleteinner">x</div>
+									</div>';
 
 if($('#explore-sidebar').hasClass("active")){
 	//sidebar is active, push co x co ordinates
@@ -47,7 +50,7 @@ if ($('.delete').length) {
 	
 }else{
 	//div not found, add and position
-	$('#contain_main').append('<div class="delete"></div>');
+	$('#contain_main').append(delete_html);
 	console.log(active_node);
 	$('.delete').css("top", active_node.screenPoint.y + 'px').css("left", drawatx + "px");
 }
@@ -168,7 +171,7 @@ var Renderer = function (canvas) {
                         ctx.lineWidth = 5;
                         ctx.strokeStyle = '#003300';
                         ctx.shadowColor = '#000';
-                        ctx.shadowBlur = 16;
+                        ctx.shadowBlur = 5;
                         ctx.shadowOffsetX = 0;
                         ctx.shadowOffsetY = 0;
                         ctx.stroke();
@@ -199,7 +202,7 @@ var Renderer = function (canvas) {
                         ctx.arc(pt.x, pt.y, node.data['size'], 0, 2 * Math.PI, false);
                         ctx.fillStyle = node.data['color'];
 												ctx.shadowColor = '#000';
-												ctx.shadowBlur = 16;
+												ctx.shadowBlur = 5;
 												ctx.shadowOffsetX = 0;
 												ctx.shadowOffsetY = 0;
                         ctx.fill();
@@ -225,7 +228,7 @@ var Renderer = function (canvas) {
 	                ctx.arc(pt.x, pt.y, radius, 0, 2 * Math.PI, false);
 	                ctx.fillStyle = node.data['color'];
 					ctx.shadowColor = "rgba(0, 0, 0, 0.5)";
-					ctx.shadowBlur = 10;
+					ctx.shadowBlur = 5;
 					ctx.shadowOffsetX = 0;
 					ctx.shadowOffsetY = 0;
 	                ctx.fill();

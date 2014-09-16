@@ -85,7 +85,7 @@ $(document).ready(function () {
     //initial ui
     $("#tabs").tabs();
     $("input[type=submit]").button();
-    $("#pallete").draggable({containment: "parent"});
+    //$("#pallete").draggable({containment: "parent"});
     $('#graph_tab').height($("body").height());
     $('#text_tab').height(0);
     //$('.menu-link').bigSlide();
@@ -209,6 +209,24 @@ $(document).ready(function () {
         		$('#node-dropper').css('border-radius',size+'px');
         	}
 
+        }
+        
+        
+        if(adding){
+        	//console.log(data_to_add);
+        	//show the user the preview node
+        	if($('.preview-node').length)
+        	{
+        		//the preview node is present
+        		$('.preview-node').css('top', (e.pageY - navheight)+'px').css('left',(e.pageX + menuwidth)+'px');
+        	}else{
+        		//is not present, create it
+        		$('body').append('<div class="preview-node">
+        											<img src="' + data_to_add["IMAGE"] + '"/>
+        											</div>');
+        											
+        		$('.preview-node').css('top', (e.pageY - navheight)+'px').css('left',(e.pageX + menuwidth)+'px');
+        	}
         }
 
     });
@@ -503,6 +521,8 @@ $(document).ready(function () {
         $('search_results_holder').removeClass('stop-scrolling');
 
         if (adding) {
+        //remove the preview
+        $('.preview-node').remove();
             //preload the image 
 			 $('#search_results_holder').css('overflow-x', 'scroll');
             var prefetch = new Image();
@@ -903,7 +923,7 @@ $(document).ready(function () {
     //delete click handler
     $('body').click(function (e){
     //the delete button has been clicked
-    if(e.srcElement.className == 'delete'){
+    if(e.srcElement.className == 'deleteinner'){
     	//console.log($('.delete').attr('node-data'));
     	//remove node
     	//sys.pruneNode($('.delete').attr('node-data'));
