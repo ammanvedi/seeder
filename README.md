@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/ammanvedi/seeder.svg?branch=v2_arbor)](https://travis-ci.org/ammanvedi/seeder)
 
 ![Seeder](http://i.imgur.com/N2ADOo2.png)
 
