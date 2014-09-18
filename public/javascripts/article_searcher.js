@@ -19,7 +19,9 @@ $(document).ready(function () {
         //use the httpget function to grab the custom google search
         //JSON DATA
         //var json_dta = httpGet('https://www.googleapis.com/customsearch/v1?key=AIzaSyDM8_gZ-5DQVcBUt1y7qq_wAjUDbr4YSTA&cx=009521426283403904660:drg6vvs6o2a&q=' + trm);
-        add_results('/build/search/google/' + trm);
+        var searchoption = $('#searchprovider').val();
+        console.log('/build/search/'+ searchoption +'/' + trm);
+        add_results('/build/search/'+ searchoption +'/' + trm);
     }
 
     function add_results(json_results_url) {

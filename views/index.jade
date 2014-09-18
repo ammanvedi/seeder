@@ -43,11 +43,14 @@ block content
 
 	#explore-sidebar.ui.floating.sidebar
 		.ui.fluid.vertical.menu
-			.header.item
+			.header.item.buildgraphsidebarheader(data-panel="#panel-reference")
 				|Reference Details
+				i.remove.icon
 				i.purple.book.icon
-			.item
-				img#node-image.rounded.ui.small.left.floated.image(src='http://placehold.it/100x100.png')
+			.item#panel-reference
+				#info-hover-message
+					h1 Mouse Over an Article To See it's Details
+				img#node-image(src='http://placehold.it/100x100.png' width="80" height="80")
 				#info-header.smalltext
 					p#node-title
 					p#node-domain
@@ -56,10 +59,11 @@ block content
 					p#node-description
 					a#node-link.ui.purple.label(target="_blank")
 						|read full article
-			.header.item.buildgraphsidebarheader
+			.header.item.buildgraphsidebarheader(data-panel="#pallete")
 				|Build Graph
+				i.remove.icon
 				i.purple.edit.icon
-			#pallete.item.buildgraphsidebarcontent
+			#pallete.item 
 				#pallete-menu
 					a.edittab(tablink='#tabs-1')
 						| Add Edge 
@@ -95,7 +99,7 @@ block content
 						input#field_node_name.ui.mini.input(type='text' name='node_name' placeholder='node name')
 						input#field_node_text.ui.mini.input(type='text' name='node_text' class='input_node_add' placeholder='add text')
 						input#field_node_link.ui.mini.input(type='text' name='node_link' placeholder='add a link')
-						input#field_node_size.ui.mini.input(type='number' name='node_size' value='20')
+						input#field_node_size.ui.mini.input(type='range' min=0 max=100 name='node_size' value='20')
 						br
 						input#picker_edgecolor.ui.mini.input(type='color' placeholder='#ffffff')
 						br
@@ -122,42 +126,49 @@ block content
 							|Export To Reference List
 					input.tiny.ui.submit.green.button#btn_export(type='button' value='export')
 				
-			.header.item
+			.header.item.buildgraphsidebarheader(data-panel="#frm_searcharticles")
 				|Search
+				i.remove.icon
 				i.purple.search.icon
 			#frm_searcharticles.item
+				select#searchprovider
+					option(value="mendeley")
+						|Mendeley
+					option(value="google")
+						|Google
 				.ui.icon.input
 					input#input_searcharticles(type='text' placeholder="enter a topic")
 					i#btn_searcharticles.search.link.icon
 				#search_results_holder
-			.header.item
+			.header.item.buildgraphsidebarheader(data-panel="#panel-save")
 				|Share
+				i.remove.icon
 				i.purple.save.icon
-			.item
+			.item#panel-save
 				.ui.buttons
 					#btn_savegraph.ui.button.small
 						|Save
 					.or
 					#btn_publishgraph.ui.button.small.positive
 						|Publish
-			#savepanel
-				.ui.label#updatelabel
-					|Last Updated
-					.detail#lastsave
-						| Never 
-					a.detail#lastlink(href="")
-						| View Published
-				ul
-					li
-						.ui.labeled.input
-							input#sp_graphname.text(placeholder="Name")
-							.ui.corner.label
-								i.asterisk.icon
-					li
-						.ui.labeled.input
-							input#sp_graphdesc.text(placeholder="Description")
-							.ui.corner.label
-								i.asterisk.icon
+				#savepanel
+					.ui.label#updatelabel
+						|Last Updated
+						.detail#lastsave
+							| Never 
+						a.detail#lastlink(href="")
+							| View Published
+					ul
+						li
+							.ui.labeled.input
+								input#sp_graphname.text(placeholder="Name")
+								.ui.corner.label
+									i.asterisk.icon
+						li
+							.ui.labeled.input
+								input#sp_graphdesc.text(placeholder="Description")
+								.ui.corner.label
+									i.asterisk.icon
 	#contain_main(class='push')
 		#display_code
 			#graph_tab

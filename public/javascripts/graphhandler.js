@@ -174,6 +174,10 @@ $(document).ready(function () {
         //console.log(nearestmouse);
 
             if (nearestmouse.node.data['TYPE'] == 'ARTICLE') {
+            //hide the initial hover message
+            $('#info-hover-message').hide();
+            //display the data contained in the article node
+            
                 nearestmouse.node.data['NEAREST'] = true;
                 $('#node-title').text(nearestmouse.node.data['TITLE']);
                 $('#node-domain').text(nearestmouse.node.data['DOMAIN']);
@@ -183,6 +187,7 @@ $(document).ready(function () {
                 //console.log(nearestmouse.node);
             } else {
                 //console.log('id is : ' + nearestmouse.node.name);
+                
 
             }
 
@@ -898,12 +903,11 @@ $(document).ready(function () {
 
     $('.edittab').click(function (evt) {
     
-    var target = evt.target || evt.srcElement;
+    var target = evt.srcElement;
 
-        $('.edittab').removeClass('active');
+        $('.edittab').removeClass('active-tab');
 
-        $(target).addClass('active');
-        $(target).addClass('purple');
+        $(target).addClass('active-tab');
         //console.log(evt.srcElement.attributes[0].nodeValue);
 
         $('#tabs-1').hide();

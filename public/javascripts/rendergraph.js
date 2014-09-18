@@ -35,8 +35,8 @@ function drawToolsHud(canvas_context, active_node) {
 //canvas_context.stroke();
 
 var drawatx = active_node.screenPoint.x;
-var delete_html = '<div class="delete">
-									<div class="deleteinner">x</div>
+var delete_html = '<div class=\"delete\">
+									<div class=\"deleteinner\">x</div>
 									</div>';
 
 if($('#explore-sidebar').hasClass("active")){
@@ -276,6 +276,8 @@ var Renderer = function (canvas) {
             		y: window.y
             })
             );
+            
+            
         },
 
         initMouseHandling: function () {
